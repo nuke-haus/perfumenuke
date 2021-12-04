@@ -1,0 +1,159 @@
+
+a:link 
+{
+  color: cyan;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:visited 
+{
+  color: cyan;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:hover 
+{
+  color: lime;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active 
+{
+  color: cyan;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.header
+{
+    height: 240px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerlogo
+{
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.navbar 
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bar 
+{
+	background-color: #000000;
+	height: 32px;
+	width: 100%;
+}
+
+.barshadow
+{
+	background-color: #4e6258;
+	height: 5px;
+	width: 100%;
+}
+
+.topbutton
+{
+    margin-left: 35px;
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.perfume 
+{
+    width: 420px;
+    height: 495px;
+    background-color: #89ad9b;
+    box-shadow: 5px 5px #4e6258;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.perfumeimage 
+{
+    margin: 10px;
+}
+
+.perfumetitle
+{
+    text-align: center;
+    font-size: 38px;
+    font-weight: 550;
+}
+
+.perfumecontainer
+{
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.perfumeouter
+{
+    display: block;
+    margin: auto;
+}
+
+.aboutcontainer
+{
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.detailscontainer
+{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.detailstitle
+{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.detailsdesc
+{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body
+{
+    font-size: 48px;
+  	font-family: 'Work Sans', sans-serif;
+  	text-shadow: 3px 3px 1px #4e6258;
+	
+    color: #000000;
+    background-color: #6f8c7d;
+	
+    height: 100vh;
+    margin: 0;
+	
+	  -webkit-font-smoothing: antialiased;
+}

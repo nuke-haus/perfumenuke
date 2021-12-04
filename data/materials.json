@@ -1,0 +1,49 @@
+{
+    "_comment": "This json file contains materials. Materials are a single component, not a mixture of several. They have CAS numbers and some are IFRA restricted. Try to keep this data alphabetized.",
+    "materials": [
+        {
+            "id": "perfumers_alcohol",
+            "name": "Perfumer's Alcohol",
+            "usage": "Perfumer's Alcohol SDA 40B. Fixative for perfumes.",
+            "costs": [
+                {"Sunrise Botanics": "1ml @ 0.02 CAD"}
+            ]
+        },
+        {
+            "id": "triplal",
+            "name": "Triplal",
+            "company": "IFF",
+            "scent": "Powerful, green, just-mowed-grass odor. Has the refreshing tartness of bergamot peel.",
+            "usage": "Great for creating a green accord. It blends beautifully with fruity, citrus, and floral compositions.",
+            "note": "top",
+            "longevity": "4h",
+            "impact": "800",
+            "dilute": "10% or less",
+            "avg_use_in_concentrate": "0.3%",
+            "max_use_in_concentrate": "2%",
+            "max_in_finished_product": "2.5%",
+            "ifra_restricted": "true",
+            "cas": "68039-49-6",
+            "costs": [
+                {"PA": "1ml @ 0.3 USD"}
+            ]
+        },
+        {
+            "id": "zenolide",
+            "name": "Zenolide",
+            "company": "IFF",
+            "scent": "Soft, delicate white musk with a red fruit aspect.",
+            "usage": "Great for creating a clean, soft white musk note. Not extremely noticeable.",
+            "note": "base",
+            "longevity": "48h",
+            "impact": "100",
+            "avg_use_in_concentrate": "20%",
+            "max_use_in_concentrate": "40%",
+            "ifra_restricted": "false",
+            "cas": "54982-83-1",
+            "costs": [
+                {"PA": "1ml @ 0.18 USD"}
+            ]
+        }
+    ]
+}
