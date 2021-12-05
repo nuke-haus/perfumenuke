@@ -6,6 +6,7 @@ class FormulaBody extends React.Component {
 
     _addIngredient() {
         PN.activeFormula.ingredients.push({});
+        this.forceUpdate();
     }
 
     _changeIngredient(event, ingredient) {
