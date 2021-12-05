@@ -92,10 +92,6 @@ class FormulaBody extends React.Component {
                             <th>WEIGHT (DILUTED)</th>
                             <th/>
                         </tr>
-                        {elements}
-                        <tr>
-                            <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
-                        </tr>
                     </tbody>
                 </table>
             </div>
