@@ -16,11 +16,12 @@ class FormulaBody extends React.Component {
 
     _changeIngredient(id, ingredient) {
         ingredient.id = id;
+        console.log(id);
     }
 
     _changeQuantity(value, ingredient) {
         ingredient.quantity = value;
-        console.log(event);
+        console.log(value);
     }
 
     _renderDataList() {
@@ -28,14 +29,14 @@ class FormulaBody extends React.Component {
         let count = 0;
         for (let ingredient of PN.database.materials) {
             count = count + 1;
-            elements.push(<option key={"material" + count} label={ingredient.name} value={ingredient.id}/>);
+            elements.push(<option key={"material" + count} label={ingredient.name} defaultValue={ingredient.id}/>);
         }
         for (let ingredient of PN.database.mixtures) {
             count = count + 1;
             if (ingredient.diluted_material != null) {
-                elements.push(<option key={"dilution" + count} label={ingredient.name + PN.getDilutionPercentString(ingredient)} value={ingredient.id}/>);
+                elements.push(<option key={"dilution" + count} label={ingredient.name + PN.getDilutionPercentString(ingredient)} defaultValue={ingredient.id}/>);
             } else {
-                elements.push(<option key={"mixture" + count} label={ingredient.name} value={ingredient.id}/>);
+                elements.push(<option key={"mixture" + count} label={ingredient.name} defaultValue={ingredient.id}/>);
             }   
         }
         return (
@@ -56,7 +57,7 @@ class FormulaBody extends React.Component {
                         <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event.target.value, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" value={ingredient.quantity || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        <input type="number" step="0.001" defaultValue={ingredient.quantity || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
                     </td>
                     <td>
                         <button type="button" onClick={() => this._deleteIngredient(index)}>Delete</button>
