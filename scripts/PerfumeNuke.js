@@ -79,7 +79,7 @@ PN.validateLoadedMixtures = function(mixtures) {
         let totalPercent = 0.0;
         for (let material of mixture.materials) {
             material.percent = parseFloat(material.percent || "10.0");
-            totalPercent = totalPercent + materialPercent;
+            totalPercent = totalPercent + material.percent;
             if (material.id == null || PN.getMaterial(material.id) == null) {
                 PN.errors.push("Mixture has invalid material ID in its material list: " + mixture.id);
                 materialsValid = false;
