@@ -16,12 +16,10 @@ class FormulaBody extends React.Component {
 
     _changeIngredient(id, ingredient) {
         ingredient.id = id;
-        console.log(id);
     }
 
     _changeQuantity(value, ingredient) {
         ingredient.quantity = value;
-        console.log(value);
     }
 
     _renderDataList() {
