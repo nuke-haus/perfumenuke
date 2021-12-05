@@ -77,7 +77,7 @@ class Page extends React.Component {
                 );
             }
             table = (
-                <table>
+                <table className="errortable">
                     <tbody>
                         {errors}
                         {warnings}

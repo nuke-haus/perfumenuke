@@ -29,10 +29,17 @@ a:active
 
 table {
     border: 3px solid black;
+    border-collapse: collapse;
 }
 
 th, td {
     margin: 2px;
+}
+
+.errortable {
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .navbar 
@@ -68,13 +75,6 @@ th, td {
 	height: 5px;
     width: 100%;
     margin-bottom: 32px;
-}
-
-.errors
-{
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
 }
 
 .error 
