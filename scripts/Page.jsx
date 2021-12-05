@@ -24,6 +24,8 @@ class Page extends React.Component {
     }
 
     constructor(props) {
+        super(props);
+        
         fetch('data/materials.json')
             .then(response => response.json())
             .then(data => this._onLoadMaterials(data));
@@ -50,7 +52,7 @@ class Page extends React.Component {
             errors = [];
             warnings = [];
             for (let warning of PN.warnings) {
-                count++;
+                count = count + 1;
                 warnings.push(
                     <tr key={"warning" + count}>
                         <td>
@@ -63,7 +65,7 @@ class Page extends React.Component {
                 );
             }
             for (let error of PN.errors) {
-                count++;
+                count = count + 1;
                 errors.push(
                     <tr key={"error" + count}>
                         <td>
@@ -77,8 +79,10 @@ class Page extends React.Component {
             }
             table = (
                 <table>
-                    {errors}
-                    {warnings}
+                    <tbody>
+                        {errors}
+                        {warnings}
+                    </tbody>
                 </table>
             );
         }
