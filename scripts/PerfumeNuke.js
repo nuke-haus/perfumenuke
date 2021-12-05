@@ -13,6 +13,8 @@ PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
 PN.validateLoadedMaterials = function(materials) {
+    PN.database.materials = [];
+
     for (let material of materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
         material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
@@ -57,6 +59,8 @@ PN.validateLoadedMaterials = function(materials) {
 }
 
 PN.validateLoadedMixtures = function(mixtures) {
+    PN.database.mixtures = [];
+
     for (let mixture of mixtures) {
         if (mixture.id == null) {
             PN.errors.push("Mixture is missing an ID!");
@@ -72,8 +76,8 @@ PN.validateLoadedMixtures = function(mixtures) {
         }
         let materialsValid = true;
         for (let material of mixture.materials) {
-            material.percentage = parseFloat(material.percentage || "10.0");
-            if (material.id == null || PN.getMaterial(material.id) == null || material.percentage < 0.0 || material.percentage >= 1.0) {
+            material.percent = parseFloat(material.percent || "10.0");
+            if (material.id == null || PN.getMaterial(material.id) == null || material.percent < 0.0 || material.percent >= 1.0) {
                 PN.errors.push("Mixture has invalid material data: " + mixture.id);
                 materialsValid = false;
                 break; 
@@ -122,13 +126,3 @@ PN.getMixture = function(id) {
     }
     return null;
 }
-
-// Immediately load data and validate
-
-fetch('data/materials.json')
-    .then(response => response.json())
-    .then(data => PN.validateLoadedMaterials(data.materials));
-
-fetch('data/mixtures.json')
-    .then(response => response.json())
-    .then(data => PN.validateLoadedMixtures(data.mixtures));

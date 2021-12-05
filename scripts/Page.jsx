@@ -13,6 +13,26 @@ class Page extends React.Component {
         this.setState({currentNav: id});
     }
 
+    _onLoadMaterials(data) {
+        PN.validateLoadedMaterials(data.materials);
+        this.forceUpdate();
+    }
+
+    _onLoadMixtures(data) {
+        PN.validateLoadedMixtures(data.mixtures);
+        this.forceUpdate();
+    }
+
+    constructor(props) {
+        fetch('data/materials.json')
+            .then(response => response.json())
+            .then(data => this._onLoadMaterials(data));
+
+        fetch('data/mixtures.json')
+            .then(response => response.json())
+            .then(data => this._onLoadMixtures(data));
+    }
+
     render() {
 
         let errorsTab = null;
