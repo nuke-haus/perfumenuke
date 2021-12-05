@@ -1,5 +1,6 @@
 PN = {};
 PN.activeFormula = {};
+PN.activeFormula.ingredients = [];
 PN.errors = [];
 PN.warnings = [];
 

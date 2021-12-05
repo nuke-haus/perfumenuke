@@ -30,7 +30,7 @@ class FormulaBody extends React.Component {
 
         const elements = [];
         let count = 0;
-        for (let ingredient of PN.activeFormula) {
+        for (let ingredient of PN.activeFormula.ingredients || []) {
             count = count + 1;
             elements.push(
                 <tr key={"ingredient" + count}>
