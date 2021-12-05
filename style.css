@@ -61,6 +61,13 @@ table, td, th {
     margin-left: 20px;
 }
 
+.detailstable {
+    width: 60%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
 .navbar 
 {
     height: 50px;

@@ -9,6 +9,11 @@ class FormulaBody extends React.Component {
         this.forceUpdate();
     }
 
+    _deleteIngredient(index) {
+        PN.activeFormula.ingredients.splice(index, 1);
+        this.forceUpdate();
+    }
+
     _changeIngredient(event, ingredient) {
         console.log(event);
     }
@@ -42,16 +47,18 @@ class FormulaBody extends React.Component {
     render() {
 
         const elements = [];
-        let count = 0;
-        for (let ingredient of PN.activeFormula.ingredients || []) {
-            count = count + 1;
+        for (let index in PN.activeFormula.ingredients || []) {
+            const ingredient = PN.activeFormula.ingredients[index]
             elements.push(
-                <tr key={"ingredient" + count}>
+                <tr key={"ingredient" + index + ingredient.id}>
                     <td>
-                        <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event, ingredient)}/>
+                        <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event.target.value, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" value={ingredient.grams || 0.0} onChange={(event) => this._changeQuantity(event, ingredient)}/>
+                        <input type="number" step="0.001" value={ingredient.grams || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                    </td>
+                    <td>
+                        <button type="button" onClick={() => this._deleteIngredient(index)}>Delete</button>
                     </td>
                 </tr>
             );
@@ -65,16 +72,29 @@ class FormulaBody extends React.Component {
                         <tr>
                             <th>INGREDIENT</th>
                             <th>GRAMS ADDED</th>
-                            <th>FORMULA TOTAL (RAW)</th>
-                            <th>FORMULA TOTAL (DILUTED)</th>
-                            <th>WEIGHT (RAW)</th>
-                            <th>WEIGHT (DILUTED)</th>
+                            <th/>
                         </tr>
                         {elements}
                         <tr>
                             <td>
                                 <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
                             </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table className="detailstable">
+                    <tbody>
+                        <tr>
+                            <th>MATERIAL</th>
+                            <th>FORMULA TOTAL (RAW)</th>
+                            <th>FORMULA TOTAL (DILUTED)</th>
+                            <th>WEIGHT (RAW)</th>
+                            <th>WEIGHT (DILUTED)</th>
+                            <th/>
+                        </tr>
+                        {elements}
+                        <tr>
+                            <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
                         </tr>
                     </tbody>
                 </table>
