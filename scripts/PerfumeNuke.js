@@ -40,7 +40,7 @@ PN.validateLoadedMaterials = function(materials) {
             continue;
         }
         if (material.ifra_restricted === true && material.max_in_finished_product == null) {
-            PN.errors.push("Material is IFRA restricted but is missing its maximum allowance in finished product value: " + material.id);
+            PN.errors.push("Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id);
             continue;
         }
         if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
