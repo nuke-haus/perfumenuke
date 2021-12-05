@@ -27,13 +27,13 @@ a:active
     text-decoration: underline;
 }
 
-table {
+table, th, td {
     border: 3px solid black;
     border-collapse: collapse;
 }
 
-th, td {
-    margin: 2px;
+td {
+    margin: 4px;
 }
 
 .errortable {
