@@ -26,11 +26,13 @@ class Page extends React.Component {
                 </div>
             );
             
+            let count = 0;
             errors = [];
             warnings = [];
             for (let warning of PN.warnings) {
+                count++;
                 warnings.push(
-                    <tr>
+                    <tr key={"warning" + count}>
                         <td>
                             <span className="warning">WARNING:</span>
                         </td>
@@ -41,8 +43,9 @@ class Page extends React.Component {
                 );
             }
             for (let error of PN.errors) {
+                count++;
                 errors.push(
-                    <tr>
+                    <tr key={"error" + count}>
                         <td>
                             <span className="error">ERROR:</span>
                         </td>
