@@ -37,14 +37,13 @@ a:active
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
     padding: 4px;
 }
 
 .topbutton
 {
-    margin-left: 35px;
-    margin-right: 35px;
+    margin-left: 45px;
+    margin-right: 45px;
     cursor: pointer;
 }
 
