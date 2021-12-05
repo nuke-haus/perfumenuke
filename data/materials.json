@@ -4,16 +4,13 @@
         {
             "id": "test_errors",
             "name": "Test1",
-            "solvent": "false",
-            "usage": "Testing perfume material validation. This should trigger an error."
+            "usage": "Testing perfume material validation. This should trigger an error (no CAS)."
         },
         {
             "id": "test_errors2",
             "name": "Test2",
             "company": "IFF",
-            "usage": "Testing perfume material validation. This should trigger an error and a warning.",
-            "max_in_finished_product": "2.5%",
-            "ifra_restricted": "true",
+            "usage": "Testing perfume material validation. This should trigger an error (no note type).",
             "cas": "9001"
         },
         {
@@ -21,7 +18,7 @@
             "name": "Test3",
             "company": "IFF",
             "scent": "Testing.",
-            "usage": "Testing perfume material validation. This should trigger an error.",
+            "usage": "Testing perfume material validation. This should trigger an error (no max in finished product).",
             "note": "top",
             "ifra_restricted": "true",
             "cas": "9001"
@@ -30,9 +27,9 @@
             "id": "test_errors4",
             "name": "Test4",
             "company": "IFF",
-            "scent": "Testing.",
-            "usage": "Testing perfume material validation. This should trigger an error.",
-            "note": "top"
+            "usage": "Testing perfume material validation. This should trigger a warning (no scent notes).",
+            "note": "top",
+            "cas": "9001"
         },
         {
             "id": "perfumers_alcohol",
