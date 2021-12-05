@@ -27,6 +27,10 @@ a:active
     text-decoration: underline;
 }
 
+table, th, td {
+    border: 3px solid black;
+}
+
 .navbar 
 {
     height: 50px;
