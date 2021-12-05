@@ -4,6 +4,18 @@ class FormulaBody extends React.Component {
 
     };
 
+    _addIngredient() {
+        PN.activeFormula.ingredients.push({});
+    }
+
+    _changeIngredient(event, ingredient) {
+        console.log(event);
+    }
+
+    _changeQuantity(event, ingredient) {
+        console.log(event);
+    }
+
     _renderDataList() {
         let elements = [];
         let count = 0;
@@ -35,10 +47,10 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={"ingredient" + count}>
                     <td>
-                        <input list="ingredients" value={ingredient.id || ""}/>
+                        <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" value={ingredient.grams || 0.0}/>
+                        <input type="number" step="0.001" value={ingredient.grams || 0.0} onChange={(event) => this._changeQuantity(event, ingredient)}/>
                     </td>
                 </tr>
             );
@@ -58,6 +70,11 @@ class FormulaBody extends React.Component {
                             <th>WEIGHT (DILUTED)</th>
                         </tr>
                         {elements}
+                        <tr>
+                            <td>
+                                <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

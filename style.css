@@ -45,6 +45,7 @@ table, td, th {
 .formulatable {
     width: 60%;
     float: left;
+    margin-left: 20px;
 }
 
 .navbar 
