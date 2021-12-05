@@ -48,18 +48,18 @@ class Page extends React.Component {
 
             return (<div>
                 {header}
-                {this.TEST1}
+                <DatabaseBody/>
             </div>);
 
         } else if (this.state.currentNav == this.NAV_MIXTURES) { // MIXTURES DISPLAY
 
             return (<div>
                 {header}
-                {this.TEST2}
+                <DatabaseBody/>
             </div>);
 
         } 
-        
+
         return null;
     }
 }

@@ -8,8 +8,14 @@
             "scent": "Powerful, green, just-mowed-grass odor. Has the refreshing tartness of bergamot peel.",
             "usage": "Great for creating a green accord. It blends beautifully with fruity, citrus, and floral compositions.",
             "materials": [
-                {"triplal": "0.1"},
-                {"perfumers_alcohol": "0.9"}
+                {
+                    "id": "triplal",
+                    "percent": "0.1"
+                },
+                {
+                    "id": "perfumers_alcohol",
+                    "percent": "0.9"
+                }
             ]
         }
     ]
