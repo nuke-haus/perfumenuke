@@ -48,10 +48,10 @@ PN.validateLoadedMaterials = function(materials) {
             continue;
         }
         if (material.scent == null) {
-            PN.warnings.push("Material is missing a scent description:" + material.id);
+            PN.warnings.push("Material is missing a scent description: " + material.id);
         }
         if (material.usage == null) {
-            PN.warnings.push("Material is missing usage notes:" + material.id);
+            PN.warnings.push("Material is missing usage notes: " + material.id);
         }
     
         PN.database.materials.push(material);
@@ -77,8 +77,13 @@ PN.validateLoadedMixtures = function(mixtures) {
         let materialsValid = true;
         for (let material of mixture.materials) {
             material.percent = parseFloat(material.percent || "10.0");
-            if (material.id == null || PN.getMaterial(material.id) == null || material.percent < 0.0 || material.percent >= 1.0) {
-                PN.errors.push("Mixture has invalid material data: " + mixture.id);
+            if (material.id == null || PN.getMaterial(material.id) == null) {
+                PN.errors.push("Mixture has invalid material ID in its material list: " + mixture.id);
+                materialsValid = false;
+                break; 
+            }
+            if (material.percent < 0.0 || material.percent >= 1.0) {
+                PN.errors.push("Mixture has invalid material percentage value: " + mixture.id);
                 materialsValid = false;
                 break; 
             }
@@ -87,10 +92,10 @@ PN.validateLoadedMixtures = function(mixtures) {
             continue;
         }
         if (mixture.scent == null) {
-            PN.warnings.push("Mixture is missing a scent description:" + mixture.id);
+            PN.warnings.push("Mixture is missing a scent description: " + mixture.id);
         }
         if (mixture.usage == null) {
-            PN.warnings.push("Mixture is missing usage notes:" + mixture.id);
+            PN.warnings.push("Mixture is missing usage notes: " + mixture.id);
         }
         
         PN.database.mixtures.push(mixture);

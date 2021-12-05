@@ -15,7 +15,11 @@ class Page extends React.Component {
 
     _onLoadMaterials(data) {
         PN.validateLoadedMaterials(data.materials);
-        this.forceUpdate();
+
+        // Fetch mixtures only after materials are loaded since there's a dependancy
+        fetch('data/mixtures.json')
+            .then(response => response.json())
+            .then(data => this._onLoadMixtures(data));
     }
 
     _onLoadMixtures(data) {
@@ -29,10 +33,6 @@ class Page extends React.Component {
         fetch('data/materials.json')
             .then(response => response.json())
             .then(data => this._onLoadMaterials(data));
-
-        fetch('data/mixtures.json')
-            .then(response => response.json())
-            .then(data => this._onLoadMixtures(data));
     }
 
     render() {
@@ -79,10 +79,6 @@ class Page extends React.Component {
             table = (
                 <table className="errortable">
                     <tbody>
-                        <tr>
-                            <th/>
-                            <th/>
-                        </tr>
                         {errors}
                         {warnings}
                     </tbody>
