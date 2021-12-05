@@ -27,7 +27,7 @@ a:active
     text-decoration: underline;
 }
 
-.button {
+button {
     background-color: #4CAF50;
     border: 2px solid #000000;
     color: #000000;
