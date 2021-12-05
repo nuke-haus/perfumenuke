@@ -45,20 +45,22 @@ class FormulaBody extends React.Component {
         }
 
         return (
-            <table className="formulatable">
+            <div>
                 {this._renderDataList()}
-                <tbody>
-                    <tr>
-                        <th>INGREDIENT</th>
-                        <th>GRAMS ADDED</th>
-                        <th>FORMULA TOTAL (RAW)</th>
-                        <th>FORMULA TOTAL (DILUTED)</th>
-                        <th>WEIGHT (RAW)</th>
-                        <th>WEIGHT (DILUTED)</th>
-                    </tr>
-                    {elements}
-                </tbody>
-            </table>
+                <table className="formulatable">
+                    <tbody>
+                        <tr>
+                            <th>INGREDIENT</th>
+                            <th>GRAMS ADDED</th>
+                            <th>FORMULA TOTAL (RAW)</th>
+                            <th>FORMULA TOTAL (DILUTED)</th>
+                            <th>WEIGHT (RAW)</th>
+                            <th>WEIGHT (DILUTED)</th>
+                        </tr>
+                        {elements}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
