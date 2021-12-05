@@ -1,7 +1,7 @@
 class FormulaBody extends React.Component {
 
     state = {
-
+        tableKey: "table"
     };
 
     _addIngredient() {
@@ -11,14 +11,15 @@ class FormulaBody extends React.Component {
 
     _deleteIngredient(index) {
         PN.activeFormula.ingredients.splice(index, 1);
-        this.forceUpdate();
+        this.setState({tableKey: PN.guid()});
     }
 
-    _changeIngredient(event, ingredient) {
-        console.log(event);
+    _changeIngredient(id, ingredient) {
+        ingredient.id = id;
     }
 
-    _changeQuantity(event, ingredient) {
+    _changeQuantity(value, ingredient) {
+        ingredient.quantity = value;
         console.log(event);
     }
 
@@ -50,12 +51,12 @@ class FormulaBody extends React.Component {
         for (let index in PN.activeFormula.ingredients || []) {
             const ingredient = PN.activeFormula.ingredients[index]
             elements.push(
-                <tr key={"ingredient" + index + ingredient.id}>
+                <tr key={"ingredient" + index + this.state.tableKey}>
                     <td>
-                        <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event.target.value, ingredient)}/>
+                        <input list="ingredients" value={ingredient.id || ""} onInput={(event) => this._changeIngredient(event.target.value, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" value={ingredient.grams || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        <input type="number" step="0.001" value={ingredient.quantity || 0.0} onInput={(event) => this._changeQuantity(event.target.value, ingredient)}/>
                     </td>
                     <td>
                         <button type="button" onClick={() => this._deleteIngredient(index)}>Delete</button>
