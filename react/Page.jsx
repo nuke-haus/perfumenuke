@@ -17,8 +17,6 @@ class Page extends React.Component {
 
         const header = (
             <div>
-                <div className="header">
-                </div>
                 <div className="navbar">
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_FORMULA)}>
                         {this.NAV_FORMULA}
@@ -65,7 +63,9 @@ class Page extends React.Component {
 
             return (<div>
                 {header}
-                {this.TEST3}
+                <div className="aboutcontainer">
+                    This <a href="https://github.com/nuke-haus/perfumenuke">project</a> is maintained by <a href="https://github.com/nuke-haus">Nikita</a>.
+                </div>
             </div>);
 
         }
