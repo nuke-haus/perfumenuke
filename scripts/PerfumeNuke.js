@@ -100,7 +100,7 @@ PN.validateLoadedMixtures = function(mixtures) {
             continue;
         }
         if (mixture.diluted_material != null) {
-            const foundMaterial = PN.getMaterial(mixtire.diluted_material);
+            const foundMaterial = PN.getMaterial(mixture.diluted_material);
             if (foundMaterial == null) {
                 PN.errors.push("Mixture dilution material ID is invalid: " + mixture.id);
                 continue;
