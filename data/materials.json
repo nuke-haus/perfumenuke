@@ -27,10 +27,24 @@
             "id": "perfumers_alcohol",
             "name": "Perfumer's Alcohol",
             "solvent": "true",
-            "usage": "Perfumer's Alcohol SDA 40B.",
+            "usage": "Perfumer's Alcohol (SDA 40B).",
             "costs": [
                 {"Sunrise Botanics": "1ml @ 0.02 CAD"}
             ]
+        },
+        {
+            "id": "dpg",
+            "name": "Dipropylene Glycol",
+            "solvent": "true",
+            "usage": "Dipropylene Glycol (DPG) is practically odorless and used typically for diluting perfume materials.",
+            "costs": []
+        },
+        {
+            "id": "ipm",
+            "name": "Isopropyl Myristate",
+            "solvent": "true",
+            "usage": "Isopropyl Myristate is practically odorless and used typically for diluting perfume materials.",
+            "costs": []
         },
         {
             "id": "triplal",

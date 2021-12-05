@@ -18,7 +18,7 @@ PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
         material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
-        material.note = PN.interpretNote(material.note);
+        material.note = PN.parseNote(material.note);
     
         if (material.id == null) {
             PN.errors.push("Material is missing an ID!");
@@ -98,6 +98,24 @@ PN.validateLoadedMixtures = function(mixtures) {
             PN.errors.push("Mixture material percentages don't add up to 1.0: " + mixture.id);
             continue;
         }
+        if (mixture.diluted_material != null) {
+            const foundMaterial = PN.getMaterial(mixtire.diluted_material);
+            if (foundMaterial == null) {
+                PN.errors.push("Mixture dilution material ID is invalid: " + mixture.id);
+                continue;
+            } 
+            let hasDilutedMaterial = false;
+            for (let material of mixture.materials) {
+                if (material.id === mixture.diluted_material) {
+                    hasDilutedMaterial = true;
+                    break;
+                }
+            }
+            if (!hasDilutedMaterial) {
+                PN.errors.push("Mixture dilution material is not present in its material list: " + mixture.id);
+                continue;
+            }
+        }
         if (mixture.scent == null) {
             PN.warnings.push("Mixture is missing a scent description: " + mixture.id);
         }
@@ -109,7 +127,24 @@ PN.validateLoadedMixtures = function(mixtures) {
     }
 }
 
-PN.interpretNote = function(note) {
+PN.getDilutionMaterialPercent = function(mixture) {
+    if (mixture.diluted_material == null) {
+        return 0;
+    }
+    for (let material of mixture.materials) {
+        if (material.id === mixture.diluted_material) {
+            return material.percent;
+        }
+    }
+    return 0;
+}
+
+PN.getDilutionPercentString = function(mixture) {
+    const percent = PN.getDilutionMaterialPercent(mixture);
+    return ` (${percent * 100.0})`;
+}
+
+PN.parseNote = function(note) {
     note = (note || "").toUpperCase().trim();
     if (note === PN.note.top) {
         return PN.note.top;

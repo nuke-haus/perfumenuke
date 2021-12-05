@@ -55,7 +55,7 @@ class Page extends React.Component {
                 warnings.push(
                     <tr key={"warning" + count}>
                         <td>
-                            <span className="warning tablecontent">WARNING:</span>
+                            <span className="warning tablecontent">WARNING</span>
                         </td>
                         <td>
                             <div className="tablecontent">
@@ -70,7 +70,7 @@ class Page extends React.Component {
                 errors.push(
                     <tr key={"error" + count}>
                         <td>
-                            <span className="error tablecontent">ERROR:</span>
+                            <span className="error tablecontent">ERROR</span>
                         </td>
                         <td>
                             <div className="tablecontent">

@@ -39,9 +39,7 @@
         {
             "id": "triplal_10",
             "name": "Triplal",
-            "dilution": "10%",
-            "scent": "Powerful, green, just-mowed-grass odor. Has the refreshing tartness of bergamot peel.",
-            "usage": "Great for creating a green accord. It blends beautifully with fruity, citrus, and floral compositions.",
+            "diluted_material": "triplal",
             "materials": [
                 {
                     "id": "triplal",

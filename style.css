@@ -42,6 +42,11 @@ table, td {
     margin-top: 20px;
 }
 
+.formulatable {
+    width: 60%;
+    float: left;
+}
+
 .navbar 
 {
     height: 50px;
