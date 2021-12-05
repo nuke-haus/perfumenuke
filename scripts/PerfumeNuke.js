@@ -18,30 +18,30 @@ PN.validateLoadedMaterials = function(materials) {
         material.note = PN.interpretNote(material.note);
     
         if (material.id == null) {
-            PN.errors.push("CRITICAL: Material is missing an ID!");
+            PN.errors.push("Material is missing an ID!");
             continue;
         }
         if (material.name == null) {
-            PN.errors.push("CRITICAL: Material is missing a name: " + material.id);
+            PN.errors.push("Material is missing a name: " + material.id);
             continue;
         }
         if (material.cas == null) {
-            PN.errors.push("CRITICAL: Material is missing a CAS number: " + material.id);
+            PN.errors.push("Material is missing a CAS number: " + material.id);
             continue;
         }
         if (material.ifra_restricted === true && material.max_in_finished_product == null) {
-            PN.errors.push("CRITICAL: Material is IFRA restricted but is missing its maximum allowance in finished product value: " + material.id);
+            PN.errors.push("Material is IFRA restricted but is missing its maximum allowance in finished product value: " + material.id);
             continue;
         }
         if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
-            PN.errors.push("CRITICAL: Material note type is invalid: " + material.id);
+            PN.errors.push("Material note type is invalid: " + material.id);
             continue;
         }
         if (material.scent == null) {
-            PN.warnings.push("WARNING: Material is missing a scent description:" + material.id);
+            PN.warnings.push("Material is missing a scent description:" + material.id);
         }
         if (material.usage == null) {
-            PN.warnings.push("WARNING: Material is missing usage notes:" + material.id);
+            PN.warnings.push("Material is missing usage notes:" + material.id);
         }
     
         PN.database.materials.push(material);
@@ -51,22 +51,22 @@ PN.validateLoadedMaterials = function(materials) {
 PN.validateLoadedMixtures = function(mixtures) {
     for (let mixture of mixtures) {
         if (mixture.id == null) {
-            PN.errors.push("CRITICAL: Mixture is missing an ID!");
+            PN.errors.push("Mixture is missing an ID!");
             continue;
         }
         if (mixture.name == null) {
-            PN.errors.push("CRITICAL: Mixture is missing a name: " + mixture.id);
+            PN.errors.push("Mixture is missing a name: " + mixture.id);
             continue;
         }
         if (mixture.materials == null) {
-            PN.warnings.push("CRITICAL: Mixture is missing a material list: " + mixture.id);
+            PN.warnings.push("Mixture is missing a material list: " + mixture.id);
             continue;
         }
         let materialsValid = true;
         for (let material of mixture.materials) {
             material.percentage = parseFloat(material.percentage || "10.0");
             if (material.id == null || PN.getMaterial(material.id) == null || material.percentage < 0.0 || material.percentage >= 1.0) {
-                PN.errors.push("CRITICAL: Mixture has invalid material data: " + mixture.id);
+                PN.errors.push("Mixture has invalid material data: " + mixture.id);
                 materialsValid = false;
                 break; 
             }
@@ -75,10 +75,10 @@ PN.validateLoadedMixtures = function(mixtures) {
             continue;
         }
         if (mixture.scent == null) {
-            PN.warnings.push("WARNING: Mixture is missing a scent description:" + mixture.id);
+            PN.warnings.push("Mixture is missing a scent description:" + mixture.id);
         }
         if (mixture.usage == null) {
-            PN.warnings.push("WARNING: Mixture is missing usage notes:" + mixture.id);
+            PN.warnings.push("Mixture is missing usage notes:" + mixture.id);
         }
         
         PN.database.mixtures.push(mixture);
@@ -119,8 +119,8 @@ PN.getMixture = function(id) {
 
 fetch('data/materials.json')
     .then(response => response.json())
-    .then(data => PN.validateLoadedMaterials(data));
+    .then(data => PN.validateLoadedMaterials(data.materials));
 
 fetch('data/mixtures.json')
     .then(response => response.json())
-    .then(data => PN.validateLoadedMixtures(data));
+    .then(data => PN.validateLoadedMixtures(data.mixtures));
