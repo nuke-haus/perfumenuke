@@ -3,7 +3,6 @@ class Page extends React.Component {
     NAV_FORMULA = "FORMULA";
     NAV_MATERIALS = "MATERIALS";
     NAV_MIXTURES = "MIXTURES";
-    NAV_ABOUT = "ABOUT";
 
     state = {
         currentNav: "FORMULA"
@@ -59,15 +58,8 @@ class Page extends React.Component {
                 {this.TEST2}
             </div>);
 
-        } else { // ABOUT DISPLAY
-
-            return (<div>
-                {header}
-                <div className="aboutcontainer">
-                    This <a href="https://github.com/nuke-haus/perfumenuke">project</a> is maintained by <a href="https://github.com/nuke-haus">Nikita</a>.
-                </div>
-            </div>);
-
-        }
+        } 
+        
+        return null;
     }
 }
