@@ -33,7 +33,7 @@ table, th, td {
 }
 
 td {
-    margin: 4px;
+    margin: 8px;
 }
 
 .errortable {
@@ -79,12 +79,12 @@ td {
 
 .error 
 {
-    color: #c50000;
+    color: #960000;
 }
 
 .warning
 {
-    color: #704000;
+    color: #865100;
 }
 
 body
