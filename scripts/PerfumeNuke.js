@@ -62,6 +62,7 @@ PN.validateLoadedMixtures = function(mixtures) {
     PN.database.mixtures = [];
 
     for (let mixture of mixtures) {
+        mixture.materials = mixture.materials || [];
         if (mixture.id == null) {
             PN.errors.push("Mixture is missing an ID!");
             continue;
@@ -70,13 +71,15 @@ PN.validateLoadedMixtures = function(mixtures) {
             PN.errors.push("Mixture is missing a name: " + mixture.id);
             continue;
         }
-        if (mixture.materials == null) {
-            PN.warnings.push("Mixture is missing a material list: " + mixture.id);
+        if (mixture.materials.length < 2) {
+            PN.errors.push("Mixture contains less than 2 materials: " + mixture.id);
             continue;
         }
         let materialsValid = true;
+        let totalPercent = 0.0;
         for (let material of mixture.materials) {
             material.percent = parseFloat(material.percent || "10.0");
+            totalPercent = totalPercent + materialPercent;
             if (material.id == null || PN.getMaterial(material.id) == null) {
                 PN.errors.push("Mixture has invalid material ID in its material list: " + mixture.id);
                 materialsValid = false;
@@ -89,6 +92,10 @@ PN.validateLoadedMixtures = function(mixtures) {
             }
         }
         if (!materialsValid) {
+            continue;
+        }
+        if (totalPercent !== 1.0) {
+            PN.errors.push("Mixture material percentages don't add up to 1.0: " + mixture.id);
             continue;
         }
         if (mixture.scent == null) {

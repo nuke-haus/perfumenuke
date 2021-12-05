@@ -24,14 +24,6 @@
             "cas": "9001"
         },
         {
-            "id": "test_errors4",
-            "name": "Test4",
-            "company": "IFF",
-            "usage": "Testing perfume material validation. This should trigger a warning (no scent notes).",
-            "note": "top",
-            "cas": "9001"
-        },
-        {
             "id": "perfumers_alcohol",
             "name": "Perfumer's Alcohol",
             "solvent": "true",
