@@ -5,6 +5,6 @@ class DatabaseBody extends React.Component {
     };
 
     render() {
-      
+        return null;
     }
 }

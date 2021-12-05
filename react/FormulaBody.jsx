@@ -5,6 +5,6 @@ class FormulaBody extends React.Component {
     };
 
     render() {
-      
+        return null;
     }
 }
