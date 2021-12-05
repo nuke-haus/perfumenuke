@@ -53,10 +53,10 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={"ingredient" + index + this.state.tableKey}>
                     <td>
-                        <input list="ingredients" value={ingredient.id || ""} onInput={(event) => this._changeIngredient(event.target.value, ingredient)}/>
+                        <input list="ingredients" value={ingredient.id || ""} onChange={(event) => this._changeIngredient(event.target.value, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" value={ingredient.quantity || 0.0} onInput={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        <input type="number" step="0.001" value={ingredient.quantity || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
                     </td>
                     <td>
                         <button type="button" onClick={() => this._deleteIngredient(index)}>Delete</button>
