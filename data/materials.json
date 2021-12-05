@@ -4,6 +4,7 @@
         {
             "id": "perfumers_alcohol",
             "name": "Perfumer's Alcohol",
+            "solvent": "true",
             "usage": "Perfumer's Alcohol SDA 40B. Fixative for perfumes.",
             "costs": [
                 {"Sunrise Botanics": "1ml @ 0.02 CAD"}

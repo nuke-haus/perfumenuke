@@ -15,6 +15,7 @@ PN.note.base = "BASE";
 PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
+        material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
         material.note = PN.interpretNote(material.note);
     
         if (material.id == null) {
@@ -23,6 +24,13 @@ PN.validateLoadedMaterials = function(materials) {
         }
         if (material.name == null) {
             PN.errors.push("Material is missing a name: " + material.id);
+            continue;
+        }
+        if (material.solvent === true) { // Solvents don't need to be validated totally
+            if (material.usage == null) {
+                PN.warnings.push("Material is missing usage notes:" + material.id);
+            }
+            PN.database.materials.push(material);
             continue;
         }
         if (material.cas == null) {
@@ -86,7 +94,7 @@ PN.validateLoadedMixtures = function(mixtures) {
 }
 
 PN.interpretNote = function(note) {
-    note = note.toUpperCase().trim();
+    note = (note || "").toUpperCase().trim();
     if (note === PN.note.top) {
         return PN.note.top;
     } else if (note === PN.note.mid || note === "MID" || note === "MIDDLE") {

@@ -54,10 +54,6 @@ class Page extends React.Component {
             }
             table = (
                 <table>
-                    <tr>
-                        <th/>
-                        <th/>
-                    </tr>
                     {errors}
                     {warnings}
                 </table>
