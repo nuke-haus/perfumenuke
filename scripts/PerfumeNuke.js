@@ -117,10 +117,10 @@ PN.validateLoadedMixtures = function(mixtures) {
                 continue;
             }
         }
-        if (mixture.scent == null) {
+        if (mixture.scent == null && mixture.diluted_material == null) {
             PN.warnings.push("Mixture is missing a scent description: " + mixture.id);
         }
-        if (mixture.usage == null) {
+        if (mixture.usage == null && mixture.diluted_material == null) {
             PN.warnings.push("Mixture is missing usage notes: " + mixture.id);
         }
         

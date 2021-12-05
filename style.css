@@ -27,7 +27,7 @@ a:active
     text-decoration: underline;
 }
 
-table, td {
+table, td, th {
     border: 3px solid black;
     border-collapse: collapse;
 }
