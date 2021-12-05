@@ -25,7 +25,7 @@ class Page extends React.Component {
 
     constructor(props) {
         super(props);
-        
+
         fetch('data/materials.json')
             .then(response => response.json())
             .then(data => this._onLoadMaterials(data));
@@ -36,7 +36,6 @@ class Page extends React.Component {
     }
 
     render() {
-
         let errorsTab = null;
         let errors = null;
         let warnings = null;
