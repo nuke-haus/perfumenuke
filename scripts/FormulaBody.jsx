@@ -47,11 +47,11 @@ class FormulaBody extends React.Component {
             <datalist id="ingredients">
                 {elements}
             </datalist>
-        )
+        );
     }
 
     _renderDetailsRows() {
-
+        
     }
 
     render() {
