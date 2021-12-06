@@ -1,7 +1,8 @@
 class FormulaBody extends React.Component {
 
     state = {
-        tableKey: "table"
+        formulaKey: "table",
+        detailsKey: "details"
     };
 
     _addIngredient() {
@@ -16,16 +17,21 @@ class FormulaBody extends React.Component {
 
     _changeIngredient(id, ingredient) {
         ingredient.id = id;
+        this.setState({detailsKey: PN.guid()});
     }
 
     _changeQuantity(value, ingredient) {
         ingredient.quantity = value;
+        this.setState({detailsKey: PN.guid()});
     }
 
     _renderDataList() {
         let elements = [];
         let count = 0;
         for (let ingredient of PN.database.materials) {
+            if (ingredient.solvent != null) {
+                continue;
+            }
             count = count + 1;
             elements.push(<option key={"material" + count} label={ingredient.name} value={ingredient.id}/>);
         }
@@ -72,17 +78,16 @@ class FormulaBody extends React.Component {
                         <tr>
                             <th>INGREDIENT</th>
                             <th>GRAMS ADDED</th>
-                            <th/>
                         </tr>
                         {elements}
                         <tr>
-                            <td>
+                            <td colspan="2">
                                 <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <table className="detailstable">
+                <table className="detailstable" key={this.state.detailsKey}>
                     <tbody>
                         <tr>
                             <th>MATERIAL</th>
@@ -90,7 +95,6 @@ class FormulaBody extends React.Component {
                             <th>FORMULA TOTAL (DILUTED)</th>
                             <th>WEIGHT (RAW)</th>
                             <th>WEIGHT (DILUTED)</th>
-                            <th/>
                         </tr>
                     </tbody>
                 </table>
