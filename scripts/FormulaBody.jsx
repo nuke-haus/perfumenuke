@@ -12,16 +12,19 @@ class FormulaBody extends React.Component {
 
     _deleteIngredient(index) {
         PN.activeFormula.ingredients.splice(index, 1);
+        PN.recomputeFormula();
         this.setState({tableKey: PN.guid()});
     }
 
     _changeIngredient(id, ingredient) {
         ingredient.id = id;
+        PN.recomputeFormula();
         this.setState({detailsKey: PN.guid()});
     }
 
     _changeQuantity(value, ingredient) {
         ingredient.quantity = value;
+        PN.recomputeFormula();
         this.setState({detailsKey: PN.guid()});
     }
 
@@ -51,7 +54,18 @@ class FormulaBody extends React.Component {
     }
 
     _renderDetailsRows() {
-        
+        const elements = [];
+        for (let id in PN.activeFormula.computed) {
+            const material = PN.getMaterial(id);
+            elements.push(
+                <tr key={'detail' + id}>
+                    <td>{material.name || "NO NAME"}</td>
+                    <td>{PN.activeFormula.computed[id].quantity}</td>
+                    <td>{PN.activeFormula.computed[id].percent}</td>
+                </tr>
+            );
+        }
+        return elements;
     }
 
     render() {
@@ -77,6 +91,7 @@ class FormulaBody extends React.Component {
         return (
             <div>
                 {this._renderDataList()}
+                INGREDIENT LIST
                 <table className="formulatable">
                     <tbody>
                         <tr>
@@ -91,14 +106,13 @@ class FormulaBody extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                FRAGRANCE CONCENTRATE BREAKDOWN
                 <table className="detailstable" key={this.state.detailsKey}>
                     <tbody>
                         <tr>
                             <th>MATERIAL</th>
-                            <th>FORMULA TOTAL (RAW)</th>
-                            <th>FORMULA TOTAL (DILUTED)</th>
-                            <th>WEIGHT (RAW)</th>
-                            <th>WEIGHT (DILUTED)</th>
+                            <th>WEIGHT</th>
+                            <th>% IN CONCENTRATE</th>
                         </tr>
                         {this._renderDetailsRows()}
                     </tbody>

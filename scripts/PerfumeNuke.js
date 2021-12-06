@@ -1,6 +1,7 @@
 PN = {};
 PN.activeFormula = {};
 PN.activeFormula.ingredients = [];
+PN.activeFormula.computed = {};
 PN.errors = [];
 PN.warnings = [];
 
@@ -13,6 +14,50 @@ PN.note.top = "TOP";
 PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
+PN.recomputeFormula = function() {
+    PN.activeFormula.computed = {};
+    let totalWeight = 0.0;
+    for (let ingredient of PN.activeFormula.ingredients) { // ingredient can be material or mixture
+        const material = PN.getMaterial(ingredient.id);
+        const mixture = PN.getMixture(ingredient.id);
+        if (material != null) {
+            PN.activeFormula.computed[material.id] = PN.activeFormula.computed[material.id] || {};
+            const currentQuantity = PN.activeFormula.computed[material.id].quantity || 0.0;
+            PN.activeFormula.computed[material.id].quantity = currentQuantity + ingredient.quantity;
+            totalWeight = totalWeight + ingredient.quantity;
+        } else if (mixture != null) {
+            for (let material of mixture.materials) {
+                PN.activeFormula.computed[material.id] = PN.activeFormula.computed[material.id] || {};
+                const currentQuantity = PN.activeFormula.computed[material.id].quantity || 0.0;
+                PN.activeFormula.computed[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
+                totalWeight = totalWeight + (ingredient.quantity * material.percent);
+            }
+        }
+    }
+    if (totalWeight > 0.0) {
+        for (let key in PN.activeFormula.computed) {
+            PN.activeFormula.computed[key].percent = (PN.activeFormula.computed[key].quantity / totalWeight) * 100.0;
+        }
+    }
+}
+
+PN.getDilutionMaterialPercent = function(mixture) {
+    if (mixture.diluted_material == null) {
+        return 0;
+    }
+    for (let material of mixture.materials) {
+        if (material.id === mixture.diluted_material) {
+            return material.percent;
+        }
+    }
+    return 0;
+}
+
+PN.getDilutionPercentString = function(mixture) {
+    const percent = PN.getDilutionMaterialPercent(mixture);
+    return ` (${percent * 100.0}%)`;
+}
+
 PN.validateLoadedMaterials = function(materials) {
     PN.database.materials = [];
 
@@ -21,6 +66,10 @@ PN.validateLoadedMaterials = function(materials) {
         material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
     
+        if (PN.getMaterial(material.id) != null) {
+            PN.errors.push("ID has been defined more than once in data: " + material.id);
+            continue;
+        }
         if (material.id == null) {
             PN.errors.push("Material is missing an ID!");
             continue;
@@ -64,6 +113,10 @@ PN.validateLoadedMixtures = function(mixtures) {
 
     for (let mixture of mixtures) {
         mixture.materials = mixture.materials || [];
+        if (PN.getMaterial(mixture.id) != null || PN.getMixture(mixture.id != null)) {
+            PN.errors.push("ID has been defined more than once in data: " + mixture.id);
+            continue;
+        }
         if (mixture.id == null) {
             PN.errors.push("Mixture is missing an ID!");
             continue;
@@ -126,23 +179,6 @@ PN.validateLoadedMixtures = function(mixtures) {
         
         PN.database.mixtures.push(mixture);
     }
-}
-
-PN.getDilutionMaterialPercent = function(mixture) {
-    if (mixture.diluted_material == null) {
-        return 0;
-    }
-    for (let material of mixture.materials) {
-        if (material.id === mixture.diluted_material) {
-            return material.percent;
-        }
-    }
-    return 0;
-}
-
-PN.getDilutionPercentString = function(mixture) {
-    const percent = PN.getDilutionMaterialPercent(mixture);
-    return ` (${percent * 100.0}%)`;
 }
 
 PN.parseNote = function(note) {
