@@ -91,7 +91,9 @@ class FormulaBody extends React.Component {
         return (
             <div>
                 {this._renderDataList()}
-                INGREDIENT LIST
+                <div className="tabletext">
+                    INGREDIENT LIST
+                </div>
                 <table className="formulatable">
                     <tbody>
                         <tr>
@@ -106,8 +108,10 @@ class FormulaBody extends React.Component {
                         </tr>
                     </tbody>
                 </table>
-                FRAGRANCE CONCENTRATE BREAKDOWN
-                <table className="detailstable" key={this.state.detailsKey}>
+                <div className="tabletext">
+                    CONCENTRATE BREAKDOWN
+                </div>
+                <table className="formulatable" key={this.state.detailsKey}>
                     <tbody>
                         <tr>
                             <th>MATERIAL</th>

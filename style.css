@@ -72,9 +72,9 @@ table, td, th {
     margin: auto;
 }
 
-.detailstable {
-    width: 60%;
-    float: left;
+.tabletext {
+    text-align: center;
+    font-size: 24px;
 }
 
 .navbar 
