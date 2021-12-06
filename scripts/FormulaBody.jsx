@@ -23,7 +23,7 @@ class FormulaBody extends React.Component {
     }
 
     _changeQuantity(value, ingredient) {
-        ingredient.quantity = parseFloat(value);
+        ingredient.quantity = Math.max(parseFloat(value), 0.0);
         PN.recomputeFormula();
         this.setState({detailsKey: PN.guid()});
     }
@@ -60,8 +60,8 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={'detail' + id}>
                     <td>{material.name || "NO NAME"}</td>
-                    <td>{PN.activeFormula.computed[id].quantity}</td>
-                    <td>{PN.activeFormula.computed[id].percent}</td>
+                    <td>{PN.activeFormula.computed[id].quantity.toPrecision(6)}</td>
+                    <td>{PN.activeFormula.computed[id].percent.toPrecision(6)}</td>
                 </tr>
             );
         }
@@ -96,7 +96,7 @@ class FormulaBody extends React.Component {
                     <tbody>
                         <tr>
                             <th>INGREDIENT</th>
-                            <th>GRAMS ADDED</th>
+                            <th>WEIGHT (GRAMS)</th>
                         </tr>
                         {elements}
                         <tr>
@@ -111,7 +111,7 @@ class FormulaBody extends React.Component {
                     <tbody>
                         <tr>
                             <th>MATERIAL</th>
-                            <th>WEIGHT</th>
+                            <th>WEIGHT (GRAMS)</th>
                             <th>% IN CONCENTRATE</th>
                         </tr>
                         {this._renderDetailsRows()}
