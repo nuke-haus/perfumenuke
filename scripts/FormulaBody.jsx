@@ -60,7 +60,7 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={'detail' + id}>
                     <td>{material.name || "NO NAME"}</td>
-                    <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(6)}</td>
+                    <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
                 </tr>
             );

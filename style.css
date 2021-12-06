@@ -75,6 +75,7 @@ table, td, th {
 .tabletext {
     text-align: center;
     font-size: 24px;
+    margin-top: 20px;
 }
 
 .navbar 
