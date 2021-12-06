@@ -6,7 +6,7 @@ class FormulaBody extends React.Component {
     };
 
     _addIngredient() {
-        PN.activeFormula.ingredients.push({});
+        PN.activeFormula.ingredients.push({id: "", quantity: 0.0});
         this.forceUpdate();
     }
 
@@ -23,7 +23,7 @@ class FormulaBody extends React.Component {
     }
 
     _changeQuantity(value, ingredient) {
-        ingredient.quantity = value;
+        ingredient.quantity = parseFloat(value);
         PN.recomputeFormula();
         this.setState({detailsKey: PN.guid()});
     }
