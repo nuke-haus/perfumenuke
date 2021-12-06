@@ -29,7 +29,7 @@ class FormulaBody extends React.Component {
         let elements = [];
         let count = 0;
         for (let ingredient of PN.database.materials) {
-            if (ingredient.solvent != null) {
+            if (ingredient.solvent) {
                 continue;
             }
             count = count + 1;
@@ -48,6 +48,10 @@ class FormulaBody extends React.Component {
                 {elements}
             </datalist>
         )
+    }
+
+    _renderDetailsRows() {
+
     }
 
     render() {
@@ -81,7 +85,7 @@ class FormulaBody extends React.Component {
                         </tr>
                         {elements}
                         <tr>
-                            <td colspan="2">
+                            <td colSpan="3">
                                 <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
                             </td>
                         </tr>
@@ -96,6 +100,7 @@ class FormulaBody extends React.Component {
                             <th>WEIGHT (RAW)</th>
                             <th>WEIGHT (DILUTED)</th>
                         </tr>
+                        {this._renderDetailsRows()}
                     </tbody>
                 </table>
             </div>

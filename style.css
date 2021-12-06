@@ -39,7 +39,18 @@ button {
     font-family: 'Work Sans', sans-serif;
     margin: 4px;
     cursor: pointer;
-  }
+}
+
+input {
+    background-color: #caffcb;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    color: #000000;
+    padding: 2px 6px;
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    margin: 4px;
+}
 
 table, td, th {
     border: 3px solid black;
