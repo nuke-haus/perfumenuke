@@ -55,6 +55,7 @@ input {
 table, td, th {
     border: 3px solid black;
     border-collapse: collapse;
+    background-color: #7ea893;
 }
 
 .tablecontent {
@@ -70,12 +71,12 @@ table, td, th {
 .formulatable {
     width: 60%;
     margin: auto;
+    margin-bottom: 30px;
 }
 
 .tabletext {
     text-align: center;
     font-size: 24px;
-    margin-top: 20px;
 }
 
 .navbar 
