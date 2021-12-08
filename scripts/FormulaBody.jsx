@@ -28,31 +28,6 @@ class FormulaBody extends React.Component {
         this.setState({detailsKey: PN.guid()});
     }
 
-    _renderDataList() {
-        let elements = [];
-        let count = 0;
-        for (let ingredient of PN.database.materials) {
-            if (ingredient.solvent) {
-                continue;
-            }
-            count = count + 1;
-            elements.push(<option key={"material" + count} label={ingredient.name} value={ingredient.id}/>);
-        }
-        for (let ingredient of PN.database.mixtures) {
-            count = count + 1;
-            if (ingredient.diluted_material != null) {
-                elements.push(<option key={"dilution" + count} label={ingredient.name + PN.getDilutionPercentString(ingredient)} value={ingredient.id}/>);
-            } else {
-                elements.push(<option key={"mixture" + count} label={ingredient.name} value={ingredient.id}/>);
-            }   
-        }
-        return (
-            <datalist id="ingredients">
-                {elements}
-            </datalist>
-        );
-    }
-
     _renderDetailsRows() {
         const elements = [];
         for (let id in PN.activeFormula.computed) {
@@ -76,7 +51,9 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={"ingredient" + index + this.state.tableKey}>
                     <td>
-                        <input list="ingredients" defaultValue={ingredient.id || ""} onChange={(event) => this._changeIngredient(event.target.value, ingredient)}/>
+                        <IngredientPicker defaultValue={ingredient.id}
+                                          id={"ingredient" + index}
+                                          onChange={(id) => this._changeIngredient(id, ingredient)}/>
                     </td>
                     <td>
                         <input type="number" step="0.001" defaultValue={ingredient.quantity || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
@@ -90,7 +67,6 @@ class FormulaBody extends React.Component {
 
         return (
             <div>
-                {this._renderDataList()}
                 <div className="tabletext">
                     INGREDIENT LIST
                 </div>
