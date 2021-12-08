@@ -1,6 +1,8 @@
 PN = {};
 PN.activeFormula = {};
 PN.activeFormula.ingredients = [];
+PN.activeFormula.dilutant = "perfumers_alcohol";
+PN.activeFormula.dilutantQuantity = 1.0;
 PN.activeFormula.computed = {};
 PN.errors = [];
 PN.warnings = [];

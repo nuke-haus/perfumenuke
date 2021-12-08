@@ -16,6 +16,18 @@ class FormulaBody extends React.Component {
         this.setState({tableKey: PN.guid()});
     }
 
+    _changeDilution(id) {
+        PN.activeFormula.dilutant = id;
+        PN.recomputeFormula();
+        this.setState({detailsKey: PN.guid()});
+    }
+
+    _changeDilutionQuantity(value) {
+        PN.activeFormula.dilutantQuantity = Math.max(parseFloat(value), 0.0);
+        PN.recomputeFormula();
+        this.setState({detailsKey: PN.guid()});
+    }
+
     _changeIngredient(id, ingredient) {
         ingredient.id = id;
         PN.recomputeFormula();
@@ -56,10 +68,16 @@ class FormulaBody extends React.Component {
                                           onChange={(id) => this._changeIngredient(id, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" step="0.001" defaultValue={ingredient.quantity || 0.0} onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        <input type="number" 
+                               step="0.001" 
+                               defaultValue={ingredient.quantity || 0.0} 
+                               onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
                     </td>
                     <td>
-                        <button type="button" onClick={() => this._deleteIngredient(index)}>Delete</button>
+                        <button type="button" 
+                                onClick={() => this._deleteIngredient(index)}>
+                            Delete
+                        </button>
                     </td>
                 </tr>
             );
@@ -73,19 +91,40 @@ class FormulaBody extends React.Component {
                 <table className="formulatable">
                     <tbody>
                         <tr>
+                            <th>DILUTANT</th>
+                            <th>WEIGHT (GRAMS)</th>
+                        </tr>
+                        <td>
+                            <IngredientPicker defaultValue={PN.activeFormula.dilutant}
+                                                id={"dilutant"}
+                                                allowSolvents={true}
+                                                allowMixtures={false}
+                                                allowMaterials={false}
+                                                onChange={(id) => this._changeDilution(id)}/>
+                        </td>
+                        <td>
+                            <input type="number" 
+                                   step="0.001" 
+                                   defaultValue={PN.activeFormula.dilutantQuantity} 
+                                   onChange={(event) => this._changeDilutionQuantity(event.target.value)}/>
+                        </td>
+                        <tr>
                             <th>INGREDIENT</th>
                             <th>WEIGHT (GRAMS)</th>
                         </tr>
                         {elements}
                         <tr>
                             <td colSpan="3">
-                                <button type="button" onClick={() => this._addIngredient()}>New Ingredient</button>
+                                <button type="button" 
+                                        onClick={() => this._addIngredient()}>
+                                    New Ingredient
+                                </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div className="tabletext">
-                    CONCENTRATE BREAKDOWN
+                    MATERIAL MANIFEST
                 </div>
                 <table className="formulatable" key={this.state.detailsKey}>
                     <tbody>
@@ -93,6 +132,10 @@ class FormulaBody extends React.Component {
                             <th>MATERIAL</th>
                             <th>WEIGHT (GRAMS)</th>
                             <th>% IN CONCENTRATE</th>
+                            <th>% IN FINISHED PRODUCT</th>
+                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
+                            <th>AVG % USED IN CONCENTRATE</th>
+                            <th>MAX % USED IN CONCENTRATE</th>
                         </tr>
                         {this._renderDetailsRows()}
                     </tbody>
