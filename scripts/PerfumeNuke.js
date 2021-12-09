@@ -40,6 +40,9 @@ PN.recomputeFormula = function() {
         for (let key in PN.activeFormula.computed) {
             PN.activeFormula.computed[key].percent = (PN.activeFormula.computed[key].quantity / totalWeight) * 100.0;
         }
+        for (let key in PN.activeFormula.computed) {
+            PN.activeFormula.computed[key].percentInProduct = (PN.activeFormula.computed[key].quantity / (totalWeight + PN.activeFormula.dilutantQuantity)) * 100.0;
+        }
     }
 }
 

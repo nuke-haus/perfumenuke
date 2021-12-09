@@ -46,9 +46,13 @@ class FormulaBody extends React.Component {
             const material = PN.getMaterial(id);
             elements.push(
                 <tr key={'detail' + id}>
-                    <td>{material.name || "NO NAME"}</td>
+                    <td>{material.name || "???"}</td>
                     <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
+                    <td>{(PN.activeFormula.computed[id].percentInProduct || 0).toPrecision(6)}</td>
+                    <td>{material.max_in_finished_product || "N/A"}</td>
+                    <td>{material.avg_use_in_concentrate || ""}</td>
+                    <td>{material.max_use_in_concentrate || ""}</td>
                 </tr>
             );
         }
