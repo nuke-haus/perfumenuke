@@ -72,12 +72,11 @@ class IngredientPicker extends React.Component {
 
     render() {
         return (
-            <div>
+            <div tooltip={this._tooltip}>
                 {this._renderDataList()}
                 <input list={this.props.id} 
                         className="ingredientpicker"
                         defaultValue={this._getDefaultValue()} 
-                        tooltip={this._tooltip}
                         onChange={(event) => this._onChange(event.target.value)}/>
             </div>
         );
