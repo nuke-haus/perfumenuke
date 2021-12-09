@@ -156,9 +156,6 @@ table, td, th {
     opacity: 0;
     
     transition: all 0.15s ease 0.3s;
-    padding: 4px;
-    color: #add3ad;
-    border-radius: 4px;
 }
 
 [data-tooltip]:hover:before {
@@ -166,7 +163,9 @@ table, td, th {
     opacity: 1;
     
     animation: fadeIn 0.3s;
-    background: #4e6258;
-    margin-top: -20px;
-    margin-left: 20px;    
+    padding: 8px;
+    color: #c3ebc3;
+    background: #3b4942;
+    border-radius: 4px;
+    margin-top: -32px;
 }
