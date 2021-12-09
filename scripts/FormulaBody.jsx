@@ -5,6 +5,11 @@ class FormulaBody extends React.Component {
         detailsKey: "details"
     };
 
+    constructor(props) {
+        super(props);
+        PN.recomputeFormula();
+    }
+
     _addIngredient() {
         PN.activeFormula.ingredients.push({id: "", quantity: 0.0});
         this.forceUpdate();
