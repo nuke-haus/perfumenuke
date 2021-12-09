@@ -53,16 +53,10 @@ class FormulaBody extends React.Component {
 
     _getTooltip(id) {
         const material = PN.getMaterial(id);
-        const mix = PN.getMixture(id);
         let tooltip = "";
         if (material != null) {
-            tooltip = material.scent + "\n\n" + material.usage;
-        } else if (mix != null) {
-            const materials = PN.getMaterialsFromMixture(mix);
-            for (let material of materials) {
-                tooltip = tooltip + material.scent + "\n\n" + material.usage + "\n\n-----\n\n";
-            }
-        }
+            tooltip = material.scent + " " + material.usage;
+        } 
         return tooltip;
     }
 

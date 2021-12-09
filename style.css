@@ -162,10 +162,11 @@ table, td, th {
     display: inline-block;
     opacity: 1;
     
+    width: 800px;
     animation: fadeIn 0.3s;
     padding: 8px;
     color: #c3ebc3;
     background: #3b4942;
     border-radius: 4px;
-    margin-top: -32px;
+    margin-top: -46px;
 }
