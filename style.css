@@ -154,7 +154,6 @@ table, td, th {
     position: absolute;
     opacity: 0;
     
-    transition: all 0.15s ease;
     padding: 10px;
     color: #333333;
     border-radius: 10px;

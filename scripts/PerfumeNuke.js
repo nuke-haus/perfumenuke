@@ -71,6 +71,8 @@ PN.validateLoadedMaterials = function(materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
         material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
+        material.scent = material.scent || "";
+        material.usage = material.usage || "";
     
         if (PN.getMaterial(material.id) != null) {
             PN.errors.push("ID has been defined more than once in data: " + material.id);
