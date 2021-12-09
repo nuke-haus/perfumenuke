@@ -152,18 +152,21 @@ table, td, th {
 [data-tooltip]:before {
     content: attr(data-tooltip);
     position: absolute;
+    display: none;
     opacity: 0;
     
+    transition: all 0.15s ease 0.3s;
     padding: 4px;
-    color: #333333;
+    color: #add3ad;
     border-radius: 4px;
-    box-shadow: 3px 3px 1px #4e6258;
 }
 
 [data-tooltip]:hover:before {
+    display: inline-block;
     opacity: 1;
     
-    background: #99c9b1;
-    margin-top: -50px;
+    animation: fadeIn 0.3s;
+    background: #4e6258;
+    margin-top: -20px;
     margin-left: 20px;    
 }
