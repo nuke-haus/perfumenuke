@@ -18,6 +18,7 @@ PN.note.base = "BASE";
 
 PN.recomputeFormula = function() {
     PN.activeFormula.computed = {};
+    PN.activeFormula.computed[PN.activeFormula.dilutant] = PN.activeFormula.dilutantQuantity;
     let totalWeight = 0.0;
     for (let ingredient of PN.activeFormula.ingredients) { // ingredient can be material or mixture
         const material = PN.getMaterial(ingredient.id);
