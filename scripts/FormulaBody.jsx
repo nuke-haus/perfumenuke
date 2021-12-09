@@ -88,7 +88,7 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     INGREDIENT LIST
                 </div>
-                <table className="formulatable">
+                <table className="ingredienttable">
                     <tbody>
                         <tr>
                             <th>DILUTANT</th>
@@ -134,8 +134,8 @@ class FormulaBody extends React.Component {
                             <th>% IN CONCENTRATE</th>
                             <th>% IN FINISHED PRODUCT</th>
                             <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
-                            <th>AVG % USED IN CONCENTRATE</th>
-                            <th>MAX % USED IN CONCENTRATE</th>
+                            <th>AVG % ADVISED IN CONCENTRATE</th>
+                            <th>MAX % ADVISED IN CONCENTRATE</th>
                         </tr>
                         {this._renderDetailsRows()}
                     </tbody>

@@ -50,6 +50,7 @@ input {
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
     margin: 4px;
+    width: 400px;
 }
 
 table, td, th {
@@ -63,13 +64,19 @@ table, td, th {
 }
 
 .errortable {
-    width: 60%;
+    width: max(60%, 1800px);
     margin: auto;
     margin-top: 20px;
 }
 
+.ingredienttable {
+    width: max(60%, 1000px);
+    margin: auto;
+    margin-bottom: 30px;
+}
+
 .formulatable {
-    width: 60%;
+    width: max(60%, 1800px);
     margin: auto;
     margin-bottom: 30px;
 }
