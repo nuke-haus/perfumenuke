@@ -1,5 +1,10 @@
 class IngredientPicker extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this._updateTooltip(this.props.defaultValue);
+    }
+
     _getDefaultValue() { // convert an ID to a display name
         const material = PN.getMaterial(this.props.defaultValue);
         const mix = PN.getMixture(this.props.defaultValue);
@@ -51,6 +56,20 @@ class IngredientPicker extends React.Component {
         this.props.onChange(id);
     }
 
+    _updateTooltip(id) {
+        const material = PN.getMaterial(id);
+        const mix = PN.getMixture(id);
+        if (material != null) {
+            this._tooltip = material.scent + "\n\n" + material.usage;
+        } else if (mix != null) {
+            const materials = PN.getMaterialsFromMixture(mix);
+            this._tooltip = "";
+            for (let material of materials) {
+                this._tooltip = this._tooltip + material.scent + "\n\n" + material.usage + "\n\n-----\n\n";
+            }
+        }
+    }
+
     render() {
         return (
             <div>
@@ -58,6 +77,7 @@ class IngredientPicker extends React.Component {
                 <input list={this.props.id} 
                         className="ingredientpicker"
                         defaultValue={this._getDefaultValue()} 
+                        tooltip={this._tooltip}
                         onChange={(event) => this._onChange(event.target.value)}/>
             </div>
         );

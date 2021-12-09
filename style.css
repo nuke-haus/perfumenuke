@@ -1,3 +1,16 @@
+body
+{
+    font-size: 16px;
+  	font-family: 'Work Sans', sans-serif;
+	
+    color: #000000;
+    background-color: #6f8c7d;
+	
+    height: 100vh;
+    margin: 0;
+	
+	-webkit-font-smoothing: antialiased;
+}
 
 a:link 
 {
@@ -136,16 +149,22 @@ table, td, th {
     color: #56009c;
 }
 
-body
-{
-    font-size: 16px;
-  	font-family: 'Work Sans', sans-serif;
-	
-    color: #000000;
-    background-color: #6f8c7d;
-	
-    height: 100vh;
-    margin: 0;
-	
-	-webkit-font-smoothing: antialiased;
+[tooltip]:before {
+    content: attr(tooltip);
+    position: absolute;
+    opacity: 0;
+    
+    transition: all 0.15s ease;
+    padding: 10px;
+    color: #333333;
+    border-radius: 10px;
+    box-shadow: 2px 2px 1px silver;    
+}
+
+[tooltip]:hover:before {
+    opacity: 1;
+    
+    background: #99c9b1;
+    margin-top: -50px;
+    margin-left: 20px;    
 }
