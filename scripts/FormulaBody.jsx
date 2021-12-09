@@ -7,6 +7,7 @@ class FormulaBody extends React.Component {
 
     _addIngredient() {
         PN.activeFormula.ingredients.push({id: "", quantity: 0.0});
+        PN.recomputeFormula();
         this.forceUpdate();
     }
 
@@ -40,6 +41,16 @@ class FormulaBody extends React.Component {
         this.setState({detailsKey: PN.guid()});
     }
 
+    _renderPercentInProduct(id, material) {
+        const floatValue = (PN.activeFormula.computed[id].percentInProduct || 0).toPrecision(6);
+        if (material.max_in_finished_product && floatValue > material.max_in_finished_product) {
+            return (
+                <span className="error">floatValue</span>
+            );
+        } 
+        return floatValue;
+    }
+
     _renderDetailsRows() {
         const elements = [];
         for (let id in PN.activeFormula.computed) {
@@ -49,10 +60,10 @@ class FormulaBody extends React.Component {
                     <td>{material.name || "???"}</td>
                     <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
-                    <td>{(PN.activeFormula.computed[id].percentInProduct || 0).toPrecision(6)}</td>
-                    <td>{material.max_in_finished_product || "N/A"}</td>
                     <td>{material.avg_use_in_concentrate || ""}</td>
                     <td>{material.max_use_in_concentrate || ""}</td>
+                    <td>{this._renderPercentInProduct(id, material)}</td>
+                    <td>{material.max_in_finished_product || ""}</td>
                 </tr>
             );
         }
@@ -74,6 +85,7 @@ class FormulaBody extends React.Component {
                     <td>
                         <input type="number" 
                                step="0.001" 
+                               min="0"
                                defaultValue={ingredient.quantity || 0.0} 
                                onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
                     </td>
@@ -110,6 +122,7 @@ class FormulaBody extends React.Component {
                             <td>
                                 <input type="number" 
                                     step="0.001" 
+                                    min="0"
                                     defaultValue={PN.activeFormula.dilutantQuantity} 
                                     onChange={(event) => this._changeDilutionQuantity(event.target.value)}/>
                             </td>
@@ -138,10 +151,10 @@ class FormulaBody extends React.Component {
                             <th>MATERIAL</th>
                             <th>WEIGHT (GRAMS)</th>
                             <th>% IN CONCENTRATE</th>
-                            <th>% IN FINISHED PRODUCT</th>
-                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
                             <th>AVG % ADVISED IN CONCENTRATE</th>
                             <th>MAX % ADVISED IN CONCENTRATE</th>
+                            <th>% IN FINISHED PRODUCT</th>
+                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
                         </tr>
                         {this._renderDetailsRows()}
                     </tbody>
