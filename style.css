@@ -76,7 +76,7 @@ table, td, th {
 }
 
 .formulatable {
-    width: max(60%, 1800px);
+    width: 80%;
     margin: auto;
     margin-bottom: 30px;
 }
@@ -88,7 +88,7 @@ table, td, th {
 
 .ingredientpicker {
     display: table-cell; 
-    width: calc(100% - 16px);
+    width: calc(100% - 24px);
 }
 
 .navbar 

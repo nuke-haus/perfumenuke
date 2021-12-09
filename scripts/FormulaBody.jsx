@@ -94,23 +94,25 @@ class FormulaBody extends React.Component {
                             <th>DILUTANT</th>
                             <th>WEIGHT (GRAMS)</th>
                         </tr>
-                        <td>
-                            <IngredientPicker defaultValue={PN.activeFormula.dilutant}
-                                                id={"dilutant"}
-                                                allowSolvents={true}
-                                                allowMixtures={false}
-                                                allowMaterials={false}
-                                                onChange={(id) => this._changeDilution(id)}/>
-                        </td>
-                        <td>
-                            <input type="number" 
-                                   step="0.001" 
-                                   defaultValue={PN.activeFormula.dilutantQuantity} 
-                                   onChange={(event) => this._changeDilutionQuantity(event.target.value)}/>
-                        </td>
+                        <tr>
+                            <td>
+                                <IngredientPicker defaultValue={PN.activeFormula.dilutant}
+                                                    id={"dilutant"}
+                                                    allowSolvents={true}
+                                                    allowMixtures={false}
+                                                    allowMaterials={false}
+                                                    onChange={(id) => this._changeDilution(id)}/>
+                            </td>
+                            <td>
+                                <input type="number" 
+                                    step="0.001" 
+                                    defaultValue={PN.activeFormula.dilutantQuantity} 
+                                    onChange={(event) => this._changeDilutionQuantity(event.target.value)}/>
+                            </td>
+                        </tr>
                         <tr>
                             <th>INGREDIENT</th>
-                            <th>WEIGHT (GRAMS)</th>
+                            <th></th>
                         </tr>
                         {elements}
                         <tr>
