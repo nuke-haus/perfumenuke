@@ -149,8 +149,8 @@ table, td, th {
     color: #56009c;
 }
 
-[tooltip]:before {
-    content: attr(tooltip);
+[data-tooltip]:before {
+    content: attr(data-tooltip);
     position: absolute;
     opacity: 0;
     
@@ -161,7 +161,7 @@ table, td, th {
     box-shadow: 2px 2px 1px silver;    
 }
 
-[tooltip]:hover:before {
+[data-tooltip]:hover:before {
     opacity: 1;
     
     background: #99c9b1;

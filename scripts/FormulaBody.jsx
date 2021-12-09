@@ -51,13 +51,28 @@ class FormulaBody extends React.Component {
         return floatValue;
     }
 
+    _getTooltip(id) {
+        const material = PN.getMaterial(id);
+        const mix = PN.getMixture(id);
+        let tooltip = "";
+        if (material != null) {
+            tooltip = material.scent + "\n\n" + material.usage;
+        } else if (mix != null) {
+            const materials = PN.getMaterialsFromMixture(mix);
+            for (let material of materials) {
+                tooltip = tooltip + material.scent + "\n\n" + material.usage + "\n\n-----\n\n";
+            }
+        }
+        return tooltip;
+    }
+
     _renderDetailsRows() {
         const elements = [];
         for (let id in PN.activeFormula.computed) {
             const material = PN.getMaterial(id);
             elements.push(
                 <tr key={'detail' + id}>
-                    <td>{material.name || "???"}</td>
+                    <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
                     <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
                     <td>{material.avg_use_in_concentrate || ""}</td>
