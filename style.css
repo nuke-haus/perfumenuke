@@ -154,10 +154,10 @@ table, td, th {
     position: absolute;
     opacity: 0;
     
-    padding: 10px;
+    padding: 4px;
     color: #333333;
-    border-radius: 10px;
-    box-shadow: 2px 2px 1px silver;    
+    border-radius: 4px;
+    box-shadow: 3px 3px 1px #4e6258;
 }
 
 [data-tooltip]:hover:before {
