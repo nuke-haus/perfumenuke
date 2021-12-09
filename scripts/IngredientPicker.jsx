@@ -55,7 +55,10 @@ class IngredientPicker extends React.Component {
         return (
             <div>
                 {this._renderDataList()}
-                <input list={this.props.id} defaultValue={this._getDefaultValue()} onChange={(event) => this._onChange(event.target.value)}/>
+                <input list={this.props.id} 
+                        className="ingredientpicker"
+                        defaultValue={this._getDefaultValue()} 
+                        onChange={(event) => this._onChange(event.target.value)}/>
             </div>
         );
     }

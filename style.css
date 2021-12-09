@@ -49,8 +49,7 @@ input {
     padding: 2px 6px;
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
-    margin: 4px;
-    width: 400px;
+    margin: 4px auto;
 }
 
 table, td, th {
@@ -84,6 +83,11 @@ table, td, th {
 .tabletext {
     text-align: center;
     font-size: 24px;
+}
+
+.ingredientpicker {
+    display:table-cell; 
+    width:100%
 }
 
 .navbar 
