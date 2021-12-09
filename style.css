@@ -86,8 +86,8 @@ table, td, th {
 }
 
 .ingredientpicker {
-    display:table-cell; 
-    width:100%
+    display: table-cell; 
+    width: calc(100% - 32px);
 }
 
 .navbar 

@@ -20,7 +20,7 @@ class IngredientPicker extends React.Component {
         const elements = [];
         let count = 0;
         for (let ingredient of PN.database.materials) {
-            if (this.props.allowMaterials || (ingredient.solvent && this.props.allowSolvents)) {
+            if ((this.props.allowMaterials && ingredient.solvent == null) || (this.props.allowSolvents && ingredient.solvent)) {
                 count = count + 1;
                 this._nameMap[ingredient.name] = ingredient.id;
                 elements.push(<option key={"material" + count} value={ingredient.name}/>);
