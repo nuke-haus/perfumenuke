@@ -148,6 +148,12 @@ table, td, th {
     margin-bottom: 32px;
 }
 
+.chart 
+{
+    width: 600px;
+    height: 600px;
+}
+
 .error 
 {
     color: #960000;

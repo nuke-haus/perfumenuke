@@ -9,7 +9,7 @@ class DatabaseBody extends React.Component {
     }
 
     _formatName(value) {
-        return (value.charAt(0).toUpperCase() + str.slice(1));
+        return (value.toString().charAt(0).toUpperCase() + str.slice(1));
     }
 
     render() {
@@ -23,7 +23,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 ID: 
-                                <input onChange={(event) => this._onChangeMaterial("id", event.target.value.toLower())}/>
+                                <input onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
                             </td>
                             <td>
                                 NAME: 
@@ -49,7 +49,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 NOTE: 
-                                <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toLower())}>
+                                <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
                                     <option value="TOP">TOP</option>
                                     <option value="HEART">HEART</option>
                                     <option value="BASE">BASE</option>
@@ -89,7 +89,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 CAS NUMBER: 
-                                <input onChange={(event) => this._onChangeMaterial("cas", event.target.value.toUpperCase())}/>
+                                <input onChange={(event) => this._onChangeMaterial("cas", event.target.value.toString().toUpperCase())}/>
                             </td>
                             <td>
                                 IFRA RESTRICTED: 

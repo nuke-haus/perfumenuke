@@ -5,6 +5,78 @@ class FormulaBody extends React.Component {
         detailsKey: "details"
     };
 
+    _colors = [];
+
+    _randomColor() {
+        const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+        const r = randomBetween(0, 255);
+        const g = randomBetween(0, 255);
+        const b = randomBetween(0, 255);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    _getConcentrateChartConfig() {
+        const labels = [];
+        const values = [];
+        const colors = [];
+        let index = 0;
+
+        for (let key in PN.activeFormula.computed) {
+            const material = PN.getMaterial(key);
+            if (this._colors[index] == null) {
+                this._colors[index].push(this._randomColor());
+            }
+            labels.push(material.name);
+            values.push(PN.activeFormula.computed[key].percent);
+            colors.push(this._colors[index]);
+            index = index + 1;
+        }
+
+        return ({
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Concentrate Breakdown',
+                  data: values,
+                  backgroundColor: colors,
+                  hoverOffset: 8
+                }]
+              }
+          });
+    }
+
+    _getFinalChartConfig() {
+        const labels = [];
+        const values = [];
+        const colors = [];
+        let index = 0;
+
+        for (let key in PN.activeFormula.computed) {
+            const material = PN.getMaterial(key);
+            if (this._colors[index] == null) {
+                this._colors[index].push(this._randomColor());
+            }
+            labels.push(material.name);
+            values.push(PN.activeFormula.computed[key].percentInProduct);
+            colors.push(this._colors[index]);
+            index = index + 1;
+        }
+
+        return ({
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                  label: 'Final Product Breakdown',
+                  data: values,
+                  backgroundColor: colors,
+                  hoverOffset: 8
+                }]
+              }
+          });
+    }
+
     _addIngredient() {
         PN.activeFormula.ingredients.push({id: "", quantity: 0.0});
         PN.recomputeFormula();
@@ -89,7 +161,6 @@ class FormulaBody extends React.Component {
     }
 
     render() {
-
         const elements = [];
         for (let index in PN.activeFormula.ingredients || []) {
             const ingredient = PN.activeFormula.ingredients[index]
@@ -177,6 +248,20 @@ class FormulaBody extends React.Component {
                         {this._renderDetailsRows()}
                     </tbody>
                 </table>
+                <canvas id="concentrateChart" className="chart"/>
+                <canvas id="finalProductChart" className="chart"/>
+                <script type="text/javascript">
+                    if (PN.activeFormula.computed.length > 0) {
+                        const concentrateChart = new Chart(
+                            document.getElementById('concentrateChart'),
+                            this._getConcentrateChartConfig()
+                        );
+                        const finalChart = new Chart(
+                            document.getElementById('finalProductChart'),
+                            this._getFinalChartConfig()
+                        );
+                    }
+                </script>
             </div>
         );
     }
