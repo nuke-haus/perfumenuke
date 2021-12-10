@@ -115,6 +115,7 @@ table, td, th {
     justify-content: center;
     align-items: center;
     padding: 4px;
+    margin-bottom: 10px;
 }
 
 .topbutton
@@ -122,6 +123,11 @@ table, td, th {
     margin-left: 45px;
     margin-right: 45px;
     cursor: pointer;
+}
+
+.selectednav
+{
+    text-decoration: underline;
 }
 
 .bar 

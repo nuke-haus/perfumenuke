@@ -35,6 +35,12 @@ class Page extends React.Component {
             .then(data => this._onLoadMaterials(data));
     }
 
+    _getClassName(tabName) {
+        return (this.state.currentNav === tabName) 
+            ? "selectednav"
+            : "";
+    }
+
     render() {
         let errorsTab = null;
         let errors = null;
@@ -43,7 +49,7 @@ class Page extends React.Component {
         if (PN.warnings.length > 0 || PN.errors.length > 0) {
             errorsTab = (
                 <div className="topbutton error" onClick={() => this._onNavClick(this.NAV_ERRORS)}>
-                    {this.NAV_ERRORS}
+                    <span className={this._getClassName()}>{this.NAV_ERRORS}</span>
                 </div>
             );
             
@@ -94,13 +100,13 @@ class Page extends React.Component {
             <div>
                 <div className="navbar">
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_FORMULA)}>
-                        {this.NAV_FORMULA}
+                        <span className={this._getClassName()}>{this.NAV_FORMULA}</span>
                     </div>
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_MATERIALS)}>
-                        {this.NAV_MATERIALS}
+                        <span className={this._getClassName()}>{this.NAV_MATERIALS}</span>
                     </div>
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_MIXTURES)}>
-                        {this.NAV_MIXTURES}
+                        <span className={this._getClassName()}>{this.NAV_MIXTURES}</span>
                     </div>
                     {errorsTab}
                 </div>

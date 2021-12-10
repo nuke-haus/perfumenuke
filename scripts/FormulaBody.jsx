@@ -169,7 +169,7 @@ class FormulaBody extends React.Component {
                             <th>MATERIAL</th>
                             <th>WEIGHT (GRAMS)</th>
                             <th>% IN CONCENTRATE</th>
-                            <th>AVG % ADVISED IN CONCENTRATE</th>
+                            <th>AVG % USED IN CONCENTRATE</th>
                             <th>MAX % ADVISED IN CONCENTRATE</th>
                             <th>% IN FINISHED PRODUCT</th>
                             <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
