@@ -39,7 +39,11 @@ PN.recomputeFormula = function() {
     }
     if (totalWeight > 0.0) {
         for (let key in PN.activeFormula.computed) {
-            PN.activeFormula.computed[key].percent = (PN.activeFormula.computed[key].quantity / totalWeight) * 100.0;
+            if (key === PN.activeFormula.dilutant) {
+                PN.activeFormula.computed[key].percent = ((PN.activeFormula.computed[key].quantity - PN.activeFormula.dilutantQuantity) / totalWeight) * 100.0;
+            } else {
+                PN.activeFormula.computed[key].percent = (PN.activeFormula.computed[key].quantity / totalWeight) * 100.0;
+            }
         }
         for (let key in PN.activeFormula.computed) {
             PN.activeFormula.computed[key].percentInProduct = (PN.activeFormula.computed[key].quantity / (totalWeight + PN.activeFormula.dilutantQuantity)) * 100.0;
