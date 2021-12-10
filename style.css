@@ -127,7 +127,9 @@ table, td, th {
 
 .selectednav
 {
-    text-decoration: underline;
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 3px solid #000000;
 }
 
 .bar 
