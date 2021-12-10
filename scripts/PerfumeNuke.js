@@ -33,8 +33,9 @@ PN.recomputeFormula = function() {
                 PN.activeFormula.computed[material.id] = PN.activeFormula.computed[material.id] || {};
                 const currentQuantity = PN.activeFormula.computed[material.id].quantity || 0.0;
                 PN.activeFormula.computed[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
-                totalWeight = totalWeight + (ingredient.quantity * material.percent);
+                console.log(material.id, ingredient.quantity, material.percent, ingredient.quantity * material.percent);
             }
+            totalWeight = totalWeight + ingredient.quantity;
         }
     }
     if (totalWeight > 0.0) {
