@@ -56,9 +56,9 @@
             "longevity": "4h",
             "impact": "800",
             "dilute": "10% or less",
-            "avg_use_in_concentrate": "0.3%",
-            "max_use_in_concentrate": "2%",
-            "max_in_finished_product": "2.5%",
+            "avg_use_in_concentrate": "0.003",
+            "max_use_in_concentrate": "0.02",
+            "max_in_finished_product": "0.025",
             "ifra_restricted": "true",
             "cas": "68039-49-6",
             "costs": [
@@ -74,8 +74,8 @@
             "note": "base",
             "longevity": "48h",
             "impact": "100",
-            "avg_use_in_concentrate": "20%",
-            "max_use_in_concentrate": "40%",
+            "avg_use_in_concentrate": "0.2",
+            "max_use_in_concentrate": "0.4",
             "ifra_restricted": "false",
             "cas": "54982-83-1",
             "costs": [

@@ -43,7 +43,7 @@ class FormulaBody extends React.Component {
 
     _renderPercentInProduct(id, material) {
         const floatValue = (PN.activeFormula.computed[id].percentInProduct || 0).toPrecision(6);
-        if (material.max_in_finished_product && floatValue > material.max_in_finished_product) {
+        if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
             return (
                 <span className="error">{floatValue}</span>
             );
@@ -64,6 +64,9 @@ class FormulaBody extends React.Component {
         const elements = [];
         for (let id in PN.activeFormula.computed) {
             const material = PN.getMaterial(id);
+            const maxInProduct = material.max_in_finished_product == null 
+                ? "" 
+                : (material.max_in_finished_product * 100.0);
             elements.push(
                 <tr key={'detail' + id}>
                     <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
@@ -72,7 +75,7 @@ class FormulaBody extends React.Component {
                     <td>{material.avg_use_in_concentrate || ""}</td>
                     <td>{material.max_use_in_concentrate || ""}</td>
                     <td>{this._renderPercentInProduct(id, material)}</td>
-                    <td>{material.max_in_finished_product || ""}</td>
+                    <td>{maxInProduct}</td>
                 </tr>
             );
         }
