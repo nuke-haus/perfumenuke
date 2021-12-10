@@ -67,13 +67,19 @@ class FormulaBody extends React.Component {
             const maxInProduct = material.max_in_finished_product == null 
                 ? "" 
                 : (material.max_in_finished_product * 100.0);
+            const avgInConc = material.avg_use_in_concentrate == null 
+                ? "" 
+                : (material.avg_use_in_concentrate * 100.0);
+            const maxInConc = material.max_use_in_concentrate == null 
+                ? "" 
+                : (material.max_use_in_concentrate * 100.0);
             elements.push(
                 <tr key={'detail' + id}>
                     <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
                     <td>{(PN.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
-                    <td>{material.avg_use_in_concentrate || ""}</td>
-                    <td>{material.max_use_in_concentrate || ""}</td>
+                    <td>{avgInConc}</td>
+                    <td>{maxInConc}</td>
                     <td>{this._renderPercentInProduct(id, material)}</td>
                     <td>{maxInProduct}</td>
                 </tr>
