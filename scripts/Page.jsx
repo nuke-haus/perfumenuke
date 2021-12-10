@@ -1,8 +1,7 @@
 class Page extends React.Component {
 
     NAV_FORMULA = "FORMULA";
-    NAV_MATERIALS = "MATERIALS";
-    NAV_MIXTURES = "MIXTURES";
+    NAV_DATABASE = "DATABASE";
     NAV_ERRORS = "ERRORS"
 
     state = {
@@ -102,11 +101,8 @@ class Page extends React.Component {
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_FORMULA)}>
                         <span className={this._getClassName(this.NAV_FORMULA)}>{this.NAV_FORMULA}</span>
                     </div>
-                    <div className="topbutton" onClick={() => this._onNavClick(this.NAV_MATERIALS)}>
-                        <span className={this._getClassName(this.NAV_MATERIALS)}>{this.NAV_MATERIALS}</span>
-                    </div>
-                    <div className="topbutton" onClick={() => this._onNavClick(this.NAV_MIXTURES)}>
-                        <span className={this._getClassName(this.NAV_MIXTURES)}>{this.NAV_MIXTURES}</span>
+                    <div className="topbutton" onClick={() => this._onNavClick(this.NAV_DATABASE)}>
+                        <span className={this._getClassName(this.NAV_DATABASE)}>{this.NAV_DATABASE}</span>
                     </div>
                     {errorsTab}
                 </div>
@@ -117,28 +113,21 @@ class Page extends React.Component {
             </div>
         );
 
-        if (this.state.currentNav == this.NAV_FORMULA) { // FORMULA DISPLAY
+        if (this.state.currentNav == this.NAV_FORMULA) { 
 
             return (<div>
                 {header}
                 <FormulaBody/>
             </div>);
 
-        } else if (this.state.currentNav == this.NAV_MATERIALS) { // MATERIALS DISPLAY
+        } else if (this.state.currentNav == this.NAV_DATABASE) { 
 
             return (<div>
                 {header}
                 <DatabaseBody/>
             </div>);
 
-        } else if (this.state.currentNav == this.NAV_MIXTURES) { // MIXTURES DISPLAY
-
-            return (<div>
-                {header}
-                <DatabaseBody/>
-            </div>);
-
-        } else if (this.state.currentNav == this.NAV_ERRORS) { // ERRORS DISPLAY
+        } else if (this.state.currentNav == this.NAV_ERRORS) { 
 
             return (<div>
                 {header}

@@ -77,11 +77,11 @@ PN.validateLoadedMaterials = function(materials) {
         material.note = PN.parseNote(material.note);
         material.scent = material.scent || "";
         material.usage = material.usage || "";
-        if (material.avg_use_in_concentrate) {
-            material.avg_use_in_concentrate = parseFloat(material.avg_use_in_concentrate);
+        if (material.avg_in_concentrate) {
+            material.avg_in_concentrate = parseFloat(material.avg_in_concentrate);
         }
-        if (material.max_use_in_concentrate) {
-            material.max_use_in_concentrate = parseFloat(material.max_use_in_concentrate);
+        if (material.max_in_concentrate) {
+            material.max_in_concentrate = parseFloat(material.max_in_concentrate);
         }
         if (material.max_in_finished_product) {
             material.max_in_finished_product = parseFloat(material.max_in_finished_product);

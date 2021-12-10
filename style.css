@@ -115,7 +115,7 @@ table, td, th {
     justify-content: center;
     align-items: center;
     padding: 4px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .topbutton
@@ -128,8 +128,9 @@ table, td, th {
 .selectednav
 {
     text-decoration: none;
-    padding-bottom: 3px;
-    border-bottom: 3px solid #000000;
+    padding: 4px 10px;
+    box-shadow: 3px 3px 1px #4e6258, inset 3px 3px 1px #4e6258;
+    border: 3px solid #000000;
 }
 
 .bar 

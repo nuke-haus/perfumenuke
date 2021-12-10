@@ -67,12 +67,12 @@ class FormulaBody extends React.Component {
             const maxInProduct = material.max_in_finished_product == null 
                 ? "" 
                 : (material.max_in_finished_product * 100.0);
-            const avgInConc = material.avg_use_in_concentrate == null 
+            const avgInConc = material.avg_in_concentrate == null 
                 ? "" 
-                : (material.avg_use_in_concentrate * 100.0);
-            const maxInConc = material.max_use_in_concentrate == null 
+                : (material.avg_in_concentrate * 100.0);
+            const maxInConc = material.max_in_concentrate == null 
                 ? "" 
-                : (material.max_use_in_concentrate * 100.0);
+                : (material.max_in_concentrate * 100.0);
             elements.push(
                 <tr key={'detail' + id}>
                     <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
