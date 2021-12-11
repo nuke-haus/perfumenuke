@@ -44,7 +44,7 @@ button {
     background-color: #4CAF50;
     border: 2px solid #000000;
     border-radius: 4px; 
-    box-shadow: inset 3px 3px 1px #81ce84;
+    box-shadow: inset 2px 2px 1px #81ce84, inset -2px -2px 1px #357e37;
     color: #000000;
     padding: 2px 6px;
     text-align: center;
@@ -59,6 +59,7 @@ button:disabled,
 button[disabled]{
     background-color: #849b84;
     box-shadow: inset 1px 1px 1px #849b84;
+    cursor: not-allowed;
 }
 
 input {

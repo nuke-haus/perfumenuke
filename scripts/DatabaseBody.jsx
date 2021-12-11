@@ -20,10 +20,8 @@ class DatabaseBody extends React.Component {
             }
             this.setState({materialKey: PN.guid()});
         }
-        if (key === "id") {
-            this.setState({materialButtonKey: PN.guid()});
-        }
         PN.database.currentMaterial[key] = value;
+        this.setState({materialButtonKey: PN.guid()});
     }
 
     _formatName(value) {
