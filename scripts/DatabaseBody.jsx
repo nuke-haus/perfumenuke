@@ -22,8 +22,12 @@ class DatabaseBody extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                ID: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
+                                <div>
+                                    ID: 
+                                </div>
+                                <div>
+                                    <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
+                                </div>
                             </td>
                             <td>
                                 NAME: 
