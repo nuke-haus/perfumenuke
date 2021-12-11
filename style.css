@@ -66,6 +66,18 @@ input {
     width: 80px;
 }
 
+select {
+    background-color: #add3ad;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    color: #000000;
+    padding: 2px 6px;
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    margin: 4px;
+    width: 80px;
+}
+
 table, td, th {
     border: 3px solid black;
     border-collapse: collapse;
@@ -146,12 +158,6 @@ table, td, th {
 	height: 5px;
     width: 100%;
     margin-bottom: 32px;
-}
-
-.chart 
-{
-    width: 600px;
-    height: 600px;
 }
 
 .error 
