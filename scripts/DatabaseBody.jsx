@@ -31,7 +31,7 @@ class DatabaseBody extends React.Component {
 
     _onChangeMaterial(key, value) {
         if (key === "ifra_restricted") { // force a rerender
-            if (!value) {
+            if (value === false) {
                 PN.database.currentMaterial.max_in_finished_product = null;
             }
             this.setState({materialKey: PN.guid()});
@@ -160,7 +160,7 @@ class DatabaseBody extends React.Component {
                     </td>
                     <td>
                         <div>
-                            PERCENTAGE IN MIXTURE: 
+                            % IN MIXTURE: 
                         </div>
                         <div>
                             <input type="number" 
@@ -336,7 +336,7 @@ class DatabaseBody extends React.Component {
                                     <input type="number" 
                                            step="0.001" 
                                            min="0"
-                                           disabled={PN.database.currentMaterial.ifra_restricted === true}
+                                           disabled={PN.database.currentMaterial.ifra_restricted === false}
                                            defaultValue={PN.database.currentMaterial.max_in_finished_product}
                                            onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
                                 </div>
