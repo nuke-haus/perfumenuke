@@ -10,19 +10,8 @@ class DatabaseBody extends React.Component {
     _selectedMaterialID = "";
     _selectedMixtureID = "";
 
-    // MATERIAL LOGIC
+    // MISC LOGIC
     // --------------------------------------------------------------------------------------
-
-    _onChangeMaterial(key, value) {
-        if (key === "ifra_restricted") { // force a rerender
-            if (!value) {
-                PN.database.currentMaterial.max_in_finished_product = null;
-            }
-            this.setState({materialKey: PN.guid()});
-        }
-        PN.database.currentMaterial[key] = value;
-        this.setState({materialButtonKey: PN.guid()});
-    }
 
     _formatName(value) {
         const str = String(value);
@@ -37,6 +26,20 @@ class DatabaseBody extends React.Component {
         return String(value).toUpperCase();
     }
 
+    // MATERIAL LOGIC
+    // --------------------------------------------------------------------------------------
+
+    _onChangeMaterial(key, value) {
+        if (key === "ifra_restricted") { // force a rerender
+            if (!value) {
+                PN.database.currentMaterial.max_in_finished_product = null;
+            }
+            this.setState({materialKey: PN.guid()});
+        }
+        PN.database.currentMaterial[key] = value;
+        this.setState({materialButtonKey: PN.guid()});
+    }
+
     _createOrUpdateMaterial() {
         if (!this._hasValidID()) {
             return;
@@ -45,7 +48,7 @@ class DatabaseBody extends React.Component {
         this.setState({materialButtonKey: PN.guid()});
     }
 
-    _hasValidID() {
+    _hasValidMaterialID() {
         return !!PN.database.currentMaterial.id;
     }
 
@@ -55,7 +58,7 @@ class DatabaseBody extends React.Component {
     }
 
     _disableMaterialButton() {
-        if (!this._hasValidID()) {
+        if (!this._hasValidMaterialID()) {
             return true;
         }
         return !this._currentMaterialIsDirty();
@@ -77,17 +80,122 @@ class DatabaseBody extends React.Component {
     // --------------------------------------------------------------------------------------
 
     _onChangeMixture(key, value) {
-        if (key === "id") {
-            this.setState({mixtureButtonKey: PN.guid()});
-        }
         PN.database.currentMixture[key] = value;
+        this.setState({mixtureButtonKey: PN.guid()});
+    }
+
+    _createOrUpdateMixture() {
+        if (!this._hasValidMixtureID()) {
+            return;
+        }
+        PN.setMixture(PN.database.currentMixture);
+        this.setState({mixtureButtonKey: PN.guid()});
+    }
+
+    _hasValidMixtureID() {
+        return !!PN.database.currentMixture.id;
+    }
+
+    _currentMixtureIsDirty() {
+        const mix = PN.getMixture(PN.database.currentMixture.id || "");
+        return !PN.areEqual(mix, PN.database.currentMixture);
+    }
+
+    _disableMixtureButton() {
+        if (!this._hasValidMixtureID()) {
+            return true;
+        }
+        return !this._currentMixtureIsDirty();
+    }
+
+    _changeSelectedMixture(id) {
+        this._selectedMixtureID = id;
+    }
+
+    _loadMixture() {
+        const mix = PN.getMaterial(this._selectedMixtureID);
+        if (mix != null) {
+            PN.database.currentMixture = PN.deepCopy(mix);
+            this.setState({mixtureKey: PN.guid()});
+        }
+    }
+
+    _addMaterialToMixture() {
+        PN.database.currentMixture.materials = PN.database.currentMixture.materials || [];
+        const newMaterial = {
+            id: "",
+            percent: 0.0
+        };
+        PN.database.currentMixture.materials.push(newMaterial);
+        this.setState({mixtureKey: PN.guid()});
+    }
+
+    _changeMixtureMaterial(index, key, value) {
+        PN.database.currentMixture.materials[index][key] = value;  
+    }
+
+    _deleteMaterialFromMixture(index) {
+        PN.database.currentMixture.materials.splice(index, 1);
+    }
+
+    // RENDER
+    // --------------------------------------------------------------------------------------
+
+    _renderMixtureRows() {
+        const elements = [];
+        for (let index in PN.database.currentMixture.materials || []) {
+            const matData = PN.database.currentMixture.materials[index];
+            const label = `MATERIAL ${parseInt(index) + 1}:`
+            elements.push(
+                <tr key={"mixturematerial" + index}>
+                    <td>
+                        {label}
+                        <IngredientPicker defaultValue={matData.id}
+                                          id={"loadmaterial"}
+                                          allowSolvents={true}
+                                          allowMixtures={false}
+                                          onChange={(id) => this._changeMixtureMaterial(index, "id", id)}/>
+                    </td>
+                    <td>
+                        PERCENTAGE IN MIXTURE: 
+                        <input type="number" 
+                               step="0.001" 
+                               min="0"
+                               max="100"
+                               defaultValue={(parseFloat(matData.percent) * 100.0)}
+                               onChange={(event) =>  this._changeMixtureMaterial(index, "percent", 0.01 * parseFloat(event.target.value || "0"))}/>
+                    </td>  
+                    <td>
+                        <button type="button" 
+                                onClick={() => this._deleteMaterialFromMixture(index)}>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            );
+        }
+        elements.push(
+            <tr key="mixturematerialbutton">
+                <td colSpan="3">
+                    <button type="button" 
+                            onClick={() => this._addMaterialToMixture()}>
+                        Add Material To Mixture
+                    </button>
+                </td>
+            </tr>
+        );
+        return elements;
     }
 
     render() {
-        const existsInDatabase = PN.getMaterial(PN.database.currentMaterial.id || "") != null;
-        const buttonLabel = existsInDatabase
+        const matExistsInDatabase = PN.getMaterial(PN.database.currentMaterial.id || "") != null;
+        const matButtonLabel = matExistsInDatabase
             ? "Update Current Material"
             : "Create New Material";
+        const mixExistsInDatabase = PN.getMaterial(PN.database.currentMixture.id || "") != null;
+        const mixButtonLabel = mixExistsInDatabase
+            ? "Update Current Mixture"
+            : "Create New Mixture";
         return (
             <div>
                 <div className="tabletext">
@@ -233,7 +341,7 @@ class DatabaseBody extends React.Component {
                                 <button type="button" 
                                         disabled={this._disableMaterialButton()}
                                         onClick={() => this._createOrUpdateMaterial()}>
-                                    {buttonLabel}
+                                    {matButtonLabel}
                                 </button>
                                 <button type="button" 
                                         onClick={() => this._loadMaterial()}>
@@ -259,119 +367,46 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 ID: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", this._formatLower(event.target.value.toString()))}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value.toString()))}/>
                             </td>
                             <td>
                                 NAME: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("name", this._formatName(event.target.value))}/>
-                            </td>
-                            <td>
-                                COMPANY: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("company", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("name", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan="3">
                                 SCENT: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("scent", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("scent", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan="3">
                                 USAGE: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("usage", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("usage", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
+                        {this._renderMixtureRows()}
                         <tr>
-                            <td>
-                                <div>
-                                    NOTE: 
-                                </div>
-                                <div>
-                                    <select onChange={(event) => this._onChangeMaterial("note", this._formatLower(event.target.value))}>
-                                        <option value="TOP">TOP</option>
-                                        <option value="HEART">HEART</option>
-                                        <option value="BASE">BASE</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                LONGEVITY: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("longevity", event.target.value)}/>
-                            </td>
-                            <td>
-                                <div>
-                                    IMPACT: 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           min="0"
-                                           onChange={(event) => this._onChangeMaterial("impact", event.target.value)}/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                RECOMMENDED DILUTION: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("dilute", event.target.value)}/>
-                            </td>
-                            <td>
-                                <div>
-                                    AVG % USED IN CONCENTRATE: 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           step="0.001" 
-                                           min="0"
-                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", event.target.value)}/>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    MAX % ADVISED IN CONCENTRATE: 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           step="0.001" 
-                                           min="0"
-                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", event.target.value)}/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                CAS NUMBER: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("cas", this._formatUpper(event.target.value))}/>
-                            </td>
-                            <td>
-                                <div>
-                                    IFRA RESTRICTED: 
-                                </div>
-                                <div>
-                                    <select onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
-                                        <option value="TRUE">TRUE</option>
-                                        <option value="FALSE">FALSE</option>
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    MAX % IN FINISHED PRODUCT: 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           step="0.001" 
-                                           min="0"
-                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                            <td key={this.state.mixtureButtonKey}>
                                 <button type="button" 
-                                        onClick={() => this._createMaterial()}>
-                                    Create Material
+                                        disabled={this._disableMixtureButton()}
+                                        onClick={() => this._createOrUpdateMixture()}>
+                                    {mixButtonLabel}
                                 </button>
+                                <button type="button" 
+                                        onClick={() => this._loadMixture()}>
+                                    Load Selected Mixture
+                                </button>
+                            </td>
+                            <td colSpan="2">
+                                SELECT MIXTURE TO LOAD:
+                                <IngredientPicker defaultValue={PN.database.currentMixture.id}
+                                                  id={"loadmixture"}
+                                                  allowSolvents={false}
+                                                  allowMaterials={false}
+                                                  allowMixtures={true}
+                                                  onChange={(id) => this._changeSelectedMixture(id)}/>
                             </td>
                         </tr>
                     </tbody>
