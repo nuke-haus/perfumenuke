@@ -8,8 +8,10 @@ PN.errors = [];
 PN.warnings = [];
 
 PN.database = {};
-PN.database.mixtures = [];
-PN.database.materials = [];
+PN.database.mixtures = {};
+PN.database.materials = {};
+PN.database.currentMaterial = {};
+PN.database.currentMixture = {};
 
 PN.note = {};
 PN.note.top = "TOP";
@@ -69,7 +71,7 @@ PN.getDilutionPercentString = function(mixture) {
 }
 
 PN.validateLoadedMaterials = function(materials) {
-    PN.database.materials = [];
+    PN.database.materials = {};
 
     for (let material of materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
@@ -99,11 +101,11 @@ PN.validateLoadedMaterials = function(materials) {
             PN.errors.push("Material is missing a name: " + material.id);
             continue;
         }
-        if (material.solvent === true) { // Solvents don't need to be validated totally
+        if (material.solvent === true) { // Solvents are validated differently
             if (material.usage == null) {
                 PN.warnings.push("Material is missing usage notes:" + material.id);
             }
-            PN.database.materials.push(material);
+            PN.setMaterial(material);
             continue;
         }
         if (material.cas == null) {
@@ -124,13 +126,13 @@ PN.validateLoadedMaterials = function(materials) {
         if (material.usage == null) {
             PN.warnings.push("Material is missing usage notes: " + material.id);
         }
-    
-        PN.database.materials.push(material);
+
+        PN.setMaterial(material);
     }
 }
 
 PN.validateLoadedMixtures = function(mixtures) {
-    PN.database.mixtures = [];
+    PN.database.mixtures = {};
 
     for (let mixture of mixtures) {
         mixture.materials = mixture.materials || [];
@@ -198,7 +200,7 @@ PN.validateLoadedMixtures = function(mixtures) {
             PN.warnings.push("Mixture is missing usage notes: " + mixture.id);
         }
         
-        PN.database.mixtures.push(mixture);
+        PN.setMixture(mixture);
     }
 }
 
@@ -215,21 +217,19 @@ PN.parseNote = function(note) {
 }
 
 PN.getMaterial = function(id) {
-    for (let material of PN.database.materials) {
-        if (material.id === id) {
-            return material;
-        }
-    }
-    return null;
+    return PN.database.materials[id];
+}
+
+PN.setMaterial = function(material) {
+    PN.database.materials[material.id] = material;
 }
 
 PN.getMixture = function(id) {
-    for (let mix of PN.database.mixtures) {
-        if (mix.id === id) {
-            return mix;
-        }
-    }
-    return null;
+    return PN.database.mixtures[id];
+}
+
+PN.setMixture = function(mixture) {
+    PN.database.mixtures[mixture.id] = mixture;
 }
 
 PN.getMaterialsFromMixture = function(mixture) {
@@ -247,4 +247,8 @@ PN.guid = function() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
     );
+}
+
+PN.deepCopy = function(object) {
+    return JSON.parse(JSON.stringify(object));
 }
