@@ -113,7 +113,7 @@ class DatabaseBody extends React.Component {
     }
 
     _loadMixture() {
-        const mix = PN.getMaterial(this._selectedMixtureID);
+        const mix = PN.getMixture(this._selectedMixtureID);
         if (mix != null) {
             PN.database.currentMixture = PN.deepCopy(mix);
             this.setState({mixtureKey: PN.guid()});
@@ -159,13 +159,17 @@ class DatabaseBody extends React.Component {
                                           onChange={(id) => this._changeMixtureMaterial(index, "id", id)}/>
                     </td>
                     <td>
-                        PERCENTAGE IN MIXTURE: 
-                        <input type="number" 
-                               step="0.001" 
-                               min="0"
-                               max="100"
-                               defaultValue={(parseFloat(matData.percent) * 100.0)}
-                               onChange={(event) =>  this._changeMixtureMaterial(index, "percent", 0.01 * parseFloat(event.target.value || "0"))}/>
+                        <div>
+                            PERCENTAGE IN MIXTURE: 
+                        </div>
+                        <div>
+                            <input type="number" 
+                                   step="0.001" 
+                                   min="0"
+                                   max="100"
+                                   defaultValue={(parseFloat(matData.percent) * 100.0)}
+                                   onChange={(event) =>  this._changeMixtureMaterial(index, "percent", 0.01 * parseFloat(event.target.value || "0"))}/>
+                        </div>
                     </td>  
                     <td>
                         <button type="button" 
