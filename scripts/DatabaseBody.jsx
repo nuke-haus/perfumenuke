@@ -9,7 +9,7 @@ class DatabaseBody extends React.Component {
     }
 
     _formatName(value) {
-        return (value.toString().charAt(0).toUpperCase() + str.slice(1));
+        return (value.toString().charAt(0).toUpperCase() + str.slice(1));//this._onChangeMaterial("id", event.target.value.toString().toLower())
     }
 
     render() {
@@ -23,7 +23,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 ID: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
+                                <input className="databaseinput" onChange={(event) => console.log(event)}/>
                             </td>
                             <td>
                                 NAME: 
