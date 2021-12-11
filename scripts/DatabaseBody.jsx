@@ -198,7 +198,7 @@ class DatabaseBody extends React.Component {
         const matButtonLabel = matExistsInDatabase
             ? "Update Current Material"
             : "Create New Material";
-        const mixExistsInDatabase = PN.getMaterial(PN.database.currentMixture.id || "") != null;
+        const mixExistsInDatabase = PN.getMixture(PN.database.currentMixture.id || "") != null;
         const mixButtonLabel = mixExistsInDatabase
             ? "Update Current Mixture"
             : "Create New Mixture";
