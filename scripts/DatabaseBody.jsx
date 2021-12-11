@@ -54,17 +54,14 @@ class DatabaseBody extends React.Component {
     _currentMaterialIsDirty() {
         const material = PN.getMaterial(PN.database.currentMaterial.id || "");
         console.log(material, PN.database.currentMaterial, PN.areEqual(material, PN.database.currentMaterial))
-        return PN.areEqual(material, PN.database.currentMaterial);
+        return !PN.areEqual(material, PN.database.currentMaterial);
     }
 
     _disableMaterialButton() {
         if (!this._hasValidID()) {
             return true;
         }
-        if (!this._currentMaterialIsDirty()) {
-            return true;
-        }
-        return false;
+        return !this._currentMaterialIsDirty();
     }
 
     _changeSelectedMaterial(id) {
