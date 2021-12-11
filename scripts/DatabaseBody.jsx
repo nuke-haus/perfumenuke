@@ -132,10 +132,12 @@ class DatabaseBody extends React.Component {
 
     _changeMixtureMaterial(index, key, value) {
         PN.database.currentMixture.materials[index][key] = value;  
+        this.setState({mixtureButtonKey: PN.guid()});
     }
 
     _deleteMaterialFromMixture(index) {
         PN.database.currentMixture.materials.splice(index, 1);
+        this.setState({mixtureKey: PN.guid()});
     }
 
     // RENDER
