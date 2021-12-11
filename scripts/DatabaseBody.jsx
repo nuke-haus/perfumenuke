@@ -1,7 +1,8 @@
 class DatabaseBody extends React.Component {
 
     state = {
-        tableKey: "table"
+        materialKey: "mat",
+        mixtureKey: "mix"
     };
 
     _selectedMaterialID = "";
@@ -11,7 +12,7 @@ class DatabaseBody extends React.Component {
             if (!value) {
                 PN.database.currentMaterial.max_in_finished_product = null;
             }
-            this.setState({tableKey: PN.guid()});
+            this.setState({materialKey: PN.guid()});
         }
         PN.database.currentMaterial[key] = value;
     }
@@ -48,7 +49,7 @@ class DatabaseBody extends React.Component {
         const material = PN.getMaterial(this._selectedMaterialID);
         if (material != null) {
             PN.database.currentMaterial = PN.deepCopy(material);
-            this.setState({tableKey: PN.guid()});
+            this.setState({materialKey: PN.guid()});
         }
     }
 
@@ -62,7 +63,7 @@ class DatabaseBody extends React.Component {
                 <div className="tabletext">
                     MATERIAL EDITOR
                 </div>
-                <table className="ingredienttable" key={this.state.tableKey}>
+                <table className="ingredienttable" key={this.state.materialKey}>
                     <tbody>
                         <tr>
                             <td>
@@ -204,13 +205,14 @@ class DatabaseBody extends React.Component {
                                         onClick={() => this._createOrUpdateMaterial()}>
                                     {buttonLabel}
                                 </button>
-                            </td>
-                            <td colSpan="2">
                                 <button type="button" 
                                         disabled={this._hasValidID()}
                                         onClick={() => this._loadMaterial()}>
                                     Load Selected Material
                                 </button>
+                            </td>
+                            <td colSpan="2">
+                                SELECT MATERIAL TO LOAD:
                                 <IngredientPicker defaultValue={PN.database.currentMaterial.id}
                                                   id={"loadmaterial"}
                                                   allowSolvents={true}
@@ -223,7 +225,7 @@ class DatabaseBody extends React.Component {
                 <div className="tabletext">
                     MIXTURE EDITOR
                 </div>
-                <table className="ingredienttable" key={this.state.tableKey}>
+                <table className="ingredienttable" key={this.state.mixtureKey}>
                     <tbody>
                         <tr>
                             <td>
