@@ -350,7 +350,7 @@ class DatabaseBody extends React.Component {
                             </td>
                             <td colSpan="2">
                                 SELECT MATERIAL TO LOAD:
-                                <IngredientPicker defaultValue={PN.database.currentMaterial.id}
+                                <IngredientPicker defaultValue={this._selectedMaterialID}
                                                   id={"loadmaterial"}
                                                   allowSolvents={true}
                                                   allowMixtures={false}
@@ -367,23 +367,31 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 ID: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value.toString()))}/>
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.id}
+                                       onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value))}/>
                             </td>
                             <td>
                                 NAME: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("name", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.name}
+                                       onChange={(event) => this._onChangeMixture("name", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan="3">
                                 SCENT: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("scent", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.scent}
+                                       onChange={(event) => this._onChangeMixture("scent", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
                             <td colSpan="3">
                                 USAGE: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMixture("usage", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.usage}
+                                       onChange={(event) => this._onChangeMixture("usage", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         {this._renderMixtureRows()}
@@ -401,7 +409,7 @@ class DatabaseBody extends React.Component {
                             </td>
                             <td colSpan="2">
                                 SELECT MIXTURE TO LOAD:
-                                <IngredientPicker defaultValue={PN.database.currentMixture.id}
+                                <IngredientPicker defaultValue={this._selectedMixtureID}
                                                   id={"loadmixture"}
                                                   allowSolvents={false}
                                                   allowMaterials={false}
