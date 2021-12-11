@@ -3,10 +3,15 @@ class DatabaseBody extends React.Component {
     state = {
         materialKey: "mat",
         materialButtonKey: "matButton",
-        mixtureKey: "mix"
+        mixtureKey: "mix",
+        mixtureButtonKey: "mixButton"
     };
 
     _selectedMaterialID = "";
+    _selectedMixtureID = "";
+
+    // MATERIAL LOGIC
+    // --------------------------------------------------------------------------------------
 
     _onChangeMaterial(key, value) {
         if (key === "ifra_restricted") { // force a rerender
@@ -48,6 +53,7 @@ class DatabaseBody extends React.Component {
 
     _currentMaterialIsDirty() {
         const material = PN.getMaterial(PN.database.currentMaterial.id || "");
+        console.log(material, PN.database.currentMaterial, PN.areEqual(material, PN.database.currentMaterial))
         return PN.areEqual(material, PN.database.currentMaterial);
     }
 
@@ -71,6 +77,16 @@ class DatabaseBody extends React.Component {
             PN.database.currentMaterial = PN.deepCopy(material);
             this.setState({materialKey: PN.guid()});
         }
+    }
+
+    // MIXTURE LOGIC
+    // --------------------------------------------------------------------------------------
+
+    _onChangeMixture(key, value) {
+        if (key === "id") {
+            this.setState({mixtureButtonKey: PN.guid()});
+        }
+        PN.database.currentMixture[key] = value;
     }
 
     render() {
