@@ -221,7 +221,7 @@ PN.getMaterial = function(id) {
 }
 
 PN.setMaterial = function(material) {
-    PN.database.materials[material.id] = material;
+    PN.database.materials[material.id] = PN.deepCopy(material);
 }
 
 PN.getMixture = function(id) {
@@ -229,7 +229,7 @@ PN.getMixture = function(id) {
 }
 
 PN.setMixture = function(mixture) {
-    PN.database.mixtures[mixture.id] = mixture;
+    PN.database.mixtures[mixture.id] = PN.deepCopy(mixture);
 }
 
 PN.getMaterialsFromMixture = function(mixture) {
@@ -251,4 +251,8 @@ PN.guid = function() {
 
 PN.deepCopy = function(object) {
     return JSON.parse(JSON.stringify(object));
+}
+
+PN.areEqual = function(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
 }

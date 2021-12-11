@@ -2,6 +2,7 @@ class DatabaseBody extends React.Component {
 
     state = {
         materialKey: "mat",
+        materialButtonKey: "matButton",
         mixtureKey: "mix"
     };
 
@@ -13,6 +14,9 @@ class DatabaseBody extends React.Component {
                 PN.database.currentMaterial.max_in_finished_product = null;
             }
             this.setState({materialKey: PN.guid()});
+        }
+        if (key === "id") {
+            this.setState({materialButtonKey: PN.guid()});
         }
         PN.database.currentMaterial[key] = value;
     }
@@ -35,10 +39,26 @@ class DatabaseBody extends React.Component {
             return;
         }
         PN.setMaterial(PN.database.currentMaterial);
+        this.setState({materialButtonKey: PN.guid()});
     }
 
     _hasValidID() {
         return !!PN.database.currentMaterial.id;
+    }
+
+    _currentMaterialIsDirty() {
+        const material = PN.getMaterial(PN.database.currentMaterial.id || "");
+        return PN.areEqual(material, PN.database.currentMaterial);
+    }
+
+    _disableMaterialButton() {
+        if (!this._hasValidID()) {
+            return true;
+        }
+        if (!this._currentMaterialIsDirty()) {
+            return true;
+        }
+        return false;
     }
 
     _changeSelectedMaterial(id) {
@@ -178,7 +198,7 @@ class DatabaseBody extends React.Component {
                                 </div>
                                 <div>
                                     <select defaultValue={String(PN.database.currentMaterial.ifra_restricted)}
-                                            onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
+                                            onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "true")}>
                                         <option value="true">TRUE</option>
                                         <option value="false">FALSE</option>
                                     </select>
@@ -199,9 +219,9 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td key={this.state.materialButtonKey}>
                                 <button type="button" 
-                                        disabled={this._hasValidID()}
+                                        disabled={this._disableMaterialButton()}
                                         onClick={() => this._createOrUpdateMaterial()}>
                                     {buttonLabel}
                                 </button>
