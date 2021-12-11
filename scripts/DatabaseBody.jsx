@@ -48,12 +48,16 @@ class DatabaseBody extends React.Component {
                         </tr>
                         <tr>
                             <td>
-                                NOTE: 
-                                <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
-                                    <option value="TOP">TOP</option>
-                                    <option value="HEART">HEART</option>
-                                    <option value="BASE">BASE</option>
-                                </select>
+                                <div>
+                                    NOTE: 
+                                </div>
+                                <div>
+                                    <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
+                                        <option value="TOP">TOP</option>
+                                        <option value="HEART">HEART</option>
+                                        <option value="BASE">BASE</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
                                 LONGEVITY: 
@@ -76,18 +80,26 @@ class DatabaseBody extends React.Component {
                                 <input className="databaseinput" onChange={(event) => this._onChangeMaterial("dilute", event.target.value)}/>
                             </td>
                             <td>
-                                AVERAGE % USED IN CONCENTRATE: 
-                                <input type="number" 
-                                       step="0.001" 
-                                       min="0"
-                                       onChange={(event) => this._onChangeMaterial("avg_in_concentrate", event.target.value)}/>
+                                <div>
+                                    AVG % USED IN CONCENTRATE: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", event.target.value)}/>
+                                </div>
                             </td>
                             <td>
-                                MAX % ADVISED IN CONCENTRATE: 
-                                <input type="number" 
-                                       step="0.001" 
-                                       min="0"
-                                       onChange={(event) => this._onChangeMaterial("max_in_concentrate", event.target.value)}/>
+                                <div>
+                                    MAX % ADVISED IN CONCENTRATE: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", event.target.value)}/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -96,18 +108,26 @@ class DatabaseBody extends React.Component {
                                 <input className="databaseinput" onChange={(event) => this._onChangeMaterial("cas", event.target.value.toString().toUpperCase())}/>
                             </td>
                             <td>
-                                IFRA RESTRICTED: 
-                                <select onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
-                                    <option value="TRUE">TRUE</option>
-                                    <option value="FALSE">FALSE</option>
-                                </select>
+                                <div>
+                                    IFRA RESTRICTED: 
+                                </div>
+                                <div>
+                                    <select onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
+                                        <option value="TRUE">TRUE</option>
+                                        <option value="FALSE">FALSE</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
-                                MAX % IN FINISHED PRODUCT: 
-                                <input type="number" 
-                                       step="0.001" 
-                                       min="0"
-                                       onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
+                                <div>
+                                    MAX % IN FINISHED PRODUCT: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
