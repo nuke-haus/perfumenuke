@@ -117,7 +117,7 @@ table, td, th {
 }
 
 .databaseinput {
-    width: 100%;
+    width: calc(100% - 24px);
 }
 
 .navbar 

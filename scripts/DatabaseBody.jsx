@@ -22,12 +22,8 @@ class DatabaseBody extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                <div>
-                                    ID: 
-                                </div>
-                                <div>
-                                    <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
-                                </div>
+                                ID: 
+                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", event.target.value.toString().toLower())}/>
                             </td>
                             <td>
                                 NAME: 
@@ -53,7 +49,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 NOTE: 
-                                <select className="databaseinput" onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
+                                <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
                                     <option value="TOP">TOP</option>
                                     <option value="HEART">HEART</option>
                                     <option value="BASE">BASE</option>
@@ -64,10 +60,14 @@ class DatabaseBody extends React.Component {
                                 <input className="databaseinput" onChange={(event) => this._onChangeMaterial("longevity", event.target.value)}/>
                             </td>
                             <td>
-                                IMPACT: 
-                                <input type="number" 
-                                       min="0"
-                                       onChange={(event) => this._onChangeMaterial("impact", event.target.value)}/>
+                                <div>
+                                    IMPACT: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                        min="0"
+                                        onChange={(event) => this._onChangeMaterial("impact", event.target.value)}/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -97,7 +97,7 @@ class DatabaseBody extends React.Component {
                             </td>
                             <td>
                                 IFRA RESTRICTED: 
-                                <select className="databaseinput" onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
+                                <select onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "TRUE")}>
                                     <option value="TRUE">TRUE</option>
                                     <option value="FALSE">FALSE</option>
                                 </select>
