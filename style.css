@@ -75,7 +75,7 @@ select {
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
     margin: 4px;
-    width: 80px;
+    width: 200px;
 }
 
 table, td, th {
@@ -114,6 +114,10 @@ table, td, th {
 .ingredientpicker {
     display: table-cell; 
     width: calc(100% - 24px);
+}
+
+.databaseinput {
+    width: 100%;
 }
 
 .navbar 
