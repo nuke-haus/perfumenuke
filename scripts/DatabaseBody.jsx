@@ -51,7 +51,6 @@ class DatabaseBody extends React.Component {
 
     _currentMaterialIsDirty() {
         const material = PN.getMaterial(PN.database.currentMaterial.id || "");
-        console.log(material, PN.database.currentMaterial, PN.areEqual(material, PN.database.currentMaterial))
         return !PN.areEqual(material, PN.database.currentMaterial);
     }
 

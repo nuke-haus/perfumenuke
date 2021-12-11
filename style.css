@@ -59,7 +59,7 @@ button:disabled,
 button[disabled]{
     background-color: #849b84;
     box-shadow: inset 1px 1px 1px #849b84;
-    cursor: not-allowed;
+    cursor: default;
 }
 
 input {

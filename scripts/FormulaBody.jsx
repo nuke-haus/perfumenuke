@@ -163,7 +163,7 @@ class FormulaBody extends React.Component {
                             <td colSpan="3">
                                 <button type="button" 
                                         onClick={() => this._addIngredient()}>
-                                    New Ingredient
+                                    Add New Ingredient
                                 </button>
                             </td>
                         </tr>
