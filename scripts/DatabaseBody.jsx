@@ -9,7 +9,15 @@ class DatabaseBody extends React.Component {
     }
 
     _formatName(value) {
-        return (value.toString().charAt(0).toUpperCase() + str.slice(1));//this._onChangeMaterial("id", event.target.value.toString().toLower())
+        return (value.toString().charAt(0).toUpperCase() + str.slice(1));//
+    }
+
+    _formatLower(value) {
+        return String(value).toLowerCase();
+    }
+
+    _formatUpper(value) {
+        return String(value).toUpperCase();
     }
 
     render() {
@@ -23,7 +31,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 ID: 
-                                <input className="databaseinput" onChange={(event) => console.log(event)}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("id", this._formatLower(event.target.value.toString()))}/>
                             </td>
                             <td>
                                 NAME: 
@@ -31,7 +39,7 @@ class DatabaseBody extends React.Component {
                             </td>
                             <td>
                                 COMPANY: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("name", this._formatName(event.target.value))}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("company", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
@@ -52,7 +60,7 @@ class DatabaseBody extends React.Component {
                                     NOTE: 
                                 </div>
                                 <div>
-                                    <select onChange={(event) => this._onChangeMaterial("note", event.target.value.toString().toLower())}>
+                                    <select onChange={(event) => this._onChangeMaterial("note", this._formatLower(event.target.value))}>
                                         <option value="TOP">TOP</option>
                                         <option value="HEART">HEART</option>
                                         <option value="BASE">BASE</option>
@@ -69,8 +77,8 @@ class DatabaseBody extends React.Component {
                                 </div>
                                 <div>
                                     <input type="number" 
-                                        min="0"
-                                        onChange={(event) => this._onChangeMaterial("impact", event.target.value)}/>
+                                           min="0"
+                                           onChange={(event) => this._onChangeMaterial("impact", event.target.value)}/>
                                 </div>
                             </td>
                         </tr>
@@ -105,7 +113,7 @@ class DatabaseBody extends React.Component {
                         <tr>
                             <td>
                                 CAS NUMBER: 
-                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("cas", event.target.value.toString().toUpperCase())}/>
+                                <input className="databaseinput" onChange={(event) => this._onChangeMaterial("cas", this._formatUpper(event.target.value))}/>
                             </td>
                             <td>
                                 <div>
