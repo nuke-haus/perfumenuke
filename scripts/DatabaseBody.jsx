@@ -239,7 +239,6 @@ class DatabaseBody extends React.Component {
                                     {buttonLabel}
                                 </button>
                                 <button type="button" 
-                                        disabled={this._hasValidID()}
                                         onClick={() => this._loadMaterial()}>
                                     Load Selected Material
                                 </button>
