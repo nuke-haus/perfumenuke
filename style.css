@@ -74,6 +74,12 @@ input {
     width: 80px;
 }
 
+input:disabled,
+input[disabled]{
+    background-color: #849b84;
+    cursor: default;
+}
+
 select {
     background-color: #add3ad;
     border: 2px solid #000000;
