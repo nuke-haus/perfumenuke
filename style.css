@@ -76,7 +76,7 @@ input {
 
 input:disabled,
 input[disabled]{
-    background-color: #849b84;
+    background-color: #809480;
     cursor: default;
 }
 
