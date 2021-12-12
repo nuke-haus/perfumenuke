@@ -122,7 +122,7 @@ PN.validateLoadedMaterials = function(materials) {
             PN.errors.push(validationData.error);
         }
         if (validationData.warning) {
-            PN.warnings.push(validationData.error);
+            PN.warnings.push(validationData.warning);
         }
         if (validationData.material) {
             PN.setMaterial(material);
@@ -185,7 +185,7 @@ PN.validateLoadedMixtures = function(mixtures) {
             PN.errors.push(validationData.error);
         }
         if (validationData.warning) {
-            PN.warnings.push(validationData.error);
+            PN.warnings.push(validationData.warning);
         }
         if (validationData.mixture) {
             PN.setMixture(mixture);
