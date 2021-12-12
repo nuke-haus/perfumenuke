@@ -41,7 +41,7 @@ class DatabaseBody extends React.Component {
     }
 
     _createOrUpdateMaterial() {
-        if (!this._hasValidID()) {
+        if (!this._hasValidMaterialID()) {
             return;
         }
         const validationData = PN.validateMaterial(PN.database.currentMaterial);
