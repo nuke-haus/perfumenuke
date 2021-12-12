@@ -44,8 +44,15 @@ class DatabaseBody extends React.Component {
         if (!this._hasValidID()) {
             return;
         }
-        PN.setMaterial(PN.database.currentMaterial);
-        this.setState({materialButtonKey: PN.guid()});
+        const validationData = PN.validateMaterial(PN.database.currentMaterial);
+        if (validationData.error) {
+            alert(validationData.error);
+            return;
+        }
+        if (validationData.material) {
+            PN.setMaterial(validationData.material);
+            this.setState({materialButtonKey: PN.guid()});
+        }
     }
 
     _hasValidMaterialID() {
@@ -88,8 +95,15 @@ class DatabaseBody extends React.Component {
         if (!this._hasValidMixtureID()) {
             return;
         }
-        PN.setMixture(PN.database.currentMixture);
-        this.setState({mixtureButtonKey: PN.guid()});
+        const validationData = PN.validateMixture(PN.database.currentMixture);
+        if (validationData.error) {
+            alert(validationData.error);
+            return;
+        }
+        if (validationData.mixture) {
+            PN.setMixture(validationData.mixture);
+            this.setState({mixtureButtonKey: PN.guid()});
+        }
     }
 
     _hasValidMixtureID() {
@@ -153,7 +167,7 @@ class DatabaseBody extends React.Component {
                     <td>
                         {label}
                         <IngredientPicker defaultValue={matData.id}
-                                          id={"loadmaterial"}
+                                          id={"mixturematerial" + index}
                                           allowSolvents={true}
                                           allowMixtures={false}
                                           onChange={(id) => this._changeMixtureMaterial(index, "id", id)}/>
@@ -377,7 +391,7 @@ class DatabaseBody extends React.Component {
                                        defaultValue={PN.database.currentMixture.id}
                                        onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value))}/>
                             </td>
-                            <td colSpan="2">
+                            <td>
                                 NAME: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.name}

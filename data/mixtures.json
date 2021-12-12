@@ -39,7 +39,7 @@
         {
             "id": "triplal_10",
             "name": "Triplal",
-            "diluted_material": "triplal",
+            "usage": "10% dilution of Triplal.",
             "materials": [
                 {
                     "id": "triplal",

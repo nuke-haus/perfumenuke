@@ -53,21 +53,44 @@ PN.recomputeFormula = function() {
     }
 }
 
-PN.getDilutionMaterialPercent = function(mixture) {
-    if (mixture.diluted_material == null) {
-        return 0;
+PN.validateMaterial = function(material) { 
+    if (material.id == null) {
+        return {error: "Material is missing an ID!"};
     }
-    for (let material of mixture.materials) {
-        if (material.id === mixture.diluted_material) {
-            return material.percent;
+    if (material.name == null) {
+        return {error: "Material is missing a name: " + material.id};
+    }
+    if (material.solvent === true) { // Solvents are validated differently
+        if (material.usage == null) {
+            return {
+                warning: "Material is missing usage notes:" + material.id,
+                material: material
+            };
         }
+        return {material: material};
     }
-    return 0;
-}
-
-PN.getDilutionPercentString = function(mixture) {
-    const percent = PN.getDilutionMaterialPercent(mixture);
-    return ` (${percent * 100.0}%)`;
+    if (material.cas == null) {
+        return {error: "Material is missing a CAS number: " + material.id};
+    }
+    if (material.ifra_restricted === true && material.max_in_finished_product == null) {
+        return {error: "Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id};
+    }
+    if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
+        return {error: "Material note type is invalid: " + material.id};
+    }
+    if (material.scent == null) {
+        return {
+            warning: "Material is missing a scent description: " + material.id,
+            material: material
+        };
+    }
+    if (material.usage == null) {
+        return {
+            warning: "Material is missing usage notes: " + material.id,
+            material: material
+        };
+    }
+    return {material: material};
 }
 
 PN.validateLoadedMaterials = function(materials) {
@@ -88,47 +111,62 @@ PN.validateLoadedMaterials = function(materials) {
         if (material.max_in_finished_product) {
             material.max_in_finished_product = parseFloat(material.max_in_finished_product);
         }
-    
         if (PN.getMaterial(material.id) != null) {
             PN.errors.push("ID has been defined more than once in data: " + material.id);
             continue;
         }
-        if (material.id == null) {
-            PN.errors.push("Material is missing an ID!");
-            continue;
-        }
-        if (material.name == null) {
-            PN.errors.push("Material is missing a name: " + material.id);
-            continue;
-        }
-        if (material.solvent === true) { // Solvents are validated differently
-            if (material.usage == null) {
-                PN.warnings.push("Material is missing usage notes:" + material.id);
-            }
-            PN.setMaterial(material);
-            continue;
-        }
-        if (material.cas == null) {
-            PN.errors.push("Material is missing a CAS number: " + material.id);
-            continue;
-        }
-        if (material.ifra_restricted === true && material.max_in_finished_product == null) {
-            PN.errors.push("Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id);
-            continue;
-        }
-        if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
-            PN.errors.push("Material note type is invalid: " + material.id);
-            continue;
-        }
-        if (material.scent == null) {
-            PN.warnings.push("Material is missing a scent description: " + material.id);
-        }
-        if (material.usage == null) {
-            PN.warnings.push("Material is missing usage notes: " + material.id);
-        }
 
-        PN.setMaterial(material);
+        const validationData = PN.validateMaterial(material);
+
+        if (validationData.error) {
+            PN.errors.push(validationData.error);
+        }
+        if (validationData.warning) {
+            PN.warnings.push(validationData.error);
+        }
+        if (validationData.material) {
+            PN.setMaterial(material);
+        }
     }
+}
+
+PN.validateMixture = function(mixture) {
+    if (mixture.id == null) {
+        return {error: "Mixture is missing an ID!"};
+    }
+    if (mixture.name == null) {
+        return {error: "Mixture is missing a name: " + mixture.id};
+    }
+    if (mixture.materials.length < 2) {
+        return {error: "Mixture contains less than 2 materials: " + mixture.id};
+    }
+    let totalPercent = 0.0;
+    for (let material of mixture.materials) {
+        material.percent = parseFloat(material.percent || "10.0");
+        totalPercent = totalPercent + material.percent;
+        if (material.id == null || PN.getMaterial(material.id) == null) {
+            return {error: "Mixture has invalid material ID in its material list: " + mixture.id};
+        }
+        if (material.percent < 0.0 || material.percent >= 1.0) {
+            return {error: "Mixture has invalid material percentage value: " + mixture.id};
+        }
+    }
+    if (totalPercent !== 1.0) {
+        return {error: "Mixture material percentages don't add up to 1.0: " + mixture.id};
+    }
+    if (mixture.scent == null && mixture.diluted_material == null) {
+        return {
+            warning: "Mixture is missing a scent description: " + mixture.id,
+            mixture: mixture
+        };
+    }
+    if (mixture.usage == null && mixture.diluted_material == null) {
+        return {
+            warning: "Mixture is missing usage notes: " + mixture.id,
+            mixture: mixture
+        };
+    }
+    return {mixture: mixture};
 }
 
 PN.validateLoadedMixtures = function(mixtures) {
@@ -140,67 +178,18 @@ PN.validateLoadedMixtures = function(mixtures) {
             PN.errors.push("ID has been defined more than once in data: " + mixture.id);
             continue;
         }
-        if (mixture.id == null) {
-            PN.errors.push("Mixture is missing an ID!");
-            continue;
+
+        const validationData = PN.validateMixture(mixture);
+
+        if (validationData.error) {
+            PN.errors.push(validationData.error);
         }
-        if (mixture.name == null) {
-            PN.errors.push("Mixture is missing a name: " + mixture.id);
-            continue;
+        if (validationData.warning) {
+            PN.warnings.push(validationData.error);
         }
-        if (mixture.materials.length < 2) {
-            PN.errors.push("Mixture contains less than 2 materials: " + mixture.id);
-            continue;
+        if (validationData.mixture) {
+            PN.setMixture(mixture);
         }
-        let materialsValid = true;
-        let totalPercent = 0.0;
-        for (let material of mixture.materials) {
-            material.percent = parseFloat(material.percent || "10.0");
-            totalPercent = totalPercent + material.percent;
-            if (material.id == null || PN.getMaterial(material.id) == null) {
-                PN.errors.push("Mixture has invalid material ID in its material list: " + mixture.id);
-                materialsValid = false;
-                break; 
-            }
-            if (material.percent < 0.0 || material.percent >= 1.0) {
-                PN.errors.push("Mixture has invalid material percentage value: " + mixture.id);
-                materialsValid = false;
-                break; 
-            }
-        }
-        if (!materialsValid) {
-            continue;
-        }
-        if (totalPercent !== 1.0) {
-            PN.errors.push("Mixture material percentages don't add up to 1.0: " + mixture.id);
-            continue;
-        }
-        if (mixture.diluted_material != null) {
-            const foundMaterial = PN.getMaterial(mixture.diluted_material);
-            if (foundMaterial == null) {
-                PN.errors.push("Mixture dilution material ID is invalid: " + mixture.id);
-                continue;
-            } 
-            let hasDilutedMaterial = false;
-            for (let material of mixture.materials) {
-                if (material.id === mixture.diluted_material) {
-                    hasDilutedMaterial = true;
-                    break;
-                }
-            }
-            if (!hasDilutedMaterial) {
-                PN.errors.push("Mixture dilution material is not present in its material list: " + mixture.id);
-                continue;
-            }
-        }
-        if (mixture.scent == null && mixture.diluted_material == null) {
-            PN.warnings.push("Mixture is missing a scent description: " + mixture.id);
-        }
-        if (mixture.usage == null && mixture.diluted_material == null) {
-            PN.warnings.push("Mixture is missing usage notes: " + mixture.id);
-        }
-        
-        PN.setMixture(mixture);
     }
 }
 
@@ -230,6 +219,23 @@ PN.getMixture = function(id) {
 
 PN.setMixture = function(mixture) {
     PN.database.mixtures[mixture.id] = PN.deepCopy(mixture);
+}
+
+PN.getMixtureDilutionMaterial = function(mixture) {
+    if (mixture.materials == null || mixture.materials.length !== 2) {
+        return null;
+    }
+    for (let material of mixture.materials) {
+        const foundMaterial = PN.getMaterial(material.id);
+        if (foundMaterial && !foundMaterial.solvent) {
+            return material;
+        }
+    }
+    return null;
+}
+
+PN.getDilutionPercentString = function(percent) {
+    return ` (${percent * 100.0}%)`;
 }
 
 PN.getMaterialsFromMixture = function(mixture) {

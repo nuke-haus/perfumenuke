@@ -89,16 +89,6 @@ class FormulaBody extends React.Component {
     }
 
     render() {
-        if (PN.activeFormula.computed.length > 0) {
-            const concentrateChart = new Chart(
-                document.getElementById('concentrateChart'),
-                this._getConcentrateChartConfig()
-            );
-            const finalChart = new Chart(
-                document.getElementById('finalProductChart'),
-                this._getFinalChartConfig()
-            );
-        }
         const elements = [];
         for (let index in PN.activeFormula.ingredients || []) {
             const ingredient = PN.activeFormula.ingredients[index]
