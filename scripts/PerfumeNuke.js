@@ -72,7 +72,7 @@ PN.validateMaterial = function(material) {
     if (material.cas == null) {
         return {error: "Material is missing a CAS number: " + material.id};
     }
-    if (material.ifra_restricted === true && material.max_in_finished_product == null) {
+    if (material.ifra_restricted === true && (material.max_in_finished_product == null || material.max_in_finished_product === 0.0)) {
         return {error: "Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id};
     }
     if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {

@@ -306,6 +306,7 @@ class DatabaseBody extends React.Component {
                                     <input type="number" 
                                            step="0.001" 
                                            min="0"
+                                           max="100"
                                            defaultValue={PN.database.currentMaterial.avg_in_concentrate}
                                            onChange={(event) => this._onChangeMaterial("avg_in_concentrate", event.target.value)}/>
                                 </div>
@@ -318,6 +319,7 @@ class DatabaseBody extends React.Component {
                                     <input type="number" 
                                            step="0.001" 
                                            min="0"
+                                           max="100"
                                            defaultValue={PN.database.currentMaterial.max_in_concentrate}
                                            onChange={(event) => this._onChangeMaterial("max_in_concentrate", event.target.value)}/>
                                 </div>
@@ -350,6 +352,7 @@ class DatabaseBody extends React.Component {
                                     <input type="number" 
                                            step="0.001" 
                                            min="0"
+                                           max="100"
                                            disabled={PN.database.currentMaterial.ifra_restricted === false}
                                            defaultValue={PN.database.currentMaterial.max_in_finished_product}
                                            onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
