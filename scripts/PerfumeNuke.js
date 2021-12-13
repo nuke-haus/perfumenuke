@@ -18,12 +18,19 @@ PN.note.top = "TOP";
 PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
+PN._jsonOutputLogic = function(key, value) {
+    if (value == null) {
+        return undefined;
+    }
+    return value;
+}
+
 PN.getMaterialsForExport = function() {
     const exportData = {materials: []};
     for (let id in PN.database.materials) {
         exportData.materials.push(PN.database.materials[id]);
     }
-    return JSON.stringify(exportData, null, "\t");
+    return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
 }
 
 PN.getMixturesForExport = function() {
@@ -31,7 +38,7 @@ PN.getMixturesForExport = function() {
     for (let id in PN.database.mixtures) {
         exportData.mixtures.push(PN.database.mixtures[id]);
     }
-    return JSON.stringify(exportData, null, "\t");
+    return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
 }
 
 PN.recomputeFormula = function() {
