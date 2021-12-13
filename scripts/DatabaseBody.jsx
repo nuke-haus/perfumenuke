@@ -167,9 +167,11 @@ class DatabaseBody extends React.Component {
         PN.resetErrors();
         PN.validateLoadedMaterials(data.materials);
         if (PN.errors.length > 0) {
-            alert("Some of the imported materials could not be validated. Check the errors tab for more details.")
+            alert("Some of the imported materials could not be validated. Check the errors tab for more details.");
         } else if (PN.warnings.length > 0) {
-            alert("Some of the imported materials generated warnings. Check the errors tab for more details.")
+            alert("Some of the imported materials generated warnings. Check the errors tab for more details.");
+        } else {
+            alert(`Imported ${data.materials.length} materials.`);
         }
     }
 
@@ -183,9 +185,11 @@ class DatabaseBody extends React.Component {
         PN.resetErrors();
         PN.validateLoadedMixtures(data.mixtures);
         if (PN.errors.length > 0) {
-            alert("Some of the imported mixtures could not be validated. Check the errors tab for more details.")
+            alert("Some of the imported mixtures could not be validated. Check the errors tab for more details.");
         } else if (PN.warnings.length > 0) {
-            alert("Some of the imported mixtures generated warnings. Check the errors tab for more details.")
+            alert("Some of the imported mixtures generated warnings. Check the errors tab for more details.");
+        } else {
+            alert(`Imported ${data.mixtures.length} mixtures.`);
         }
     }
 
