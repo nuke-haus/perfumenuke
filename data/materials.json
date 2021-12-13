@@ -1,5 +1,5 @@
 {
-    "_comment": "This json file contains materials. Materials are a single component, used on their own or in mixtures. They have CAS numbers and some are IFRA restricted (solvents are the exception to this rule). Try to keep this data alphabetized.",
+    "_comment": "This json file contains materials. Materials are a single component, used on their own or in mixtures. They have CAS numbers and some are IFRA restricted (solvents are the exception to this rule).",
     "materials": [
         {
             "id": "perfumers_alcohol",

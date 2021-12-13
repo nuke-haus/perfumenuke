@@ -1,5 +1,5 @@
 {
-    "_comment": "This json file contains mixtures. Mixtures are comprised of several materials. Dilutions of materials are considered to be mixtures. Try to keep this data alphabetized.",
+    "_comment": "This json file contains mixtures. Mixtures are comprised of several materials. Dilutions of materials are considered to be mixtures.",
     "mixtures": [
         {
             "id": "triplal_10",
