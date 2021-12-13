@@ -128,7 +128,7 @@ table, td, th {
 }
 
 .ingredienttable {
-    width: max(60%, 1000px);
+    width: max(60%, 1100px);
     margin: auto;
     margin-bottom: 30px;
 }
