@@ -23,7 +23,7 @@ PN.getMaterialsForExport = function() {
     for (let id in PN.database.materials) {
         exportData.materials.push(PN.database.materials[id]);
     }
-    return exportData;
+    return JSON.stringify(exportData);
 }
 
 PN.getMixturesForExport = function() {
@@ -31,7 +31,7 @@ PN.getMixturesForExport = function() {
     for (let id in PN.database.mixtures) {
         exportData.mixtures.push(PN.database.mixtures[id]);
     }
-    return exportData;
+    return JSON.stringify(exportData);
 }
 
 PN.recomputeFormula = function() {
