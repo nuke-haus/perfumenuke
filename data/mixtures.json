@@ -8,11 +8,11 @@
             "materials": [
                 {
                     "id": "",
-                    "percent": "0.1"
+                    "percent": 0.1
                 },
                 {
                     "id": "perfumers_alcohol",
-                    "percent": "0.9"
+                    "percent": 0.9
                 }
             ]
         },
@@ -28,11 +28,11 @@
             "materials": [
                 {
                     "id": "triplal",
-                    "percent": "0.6"
+                    "percent": 0.6
                 },
                 {
                     "id": "perfumers_alcohol",
-                    "percent": "0.6"
+                    "percent": 0.6
                 }
             ]
         },
@@ -43,11 +43,11 @@
             "materials": [
                 {
                     "id": "triplal",
-                    "percent": "0.1"
+                    "percent": 0.1
                 },
                 {
                     "id": "perfumers_alcohol",
-                    "percent": "0.9"
+                    "percent": 0.9
                 }
             ]
         }

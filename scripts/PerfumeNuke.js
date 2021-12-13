@@ -116,8 +116,8 @@ PN.resetErrors = function() {
 
 PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
-        material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
-        material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
+        material.ifra_restricted = (String(material.ifra_restricted).toLowerCase().trim() === "true");
+        material.solvent = (String(material.solvent).toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
         material.scent = material.scent || "";
         material.usage = material.usage || "";
