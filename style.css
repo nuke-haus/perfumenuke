@@ -96,7 +96,7 @@ input[disabled]{
 }
 
 input[type="file"] {
-    width: 100%;
+    width: calc(100% - 24px);
 }
 
 select {
