@@ -31,9 +31,9 @@ class DatabaseBody extends React.Component {
 
     _onChangeMaterial(key, value) {
         if (key === "ifra_restricted") { // force a rerender
-            if (value === false) {
-                PN.database.currentMaterial.max_in_finished_product = null;
-            }
+            PN.database.currentMaterial.max_in_finished_product = (value === false)
+                ? null
+                : 0.1;
             this.setState({materialKey: PN.guid()});
         }
         PN.database.currentMaterial[key] = value;
