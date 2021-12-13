@@ -2,41 +2,6 @@
     "_comment": "This json file contains mixtures. Mixtures are comprised of several materials. Dilutions of materials are considered to be mixtures. Try to keep this data alphabetized.",
     "mixtures": [
         {
-            "id": "test_errors_mix1",
-            "name": "Test1",
-            "usage": "Testing perfume mixture validation. Should trigger an error (invalid material ID).",
-            "materials": [
-                {
-                    "id": "",
-                    "percent": 0.1
-                },
-                {
-                    "id": "perfumers_alcohol",
-                    "percent": 0.9
-                }
-            ]
-        },
-        {
-            "id": "test_errors_mix2",
-            "name": "Test2",
-            "usage": "Testing perfume mixture validation. Should trigger an error (no materials)."
-        },
-        {
-            "id": "test_errors_mix3",
-            "name": "Test3",
-            "usage": "Testing perfume mixture validation. Should trigger an error (percentages do not add up to 1.0).",
-            "materials": [
-                {
-                    "id": "triplal",
-                    "percent": 0.6
-                },
-                {
-                    "id": "perfumers_alcohol",
-                    "percent": 0.6
-                }
-            ]
-        },
-        {
             "id": "triplal_10",
             "name": "Triplal",
             "usage": "10% dilution of Triplal.",
