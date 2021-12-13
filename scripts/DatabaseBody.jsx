@@ -517,8 +517,8 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMaterialCostRows()}
-                        <tr className="tablebottom">
-                            <td key={this.state.materialButtonKey}>
+                        <tr>
+                            <td key={this.state.materialButtonKey} className="tablebottom">
                                 <button type="button" 
                                         disabled={this._disableMaterialButton()}
                                         onClick={() => this._createOrUpdateMaterial()}>
@@ -529,7 +529,7 @@ class DatabaseBody extends React.Component {
                                     Load Selected Material
                                 </button>
                             </td>
-                            <td colSpan="2">
+                            <td colSpan="2" className="tablebottom">
                                 SELECT MATERIAL TO LOAD:
                                 <IngredientPicker defaultValue={this._selectedMaterialID}
                                                   id={"loadmaterial"}
@@ -576,8 +576,8 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMixtureRows()}
-                        <tr className="tablebottom">
-                            <td key={this.state.mixtureButtonKey}>
+                        <tr>
+                            <td key={this.state.mixtureButtonKey} className="tablebottom">
                                 <button type="button" 
                                         disabled={this._disableMixtureButton()}
                                         onClick={() => this._createOrUpdateMixture()}>
@@ -588,7 +588,7 @@ class DatabaseBody extends React.Component {
                                     Load Selected Mixture
                                 </button>
                             </td>
-                            <td colSpan="2">
+                            <td colSpan="2" className="tablebottom">
                                 SELECT MIXTURE TO LOAD:
                                 <IngredientPicker defaultValue={this._selectedMixtureID}
                                                   id={"loadmixture"}
