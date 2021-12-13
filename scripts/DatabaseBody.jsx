@@ -83,6 +83,26 @@ class DatabaseBody extends React.Component {
         }
     }
 
+    _addCost() {
+        PN.database.currentMaterial.costs = PN.database.currentMaterial.costs || [];
+        const newCost = {
+            name: "",
+            cost: ""
+        };
+        PN.database.currentMaterial.costs.push(newCost);
+        this.setState({materialKey: PN.guid()});
+    }
+
+    _changeCost(index, key, value) {
+        PN.database.currentMaterial.costs[index][key] = value;
+        this.setState({materialButtonKey: PN.guid()});
+    }
+
+    _deleteCost(index) {
+        PN.database.currentMaterial.costs.splice(index, 1);
+        this.setState({materialKey: PN.guid()});
+    }
+
     // MIXTURE LOGIC
     // --------------------------------------------------------------------------------------
 
@@ -253,6 +273,44 @@ class DatabaseBody extends React.Component {
                     <button type="button" 
                             onClick={() => this._addMaterialToMixture()}>
                         Add Material To Mixture
+                    </button>
+                </td>
+            </tr>
+        );
+        return elements;
+    }
+
+    _renderMaterialCostRows() {
+        const elements = [];
+        for (let index in PN.database.currentMaterial.costs || []) {
+            const costData = PN.database.currentMaterial.costs[index];
+            elements.push(
+                <tr key={"cost" + index}>
+                    <td>
+                        SUPPLIER:
+                        <input defaultValue={costData.name}
+                               onChange={(event) =>  this._changeCost(index, "name", event.target.value)}/>
+                    </td>
+                    <td>
+                        COST:
+                        <input defaultValue={costData.cost}
+                               onChange={(event) =>  this._changeCost(index, "cost", event.target.value)}/>
+                    </td>
+                    <td>
+                        <button type="button" 
+                                onClick={() => this._deleteCost(index)}>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            );
+        }
+        elements.push(
+            <tr key="mixturematerialbutton">
+                <td colSpan="3">
+                    <button type="button" 
+                            onClick={() => this._addCost()}>
+                        Add Cost To Material
                     </button>
                 </td>
             </tr>
@@ -456,6 +514,7 @@ class DatabaseBody extends React.Component {
                                 </div>
                             </td>
                         </tr>
+                        {this._renderMaterialCostRows()}
                         <tr>
                             <td key={this.state.materialButtonKey}>
                                 <button type="button" 

@@ -7,7 +7,7 @@
             "solvent": true,
             "usage": "Perfumer's Alcohol (SDA 40B).",
             "costs": [
-                {"Sunrise Botanics": "1ml @ 0.02 CAD"}
+                {"name": "Sunrise Botanics", "cost": "1ml @ 0.02 CAD"}
             ]
         },
         {
@@ -40,7 +40,7 @@
             "ifra_restricted": true,
             "cas": "68039-49-6",
             "costs": [
-                {"PA": "1ml @ 0.3 USD"}
+                {"name": "PA", "cost": "1ml @ 0.3 USD"}
             ]
         },
         {
@@ -57,7 +57,7 @@
             "ifra_restricted": false,
             "cas": "54982-83-1",
             "costs": [
-                {"PA": "1ml @ 0.18 USD"}
+                {"name": "PA", "cost": "1ml @ 0.18 USD"}
             ]
         }
     ]
