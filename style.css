@@ -55,6 +55,21 @@ button {
     cursor: pointer;
 }
 
+::-webkit-file-upload-button {
+    background-color: #4CAF50;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    box-shadow: inset 2px 2px 1px #81ce84, inset -2px -2px 1px #357e37;
+    color: #000000;
+    padding: 2px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    margin: 4px;
+    cursor: pointer;
+}
+
 button:disabled,
 button[disabled]{
     background-color: #849b84;
@@ -78,6 +93,10 @@ input:disabled,
 input[disabled]{
     background-color: #9cbb9c;
     cursor: default;
+}
+
+input[type="file"] {
+    display: none;
 }
 
 select {

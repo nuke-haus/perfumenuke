@@ -275,16 +275,24 @@ class DatabaseBody extends React.Component {
                     <tbody>
                         <tr>
                             <td>
-                                IMPORT MATERIALS: 
-                                <input type="file"
-                                       accept="application/JSON"
-                                       onChange={(event) => this._onImportMaterialFile(evt.target.files[0])}/>
+                                <div>
+                                    IMPORT MATERIALS: 
+                                </div>
+                                <div>
+                                    <input type="file"
+                                           accept="application/JSON"
+                                           onChange={(event) => this._onImportMaterialFile(event.target.files[0])}/>
+                                </div>
                             </td>
                             <td>
-                                IMPORT MIXTURES: 
-                                <input className="databaseinput" 
-                                       defaultValue={PN.database.currentMixture.name}
-                                       onChange={(event) => this._onImportMixtureFile(evt.target.files[0])}/>
+                                <div>
+                                    IMPORT MIXTURES:
+                                </div>
+                                <div>
+                                    <input type="file"
+                                           accept="application/JSON"
+                                           onChange={(event) => this._onImportMixtureFile(event.target.files[0])}/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
