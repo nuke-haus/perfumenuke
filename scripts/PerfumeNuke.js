@@ -18,6 +18,22 @@ PN.note.top = "TOP";
 PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
+PN.getMaterialsForExport = function() {
+    const exportData = {materials: []};
+    for (let id in PN.database.materials) {
+        exportData.materials.push(PN.database.materials[id]);
+    }
+    return exportData;
+}
+
+PN.getMixturesForExport = function() {
+    const exportData = {mixtures: []};
+    for (let id in PN.database.mixtures) {
+        exportData.mixtures.push(PN.database.mixtures[id]);
+    }
+    return exportData;
+}
+
 PN.recomputeFormula = function() {
     PN.activeFormula.computed = {};
     PN.activeFormula.computed[PN.activeFormula.dilutant] = {quantity: PN.activeFormula.dilutantQuantity};
@@ -93,9 +109,12 @@ PN.validateMaterial = function(material) {
     return {material: material};
 }
 
-PN.validateLoadedMaterials = function(materials) {
-    PN.database.materials = {};
+PN.resetErrors = function() {
+    PN.errors = [];
+    PN.warnings = [];
+}
 
+PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
         material.ifra_restricted = ((material.ifra_restricted || "").toLowerCase().trim() === "true");
         material.solvent = ((material.solvent || "").toLowerCase().trim() === "true");
@@ -171,8 +190,6 @@ PN.validateMixture = function(mixture) {
 }
 
 PN.validateLoadedMixtures = function(mixtures) {
-    PN.database.mixtures = {};
-
     for (let mixture of mixtures) {
         mixture.materials = mixture.materials || [];
         if (PN.getMaterial(mixture.id) != null || PN.getMixture(mixture.id != null)) {

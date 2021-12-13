@@ -154,6 +154,55 @@ class DatabaseBody extends React.Component {
         this.setState({mixtureKey: PN.guid()});
     }
 
+    // IMPORT EXPORT LOGIC
+    // --------------------------------------------------------------------------------------
+
+    _onImportMaterialFile(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => this._onImportMaterialsSuccess(JSON.parse(event.target.result));
+        fileReader.readAsText(file);
+    }
+
+    _onImportMaterialsSuccess(data) {
+        PN.resetErrors();
+        PN.validateLoadedMaterials(data.materials);
+        if (PN.errors.length > 0) {
+            alert("Some of the imported materials could not be validated. Check the errors tab for more details.")
+        } else if (PN.warnings.length > 0) {
+            alert("Some of the imported materials generated warnings. Check the errors tab for more details.")
+        }
+    }
+
+    _onImportMixtureFile(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => this._onImportMixturessSuccess(JSON.parse(event.target.result));
+        fileReader.readAsText(file);
+    }
+
+    _onImportMixturesSuccess(data) {
+        PN.resetErrors();
+        PN.validateLoadedMixtures(data.mixtures);
+        if (PN.errors.length > 0) {
+            alert("Some of the imported mixtures could not be validated. Check the errors tab for more details.")
+        } else if (PN.warnings.length > 0) {
+            alert("Some of the imported mixtures generated warnings. Check the errors tab for more details.")
+        }
+    }
+
+    _exportMaterials() {
+        const data = PN.getMaterialsForExport();
+        element.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        element.setAttribute('download', "materials.json");
+        element.click();
+    }
+
+    _exportMixtures() {
+        const data = PN.getMixturesForExport();
+        element.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        element.setAttribute('download', "mixtures.json");
+        element.click();
+    }
+
     // RENDER
     // --------------------------------------------------------------------------------------
 
@@ -218,6 +267,42 @@ class DatabaseBody extends React.Component {
             : "Create New Mixture";
         return (
             <div>
+                <a ref={(ref) => this._downloadLink = ref}/>
+                <div className="tabletext">
+                    IMPORT AND EXPORT DATA
+                </div>
+                <table className="ingredienttable">
+                    <tbody>
+                        <tr>
+                            <td>
+                                IMPORT MATERIALS: 
+                                <input type="file"
+                                       accept="application/JSON"
+                                       onChange={(event) => this._onImportMaterialFile(evt.target.files[0])}/>
+                            </td>
+                            <td>
+                                IMPORT MIXTURES: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.name}
+                                       onChange={(event) => this._onImportMixtureFile(evt.target.files[0])}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._exportMaterials()}>
+                                    Export All Materials
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._exportMixtures()}>
+                                    Export All Mixtures
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div className="tabletext">
                     MATERIAL EDITOR
                 </div>
