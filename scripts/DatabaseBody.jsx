@@ -191,16 +191,16 @@ class DatabaseBody extends React.Component {
 
     _exportMaterials() {
         const data = PN.getMaterialsForExport();
-        element.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
-        element.setAttribute('download', "materials.json");
-        element.click();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "materials.json");
+        this._downloadLink.click();
     }
 
     _exportMixtures() {
         const data = PN.getMixturesForExport();
-        element.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
-        element.setAttribute('download', "mixtures.json");
-        element.click();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "mixtures.json");
+        this._downloadLink.click();
     }
 
     // RENDER
