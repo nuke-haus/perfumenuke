@@ -130,10 +130,6 @@ PN.validateLoadedMaterials = function(materials) {
         if (material.max_in_finished_product) {
             material.max_in_finished_product = parseFloat(material.max_in_finished_product);
         }
-        if (PN.getMaterial(material.id) != null) {
-            PN.errors.push("ID has been defined more than once in data: " + material.id);
-            continue;
-        }
 
         const validationData = PN.validateMaterial(material);
 
@@ -192,10 +188,6 @@ PN.validateMixture = function(mixture) {
 PN.validateLoadedMixtures = function(mixtures) {
     for (let mixture of mixtures) {
         mixture.materials = mixture.materials || [];
-        if (PN.getMaterial(mixture.id) != null || PN.getMixture(mixture.id != null)) {
-            PN.errors.push("ID has been defined more than once in data: " + mixture.id);
-            continue;
-        }
 
         const validationData = PN.validateMixture(mixture);
 
