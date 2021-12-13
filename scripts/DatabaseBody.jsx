@@ -289,11 +289,13 @@ class DatabaseBody extends React.Component {
                     <td>
                         SUPPLIER:
                         <input defaultValue={costData.name}
+                               className="databaseinput" 
                                onChange={(event) =>  this._changeCost(index, "name", event.target.value)}/>
                     </td>
                     <td>
                         COST:
                         <input defaultValue={costData.cost}
+                               className="databaseinput" 
                                onChange={(event) =>  this._changeCost(index, "cost", event.target.value)}/>
                     </td>
                     <td>
@@ -515,7 +517,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMaterialCostRows()}
-                        <tr>
+                        <tr className="tablebottom">
                             <td key={this.state.materialButtonKey}>
                                 <button type="button" 
                                         disabled={this._disableMaterialButton()}
@@ -574,7 +576,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMixtureRows()}
-                        <tr>
+                        <tr className="tablebottom">
                             <td key={this.state.mixtureButtonKey}>
                                 <button type="button" 
                                         disabled={this._disableMixtureButton()}
