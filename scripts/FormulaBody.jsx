@@ -220,7 +220,7 @@ class FormulaBody extends React.Component {
                     </tbody>
                 </table>
                 <div className="tabletext">
-                    FORMULA
+                    FORMULA EDITOR
                 </div>
                 <table className="ingredienttable">
                     <tbody>
