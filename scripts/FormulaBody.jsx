@@ -8,6 +8,19 @@ class FormulaBody extends React.Component {
 
     _selectedFormulaID = "";
 
+    _formatName(value) {
+        const str = String(value);
+        return (str.charAt(0).toUpperCase() + str.slice(1));
+    }
+
+    _formatLower(value) {
+        return String(value).toLowerCase();
+    }
+
+    _formatUpper(value) {
+        return String(value).toUpperCase();
+    }
+
     _addIngredient() {
         PN.database.activeFormula.ingredients.push({id: "", quantity: 0.0});
         PN.recomputeFormula();
@@ -20,16 +33,12 @@ class FormulaBody extends React.Component {
         this.setState({tableKey: PN.guid()});
     }
 
-    _changeDilution(id) {
-        PN.database.activeFormula.dilutant = id;
-        PN.recomputeFormula();
-        this.setState({detailsKey: PN.guid()});
-    }
-
-    _changeDilutionQuantity(value) {
-        PN.database.activeFormula.dilutant_quantity = Math.max(parseFloat(value), 0.0);
-        PN.recomputeFormula();
-        this.setState({detailsKey: PN.guid()});
+    _onChangeFormula(key, value, recompute) {
+        PN.database.activeFormula[key] = value;
+        if (recompute) {
+            PN.recomputeFormula();
+        }
+        this.setState({formulaButtonKey: PN.guid(), detailsKey: PN.guid()});
     }
 
     _changeIngredient(id, ingredient) {
@@ -171,16 +180,22 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={"ingredient" + index + this.state.tableKey}>
                     <td>
+                        INGREDIENT:
                         <IngredientPicker defaultValue={ingredient.id}
                                           id={"ingredient" + index}
                                           onChange={(id) => this._changeIngredient(id, ingredient)}/>
                     </td>
                     <td>
-                        <input type="number" 
-                               step="0.001" 
-                               min="0"
-                               defaultValue={ingredient.quantity || 0.0} 
-                               onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        <div>
+                            WEIGHT (GRAMS):
+                        </div>
+                        <div>
+                            <input type="number" 
+                                   step="0.001" 
+                                   min="0"
+                                   defaultValue={ingredient.quantity || 0.0} 
+                                   onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                        </div>
                     </td>
                     <td>
                         <button type="button" 
@@ -226,29 +241,66 @@ class FormulaBody extends React.Component {
                 <table className="ingredienttable" key={this.state.formulaKey}>
                     <tbody>
                         <tr>
-                            <th>DILUTANT</th>
-                            <th>WEIGHT (GRAMS)</th>
+                            <td>
+                                ID: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.activeFormula.id}
+                                       onChange={(event) => this._onChangeFormula("id", this._formatLower(event.target.value))}/>
+                            </td>
+                            <td>
+                                NAME: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.activeFormula.name}
+                                       onChange={(event) => this._onChangeFormula("name", this._formatName(event.target.value))}/>
+                            </td>
+                            <td>
+                                DATE CREATED: 
+                                <input className="databaseinput" 
+                                       type="date"
+                                       defaultValue={PN.database.activeFormula.date}
+                                       onChange={(event) => this._onChangeFormula("date", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="3">
+                                DESCRIPTION: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.activeFormula.description}
+                                       onChange={(event) => this._onChangeFormula("description", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="3">
+                                NOTES: 
+                                <textarea className="databaseinput" 
+                                          onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
+                                          defaultValue={PN.database.activeFormula.notes}
+                                          rows="5">
+                                </textarea>
+                            </td>
                         </tr>
                         <tr>
                             <td>
+                                DILUTANT:
                                 <IngredientPicker defaultValue={PN.database.activeFormula.dilutant}
                                                     id={"dilutant"}
                                                     allowSolvents={true}
                                                     allowMixtures={false}
                                                     allowMaterials={false}
-                                                    onChange={(id) => this._changeDilution(id)}/>
+                                                    onChange={(id) => this._onChangeFormula("dilution", id, true)}/>
                             </td>
                             <td>
-                                <input type="number" 
-                                    step="0.001" 
-                                    min="0"
-                                    defaultValue={PN.database.activeFormula.dilutant_quantity} 
-                                    onChange={(event) => this._changeDilutionQuantity(event.target.value)}/>
+                                <div>
+                                    WEIGHT (GRAMS):
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           defaultValue={PN.database.activeFormula.dilutant_quantity} 
+                                           onChange={(event) => this._onChangeFormula("dilutant_quantity", Math.max(parseFloat(event.target.value), 0.0), true)}/>
+                                </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <th>INGREDIENT</th>
-                            <th></th>
                         </tr>
                         {elements}
                         <tr>

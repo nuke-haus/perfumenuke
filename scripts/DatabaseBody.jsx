@@ -10,9 +10,6 @@ class DatabaseBody extends React.Component {
     _selectedMaterialID = "";
     _selectedMixtureID = "";
 
-    // MISC LOGIC
-    // --------------------------------------------------------------------------------------
-
     _formatName(value) {
         const str = String(value);
         return (str.charAt(0).toUpperCase() + str.slice(1));
