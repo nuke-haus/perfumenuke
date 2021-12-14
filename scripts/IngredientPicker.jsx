@@ -46,6 +46,16 @@ class IngredientPicker extends React.Component {
                 }   
             }
         }
+        if (this.props.allowFormulas) {
+            for (let id in PN.database.formulas) {
+                const formula = PN.getFormula(id);
+                count = count + 1;
+                if (formula != null) {
+                    this._nameMap[formula.name] = formula.id;
+                    elements.push(<option key={"formula" + count} value={formula.name}/>);
+                } 
+            }
+        }
         return (
             <datalist id={this.props.id}>
                 {elements}
@@ -72,6 +82,7 @@ class IngredientPicker extends React.Component {
 }
 
 IngredientPicker.defaultProps = {
+    allowFormulas: false,
     allowSolvents: false,
     allowMixtures: true,
     allowMaterials: true,

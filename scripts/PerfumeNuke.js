@@ -28,6 +28,16 @@ PN._jsonOutputLogic = function(key, value) {
     return value;
 }
 
+PN.getFormulasForExport = function() {
+    const exportData = {formulas: []};
+    for (let id in PN.database.formulas) {
+        const clone = PN.deepCopy(PN.database.formulas[id]);
+        clone.computed = null;
+        exportData.formulas.push(clone);
+    }
+    return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
+}
+
 PN.getMaterialsForExport = function() {
     const exportData = {materials: []};
     for (let id in PN.database.materials) {

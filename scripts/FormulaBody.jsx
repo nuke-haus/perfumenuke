@@ -6,6 +6,8 @@ class FormulaBody extends React.Component {
         formulaButtonKey: "button"
     };
 
+    _selectedFormulaID = "";
+
     _addIngredient() {
         PN.database.activeFormula.ingredients.push({id: "", quantity: 0.0});
         PN.recomputeFormula();
@@ -110,12 +112,23 @@ class FormulaBody extends React.Component {
         }
     }
 
+    _changeSelectedFormula(id) {
+        this._selectedFormulaID = id;
+    }
+
     _loadFormula() {
         const data = PN.getFormula(this._selectedFormulaID);
         if (data != null) {
             PN.database.activeFormula = PN.deepCopy(data);
             this.setState({formulaKey: PN.guid(), detailsKey: PN.guid(), formulaButtonKey: PN.guid()});
         }
+    }
+
+    _exportFormulas() {
+        const data = PN.getFormulasForExport();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "formulas.json");
+        this._downloadLink.click();
     }
 
     _renderDetailsRows() {
@@ -198,12 +211,10 @@ class FormulaBody extends React.Component {
                                 </div>
                             </td>
                             <td>
-                            <td>
                                 <button type="button" 
                                         onClick={() => this._exportFormulas()}>
                                     Export All Formulas
                                 </button>
-                            </td>
                             </td>
                         </tr>
                     </tbody>
@@ -263,8 +274,10 @@ class FormulaBody extends React.Component {
                                 SELECT FORMULA TO LOAD:
                                 <IngredientPicker defaultValue={this._selectedFormulaID}
                                                   id={"loadformula"}
-                                                  allowSolvents={true}
+                                                  allowSolvents={false}
+                                                  allowMaterials={false}
                                                   allowMixtures={false}
+                                                  allowFormulas={true}
                                                   onChange={(id) => this._changeSelectedFormula(id)}/>
                             </td>
                         </tr>
