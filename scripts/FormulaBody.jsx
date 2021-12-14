@@ -130,6 +130,7 @@ class FormulaBody extends React.Component {
         const data = PN.getFormula(this._selectedFormulaID);
         if (data != null) {
             PN.database.activeFormula = PN.deepCopy(data);
+            PN.recomputeFormula();
             this.setState({formulaKey: PN.guid(), detailsKey: PN.guid(), formulaButtonKey: PN.guid()});
         }
     }
@@ -272,7 +273,7 @@ class FormulaBody extends React.Component {
                         </tr>
                         <tr>
                             <td colSpan="3">
-                                NOTES: 
+                                OTHER NOTES: 
                                 <textarea onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.notes}
                                           rows="3">
