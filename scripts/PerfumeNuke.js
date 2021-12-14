@@ -55,36 +55,36 @@ PN.getMixturesForExport = function() {
 }
 
 PN.recomputeFormula = function() {
-    PN.activeFormula.computed = {};
-    PN.activeFormula.computed[PN.activeFormula.dilutant] = {quantity: PN.activeFormula.dilutantQuantity};
+    PN.database.activeFormula.computed = {};
+    PN.database.activeFormula.computed[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutantQuantity};
     let totalWeight = 0.0;
-    for (let ingredient of PN.activeFormula.ingredients) { // ingredient can be material or mixture
+    for (let ingredient of PN.database.activeFormula.ingredients) { // ingredient can be material or mixture
         const material = PN.getMaterial(ingredient.id);
         const mixture = PN.getMixture(ingredient.id);
         if (material != null) {
-            PN.activeFormula.computed[material.id] = PN.activeFormula.computed[material.id] || {};
-            const currentQuantity = PN.activeFormula.computed[material.id].quantity || 0.0;
-            PN.activeFormula.computed[material.id].quantity = currentQuantity + ingredient.quantity;
+            PN.database.activeFormula.computed[material.id] = PN.database.activeFormula.computed[material.id] || {};
+            const currentQuantity = PN.database.activeFormula.computed[material.id].quantity || 0.0;
+            PN.database.activeFormula.computed[material.id].quantity = currentQuantity + ingredient.quantity;
             totalWeight = totalWeight + ingredient.quantity;
         } else if (mixture != null) {
             for (let material of mixture.materials) {
-                PN.activeFormula.computed[material.id] = PN.activeFormula.computed[material.id] || {};
-                const currentQuantity = PN.activeFormula.computed[material.id].quantity || 0.0;
-                PN.activeFormula.computed[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
+                PN.database.activeFormula.computed[material.id] = PN.database.activeFormula.computed[material.id] || {};
+                const currentQuantity = PN.database.activeFormula.computed[material.id].quantity || 0.0;
+                PN.database.activeFormula.computed[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
             }
             totalWeight = totalWeight + ingredient.quantity;
         }
     }
     if (totalWeight > 0.0) {
-        for (let key in PN.activeFormula.computed) {
-            if (key === PN.activeFormula.dilutant) {
-                PN.activeFormula.computed[key].percent = ((PN.activeFormula.computed[key].quantity - PN.activeFormula.dilutantQuantity) / totalWeight) * 100.0;
+        for (let key in PN.database.activeFormula.computed) {
+            if (key === PN.database.activeFormula.dilutant) {
+                PN.database.activeFormula.computed[key].percent = ((PN.database.activeFormula.computed[key].quantity - PN.database.activeFormula.dilutantQuantity) / totalWeight) * 100.0;
             } else {
-                PN.activeFormula.computed[key].percent = (PN.activeFormula.computed[key].quantity / totalWeight) * 100.0;
+                PN.database.activeFormula.computed[key].percent = (PN.database.activeFormula.computed[key].quantity / totalWeight) * 100.0;
             }
         }
-        for (let key in PN.activeFormula.computed) {
-            PN.activeFormula.computed[key].percentInProduct = (PN.activeFormula.computed[key].quantity / (totalWeight + PN.activeFormula.dilutantQuantity)) * 100.0;
+        for (let key in PN.database.activeFormula.computed) {
+            PN.database.activeFormula.computed[key].percentInProduct = (PN.database.activeFormula.computed[key].quantity / (totalWeight + PN.database.activeFormula.dilutantQuantity)) * 100.0;
         }
     }
 }
@@ -130,7 +130,7 @@ PN.validateLoadedFormulas = function(formulas) {
             PN.warnings.push(validationData.warning);
         }
         if (validationData.formula) {
-            PN.setformula(validationData.formula);
+            PN.setFormula(validationData.formula);
         }
     }
 }
