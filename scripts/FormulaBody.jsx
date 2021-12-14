@@ -264,9 +264,10 @@ class FormulaBody extends React.Component {
                         <tr>
                             <td colSpan="3">
                                 DESCRIPTION: 
-                                <input className="databaseinput" 
-                                       defaultValue={PN.database.activeFormula.description}
-                                       onChange={(event) => this._onChangeFormula("description", this._formatName(event.target.value))}/>
+                                <textarea onChange={(event) => this._onChangeFormula("description", this._formatName(event.target.value))}
+                                          defaultValue={PN.database.activeFormula.description}
+                                          rows="3">
+                                </textarea>
                             </td>
                         </tr>
                         <tr>
@@ -274,7 +275,7 @@ class FormulaBody extends React.Component {
                                 NOTES: 
                                 <textarea onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.notes}
-                                          rows="5">
+                                          rows="3">
                                 </textarea>
                             </td>
                         </tr>
