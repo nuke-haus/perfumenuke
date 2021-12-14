@@ -1,17 +1,20 @@
 PN = {};
-PN.activeFormula = {};
-PN.activeFormula.ingredients = [];
-PN.activeFormula.dilutant = "perfumers_alcohol";
-PN.activeFormula.dilutantQuantity = 1.0;
-PN.activeFormula.computed = {};
 PN.errors = [];
 PN.warnings = [];
 
 PN.database = {};
 PN.database.mixtures = {};
 PN.database.materials = {};
+PN.database.formulas = {};
+
 PN.database.currentMaterial = {};
 PN.database.currentMixture = {};
+
+PN.database.activeFormula = {};
+PN.database.activeFormula.ingredients = [];
+PN.database.activeFormula.dilutant = "perfumers_alcohol";
+PN.database.activeFormula.dilutant_quantity = 1.0;
+PN.database.activeFormula.computed = {};
 
 PN.note = {};
 PN.note.top = "TOP";
@@ -72,6 +75,52 @@ PN.recomputeFormula = function() {
         }
         for (let key in PN.activeFormula.computed) {
             PN.activeFormula.computed[key].percentInProduct = (PN.activeFormula.computed[key].quantity / (totalWeight + PN.activeFormula.dilutantQuantity)) * 100.0;
+        }
+    }
+}
+
+
+PN.validateFormula = function(formula) { 
+    if (formula.id == null) {
+        return {error: "Formula is missing an ID!"};
+    }
+    if (formula.name == null) {
+        return {error: "Formula is missing a name: " + formula.id};
+    }
+    if (formula.ingredients == null || formula.ingredients.length === 0) {
+        return {
+            warning: "Formula is missing ingredients: " + formula.id,
+            formula: formula
+        };
+    }
+    if (formula.dilutant == null) {
+        return {
+            warning: "Formula is missing a dilutant: " + formula.id,
+            formula: formula
+        };
+    }
+    if (formula.dilutant_quantity == null) {
+        return {
+            warning: "Formula is missing a dilutant quantity: " + formula.id,
+            formula: formula
+        };
+    }
+    return {formula: formula};
+}
+
+PN.validateLoadedFormulas = function(formulas) {
+    for (let formula of formulas) {
+
+        const validationData = PN.validateformula(formula);
+
+        if (validationData.error) {
+            PN.errors.push(validationData.error);
+        }
+        if (validationData.warning) {
+            PN.warnings.push(validationData.warning);
+        }
+        if (validationData.formula) {
+            PN.setformula(validationData.formula);
         }
     }
 }
@@ -220,6 +269,14 @@ PN.parseNote = function(note) {
         return PN.note.base;
     }
     return null;
+}
+
+PN.setFormula = function(formula) {
+    PN.database.formulas[formula.id] = PN.deepCopy(formula);
+}
+
+PN.getFormula = function(id) {
+    return PN.database.formulas[id];
 }
 
 PN.getMaterial = function(id) {

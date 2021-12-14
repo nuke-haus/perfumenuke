@@ -1,0 +1,43 @@
+{
+    "_comment": "This json file contains example formulas that can be imported.",
+    "formulas": [
+        {
+            "id": "test1",
+            "name": "Test Formula 1",
+            "description": "This is a test formula. It smells like apples or something.",
+            "notes": "This is a bunch of notes.",
+            "date": "2021-12-14",
+            "dilutant": "perfumers_alcohol",
+            "dilutant_quantity": 10.0,
+            "ingredients": [
+                {   
+                    "id": "zenolide",
+                    "quantity": 0.1
+                },
+                {   
+                    "id": "triplal",
+                    "quantity": 0.3
+                }
+            ]
+        },
+        {
+            "id": "test2",
+            "name": "Test Formula 2",
+            "description": "This is a test formula. It smells like oranges or something.",
+            "notes": "This is more notes.",
+            "date": "2021-12-15",
+            "dilutant": "perfumers_alcohol",
+            "dilutant_quantity": 12.5,
+            "ingredients": [
+                {   
+                    "id": "zenolide",
+                    "quantity": 0.2
+                },
+                {   
+                    "id": "triplal",
+                    "quantity": 0.4
+                }
+            ]
+        }
+    ]
+}

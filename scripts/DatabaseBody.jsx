@@ -323,11 +323,11 @@ class DatabaseBody extends React.Component {
     render() {
         const matExistsInDatabase = PN.getMaterial(PN.database.currentMaterial.id || "") != null;
         const matButtonLabel = matExistsInDatabase
-            ? "Update Current Material"
+            ? "Save Current Material"
             : "Create New Material";
         const mixExistsInDatabase = PN.getMixture(PN.database.currentMixture.id || "") != null;
         const mixButtonLabel = mixExistsInDatabase
-            ? "Update Current Mixture"
+            ? "Save Current Mixture"
             : "Create New Mixture";
         return (
             <div>
