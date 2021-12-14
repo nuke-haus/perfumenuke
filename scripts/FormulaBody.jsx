@@ -272,8 +272,7 @@ class FormulaBody extends React.Component {
                         <tr>
                             <td colSpan="3">
                                 NOTES: 
-                                <textarea className="databaseinput" 
-                                          onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
+                                <textarea onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.notes}
                                           rows="5">
                                 </textarea>

@@ -77,6 +77,19 @@ button[disabled]{
     cursor: default;
 }
 
+textarea {
+    background-color: #add3ad;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    color: #000000;
+    padding: 2px 6px;
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    margin: 4px;
+    width: calc(100% - 24px);
+    resize: none;
+}
+
 input {
     background-color: #add3ad;
     border: 2px solid #000000;
