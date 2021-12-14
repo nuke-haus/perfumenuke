@@ -79,6 +79,7 @@ class FormulaBody extends React.Component {
         } else {
             alert(`Imported ${data.formulas.length} formulas.`);
         }
+        this.setState({formulaKey: PN.guid(), formulaButtonKey: PN.guid()});
     }
 
     _hasValidFormulaID() {
@@ -222,7 +223,7 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     FORMULA EDITOR
                 </div>
-                <table className="ingredienttable">
+                <table className="ingredienttable" key={this.state.formulaKey}>
                     <tbody>
                         <tr>
                             <th>DILUTANT</th>
