@@ -121,7 +121,7 @@ PN.validateFormula = function(formula) {
 PN.validateLoadedFormulas = function(formulas) {
     for (let formula of formulas) {
 
-        const validationData = PN.validateformula(formula);
+        const validationData = PN.validateFormula(formula);
 
         if (validationData.error) {
             PN.errors.push(validationData.error);
