@@ -176,12 +176,15 @@ class FormulaBody extends React.Component {
             ? "Save Current Formula"
             : "Create New Formula";
         const elements = [];
+        let count = 1;
         for (let index in PN.database.activeFormula.ingredients || []) {
-            const ingredient = PN.database.activeFormula.ingredients[index]
+            const ingredient = PN.database.activeFormula.ingredients[index];
+            const name = `INGREDIENT ${count}:`;
+            count = count + 1;
             elements.push(
                 <tr key={"ingredient" + index + this.state.tableKey}>
                     <td>
-                        INGREDIENT:
+                        {name}
                         <IngredientPicker defaultValue={ingredient.id}
                                           id={"ingredient" + index}
                                           onChange={(id) => this._changeIngredient(id, ingredient)}/>
