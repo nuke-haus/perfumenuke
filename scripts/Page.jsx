@@ -8,14 +8,18 @@ class Page extends React.Component {
         currentNav: "FORMULA"
     };
 
-    _onNavClick(id) {
-        this.setState({currentNav: id});
+    constructor(props) {
+        super(props);
+
+        // Load data in order since there's dependencies (materials -> mixtures -> formulas)
+        fetch('data/materials.json')
+            .then(response => response.json())
+            .then(data => this._onLoadMaterials(data));
     }
 
     _onLoadMaterials(data) {
         PN.validateLoadedMaterials(data.materials);
 
-        // Fetch mixtures only after materials are loaded since there's a dependancy
         fetch('data/mixtures.json')
             .then(response => response.json())
             .then(data => this._onLoadMixtures(data));
@@ -23,21 +27,25 @@ class Page extends React.Component {
 
     _onLoadMixtures(data) {
         PN.validateLoadedMixtures(data.mixtures);
-        this.forceUpdate();
+
+        fetch('data/formulas.json')
+            .then(response => response.json())
+            .then(data => this._onLoadFormulas(data));
     }
 
-    constructor(props) {
-        super(props);
-
-        fetch('data/materials.json')
-            .then(response => response.json())
-            .then(data => this._onLoadMaterials(data));
+    _onLoadFormulas(data) {
+        PN.validateLoadedFormulas(data.formulas);
+        this.forceUpdate();
     }
 
     _getClassName(tabName) {
         return (this.state.currentNav === tabName) 
             ? "selectednav"
             : "";
+    }
+
+    _onNavClick(id) {
+        this.setState({currentNav: id});
     }
 
     render() {

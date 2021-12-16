@@ -23,6 +23,34 @@ class DatabaseBody extends React.Component {
         return String(value).toUpperCase();
     }
 
+    // FORMULA LOGIC
+    // --------------------------------------------------------------------------------------
+
+    _onImportFormulaFile(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => this._onImportFormulasSuccess(JSON.parse(event.target.result));
+        fileReader.readAsText(file);
+    }
+
+    _onImportFormulasSuccess(data) {
+        PN.resetErrors();
+        PN.validateLoadedFormulas(data.formulas);
+        if (PN.errors.length > 0) {
+            alert("Some of the imported formulas could not be validated. Check the errors tab for more details.");
+        } else if (PN.warnings.length > 0) {
+            alert("Some of the imported formulas generated warnings. Check the errors tab for more details.");
+        } else {
+            alert(`Imported ${data.formulas.length} formulas.`);
+        }
+    }
+
+    _exportFormulas() {
+        const data = PN.getFormulasForExport();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "formulas.json");
+        this._downloadLink.click();
+    }
+
     // MATERIAL LOGIC
     // --------------------------------------------------------------------------------------
 
@@ -355,6 +383,16 @@ class DatabaseBody extends React.Component {
                                            onChange={(event) => this._onImportMixtureFile(event.target.files[0])}/>
                                 </div>
                             </td>
+                            <td>
+                                <div>
+                                    IMPORT FORMULAS: 
+                                </div>
+                                <div>
+                                    <input type="file"
+                                           accept="application/JSON"
+                                           onChange={(event) => this._onImportFormulaFile(event.target.files[0])}/>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -367,6 +405,12 @@ class DatabaseBody extends React.Component {
                                 <button type="button" 
                                         onClick={() => this._exportMixtures()}>
                                     Export All Mixtures
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._exportFormulas()}>
+                                    Export All Formulas
                                 </button>
                             </td>
                         </tr>
