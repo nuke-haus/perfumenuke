@@ -107,6 +107,9 @@ class FormulaBody extends React.Component {
     }
 
     _renderDetailsRows() {
+        if (PN.database.activeFormula.ingredients.length === 0) {
+            return null;
+        }
         return (
             <tr>
                 <td>{PN.database.activeFormula.computed.concentration}</td>

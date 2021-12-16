@@ -15,6 +15,7 @@ PN.database.activeFormula.ingredients = [];
 PN.database.activeFormula.dilutant = "perfumers_alcohol";
 PN.database.activeFormula.dilutant_quantity = 1.0;
 PN.database.activeFormula.computed = {};
+PN.database.activeFormula.computed.ingredients = {};
 
 PN.note = {};
 PN.note.top = "TOP";
