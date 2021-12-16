@@ -56,36 +56,39 @@ PN.getMixturesForExport = function() {
 
 PN.recomputeFormula = function() {
     PN.database.activeFormula.computed = {};
-    PN.database.activeFormula.computed[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
+    PN.database.activeFormula.computed.ingredients = {};
+    PN.database.activeFormula.computer.ingredients[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
     let totalWeight = 0.0;
     for (let ingredient of PN.database.activeFormula.ingredients) { // ingredient can be material or mixture
         const material = PN.getMaterial(ingredient.id);
         const mixture = PN.getMixture(ingredient.id);
         if (material != null) {
-            PN.database.activeFormula.computed[material.id] = PN.database.activeFormula.computed[material.id] || {};
-            const currentQuantity = PN.database.activeFormula.computed[material.id].quantity || 0.0;
-            PN.database.activeFormula.computed[material.id].quantity = currentQuantity + ingredient.quantity;
+            PN.database.activeFormula.computer.ingredients[material.id] = PN.database.activeFormula.computer.ingredients[material.id] || {};
+            const currentQuantity = PN.database.activeFormula.computer.ingredients[material.id].quantity || 0.0;
+            PN.database.activeFormula.computer.ingredients[material.id].quantity = currentQuantity + ingredient.quantity;
             totalWeight = totalWeight + ingredient.quantity;
         } else if (mixture != null) {
             for (let material of mixture.materials) {
-                PN.database.activeFormula.computed[material.id] = PN.database.activeFormula.computed[material.id] || {};
-                const currentQuantity = PN.database.activeFormula.computed[material.id].quantity || 0.0;
-                PN.database.activeFormula.computed[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
+                PN.database.activeFormula.computer.ingredients[material.id] = PN.database.activeFormula.computer.ingredients[material.id] || {};
+                const currentQuantity = PN.database.activeFormula.computer.ingredients[material.id].quantity || 0.0;
+                PN.database.activeFormula.computer.ingredients[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
             }
             totalWeight = totalWeight + ingredient.quantity;
         }
     }
     if (totalWeight > 0.0) {
-        for (let key in PN.database.activeFormula.computed) {
+        for (let key in PN.database.activeFormula.computer.ingredients) {
             if (key === PN.database.activeFormula.dilutant) {
-                PN.database.activeFormula.computed[key].percent = ((PN.database.activeFormula.computed[key].quantity - PN.database.activeFormula.dilutant_quantity) / totalWeight) * 100.0;
+                PN.database.activeFormula.computer.ingredients[key].percent = ((PN.database.activeFormula.computer.ingredients[key].quantity - PN.database.activeFormula.dilutant_quantity) / totalWeight) * 100.0;
             } else {
-                PN.database.activeFormula.computed[key].percent = (PN.database.activeFormula.computed[key].quantity / totalWeight) * 100.0;
+                PN.database.activeFormula.computer.ingredients[key].percent = (PN.database.activeFormula.computer.ingredients[key].quantity / totalWeight) * 100.0;
             }
         }
-        for (let key in PN.database.activeFormula.computed) {
-            PN.database.activeFormula.computed[key].percentInProduct = (PN.database.activeFormula.computed[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0;
+        for (let key in PN.database.activeFormula.computer.ingredients) {
+            PN.database.activeFormula.computer.ingredients[key].percentInProduct = (PN.database.activeFormula.computer.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0;
         }
+        PN.database.activeFormula.computed.totalWeight = totalWeight;
+        PN.database.activeFormula.computed.concentration = 100.0 - ((PN.database.activeFormula.dilutant_quantity / totalWeight) * 100.0);
     }
 }
 

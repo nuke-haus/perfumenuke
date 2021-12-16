@@ -53,16 +53,6 @@ class FormulaBody extends React.Component {
         this.setState({detailsKey: PN.guid()});
     }
 
-    _renderPercentInProduct(id, material) {
-        const floatValue = (PN.database.activeFormula.computed[id].percentInProduct || 0).toPrecision(6);
-        if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
-            return (
-                <span className="error">{floatValue}</span>
-            );
-        } 
-        return floatValue;
-    }
-
     _getTooltip(id) {
         const material = PN.getMaterial(id);
         let tooltip = "";
@@ -117,8 +107,27 @@ class FormulaBody extends React.Component {
     }
 
     _renderDetailsRows() {
+        return (
+            <tr>
+                <td>{PN.database.activeFormula.computed.concentration}</td>
+                <td>{PN.database.activeFormula.computed.totalWeight}</td>
+            </tr>  
+        );
+    }
+
+    _renderPercentInProduct(id, material) {
+        const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0).toPrecision(6);
+        if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
+            return (
+                <span className="error">{floatValue}</span>
+            );
+        } 
+        return floatValue;
+    }
+
+    _renderManifestRows() {
         const elements = [];
-        for (let id in PN.database.activeFormula.computed) {
+        for (let id in PN.database.activeFormula.computed.ingredients) {
             const material = PN.getMaterial(id);
             const maxInProduct = material.max_in_finished_product == null 
                 ? "" 
@@ -130,10 +139,10 @@ class FormulaBody extends React.Component {
                 ? "" 
                 : (material.max_in_concentrate * 100.0);
             elements.push(
-                <tr key={'detail' + id}>
+                <tr key={'manifest' + id}>
                     <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
-                    <td>{(PN.database.activeFormula.computed[id].quantity || 0).toPrecision(4)}</td>
-                    <td>{(PN.database.activeFormula.computed[id].percent || 0).toPrecision(6)}</td>
+                    <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0).toPrecision(4)}</td>
+                    <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0).toPrecision(6)}</td>
                     <td>{avgInConc}</td>
                     <td>{maxInConc}</td>
                     <td>{this._renderPercentInProduct(id, material)}</td>
@@ -289,6 +298,18 @@ class FormulaBody extends React.Component {
                     </tbody>
                 </table>
                 <div className="tabletext">
+                    USEFUL INFORMATION
+                </div>
+                <table className="formulatable" key={this.state.detailsKey}>
+                    <tbody>
+                        <tr>
+                            <th>FRAGRANCE CONCENTRATION %</th>
+                            <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
+                        </tr>
+                        {this._renderDetailsRows()}
+                    </tbody>
+                </table>
+                <div className="tabletext">
                     MATERIAL MANIFEST
                 </div>
                 <table className="formulatable" key={this.state.detailsKey}>
@@ -302,7 +323,7 @@ class FormulaBody extends React.Component {
                             <th>% IN FINISHED PRODUCT</th>
                             <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
                         </tr>
-                        {this._renderDetailsRows()}
+                        {this._renderManifestRows()}
                     </tbody>
                 </table>
             </div>
