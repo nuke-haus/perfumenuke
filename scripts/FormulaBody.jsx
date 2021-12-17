@@ -106,15 +106,6 @@ class FormulaBody extends React.Component {
         }
     }
 
-    _renderDetailsRows() {
-        return (
-            <tr>
-                <td>{PN.database.activeFormula.computed.concentration}</td>
-                <td>{PN.database.activeFormula.computed.totalWeight}</td>
-            </tr>  
-        );
-    }
-
     _renderPercentInProduct(id, material) {
         const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0).toPrecision(6);
         if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
@@ -153,6 +144,16 @@ class FormulaBody extends React.Component {
         return elements;
     }
 
+    _renderDetailsRows() {
+        return (
+            <tr>
+                <td>{PN.database.activeFormula.computed.concentration}</td>
+                <td>{PN.database.activeFormula.computed.concentrationWeight}</td>
+                <td>{PN.database.activeFormula.computed.totalWeight}</td>
+            </tr>  
+        );
+    }
+
     _renderComputed() {
         if (PN.database.activeFormula.ingredients.length === 0) {
             return null;
@@ -166,6 +167,7 @@ class FormulaBody extends React.Component {
                     <tbody>
                         <tr>
                             <th>FRAGRANCE CONCENTRATION %</th>
+                            <th>CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
                         </tr>
                         {this._renderDetailsRows()}
