@@ -158,11 +158,11 @@ class FormulaBody extends React.Component {
             return null;
         }
         return (
-            <div>
+            <div key={this.state.detailsKey}>
                 <div className="tabletext">
                     USEFUL INFORMATION
                 </div>
-                <table className="formulatable" key={this.state.detailsKey}>
+                <table className="formulatable">
                     <tbody>
                         <tr>
                             <th>FRAGRANCE CONCENTRATION %</th>
@@ -174,7 +174,7 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     MATERIAL MANIFEST
                 </div>
-                <table className="formulatable" key={this.state.detailsKey}>
+                <table className="formulatable">
                     <tbody>
                         <tr>
                             <th>MATERIAL</th>
