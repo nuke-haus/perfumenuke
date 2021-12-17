@@ -162,7 +162,7 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     USEFUL INFORMATION
                 </div>
-                <table className="formulatable">
+                <table className="ingredienttable">
                     <tbody>
                         <tr>
                             <th>FRAGRANCE CONCENTRATION %</th>
