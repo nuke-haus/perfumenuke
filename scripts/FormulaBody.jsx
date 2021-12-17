@@ -107,9 +107,6 @@ class FormulaBody extends React.Component {
     }
 
     _renderDetailsRows() {
-        if (PN.database.activeFormula.ingredients.length === 0) {
-            return null;
-        }
         return (
             <tr>
                 <td>{PN.database.activeFormula.computed.concentration}</td>
@@ -154,6 +151,45 @@ class FormulaBody extends React.Component {
             );
         }
         return elements;
+    }
+
+    _renderComputed() {
+        if (PN.database.activeFormula.ingredients.length === 0) {
+            return null;
+        }
+        return (
+            <div>
+                <div className="tabletext">
+                    USEFUL INFORMATION
+                </div>
+                <table className="formulatable" key={this.state.detailsKey}>
+                    <tbody>
+                        <tr>
+                            <th>FRAGRANCE CONCENTRATION %</th>
+                            <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
+                        </tr>
+                        {this._renderDetailsRows()}
+                    </tbody>
+                </table>
+                <div className="tabletext">
+                    MATERIAL MANIFEST
+                </div>
+                <table className="formulatable" key={this.state.detailsKey}>
+                    <tbody>
+                        <tr>
+                            <th>MATERIAL</th>
+                            <th>WEIGHT (GRAMS)</th>
+                            <th>% IN CONCENTRATE</th>
+                            <th>AVG % USED IN CONCENTRATE</th>
+                            <th>MAX % ADVISED IN CONCENTRATE</th>
+                            <th>% IN FINISHED PRODUCT</th>
+                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
+                        </tr>
+                        {this._renderManifestRows()}
+                    </tbody>
+                </table>
+            </div>
+        );
     }
 
     render() {
@@ -300,35 +336,7 @@ class FormulaBody extends React.Component {
                         </tr>
                     </tbody>
                 </table>
-                <div className="tabletext">
-                    USEFUL INFORMATION
-                </div>
-                <table className="formulatable" key={this.state.detailsKey}>
-                    <tbody>
-                        <tr>
-                            <th>FRAGRANCE CONCENTRATION %</th>
-                            <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
-                        </tr>
-                        {this._renderDetailsRows()}
-                    </tbody>
-                </table>
-                <div className="tabletext">
-                    MATERIAL MANIFEST
-                </div>
-                <table className="formulatable" key={this.state.detailsKey}>
-                    <tbody>
-                        <tr>
-                            <th>MATERIAL</th>
-                            <th>WEIGHT (GRAMS)</th>
-                            <th>% IN CONCENTRATE</th>
-                            <th>AVG % USED IN CONCENTRATE</th>
-                            <th>MAX % ADVISED IN CONCENTRATE</th>
-                            <th>% IN FINISHED PRODUCT</th>
-                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
-                        </tr>
-                        {this._renderManifestRows()}
-                    </tbody>
-                </table>
+                {this._renderComputed()}
             </div>
         );
     }
