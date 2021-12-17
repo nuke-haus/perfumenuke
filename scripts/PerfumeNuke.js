@@ -88,8 +88,8 @@ PN.recomputeFormula = function() {
         for (let key in PN.database.activeFormula.computed.ingredients) {
             PN.database.activeFormula.computed.ingredients[key].percentInProduct = (PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0;
         }
-        PN.database.activeFormula.computed.totalWeight = totalWeight;
-        PN.database.activeFormula.computed.concentration = 100.0 - ((PN.database.activeFormula.dilutant_quantity / totalWeight) * 100.0);
+        PN.database.activeFormula.computed.totalWeight = totalWeight + PN.database.activeFormula.dilutant_quantity;
+        PN.database.activeFormula.computed.concentration = 100.0 - ((PN.database.activeFormula.dilutant_quantity / PN.database.activeFormula.computed.totalWeight) * 100.0);
     }
 }
 
