@@ -1,5 +1,5 @@
 # PERFUMENUKE
-An open-source perfume formulation tool and material database
+An open-source perfume formulation tool and material database. 
 
 # HOW TO USE
 
