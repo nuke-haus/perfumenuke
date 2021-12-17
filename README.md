@@ -12,7 +12,7 @@ On the database page you can import and export material, mixture and formula dat
 - Most aromachemicals typically fall under the **material** category, unless they are comprised of multiple chemicals that have their own IFRA number. 
 - Complex substances (like most essential oils and certain aromachemicals) would typically be entered as a **mixture** as they contain several different components. 
 - Dilutions should be entered in the database as a **mixture** as well since they are comprised of a dilutant and an aromachemical. 
-- Custom-made accord blends should also be entered as **mixtures** in the database.
+- Accord blends should also be entered as **mixtures** in the database.
 
 Be sure to save your work and export it when you're finished using the tool, as it will not save your work between sessions. 
 
