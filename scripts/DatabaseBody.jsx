@@ -23,34 +23,6 @@ class DatabaseBody extends React.Component {
         return String(value).toUpperCase();
     }
 
-    // FORMULA LOGIC
-    // --------------------------------------------------------------------------------------
-
-    _onImportFormulaFile(file) {
-        const fileReader = new FileReader();
-        fileReader.onload = (event) => this._onImportFormulasSuccess(JSON.parse(event.target.result));
-        fileReader.readAsText(file);
-    }
-
-    _onImportFormulasSuccess(data) {
-        PN.resetErrors();
-        PN.validateLoadedFormulas(data.formulas);
-        if (PN.errors.length > 0) {
-            alert("Some of the imported formulas could not be validated. Check the errors tab for more details.");
-        } else if (PN.warnings.length > 0) {
-            alert("Some of the imported formulas generated warnings. Check the errors tab for more details.");
-        } else {
-            alert(`Imported ${data.formulas.length} formulas.`);
-        }
-    }
-
-    _exportFormulas() {
-        const data = PN.getFormulasForExport();
-        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
-        this._downloadLink.setAttribute('download', "formulas.json");
-        this._downloadLink.click();
-    }
-
     // MATERIAL LOGIC
     // --------------------------------------------------------------------------------------
 
@@ -202,6 +174,31 @@ class DatabaseBody extends React.Component {
     // IMPORT EXPORT LOGIC
     // --------------------------------------------------------------------------------------
 
+    _onImportFormulaFile(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => this._onImportFormulasSuccess(JSON.parse(event.target.result));
+        fileReader.readAsText(file);
+    }
+
+    _onImportFormulasSuccess(data) {
+        PN.resetErrors();
+        PN.validateLoadedFormulas(data.formulas);
+        if (PN.errors.length > 0) {
+            alert("Some of the imported formulas could not be validated. Check the errors tab for more details.");
+        } else if (PN.warnings.length > 0) {
+            alert("Some of the imported formulas generated warnings. Check the errors tab for more details.");
+        } else {
+            alert(`Imported ${data.formulas.length} formulas.`);
+        }
+    }
+
+    _exportFormulas() {
+        const data = PN.getFormulasForExport();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "formulas.json");
+        this._downloadLink.click();
+    }
+
     _onImportMaterialFile(file) {
         const fileReader = new FileReader();
         fileReader.onload = (event) => this._onImportMaterialsSuccess(JSON.parse(event.target.result));
@@ -222,7 +219,7 @@ class DatabaseBody extends React.Component {
 
     _onImportMixtureFile(file) {
         const fileReader = new FileReader();
-        fileReader.onload = (event) => this._onImportMixturessSuccess(JSON.parse(event.target.result));
+        fileReader.onload = (event) => this._onImportMixturesSuccess(JSON.parse(event.target.result));
         fileReader.readAsText(file);
     }
 
@@ -238,6 +235,26 @@ class DatabaseBody extends React.Component {
         }
     }
 
+    _onImportAllFile(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => this._onImportAllSuccess(JSON.parse(event.target.result));
+        fileReader.readAsText(file);
+    }
+
+    _onImportAllSuccess(data) {
+        PN.resetErrors();
+        PN.validateLoadedMaterials(data.materials);
+        PN.validateLoadedMixtures(data.mixtures);
+        PN.validateLoadedFormulas(data.formulas);
+        if (PN.errors.length > 0) {
+            alert("Some of the imported data could not be validated. Check the errors tab for more details.");
+        } else if (PN.warnings.length > 0) {
+            alert("Some of the imported data generated warnings. Check the errors tab for more details.");
+        } else {
+            alert(`Imported ${data.materials.length} materials, ${data.mixtures.length} mixtures, and ${data.formulas.length} formulas.`);
+        }
+    }
+
     _exportMaterials() {
         const data = PN.getMaterialsForExport();
         this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
@@ -249,6 +266,13 @@ class DatabaseBody extends React.Component {
         const data = PN.getMixturesForExport();
         this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
         this._downloadLink.setAttribute('download', "mixtures.json");
+        this._downloadLink.click();
+    }
+
+    _exportAll() {
+        const data = PN.getAllDataForExport();
+        this._downloadLink.setAttribute('href', 'data:application/JSON;charset=utf-8,' + encodeURIComponent(data));
+        this._downloadLink.setAttribute('download', "perfumenuke.json");
         this._downloadLink.click();
     }
 
@@ -360,9 +384,19 @@ class DatabaseBody extends React.Component {
                 <div className="tabletext">
                     IMPORT AND EXPORT DATA
                 </div>
-                <table className="ingredienttable">
+                <table className="formulatable">
                     <tbody>
                         <tr>
+                            <td>
+                                <div>
+                                    IMPORT ALL DATA: 
+                                </div>
+                                <div>
+                                    <input type="file"
+                                           accept="application/JSON"
+                                           onChange={(event) => this._onImportAllFile(event.target.files[0])}/>
+                                </div>
+                            </td>
                             <td>
                                 <div>
                                     IMPORT MATERIALS: 
@@ -395,6 +429,12 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._exportAll()}>
+                                    Export All Data
+                                </button>
+                            </td>
                             <td>
                                 <button type="button" 
                                         onClick={() => this._exportMaterials()}>

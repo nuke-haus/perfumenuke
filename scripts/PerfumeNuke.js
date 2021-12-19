@@ -23,10 +23,25 @@ PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
 PN._jsonOutputLogic = function(key, value) {
-    if (value == null) {
-        return undefined;
+    return (value == null)
+        ? undefined
+        : value;
+}
+
+PN.getAllDataForExport = function() {
+    const exportData = {formulas: [], mixtures: [], materials: []};
+    for (let id in PN.database.formulas) {
+        const clone = PN.deepCopy(PN.database.formulas[id]);
+        clone.computed = null;
+        exportData.formulas.push(clone);
     }
-    return value;
+    for (let id in PN.database.materials) {
+        exportData.materials.push(PN.database.materials[id]);
+    }
+    for (let id in PN.database.mixtures) {
+        exportData.mixtures.push(PN.database.mixtures[id]);
+    }
+    return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
 }
 
 PN.getFormulasForExport = function() {
