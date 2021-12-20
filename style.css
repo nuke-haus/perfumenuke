@@ -214,6 +214,17 @@ table, td, th {
     margin-bottom: 32px;
 }
 
+.modal {
+    position: absolute;
+    width: 800px;
+    background: #3b4942;
+    border-radius: 4px;
+}
+
+.infobutton {
+    width: 100%;
+}
+
 .error 
 {
     color: #960000;

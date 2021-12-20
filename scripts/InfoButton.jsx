@@ -15,14 +15,12 @@ class InfoButton extends React.Component {
     _renderModal() {
         if (this.state.showModal) {
             return (
-                <div>
-                    <div className="modal">
-                        test
-                        <button type="button" 
-                                onClick={() => this._onClick(false)}>
-                            Close
-                        </button>
-                    </div>
+                <div className="modal">
+                    test
+                    <button type="button" 
+                            onClick={() => this._onClick(false)}>
+                        Close
+                    </button>
                 </div>
             );
         }
@@ -31,12 +29,12 @@ class InfoButton extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="infobutton">
                 <span>
                     {this.props.material.name || "NO NAME"}
                 </span>
                 <span onClick={() => this._onClick(true)}>
-                    &#x2139
+                    {'\u{2139}'}
                 </span>
                 {this._renderModal()}
             </div>
