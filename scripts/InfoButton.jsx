@@ -16,7 +16,18 @@ class InfoButton extends React.Component {
         if (this.state.showModal) {
             return (
                 <div className="modal">
-                    test
+                    <div>
+                        {this.props.material.scent}
+                    </div>
+                    <div>
+                        {this.props.material.usage}
+                    </div>
+                    <div>
+                        {this.props.material.note}
+                    </div>
+                    <div>
+                        {this.props.material.cas}
+                    </div>
                     <button type="button" 
                             onClick={() => this._onClick(false)}>
                         Close
