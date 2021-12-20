@@ -155,7 +155,7 @@ class FormulaBody extends React.Component {
     }
 
     _renderComputed() {
-        if (PN.database.activeFormula.ingredients.length === 0 || PN.database.activeFormula.computed.concentrationWeight === 0) {
+        if (PN.database.activeFormula.ingredients.length === 0 || PN.database.activeFormula.computed.concentrationWeight == null) {
             return null;
         }
         return (

@@ -129,7 +129,7 @@ PN.validateFormula = function(formula) {
             formula: formula
         };
     }
-    if (formula.dilutant_quantity == null) {
+    if (formula.dilutant_quantity == null || isNaN(formula.dilutant_quantity)) {
         return {
             warning: "Formula is missing a dilutant quantity: " + formula.id,
             formula: formula
@@ -174,7 +174,7 @@ PN.validateMaterial = function(material) {
     if (material.cas == null) {
         return {error: "Material is missing a CAS number: " + material.id};
     }
-    if (material.ifra_restricted === true && (material.max_in_finished_product == null || material.max_in_finished_product === 0.0)) {
+    if (material.ifra_restricted === true && (material.max_in_finished_product == null || isNaN(material.max_in_finished_product) || material.max_in_finished_product <= 0.0)) {
         return {error: "Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id};
     }
     if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
@@ -244,6 +244,9 @@ PN.validateMixture = function(mixture) {
     let totalPercent = 0.0;
     for (let material of mixture.materials) {
         material.percent = parseFloat(material.percent || "10.0");
+        if (isNaN(material.percent)) {
+            return {error: "Mixture has invalid material percentage value: " + mixture.id};
+        }
         totalPercent = totalPercent + material.percent;
         if (material.id == null || PN.getMaterial(material.id) == null) {
             return {error: "Mixture has invalid material ID in its material list: " + mixture.id};
