@@ -217,7 +217,7 @@ table, td, th {
 .modal {
     position: absolute;
     width: 800px;
-    background: #4e6258;
+    background: #638976;
     border-radius: 4px;
     margin-left: -4px;
 }
@@ -225,6 +225,16 @@ table, td, th {
 .modalbutton {
     padding-left: 8px;
     cursor: pointer;
+}
+
+.modalrow {
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.modalclose {
+    margin: auto;
 }
 
 .infobutton {
