@@ -222,7 +222,6 @@ table, td, th {
     position: fixed;
     overflow: auto; 
     z-index: 999; 
-    background-color: rgba(0,0,0,0.2);
 }
 
 .modalbutton {
