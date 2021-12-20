@@ -35,11 +35,6 @@ class InfoButton extends React.Component {
                     <div className="modalrow">
                         {"CAS NUMBER: " + (this.props.material.cas || "N/A")}
                     </div>
-                    <button type="button" 
-                            className="modalclose"
-                            onClick={() => this._onClick(false)}>
-                        Close
-                    </button>
                 </div>
             );
         }
