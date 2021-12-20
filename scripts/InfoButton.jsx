@@ -17,22 +17,22 @@ class InfoButton extends React.Component {
             return (
                 <div className="modal">
                     <div className="modalrow">
-                        {"SCENT: " + this.props.material.scent}
+                        {"SCENT: " + (this.props.material.scent || "N/A")}
                     </div>
                     <div className="modalrow">
-                        {"USAGE: " + this.props.material.usage}
+                        {"USAGE: " + (this.props.material.usage || "N/A")}
                     </div>
                     <div className="modalrow">
-                        {"NOTE: " + this.props.material.note}
+                        {"NOTE: " + (this.props.material.note || "N/A")}
                     </div>
                     <div className="modalrow">
-                        {"LONGEVITY (HOURS): " + (this.props.material.longevity || "???")}
+                        {"LONGEVITY (HOURS): " + (this.props.material.longevity || "N/A")}
                     </div>
                     <div className="modalrow">
-                        {"IMPACT: " + (this.props.material.impact + "???")}
+                        {"IMPACT: " + (this.props.material.impact || "N/A")}
                     </div>
                     <div className="modalrow">
-                        {"CAS NUMBER: " + this.props.material.cas}
+                        {"CAS NUMBER: " + (this.props.material.cas || "N/A")}
                     </div>
                     <button type="button" 
                             className="modalclose"

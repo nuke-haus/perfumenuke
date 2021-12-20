@@ -218,6 +218,7 @@ table, td, th {
     position: absolute;
     width: 800px;
     background: #638976;
+    box-shadow: 3px 3px 1px #4e6258;
     border-radius: 4px;
     margin-left: -4px;
 }
@@ -228,13 +229,15 @@ table, td, th {
 }
 
 .modalrow {
-    margin-bottom: 4px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .modalclose {
-    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .infobutton {
