@@ -15,7 +15,8 @@ class InfoButton extends React.Component {
     _renderModal() {
         if (this.state.showModal) {
             return (
-                <div className="modalback">
+                <div className="modalback" 
+                     onClick={() => this._onClick(false)}>
                     <div className="modal">
                         <div className="modalrow">
                             {"SCENT: " + (this.props.material.scent || "N/A")}
