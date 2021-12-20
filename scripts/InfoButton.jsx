@@ -33,8 +33,8 @@ class InfoButton extends React.Component {
                 <span>
                     {this.props.material.name || "NO NAME"}
                 </span>
-                <span onClick={() => this._onClick(true)}>
-                    {'\u{2139}'}
+                <span className="modalbutton" onClick={() => this._onClick(true)}>
+                    {'\u{1F4DC}'}
                 </span>
                 {this._renderModal()}
             </div>

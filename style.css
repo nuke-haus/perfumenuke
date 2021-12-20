@@ -219,6 +219,11 @@ table, td, th {
     width: 800px;
     background: #3b4942;
     border-radius: 4px;
+    padding-left: 32px;
+}
+
+.modalbutton {
+    padding-left: 8px;
 }
 
 .infobutton {
