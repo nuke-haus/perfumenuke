@@ -1,5 +1,4 @@
-body
-{
+body {
     font-size: 16px;
   	font-family: 'Work Sans', sans-serif;
 	
@@ -12,29 +11,25 @@ body
 	-webkit-font-smoothing: antialiased;
 }
 
-a:link 
-{
+a:link {
     color: #000000;
     background-color: transparent;
     text-decoration: underline;
 }
 
-a:visited 
-{
+a:visited {
     color: #000000;
     background-color: transparent;
     text-decoration: underline;
 }
 
-a:hover 
-{
+a:hover {
     color: #000000;
     background-color: transparent;
     text-decoration: underline;
 }
 
-a:active 
-{
+a:active {
     color: #000000;
     background-color: transparent;
     text-decoration: underline;
@@ -71,7 +66,7 @@ button {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] {
     background-color: #849b84;
     box-shadow: inset 1px 1px 1px #849b84;
     cursor: default;
@@ -170,8 +165,7 @@ table, td, th {
     width: calc(100% - 24px);
 }
 
-.navbar 
-{
+.navbar {
     height: 50px;
     font-size: 32px;
   	text-shadow: 3px 3px 1px #4e6258;
@@ -184,30 +178,26 @@ table, td, th {
     margin-bottom: 14px;
 }
 
-.topbutton
-{
+.topbutton {
     margin-left: 50px;
     margin-right: 50px;
     cursor: pointer;
 }
 
-.selectednav
-{
+.selectednav {
     text-decoration: none;
     padding: 4px 10px;
     box-shadow: 3px 3px 1px #4e6258, inset 3px 3px 1px #4e6258;
     border: 3px solid #000000;
 }
 
-.bar 
-{
+.bar {
 	background-color: #000000;
 	height: 16px;
 	width: 100%;
 }
 
-.barshadow
-{
+.barshadow {
 	background-color: #4e6258;
 	height: 5px;
     width: 100%;
@@ -221,6 +211,14 @@ table, td, th {
     box-shadow: 3px 3px 1px #4e6258;
     border-radius: 4px;
     margin-left: -4px;
+    z-index: 1000; 
+}
+
+.modalback {
+    width: 110%;
+    height: 110%;
+    z-index: 999; 
+    background-color: rgba(0,0,0,0.2);
 }
 
 .modalbutton {
@@ -229,9 +227,7 @@ table, td, th {
 }
 
 .modalrow {
-    margin-bottom: 8px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 8px;
 }
 
 .modalclose {
@@ -244,13 +240,11 @@ table, td, th {
     width: 300px;
 }
 
-.error 
-{
+.error {
     color: #960000;
 }
 
-.warning
-{
+.warning {
     color: #56009c;
 }
 
