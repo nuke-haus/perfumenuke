@@ -131,7 +131,7 @@ class FormulaBody extends React.Component {
                 : (material.max_in_concentrate * 100.0);
             elements.push(
                 <tr key={'manifest' + id}>
-                    <td><div data-tooltip={this._getTooltip(material.id)}>{material.name || "???"}</div></td>
+                    <td><InfoButton material={material}/></td>
                     <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0).toPrecision(4)}</td>
                     <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0).toPrecision(6)}</td>
                     <td>{avgInConc}</td>
