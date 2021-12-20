@@ -217,17 +217,18 @@ table, td, th {
 .modal {
     position: absolute;
     width: 800px;
-    background: #3b4942;
+    background: #4e6258;
     border-radius: 4px;
-    padding-left: 32px;
+    margin-left: -4px;
 }
 
 .modalbutton {
     padding-left: 8px;
+    cursor: pointer;
 }
 
 .infobutton {
-    width: 250px;
+    width: 300px;
 }
 
 .error 
