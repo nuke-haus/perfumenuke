@@ -161,7 +161,7 @@ class FormulaBody extends React.Component {
         return (
             <div key={this.state.detailsKey}>
                 <div className="tabletext">
-                    USEFUL INFORMATION
+                    FORMULA DETAILS
                 </div>
                 <table className="ingredienttable">
                     <tbody>
