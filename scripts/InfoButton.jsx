@@ -49,7 +49,6 @@ class InfoButton extends React.Component {
 
             return (
                 <div className="modal">
-                    <div className="modalback" onClick={() => this._onClick(false)}/>
                     {company}
                     {scent}
                     {usage}
@@ -65,6 +64,10 @@ class InfoButton extends React.Component {
     }
 
     render() {
+        const modalback = this.state.showModal
+            ? (<div className="modalback" onClick={() => this._onClick(false)}/>)
+            : null;
+
         return (
             <div className="infobutton">
                 <span>
@@ -73,6 +76,7 @@ class InfoButton extends React.Component {
                 <span className="modalbutton" onClick={() => this._onClick(true)}>
                     {"\u{1F4C3}"}
                 </span>
+                {modalback}
                 {this._renderModal()}
             </div>
         );
