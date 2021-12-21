@@ -221,7 +221,7 @@ table, td, th {
     height: 100%; 
     position: fixed;
     overflow: auto; 
-    z-index: -100; 
+    z-index: 50; 
 }
 
 .modalbutton {
