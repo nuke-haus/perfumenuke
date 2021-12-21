@@ -326,21 +326,22 @@ PN.setMixture = function(mixture) {
     PN.database.mixtures[mixture.id] = PN.deepCopy(mixture);
 }
 
-PN.getMixtureDilutionMaterial = function(mixture) {
+PN.getMixtureDilutant = function(mixture) {
     if (mixture.materials == null || mixture.materials.length !== 2) {
         return null;
     }
     for (let material of mixture.materials) {
         const foundMaterial = PN.getMaterial(material.id);
-        if (foundMaterial && !foundMaterial.solvent) {
+        if (foundMaterial && foundMaterial.solvent) {
             return material;
         }
     }
     return null;
 }
 
-PN.getDilutionPercentString = function(percent) {
-    return ` (${percent * 100.0}%)`;
+PN.getDilutionPercentString = function(solvent) {
+    const material = PN.getMaterial(solvent.id);
+    return ` (${(1.0 - solvent.percent) * 100.0}% in ${material.name})`;
 }
 
 PN.getMaterialsFromMixture = function(mixture) {

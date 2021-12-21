@@ -4,7 +4,7 @@
         {
             "id": "triplal_10",
             "name": "Triplal",
-            "usage": "10% dilution of Triplal.",
+            "usage": "10% dilution of Triplal in perfumer's alcohol.",
             "materials": [
                 {
                     "id": "triplal",
@@ -12,6 +12,21 @@
                 },
                 {
                     "id": "perfumers_alcohol",
+                    "percent": 0.9
+                }
+            ]
+        },
+        {
+            "id": "triplal_10_dpg",
+            "name": "Triplal",
+            "usage": "10% dilution of Triplal in DPG.",
+            "materials": [
+                {
+                    "id": "triplal",
+                    "percent": 0.1
+                },
+                {
+                    "id": "dpg",
                     "percent": 0.9
                 }
             ]

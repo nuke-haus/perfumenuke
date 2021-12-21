@@ -34,10 +34,10 @@ class IngredientPicker extends React.Component {
         if (this.props.allowMixtures) {
             for (let id in PN.database.mixtures) {
                 const mix = PN.getMixture(id);
-                const dilutionData = PN.getMixtureDilutionMaterial(mix);
+                const dilutionSolvent = PN.getMixtureDilutant(mix);
                 count = count + 1;
-                if (dilutionData != null) {
-                    const name = mix.name + PN.getDilutionPercentString(dilutionData.percent);
+                if (dilutionSolvent != null) {
+                    const name = mix.name + PN.getDilutionPercentString(dilutionSolvent);
                     this._nameMap[name] = mix.id;
                     elements.push(<option key={"dilution" + count} value={name}/>);
                 } else {
