@@ -205,8 +205,6 @@ PN.validateLoadedMaterials = function(materials) {
         material.ifra_restricted = (String(material.ifra_restricted).toLowerCase().trim() === "true");
         material.solvent = (String(material.solvent).toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
-        material.scent = material.scent || "";
-        material.usage = material.usage || "";
         if (material.avg_in_concentrate) {
             material.avg_in_concentrate = parseFloat(material.avg_in_concentrate);
         }
