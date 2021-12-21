@@ -76,8 +76,8 @@ class InfoButton extends React.Component {
                 <span className="modalbutton" onClick={() => this._onClick(true)}>
                     {"\u{1F4C3}"}
                 </span>
-                {modalback}
                 {this._renderModal()}
+                {modalback}
             </div>
         );
     }
