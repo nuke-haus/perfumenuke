@@ -107,7 +107,7 @@ class FormulaBody extends React.Component {
     }
 
     _renderPercentInProduct(id, material) {
-        const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0).toPrecision(6);
+        const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0);
         if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
             return (
                 <span className="error">{floatValue}</span>
@@ -132,8 +132,8 @@ class FormulaBody extends React.Component {
             elements.push(
                 <tr key={'manifest' + id}>
                     <td><InfoButton material={material}/></td>
-                    <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0).toPrecision(4)}</td>
-                    <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0).toPrecision(6)}</td>
+                    <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0)}</td>
+                    <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0)}</td>
                     <td>{avgInConc}</td>
                     <td>{maxInConc}</td>
                     <td>{this._renderPercentInProduct(id, material)}</td>
