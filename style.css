@@ -206,7 +206,7 @@ table, td, th {
 
 .modal {
     position: absolute;
-    width: 800px;
+    width: 1000px;
     background: #638976;
     box-shadow: 3px 3px 1px #4e6258;
     border-radius: 4px;
