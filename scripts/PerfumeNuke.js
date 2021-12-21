@@ -328,7 +328,8 @@ PN.getMixtureDilutant = function(mixture) {
 
 PN.getDilutionPercentString = function(solvent) {
     const material = PN.getMaterial(solvent.id);
-    return ` (${(1.0 - solvent.percent) * 100.0}% in ${material.name})`;
+    const percent = ((1.0 - solvent.percent) * 100.0).toFixed(1);
+    return ` (${percent}% in ${material.name})`;
 }
 
 PN.getMaterialsFromMixture = function(mixture) {
