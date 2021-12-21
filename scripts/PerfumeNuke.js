@@ -256,19 +256,6 @@ PN.validateMixture = function(mixture) {
     if (totalPercent !== 1.0) {
         return {error: "Mixture material percentages don't add up to 1.0: " + mixture.id};
     }
-    const dilutionMaterial = PN.getMixtureDilutionMaterial(mixture);
-    if (mixture.scent == null && dilutionMaterial == null) {
-        return {
-            warning: "Mixture is missing a scent description: " + mixture.id,
-            mixture: mixture
-        };
-    }
-    if (mixture.usage == null && mixture.diluted_material == null) {
-        return {
-            warning: "Mixture is missing usage notes: " + mixture.id,
-            mixture: mixture
-        };
-    }
     return {mixture: mixture};
 }
 
