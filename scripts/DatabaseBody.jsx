@@ -513,10 +513,16 @@ class DatabaseBody extends React.Component {
                                 </div>
                             </td>
                             <td>
-                                LONGEVITY (HOURS): 
-                                <input className="databaseinput" 
-                                       defaultValue={PN.database.currentMaterial.longevity}
-                                       onChange={(event) => this._onChangeMaterial("longevity", event.target.value)}/>
+                                <div>
+                                    LONGEVITY (HOURS): 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           min="0"
+                                           defaultValue={PN.database.currentMaterial.longevity}
+                                           onChange={(event) => this._onChangeMaterial("longevity", event.target.value)}/>
+                                </div>
+                                
                             </td>
                             <td>
                                 <div>
