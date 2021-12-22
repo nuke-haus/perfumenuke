@@ -503,11 +503,11 @@ class DatabaseBody extends React.Component {
                                     NOTE: 
                                 </div>
                                 <div>
-                                    <select defaultValue={PN.database.currentMaterial.note} 
+                                    <select value={PN.database.currentMaterial.note} 
                                             onChange={(event) => this._onChangeMaterial("note", event.target.value)}>
-                                        <option value="TOP">TOP</option>
-                                        <option value="HEART">HEART</option>
-                                        <option value="BASE">BASE</option>
+                                        <option value="TOP"/>
+                                        <option value="HEART"/>
+                                        <option value="BASE"/>
                                     </select>
                                 </div>
                             </td>
