@@ -178,7 +178,11 @@ PN.validateMaterial = function(material) {
         return {error: "Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id};
     }
     if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
-        return {error: "Material note type is invalid: " + material.id};
+        material.note = null;
+        return {
+            warning: "Material note type is invalid: " + material.id,
+            material: material
+        };
     }
     if (material.scent == null) {
         return {
