@@ -505,7 +505,7 @@ class DatabaseBody extends React.Component {
                                 <div>
                                     <select value={PN.database.currentMaterial.note} 
                                             onChange={(event) => this._onChangeMaterial("note", event.target.value)}>
-                                        <option value="">N/A</option>
+                                        <option value=" ">None</option>
                                         <option value="TOP">Top</option>
                                         <option value="HEART">Heart</option>
                                         <option value="BASE">Base</option>
