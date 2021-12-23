@@ -71,7 +71,7 @@
 			"impact": "80",
 			"dilute": "10% or less",
 			"cas": "104-54-1",
-			"max_in_finished_product": "1.2",
+			"max_in_finished_product": 0.012,
 			"ifra_restricted": true
 		},
 		{
@@ -85,7 +85,7 @@
 			"impact": "160",
 			"dilute": "1% or less",
 			"cas": "93-16-3",
-			"max_in_finished_product": "0.016",
+			"max_in_finished_product": 0.00016,
 			"ifra_restricted": true
 		},
 		{
@@ -108,7 +108,7 @@
 			"longevity": "28",
 			"impact": "130",
 			"cas": "123-11-5",
-			"max_in_finished_product": "0.21",
+			"max_in_finished_product": 0.0021,
 			"ifra_restricted": true
 		},
 		{
@@ -119,10 +119,10 @@
 			"note": "HEART",
 			"longevity": "28",
 			"impact": "130",
-			"max_in_concentrate": "15",
+            "avg_in_concentrate": 0.05,
+			"max_in_concentrate": 0.15,
 			"cas": "120-14-9",
-			"ifra_restricted": false,
-			"avg_in_concentrate": "5"
+			"ifra_restricted": false
 		}
     ]
 }

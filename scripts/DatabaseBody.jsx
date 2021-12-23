@@ -553,7 +553,7 @@ class DatabaseBody extends React.Component {
                                            min="0"
                                            max="100"
                                            defaultValue={PN.database.currentMaterial.avg_in_concentrate}
-                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", event.target.value)}/>
+                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", parseFloat(event.target.value))}/>
                                 </div>
                             </td>
                             <td>
@@ -566,7 +566,7 @@ class DatabaseBody extends React.Component {
                                            min="0"
                                            max="100"
                                            defaultValue={PN.database.currentMaterial.max_in_concentrate}
-                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", event.target.value)}/>
+                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", parseFloat(event.target.value))}/>
                                 </div>
                             </td>
                         </tr>
@@ -584,8 +584,8 @@ class DatabaseBody extends React.Component {
                                 <div>
                                     <select defaultValue={String(PN.database.currentMaterial.ifra_restricted)}
                                             onChange={(event) => this._onChangeMaterial("ifra_restricted", event.target.value === "true")}>
-                                        <option value="true">TRUE</option>
                                         <option value="false">FALSE</option>
+                                        <option value="true">TRUE</option>
                                     </select>
                                 </div>
                             </td>
@@ -600,7 +600,7 @@ class DatabaseBody extends React.Component {
                                            max="100"
                                            disabled={PN.database.currentMaterial.ifra_restricted === false}
                                            defaultValue={PN.database.currentMaterial.max_in_finished_product}
-                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", event.target.value)}/>
+                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", parseFloat(event.target.value))}/>
                                 </div>
                             </td>
                         </tr>
