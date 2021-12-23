@@ -103,7 +103,7 @@ PN.recomputeFormula = function() {
         for (let key in PN.database.activeFormula.computed.ingredients) {
             PN.database.activeFormula.computed.ingredients[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
         }
-        const concentration = PN.sanitizeFloat((totalWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
+        let concentration = PN.sanitizeFloat((totalWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
         if (concentration === Infinity || concentration === NaN) {
             concentration = 100.0;
         }
