@@ -222,7 +222,7 @@ class FormulaBody extends React.Component {
                                    step="0.001" 
                                    min="0"
                                    defaultValue={PN.parseFloat(ingredient.quantity)} 
-                                   onChange={(event) => this._changeQuantity(PN.parseFloat(event.target.value))}/>
+                                   onChange={(event) => this._changeQuantity(PN.parseFloat(event.target.value), ingredient)}/>
                         </div>
                     </td>
                     <td>
