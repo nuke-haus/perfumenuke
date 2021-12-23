@@ -103,9 +103,13 @@ PN.recomputeFormula = function() {
         for (let key in PN.database.activeFormula.computed.ingredients) {
             PN.database.activeFormula.computed.ingredients[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
         }
+        const concentration = PN.sanitizeFloat((totalWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
+        if (concentration === Infinity || concentration === NaN) {
+            concentration = 100.0;
+        }
         PN.database.activeFormula.computed.totalWeight = PN.sanitizeFloat(totalWeight + PN.database.activeFormula.dilutant_quantity, 4);
         PN.database.activeFormula.computed.concentrationWeight = PN.sanitizeFloat(totalWeight, 4);
-        PN.database.activeFormula.computed.concentration = PN.sanitizeFloat((totalWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
+        PN.database.activeFormula.computed.concentration = concentration;
     }
 }
 
@@ -350,6 +354,14 @@ PN.getMaterialsFromMixture = function(mixture) {
         }
     }
     return result;
+}
+
+PN.parseFloat = function(value) {
+    value = parseFloat(value || "0");
+    if (value === NaN || value === Infinity) {
+        value = 0.0;
+    }
+    return Math.max(value, 0.0);
 }
 
 PN.guid = function() {

@@ -221,8 +221,8 @@ class FormulaBody extends React.Component {
                             <input type="number" 
                                    step="0.001" 
                                    min="0"
-                                   defaultValue={ingredient.quantity || 0.0} 
-                                   onChange={(event) => this._changeQuantity(event.target.value, ingredient)}/>
+                                   defaultValue={PN.parseFloat(ingredient.quantity)} 
+                                   onChange={(event) => this._changeQuantity(PN.parseFloat(event.target.value))}/>
                         </div>
                     </td>
                     <td>
@@ -299,8 +299,8 @@ class FormulaBody extends React.Component {
                                     <input type="number" 
                                            step="0.001" 
                                            min="0"
-                                           defaultValue={PN.database.activeFormula.dilutant_quantity} 
-                                           onChange={(event) => this._onChangeFormula("dilutant_quantity", Math.max(parseFloat(event.target.value), 0.0), true)}/>
+                                           defaultValue={PN.parseFloat(PN.database.activeFormula.dilutant_quantity)} 
+                                           onChange={(event) => this._onChangeFormula("dilutant_quantity", PN.parseFloat(event.target.value), true)}/>
                                 </div>
                             </td>
                         </tr>
