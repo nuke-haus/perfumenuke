@@ -70,11 +70,11 @@ class InfoButton extends React.Component {
 
         return (
             <div className="infobutton">
-                <span>
-                    {this.props.material.name || "???"}
-                </span>
                 <span className="modalbutton" onClick={() => this._onClick(true)}>
                     {"\u{1F4C3}"}
+                </span>
+                <span>
+                    {this.props.material.name || "???"}
                 </span>
                 {this._renderModal()}
                 {modalback}
