@@ -177,6 +177,66 @@
 			"cas": "112-66-3",
 			"note": "HEART",
 			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate."
+		},
+        {
+			"id": "damascone_alpha",
+			"name": "Damascone Alpha",
+			"max_in_finished_product": 0.0002,
+			"ifra_restricted": true,
+			"dilute": "1% or less",
+			"scent": "A sweet, fruity apple, floral wood with plum and green berry nuances.",
+			"max_in_concentrate": 0.011,
+			"avg_in_concentrate": 0.001,
+			"impact": "700",
+			"longevity": "150",
+			"note": "HEART",
+			"cas": "24720-09-0",
+			"usage": "Rose, fruit and plum booster."
+		},
+		{
+			"id": "damascone_beta",
+			"name": "Damascone Beta",
+			"max_in_finished_product": 0.0002,
+			"ifra_restricted": true,
+			"dilute": "1% or less",
+			"scent": "Fruity, floral, blackcurrant, plum, rose, honey, tobacco.",
+			"max_in_concentrate": 0.018,
+			"avg_in_concentrate": 0.002,
+			"impact": "450",
+			"longevity": "180",
+			"note": "HEART",
+			"cas": "23726-91-2",
+			"usage": "A very powerful fruity floral booster."
+		},
+		{
+			"id": "damascone_delta",
+			"name": "Damascone Delta",
+			"max_in_finished_product": 0.0002,
+			"ifra_restricted": true,
+			"dilute": "1% or less",
+			"scent": "A very complex fruity and rosy profile with tobacco, cassis, apple and plum undertones.",
+			"max_in_concentrate": 0.001,
+			"avg_in_concentrate": 0.0005,
+			"impact": "450",
+			"longevity": "220",
+			"note": "HEART",
+			"cas": "57378-68-4",
+			"usage": "Very diffusive plum and rose builder."
+		},
+		{
+			"id": "damascone_gamma",
+			"name": "Damascone Gamma",
+			"max_in_finished_product": 0.0002,
+			"ifra_restricted": true,
+			"dilute": "1% or less",
+			"scent": "Fruity, floral, rose, green, cooked apple, plum, tobacco.",
+			"max_in_concentrate": 0.0005,
+			"avg_in_concentrate": 0.0001,
+			"impact": "450",
+			"longevity": "48",
+			"note": "HEART",
+			"cas": "35087-49-1",
+			"usage": "Very diffusive plum and rose builder."
 		}
     ]
 }
