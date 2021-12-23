@@ -181,13 +181,7 @@ PN.validateMaterial = function(material) {
     if (material.ifra_restricted === true && (material.max_in_finished_product == null || isNaN(material.max_in_finished_product) || material.max_in_finished_product <= 0.0)) {
         return {error: "Material is IFRA restricted but is missing a max allowance in finished product value: " + material.id};
     }
-    if (material.note !== PN.note.top && material.note !== PN.note.mid && material.note !== PN.note.base) {
-        material.note = null;
-        return {
-            warning: "Material note type is invalid: " + material.id,
-            material: material
-        };
-    }
+    material.note = PN.parseNote(material.note);
     if (material.scent == null) {
         return {
             warning: "Material is missing a scent description: " + material.id,
