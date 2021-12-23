@@ -30,6 +30,39 @@
                     "percent": 0.9
                 }
             ]
-        }
+        },
+        {
+			"id": "heliotropex_n",
+			"name": "Heliotropex N",
+			"company": "IFF",
+			"scent": "Exotic floral characteristic with sweet, balsamic and spicy undertones. Has nuances of almond and berries.",
+			"usage": "An economical substitute for Heliotropin when used at 15% dilution.",
+			"materials": [
+				{
+					"id": "unknown",
+					"percent": 0.53
+				},
+				{
+					"id": "cinnamic_alcohol",
+					"percent": 0.01
+				},
+				{
+					"id": "methyl_isoeugenol",
+					"percent": 0.01
+				},
+				{
+					"id": "heliotropin",
+					"percent": 0.1
+				},
+				{
+					"id": "anisaldehyde",
+					"percent": 0.1
+				},
+				{
+					"id": "veratric_aldehyde",
+					"percent": 0.25
+				}
+			]
+		}
     ]
 }
