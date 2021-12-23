@@ -304,7 +304,7 @@ class DatabaseBody extends React.Component {
                                    min="0"
                                    max="100"
                                    defaultValue={(parseFloat(matData.percent || "0") * 100.0)}
-                                   onChange={(event) =>  this._changeMixtureMaterial(index, "percent", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 4))}/>
+                                   onChange={(event) =>  this._changeMixtureMaterial(index, "percent", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 6))}/>
                         </div>
                     </td>  
                     <td>
@@ -503,7 +503,7 @@ class DatabaseBody extends React.Component {
                                     NOTE: 
                                 </div>
                                 <div>
-                                    <select value={PN.database.currentMaterial.note} 
+                                    <select value={PN.database.currentMaterial.note || " "} 
                                             onChange={(event) => this._onChangeMaterial("note", event.target.value)}>
                                         <option value=" ">NONE</option>
                                         <option value="TOP">TOP</option>
@@ -553,7 +553,7 @@ class DatabaseBody extends React.Component {
                                            min="0"
                                            max="100"
                                            defaultValue={parseFloat(PN.database.currentMaterial.avg_in_concentrate || "0") * 100.0}
-                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 4))}/>
+                                           onChange={(event) => this._onChangeMaterial("avg_in_concentrate", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 6))}/>
                                 </div>
                             </td>
                             <td>
@@ -566,7 +566,7 @@ class DatabaseBody extends React.Component {
                                            min="0"
                                            max="100"
                                            defaultValue={parseFloat(PN.database.currentMaterial.max_in_concentrate || "0") * 100.0}
-                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 4))}/>
+                                           onChange={(event) => this._onChangeMaterial("max_in_concentrate", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 6))}/>
                                 </div>
                             </td>
                         </tr>
@@ -600,7 +600,7 @@ class DatabaseBody extends React.Component {
                                            max="100"
                                            disabled={PN.database.currentMaterial.ifra_restricted === false}
                                            defaultValue={parseFloat(PN.database.currentMaterial.max_in_finished_product || "0") * 100.0}
-                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 4))}/>
+                                           onChange={(event) => this._onChangeMaterial("max_in_finished_product", PN.sanitizeFloat(0.01 * parseFloat(event.target.value || "0"), 6))}/>
                                 </div>
                             </td>
                         </tr>
