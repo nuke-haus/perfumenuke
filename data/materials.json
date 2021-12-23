@@ -5,7 +5,8 @@
             "id": "unknown",
             "name": "Unknown Material",
             "usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N), so in these cases this material represents the unknown components.",
-            "ifra_restricted": false
+            "ifra_restricted": false,
+            "cas": "N/A"
         },
         {
             "id": "perfumers_alcohol",
