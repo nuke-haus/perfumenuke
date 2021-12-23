@@ -5,7 +5,7 @@
             "id": "unknown",
             "name": "Unknown Material",
             "scent": "N/A",
-            "usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N). In these cases, this material represents the unknown components.",
+            "usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N). In these cases, this material represents the unknown components with no IFRA restrictions.",
             "ifra_restricted": false,
             "cas": "N/A"
         },
