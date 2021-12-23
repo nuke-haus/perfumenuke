@@ -258,7 +258,7 @@ PN.validateMixture = function(mixture) {
         }
     }
     if (totalPercent !== 1.0) {
-        return {error: "Mixture material percentages don't add up to 1.0: " + mixture.id};
+        return {error: `Mixture material percentages should add up to 1.0 but total is ${totalPercent}: ` + mixture.id};
     }
     return {mixture: mixture};
 }
