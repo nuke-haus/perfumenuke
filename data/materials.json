@@ -131,6 +131,52 @@
 			"max_in_concentrate": 0.15,
 			"cas": "120-14-9",
 			"ifra_restricted": false
+		},
+        {
+			"id": "acetate_c6",
+			"name": "Acetate C6",
+			"company": "IFF",
+			"scent": "Green fruity note reminiscent of apple and pear.",
+			"dilute": "10% or less",
+			"max_in_concentrate": 0.2,
+			"avg_in_concentrate": 0.03,
+			"longevity": "0.2",
+			"impact": "220",
+			"max_in_finished_product": 0.1,
+			"ifra_restricted": true,
+			"cas": "142-92-7",
+			"note": "TOP",
+			"usage": "Good blender and modifier for Labdanum. Good for sweet fruity accords. Also known as Hexyl Acetate."
+		},
+		{
+			"id": "acetate_c9",
+			"name": "Acetate C9",
+			"company": "Vigon",
+			"scent": "Mild and sweet waxy ingredient that dries down to a green tropical fruity floral.",
+			"dilute": "10% or less",
+			"max_in_concentrate": 0.1,
+			"avg_in_concentrate": 0.05,
+			"longevity": "12",
+			"impact": "100",
+			"ifra_restricted": false,
+			"cas": "143-13-5",
+			"note": "TOP",
+			"usage": "Adds freshness and diffusion. Also known as Nonyl Acetate."
+		},
+		{
+			"id": "acetate_c12",
+			"name": "Acetate C12",
+			"company": "Vigon",
+			"scent": "A refreshing waxy, fruity odor with a citrusy, fruity, fresh, slightly floral aspect.",
+			"dilute": "20% or less",
+			"max_in_concentrate": 0.08,
+			"avg_in_concentrate": 0.04,
+			"longevity": "238",
+			"impact": "100",
+			"ifra_restricted": false,
+			"cas": "112-66-3",
+			"note": "HEART",
+			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate."
 		}
     ]
 }
