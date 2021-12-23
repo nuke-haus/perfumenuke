@@ -2,6 +2,13 @@
     "_comment": "This json file contains materials. Materials are a single component, used on their own or in mixtures. They have CAS numbers and some are IFRA restricted (solvents are the exception to this rule).",
     "materials": [
         {
+            "id": "unknown",
+            "name": "Unknown Material",
+            "usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N), so in these cases this material represents the unknown components.",
+            "ifra_restricted": false,
+            "cas": "N/A"
+        },
+        {
             "id": "perfumers_alcohol",
             "name": "Perfumer's Alcohol",
             "solvent": true,
