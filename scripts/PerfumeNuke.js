@@ -23,7 +23,7 @@ PN.note.mid = "HEART";
 PN.note.base = "BASE";
 
 PN._jsonOutputLogic = function(key, value) {
-    return (value == null)
+    return (value == null || value === "")
         ? undefined
         : value;
 }

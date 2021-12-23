@@ -59,6 +59,70 @@
             "costs": [
                 {"name": "PA", "cost": "1ml @ 0.18 USD"}
             ]
-        }
+        },
+        {
+			"id": "cinnamic_alcohol",
+			"name": "Cinnamic Alcohol",
+			"company": "IFF",
+			"scent": "Sweet, balsam, hyacinth, spicy, green, powdery, and cinnamic.",
+			"usage": "Cinnamon builder. Also known as Cinnamyl Alcohol.",
+			"note": "BASE",
+			"longevity": "60",
+			"impact": "80",
+			"dilute": "10% or less",
+			"cas": "104-54-1",
+			"max_in_finished_product": "1.2",
+			"ifra_restricted": true
+		},
+		{
+			"id": "methyl_isoeugenol",
+			"name": "Methyl Isoeugenol",
+			"company": "IFF",
+			"scent": "Spicy, clove, woody, earthy, basilic.",
+			"usage": "Spicy note useful for clove and spice accords and some floral accords. Also known as Methyl Eugenol.",
+			"note": "BASE",
+			"longevity": "24",
+			"impact": "160",
+			"dilute": "1% or less",
+			"cas": "93-16-3",
+			"max_in_finished_product": "0.016",
+			"ifra_restricted": true
+		},
+		{
+			"id": "heliotropin",
+			"name": "Heliotropin",
+			"scent": "Floral scent, similar to vanilla and cherry. Balsamic and powdery.",
+			"usage": "Heliotrope, cherry and vanilla builder. Also known as Piperonal. IFRA restriction unknown at this time.",
+			"note": "HEART",
+			"longevity": "24",
+			"impact": "160",
+			"cas": "120-57-0",
+			"ifra_restricted": false
+		},
+		{
+			"id": "anisaldehyde",
+			"name": "Anisaldehyde",
+			"scent": "Clean anise note.",
+			"usage": "The main component for numerous floral accords like lilac, hawthorn, anise, honeysuckle, heliotrope, etc.",
+			"note": "HEART",
+			"longevity": "28",
+			"impact": "130",
+			"cas": "123-11-5",
+			"max_in_finished_product": "0.21",
+			"ifra_restricted": true
+		},
+		{
+			"id": "veratric_aldehyde",
+			"name": "Veratric Aldehyde",
+			"scent": "Sweet, vanilla, creamy, heliotropee, woody, coumarin.",
+			"usage": "More warmth and depth than Vanillin, and excellent effect in spicy and woody-musky accords.",
+			"note": "HEART",
+			"longevity": "28",
+			"impact": "130",
+			"max_in_concentrate": "15",
+			"cas": "120-14-9",
+			"ifra_restricted": false,
+			"avg_in_concentrate": "5"
+		}
     ]
 }
