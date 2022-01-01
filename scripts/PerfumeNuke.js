@@ -92,7 +92,8 @@ PN.recomputeFormula = function() {
                 PN.database.activeFormula.computed.ingredients[material.id] = PN.database.activeFormula.computed.ingredients[material.id] || {};
                 const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
                 PN.database.activeFormula.computed.ingredients[material.id].quantity = PN.sanitizeFloat(currentQuantity + (ingredient.quantity * material.percent), 4);
-                if (!material.solvent) {
+                const foundMaterial = PN.getMaterial(material.id);
+                if (!foundMaterial.solvent) {
                     totalNonSolventWeight = totalNonSolventWeight + (ingredient.quantity * material.percent);
                 }
             }
