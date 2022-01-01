@@ -75,6 +75,7 @@ PN.recomputeFormula = function() {
     PN.database.activeFormula.computed.ingredients = {};
     PN.database.activeFormula.computed.ingredients[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
     let totalWeight = 0.0;
+    let totalNonSolventWeight = 0.0;
     for (let ingredient of PN.database.activeFormula.ingredients) { // ingredient can be material or mixture
         const material = PN.getMaterial(ingredient.id);
         const mixture = PN.getMixture(ingredient.id);
@@ -83,11 +84,17 @@ PN.recomputeFormula = function() {
             const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
             PN.database.activeFormula.computed.ingredients[material.id].quantity = PN.sanitizeFloat(currentQuantity + ingredient.quantity, 4);
             totalWeight = totalWeight + ingredient.quantity;
+            if (!material.solvent) {
+                totalNonSolventWeight = totalNonSolventWeight + ingredient.quantity;
+            }
         } else if (mixture != null) {
             for (let material of mixture.materials) {
                 PN.database.activeFormula.computed.ingredients[material.id] = PN.database.activeFormula.computed.ingredients[material.id] || {};
                 const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
                 PN.database.activeFormula.computed.ingredients[material.id].quantity = PN.sanitizeFloat(currentQuantity + (ingredient.quantity * material.percent), 4);
+                if (!material.solvent) {
+                    totalNonSolventWeight = totalNonSolventWeight + (ingredient.quantity * material.percent);
+                }
             }
             totalWeight = totalWeight + ingredient.quantity;
         }
@@ -104,12 +111,18 @@ PN.recomputeFormula = function() {
             PN.database.activeFormula.computed.ingredients[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
         }
         let concentration = PN.sanitizeFloat((totalWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
+        let concentrationNonSolvent = PN.sanitizeFloat((totalNonSolventWeight / PN.database.activeFormula.dilutant_quantity) * 100.0, 4);
         if (concentration === Infinity || concentration === NaN) {
             concentration = 100.0;
         }
+        if (concentrationNonSolvent === Infinity || concentrationNonSolvent === NaN) {
+            concentrationNonSolvent = 100.0;
+        }
         PN.database.activeFormula.computed.totalWeight = PN.sanitizeFloat(totalWeight + PN.database.activeFormula.dilutant_quantity, 4);
         PN.database.activeFormula.computed.concentrationWeight = PN.sanitizeFloat(totalWeight, 4);
+        PN.database.activeFormula.computed.concentrationNonSolventWeight = PN.sanitizeFloat(totalNonSolventWeight, 4);
         PN.database.activeFormula.computed.concentration = concentration;
+        PN.database.activeFormula.computed.concentrationNonSolvent = concentrationNonSolvent;
     }
 }
 

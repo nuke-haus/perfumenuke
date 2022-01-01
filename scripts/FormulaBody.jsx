@@ -148,7 +148,9 @@ class FormulaBody extends React.Component {
         return (
             <tr>
                 <td>{PN.database.activeFormula.computed.concentration}</td>
+                <td>{PN.database.activeFormula.computed.concentrationNonSolvent}</td>
                 <td>{PN.database.activeFormula.computed.concentrationWeight}</td>
+                <td>{PN.database.activeFormula.computed.concentrationNonSolventWeight}</td>
                 <td>{PN.database.activeFormula.computed.totalWeight}</td>
             </tr>  
         );
@@ -163,11 +165,13 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     FORMULA DETAILS
                 </div>
-                <table className="ingredienttable">
+                <table className="formulatable">
                     <tbody>
                         <tr>
                             <th>FRAGRANCE CONCENTRATION %</th>
+                            <th>NO SOLVENT FRAGRANCE CONCENTRATION %</th>
                             <th>CONCENTRATE WEIGHT (GRAMS)</th>
+                            <th>NO SOLVENT CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
                         </tr>
                         {this._renderDetailsRows()}
