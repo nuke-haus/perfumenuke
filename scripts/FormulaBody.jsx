@@ -21,6 +21,14 @@ class FormulaBody extends React.Component {
         return String(value).toUpperCase();
     }
 
+    _applyScale() {
+        for (let ingredient of PN.database.activeFormula.ingredients) {
+            ingredient.quantity = ingredient.quantity * (PN.database.activeFormula.scale || 1.0);
+        }
+        PN.recomputeFormula();
+        this.forceUpdate();
+    }
+
     _addIngredient() {
         PN.database.activeFormula.ingredients.push({id: "", quantity: 0.0});
         PN.recomputeFormula();
@@ -317,6 +325,26 @@ class FormulaBody extends React.Component {
                                         onClick={() => this._addIngredient()}>
                                     Add New Ingredient
                                 </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="1">
+                                <button type="button" 
+                                        onClick={() => this._applyScale()}>
+                                    Apply Scale Value To Concentrate
+                                </button>
+                            </td>
+                            <td colSpan="1">
+                                <div>
+                                    SCALE:
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           defaultValue={PN.parseFloat(PN.database.activeFormula.scale || 1.0)} 
+                                           onChange={(event) => this._onChangeFormula("scale", PN.parseFloat(event.target.value), false)}/>
+                                </div>
                             </td>
                         </tr>
                         <tr>
