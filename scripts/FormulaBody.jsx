@@ -23,9 +23,9 @@ class FormulaBody extends React.Component {
 
     _applyScale() {
         for (let ingredient of PN.database.activeFormula.ingredients) {
-            ingredient.quantity = ingredient.quantity * (PN.database.activeFormula.scale || 1.0);
+            ingredient.quantity = PN.sanitizeFloat(ingredient.quantity * (PN.database.activeFormula.scale || 1.0), 4);
         }
-        PN.database.activeFormula.dilutant_quantity = PN.database.activeFormula.dilutant_quantity * (PN.database.activeFormula.scale || 1.0);
+        PN.database.activeFormula.dilutant_quantity = PN.sanitizeFloat(PN.database.activeFormula.dilutant_quantity * (PN.database.activeFormula.scale || 1.0), 4);
         PN.recomputeFormula();
         this.setState({formulaKey: PN.guid()});
     }
