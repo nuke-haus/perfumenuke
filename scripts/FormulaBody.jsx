@@ -329,13 +329,13 @@ class FormulaBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="1">
+                            <td>
                                 <button type="button" 
                                         onClick={() => this._applyScale()}>
                                     Apply Scale Value To Entire Formula
                                 </button>
                             </td>
-                            <td colSpan="1">
+                            <td colSpan="2">
                                 <div>
                                     SCALE:
                                 </div>
