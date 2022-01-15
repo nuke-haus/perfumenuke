@@ -107,6 +107,7 @@ PN.recomputeFormula = function() {
             } else {
                 PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / totalWeight) * 100.0, 4);
             }
+            PN.database.activeFormula.computed.ingredients[key].ppt = PN.sanitizeFloat(PN.database.activeFormula.computed.ingredients[key].percent * 10.0, 0);
         }
         for (let key in PN.database.activeFormula.computed.ingredients) {
             PN.database.activeFormula.computed.ingredients[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);

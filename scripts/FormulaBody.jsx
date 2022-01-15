@@ -133,6 +133,7 @@ class FormulaBody extends React.Component {
                 <tr key={'manifest' + id}>
                     <td><InfoButton material={material}/></td>
                     <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0)}</td>
+                    <td>{(PN.database.activeFormula.computed.ingredients[id].ppt || 0)}</td>
                     <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0)}</td>
                     <td>{avgInConc}</td>
                     <td>{maxInConc}</td>
@@ -185,6 +186,7 @@ class FormulaBody extends React.Component {
                         <tr>
                             <th>MATERIAL</th>
                             <th>WEIGHT (GRAMS)</th>
+                            <th>PARTS PER THOUSAND</th>
                             <th>% IN CONCENTRATE</th>
                             <th>AVG % USED IN CONCENTRATE</th>
                             <th>MAX % ADVISED IN CONCENTRATE</th>
