@@ -27,7 +27,7 @@ class FormulaBody extends React.Component {
         }
         PN.database.activeFormula.dilutant_quantity = PN.database.activeFormula.dilutant_quantity * (PN.database.activeFormula.scale || 1.0);
         PN.recomputeFormula();
-        this.forceUpdate();
+        this.setState({formulaKey: PN.guid()});
     }
 
     _addIngredient() {
@@ -332,7 +332,7 @@ class FormulaBody extends React.Component {
                             <td colSpan="1">
                                 <button type="button" 
                                         onClick={() => this._applyScale()}>
-                                    Apply Scale Value To Concentrate
+                                    Apply Scale Value To Entire Formula
                                 </button>
                             </td>
                             <td colSpan="1">
