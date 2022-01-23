@@ -411,7 +411,8 @@
 		{
 			"id": "ethanol",
 			"name": "Ethanol",
-			"scent": "Boozy.",
+			"scent": "Boozy, wine-like odor.",
+			"usage": "Booze builder.",
 			"note": "BASE",
 			"cas": "64-17-5",
 			"max_in_concentrate": 0,
