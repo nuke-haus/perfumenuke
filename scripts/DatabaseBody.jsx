@@ -9,6 +9,8 @@ class DatabaseBody extends React.Component {
 
     _selectedMaterialID = "";
     _selectedMixtureID = "";
+    _selectedDilutantID = "";
+    _dilutionAmount = 10;
 
     _formatName(value) {
         const str = String(value);
@@ -70,6 +72,54 @@ class DatabaseBody extends React.Component {
 
     _changeSelectedMaterial(id) {
         this._selectedMaterialID = id;
+    }
+
+    _changeDilutantMaterial(id) {
+        this._selectedDilutantID = id;
+    }
+
+    _onChangeDilution(percent) {
+        this._dilutionAmount = percent;
+    }
+
+    _tryCreateDilution() {
+        const currentMaterial = PN.getMaterial(PN.database.currentMaterial.id || "");
+        const currentDilutant = PN.getMaterial(this._selectedDilutantID || "");
+        if (currentMaterial == null) {
+            alert("Unable to create a dilution for a material that does not exist in the database.");
+            return;
+        }
+        if (currentDilutant == null) {
+            alert("Unable to create a dilution with a dilutant that does not exist in the database.");
+            return;
+        }
+        if (this._dilutionAmount <= 0) {
+            alert("Unable to create a 0% dilution.");
+            return;
+        }
+        const mixtureId = `${currentMaterial.id}_${this._dilutionAmount}_${currentDilutant.id}`;
+        const existingMixture = PN.getMixture(mixtureId);
+        if (existingMixture != null) {
+            alert("A dilution already exists for this material.");
+            return;
+        }
+        const mixture = {
+            id: mixtureId,
+            name: currentMaterial.name,
+            scent: currentMaterial.scent,
+            usage: `${this._dilutionAmount}% dilution of ${currentMaterial.name} in ${currentDilutant.name}`,
+            materials: [
+                {
+                    id: currentMaterial.id,
+                    percent: PN.sanitizeFloat(this._dilutionAmount * 0.1, 4)
+                },
+                {
+                    id: currentDilutant.id,
+                    percent: PN.sanitizeFloat((100 - this._dilutionAmount) * 0.1, 4)
+                },
+            ]
+        }
+        PN.setMixture(mixture);
     }
 
     _loadMaterial() {
@@ -605,6 +655,36 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMaterialCostRows()}
+                        <tr>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._tryCreateDilution()}>
+                                    Create Dilution Mixture For Current Material
+                                </button>
+                            </td>
+                            <td>
+                                SELECT DILUTANT:
+                                <IngredientPicker defaultValue=''
+                                                id={"loadsolvent"}
+                                                allowSolvents={true}
+                                                allowMaterials={false}
+                                                allowMixtures={false}
+                                                onChange={(id) => this._changeDilutantMaterial(id)}/>
+                             </td>
+                             <td>
+                                <div>
+                                    DILUTION %: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           max="100"
+                                           defaultValue={10}
+                                           onChange={(event) => this._onChangeDilution(PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 4))}/>
+                                </div>
+                            </td>
+                        </tr>
                         <tr>
                             <td key={this.state.materialButtonKey} className="tablebottom">
                                 <button type="button" 
