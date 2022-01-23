@@ -682,7 +682,7 @@ class DatabaseBody extends React.Component {
                                            step="0.001" 
                                            min="0"
                                            max="100"
-                                           defaultValue={10}
+                                           defaultValue={this._dilutionAmount}
                                            onChange={(event) => this._onChangeDilution(PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 4))}/>
                                 </div>
                             </td>
