@@ -93,8 +93,8 @@ class DatabaseBody extends React.Component {
             alert("Unable to create a dilution with a dilutant that does not exist in the database.");
             return;
         }
-        if (this._dilutionAmount <= 0) {
-            alert("Unable to create a 0% dilution.");
+        if (this._dilutionAmount <= 0.0 || this._dilutionAmount >= 100.0) {
+            alert("Unable to create a dilution with an invalid percentage.");
             return;
         }
         const mixtureId = `${currentMaterial.id}_${this._dilutionAmount}_${currentDilutant.id}`;
@@ -120,6 +120,7 @@ class DatabaseBody extends React.Component {
             ]
         }
         PN.setMixture(mixture);
+        this.setState({mixtureKey: PN.guid()});
     }
 
     _loadMaterial() {
