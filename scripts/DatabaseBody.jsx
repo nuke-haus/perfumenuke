@@ -115,12 +115,13 @@ class DatabaseBody extends React.Component {
                 },
                 {
                     id: currentDilutant.id,
-                    percent: PN.sanitizeFloat((100 - this._dilutionAmount) * 0.01, 4)
+                    percent: PN.sanitizeFloat((100.0 - this._dilutionAmount) * 0.01, 4)
                 },
             ]
         }
         PN.setMixture(mixture);
         this.setState({mixtureKey: PN.guid()});
+        alert("Created dilution successfully.");
     }
 
     _loadMaterial() {
