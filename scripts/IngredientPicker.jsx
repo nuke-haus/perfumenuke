@@ -23,7 +23,7 @@ class IngredientPicker extends React.Component {
         this._nameMap = {};
         const elements = [];
         let count = 0;
-        for (let id in PN.database.materials) {
+        for (let id of PN.getAllSortedMaterialIDs()) {
             const ingredient = PN.getMaterial(id);
             if ((this.props.allowMaterials && !ingredient.solvent) || (this.props.allowSolvents && ingredient.solvent)) {
                 count = count + 1;
@@ -32,7 +32,7 @@ class IngredientPicker extends React.Component {
             }
         }
         if (this.props.allowMixtures) {
-            for (let id in PN.database.mixtures) {
+            for (let id of PN.getAllSortedMixtureIDs()) {
                 const mix = PN.getMixture(id);
                 const dilutionSolvent = PN.getMixtureDilutant(mix);
                 count = count + 1;
@@ -47,7 +47,7 @@ class IngredientPicker extends React.Component {
             }
         }
         if (this.props.allowFormulas) {
-            for (let id in PN.database.formulas) {
+            for (let id of PN.getAllSortedFormulaIDs()) {
                 const formula = PN.getFormula(id);
                 count = count + 1;
                 if (formula != null) {

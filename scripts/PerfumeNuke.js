@@ -335,6 +335,18 @@ PN.setMixture = function(mixture) {
     PN.database.mixtures[mixture.id] = PN.deepCopy(mixture);
 }
 
+PN.getAllSortedMaterialIDs = function() {
+    return Object.keys(PN.database.materials).sort();
+}
+
+PN.getAllSortedMixtureIDs = function() {
+    return Object.keys(PN.database.mixtures).sort();
+}
+
+PN.getAllSortedFormulaIDs = function() {
+    return Object.keys(PN.database.formulas).sort();
+}
+
 PN.getMixtureDilutant = function(mixture) {
     if (mixture.materials == null || mixture.materials.length !== 2) {
         return null;
