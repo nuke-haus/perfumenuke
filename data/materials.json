@@ -1,74 +1,89 @@
 {
-    "_comment": "This json file contains materials. Materials are a single component, used on their own or in mixtures. They have CAS numbers and some are IFRA restricted (solvents are the exception to this rule).",
-    "materials": [
-        {
-            "id": "unknown",
-            "name": "Unknown Material",
-            "scent": "N/A",
-            "usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N). In these cases, this material represents the unknown components with no IFRA restrictions.",
-            "ifra_restricted": false,
-            "cas": "N/A"
-        },
-        {
-            "id": "perfumers_alcohol",
-            "name": "Perfumer's Alcohol",
-            "solvent": true,
-            "usage": "Perfumer's Alcohol (SDA 40B). Commonly used as a fixative for perfume materials.",
-            "costs": [
-                {"name": "Sunrise Botanics", "cost": "1ml @ 0.02 CAD"}
-            ]
-        },
-        {
-            "id": "dpg",
-            "name": "Dipropylene Glycol",
-            "solvent": true,
-            "usage": "Dipropylene Glycol (DPG) is practically odorless and used typically for diluting perfume materials.",
-            "costs": []
-        },
-        {
-            "id": "ipm",
-            "name": "Isopropyl Myristate",
-            "solvent": true,
-            "usage": "Isopropyl Myristate is practically odorless and used typically for diluting perfume materials.",
-            "costs": []
-        },
-        {
-            "id": "triplal",
-            "name": "Triplal",
-            "company": "IFF",
-            "scent": "Powerful, green, just-mowed-grass odor. Has the refreshing tartness of bergamot peel.",
-            "usage": "Great for creating a green accord. It blends beautifully with fruity, citrus, and floral compositions.",
-            "note": "top",
-            "longevity": "4",
-            "impact": "800",
-            "dilute": "10% or less",
-            "avg_in_concentrate": 0.003,
-            "max_in_concentrate": 0.02,
-            "max_in_finished_product": 0.025,
-            "ifra_restricted": true,
-            "cas": "68039-49-6",
-            "costs": [
-                {"name": "PA", "cost": "1ml @ 0.3 USD"}
-            ]
-        },
-        {
-            "id": "zenolide",
-            "name": "Zenolide",
-            "company": "IFF",
-            "scent": "Soft, delicate white musk with a red fruit aspect.",
-            "usage": "Great for creating a clean, soft white musk note. Not extremely noticeable.",
-            "note": "base",
-            "longevity": "48",
-            "impact": "100",
-            "avg_in_concentrate": 0.2,
-            "max_in_concentrate": 0.4,
-            "ifra_restricted": false,
-            "cas": "54982-83-1",
-            "costs": [
-                {"name": "PA", "cost": "1ml @ 0.18 USD"}
-            ]
-        },
-        {
+	"_comment": "This json file contains materials. Materials are a single component, used on their own or in mixtures. They have CAS numbers and some are IFRA restricted (solvents are the exception to this rule).",
+	"materials": [
+		{
+			"id": "unknown",
+			"name": "Unknown Material",
+			"scent": "N/A",
+			"usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N). In these cases, this material represents the unknown components with no IFRA restrictions.",
+			"ifra_restricted": false,
+			"cas": "N/A",
+			"solvent": false
+		},
+		{
+			"id": "perfumers_alcohol",
+			"name": "Perfumer's Alcohol",
+			"solvent": true,
+			"usage": "Perfumer's Alcohol (SDA 40B). Commonly used as a fixative for perfume materials.",
+			"costs": [
+				{
+					"name": "Sunrise Botanics",
+					"cost": "1ml @ 0.02 CAD"
+				}
+			],
+			"ifra_restricted": false
+		},
+		{
+			"id": "dpg",
+			"name": "Dipropylene Glycol",
+			"solvent": true,
+			"usage": "Dipropylene Glycol (DPG) is practically odorless and used typically for diluting perfume materials.",
+			"costs": [],
+			"ifra_restricted": false
+		},
+		{
+			"id": "ipm",
+			"name": "Isopropyl Myristate",
+			"solvent": true,
+			"usage": "Isopropyl Myristate is practically odorless and used typically for diluting perfume materials.",
+			"costs": [],
+			"ifra_restricted": false
+		},
+		{
+			"id": "triplal",
+			"name": "Triplal",
+			"company": "IFF",
+			"scent": "Powerful, green, just-mowed-grass odor. Has the refreshing tartness of bergamot peel.",
+			"usage": "Great for creating a green accord. It blends beautifully with fruity, citrus, and floral compositions.",
+			"note": "TOP",
+			"longevity": "4",
+			"impact": "800",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.003,
+			"max_in_concentrate": 0.02,
+			"max_in_finished_product": 0.025,
+			"ifra_restricted": true,
+			"cas": "68039-49-6",
+			"costs": [
+				{
+					"name": "PA",
+					"cost": "1ml @ 0.3 USD"
+				}
+			],
+			"solvent": false
+		},
+		{
+			"id": "zenolide",
+			"name": "Zenolide",
+			"company": "IFF",
+			"scent": "Soft, delicate white musk with a red fruit aspect.",
+			"usage": "Great for creating a clean, soft white musk note. Not extremely noticeable.",
+			"note": "BASE",
+			"longevity": "48",
+			"impact": "100",
+			"avg_in_concentrate": 0.2,
+			"max_in_concentrate": 0.4,
+			"ifra_restricted": false,
+			"cas": "54982-83-1",
+			"costs": [
+				{
+					"name": "PA",
+					"cost": "1ml @ 0.18 USD"
+				}
+			],
+			"solvent": false
+		},
+		{
 			"id": "cinnamic_alcohol",
 			"name": "Cinnamic Alcohol",
 			"company": "IFF",
@@ -80,7 +95,8 @@
 			"dilute": "10% or less",
 			"cas": "104-54-1",
 			"max_in_finished_product": 0.012,
-			"ifra_restricted": true
+			"ifra_restricted": true,
+			"solvent": false
 		},
 		{
 			"id": "methyl_isoeugenol",
@@ -94,7 +110,8 @@
 			"dilute": "1% or less",
 			"cas": "93-16-3",
 			"max_in_finished_product": 0.00016,
-			"ifra_restricted": true
+			"ifra_restricted": true,
+			"solvent": false
 		},
 		{
 			"id": "heliotropin",
@@ -105,7 +122,8 @@
 			"longevity": "24",
 			"impact": "160",
 			"cas": "120-57-0",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"solvent": false
 		},
 		{
 			"id": "anisaldehyde",
@@ -117,7 +135,8 @@
 			"impact": "130",
 			"cas": "123-11-5",
 			"max_in_finished_product": 0.0021,
-			"ifra_restricted": true
+			"ifra_restricted": true,
+			"solvent": false
 		},
 		{
 			"id": "veratric_aldehyde",
@@ -127,12 +146,13 @@
 			"note": "HEART",
 			"longevity": "28",
 			"impact": "130",
-            "avg_in_concentrate": 0.05,
+			"avg_in_concentrate": 0.05,
 			"max_in_concentrate": 0.15,
 			"cas": "120-14-9",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"solvent": false
 		},
-        {
+		{
 			"id": "acetate_c6",
 			"name": "Acetate C6",
 			"company": "IFF",
@@ -146,7 +166,8 @@
 			"ifra_restricted": true,
 			"cas": "142-92-7",
 			"note": "TOP",
-			"usage": "Good blender and modifier for Labdanum. Good for sweet fruity accords. Also known as Hexyl Acetate."
+			"usage": "Good blender and modifier for Labdanum. Good for sweet fruity accords. Also known as Hexyl Acetate.",
+			"solvent": false
 		},
 		{
 			"id": "acetate_c9",
@@ -161,7 +182,8 @@
 			"ifra_restricted": false,
 			"cas": "143-13-5",
 			"note": "TOP",
-			"usage": "Adds freshness and diffusion. Also known as Nonyl Acetate."
+			"usage": "Adds freshness and diffusion. Also known as Nonyl Acetate.",
+			"solvent": false
 		},
 		{
 			"id": "acetate_c12",
@@ -176,9 +198,10 @@
 			"ifra_restricted": false,
 			"cas": "112-66-3",
 			"note": "HEART",
-			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate."
+			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate.",
+			"solvent": false
 		},
-        {
+		{
 			"id": "damascone_alpha",
 			"name": "Damascone Alpha",
 			"max_in_finished_product": 0.0002,
@@ -191,7 +214,8 @@
 			"longevity": "150",
 			"note": "HEART",
 			"cas": "24720-09-0",
-			"usage": "Rose, fruit and plum booster."
+			"usage": "Rose, fruit and plum booster.",
+			"solvent": false
 		},
 		{
 			"id": "damascone_beta",
@@ -206,7 +230,8 @@
 			"longevity": "180",
 			"note": "HEART",
 			"cas": "23726-91-2",
-			"usage": "A very powerful fruity floral booster."
+			"usage": "A very powerful fruity floral booster.",
+			"solvent": false
 		},
 		{
 			"id": "damascone_delta",
@@ -221,7 +246,8 @@
 			"longevity": "220",
 			"note": "HEART",
 			"cas": "57378-68-4",
-			"usage": "Very diffusive plum and rose builder."
+			"usage": "Very diffusive plum and rose builder.",
+			"solvent": false
 		},
 		{
 			"id": "damascone_gamma",
@@ -236,7 +262,254 @@
 			"longevity": "48",
 			"note": "HEART",
 			"cas": "35087-49-1",
-			"usage": "Very diffusive plum and rose builder."
+			"usage": "Very diffusive plum and rose builder.",
+			"solvent": false
+		},
+		{
+			"id": "terpinene_alpha",
+			"name": "Terpinene Alpha",
+			"scent": "Terpy, woody, piney, lemon and lime with spice and mint nuances.",
+			"usage": "Citrus builder, pine builder, spice builder.",
+			"note": "TOP",
+			"cas": "99-86-5",
+			"max_in_concentrate": 0.05,
+			"longevity": "3",
+			"dilute": "10%"
+		},
+		{
+			"id": "ethyl_propionate",
+			"name": "Ethyl Propionate",
+			"scent": "Sweet, fruity, grape, pineapple, rum.",
+			"usage": "Pineapple builder, rum builder.",
+			"note": "TOP",
+			"cas": "105-37-3",
+			"max_in_concentrate": 0.05,
+			"longevity": "4",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.02
+		},
+		{
+			"id": "allyl_caproate",
+			"name": "Allyl Caproate",
+			"scent": "Fruity-fatty, wine, rum, sweet, pineapple.",
+			"usage": "Pineapple builder, rum builder, wine builder.",
+			"note": "TOP",
+			"cas": "123-68-2",
+			"max_in_concentrate": 0.2,
+			"longevity": "2",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.03,
+			"impact": "250"
+		},
+		{
+			"id": "hexalon",
+			"name": "Hexalon",
+			"scent": "Fruity, Pineapple, Woody, Orris. An ionone product having an exceptional rich pineapple quality with natural, oily/waxy undertones.",
+			"usage": "Pineapple builder.",
+			"note": "HEART",
+			"cas": "79-78-7",
+			"max_in_concentrate": 0.1,
+			"longevity": "80",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.01,
+			"impact": "140",
+			"company": "IFF"
+		},
+		{
+			"id": "delphol_hc",
+			"name": "Delphol HC",
+			"scent": "Green, jasmine, fruity. It is reminiscent of magnolia and tea with slightly fruity undertones.",
+			"usage": "Tea builder, white floral builder, fruit builder.",
+			"note": "HEART",
+			"cas": "84560-00-9",
+			"max_in_concentrate": 0.1,
+			"longevity": "48",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.01,
+			"company": "Firmenich"
+		},
+		{
+			"id": "citral_dimethyl_acetal",
+			"name": "Citral Dimethyl Acetal",
+			"scent": "Citrus, verbena note. Has a much milder but more natural lemon odor than Citral.",
+			"usage": "Citrus builder.",
+			"note": "HEART",
+			"cas": "7549-37-3",
+			"max_in_concentrate": 0.15,
+			"longevity": "48",
+			"avg_in_concentrate": 0.05,
+			"company": "IFF"
+		},
+		{
+			"id": "methyl_cinnamic_aldehyde",
+			"name": "Methyl Cinnamic Aldehyde",
+			"scent": "Floral, soft, sweet, spicy, cinnamon.",
+			"usage": "Also called Cyprinal. Cinnamon builder.",
+			"note": "HEART",
+			"cas": "101-39-3",
+			"max_in_concentrate": 0,
+			"longevity": "240",
+			"dilute": "1%",
+			"avg_in_concentrate": 0,
+			"company": "IFF",
+			"max_in_finished_product": 0.015,
+			"ifra_restricted": true
+		},
+		{
+			"id": "cinnamyl_acetate",
+			"name": "Cinnamyl Acetate",
+			"scent": "Sweet, floral, spicy, balsam, cinnamon.",
+			"usage": "Cinnamon builder.",
+			"note": "BASE",
+			"cas": "103-54-8",
+			"max_in_concentrate": 0.08,
+			"longevity": "46",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.04,
+			"impact": "120",
+			"ifra_restricted": false
+		},
+		{
+			"id": "benzyl_cinnamate",
+			"name": "Benzyl Cinnamate",
+			"scent": "Faintly sweet balsamic cinnamon with floral background.",
+			"usage": "Cinnamon builder.",
+			"note": "BASE",
+			"cas": "103-41-3",
+			"max_in_concentrate": 0.08,
+			"longevity": "243",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.04,
+			"impact": "25",
+			"ifra_restricted": false
+		},
+		{
+			"id": "eugenol",
+			"name": "Eugenol",
+			"scent": "Sweet, spicy, clove, woody odor.",
+			"usage": "Clove builder.",
+			"note": "BASE",
+			"cas": "97-53-0",
+			"max_in_concentrate": 0.07,
+			"longevity": "48",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.01,
+			"impact": "175",
+			"ifra_restricted": false
+		},
+		{
+			"id": "benzoic_acid",
+			"name": "Benzoic Acid",
+			"scent": "Faint balsamic odor.",
+			"usage": "Benzoin builder.",
+			"note": "BASE",
+			"cas": "65-85-0",
+			"max_in_concentrate": 0,
+			"avg_in_concentrate": 0,
+			"ifra_restricted": false
+		},
+		{
+			"id": "ethanol",
+			"name": "Ethanol",
+			"scent": "Boozy.",
+			"note": "BASE",
+			"cas": "64-17-5",
+			"max_in_concentrate": 0,
+			"avg_in_concentrate": 0,
+			"ifra_restricted": false
+		},
+		{
+			"id": "ethyl_vanillin",
+			"name": "Ethyl Vanillin",
+			"scent": "Sweet, creamy, vanilla, caramel.",
+			"usage": "Vanilla builder.",
+			"note": "BASE",
+			"cas": "121-32-4",
+			"max_in_concentrate": 0,
+			"longevity": "270",
+			"avg_in_concentrate": 0,
+			"impact": "600",
+			"ifra_restricted": false
+		},
+		{
+			"id": "vanillin",
+			"name": "Vanillin",
+			"scent": "Sweet, dry, chocolatey, creamy, aromatic vanilla.",
+			"usage": "Vanilla builder.",
+			"note": "BASE",
+			"cas": "121-33-5",
+			"max_in_concentrate": 0,
+			"longevity": "400",
+			"avg_in_concentrate": 0,
+			"impact": "60",
+			"ifra_restricted": false
+		},
+		{
+			"id": "ethyl_heptoate",
+			"name": "Ethyl Heptoate",
+			"scent": "Diffusive fruity pineapple, wine/brandy/cognac, apple peel and berry odor.",
+			"usage": "Booze builder. ",
+			"note": "TOP",
+			"cas": "106-30-9",
+			"max_in_concentrate": 0.1,
+			"longevity": "2",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.02,
+			"impact": "150",
+			"ifra_restricted": false
+		},
+		{
+			"id": "butyl_propionate",
+			"name": "Butyl Propionate",
+			"scent": "Sweet, banana, ripe, bright, lifting, cherry and rum-like odor.",
+			"usage": "Booze builder. Cherry builder. Banana builder.",
+			"note": "TOP",
+			"cas": "590-01-2",
+			"max_in_concentrate": 0.04,
+			"longevity": "2",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.01,
+			"impact": "150",
+			"ifra_restricted": false
+		},
+		{
+			"id": "cedryl_acetate",
+			"name": "Cedryl Acetate",
+			"scent": "Light cedar, vetivert, sweet, woody scent.",
+			"usage": "Long lasting cedar builder. ",
+			"note": "BASE",
+			"cas": "77-54-3",
+			"max_in_concentrate": 0.13,
+			"longevity": "40",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.02,
+			"impact": "60",
+			"ifra_restricted": false
+		},
+		{
+			"id": "vertenex",
+			"name": "Vertenex",
+			"scent": "Sweet, rich, woody, floral, fruity, fresh, soapy scent.",
+			"usage": "Long lasting cedar builder. ",
+			"note": "BASE",
+			"cas": "32210-23-4",
+			"max_in_concentrate": 0.08,
+			"longevity": "8",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false
+		},
+		{
+			"id": "ambercore",
+			"name": "Ambercore",
+			"scent": "A soft, delicate but powerful woody amber note with a natural richness.",
+			"usage": "Amber builder. Blends well with floral and citrus.",
+			"note": "BASE",
+			"cas": "139504-68-0",
+			"max_in_concentrate": 0.4,
+			"longevity": "8",
+			"avg_in_concentrate": 0.04,
+			"ifra_restricted": false
 		}
-    ]
+	]
 }
