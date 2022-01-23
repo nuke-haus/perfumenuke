@@ -103,9 +103,6 @@ class DatabaseBody extends React.Component {
             alert("A dilution already exists for this material.");
             return;
         }
-        console.log(this._dilutionAmount)
-        console.log(this._dilutionAmount * 0.1)
-        console.log(PN.sanitizeFloat(this._dilutionAmount * 0.1, 4))
         const mixture = {
             id: mixtureId,
             name: currentMaterial.name,
@@ -114,11 +111,11 @@ class DatabaseBody extends React.Component {
             materials: [
                 {
                     id: currentMaterial.id,
-                    percent: PN.sanitizeFloat(this._dilutionAmount * 0.1, 4)
+                    percent: PN.sanitizeFloat(this._dilutionAmount * 0.01, 4)
                 },
                 {
                     id: currentDilutant.id,
-                    percent: PN.sanitizeFloat((100 - this._dilutionAmount) * 0.1, 4)
+                    percent: PN.sanitizeFloat((100 - this._dilutionAmount) * 0.01, 4)
                 },
             ]
         }
