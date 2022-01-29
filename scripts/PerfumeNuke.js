@@ -258,7 +258,8 @@ PN.validateMixture = function(mixture) {
     }
     let totalPercent = 0.0;
     for (let material of mixture.materials) {
-        material.percent = parseFloat(material.percent || "10.0");
+        material.percent = PN.parseFloat(material.percent);
+        console.log(material.id + ' ' + material.percent)
         if (isNaN(material.percent)) {
             return {error: "Mixture has invalid material percentage value: " + mixture.id};
         }
@@ -271,6 +272,7 @@ PN.validateMixture = function(mixture) {
         }
     }
     totalPercent = PN.sanitizeFloat(totalPercent, 1);
+    console.log(totalPercent);
     if (totalPercent !== 1.0) {
         return {error: `Mixture material percentages should add up to 1.0 but total is ${totalPercent}: ` + mixture.id};
     }
