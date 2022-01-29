@@ -338,7 +338,7 @@ class DatabaseBody extends React.Component {
             const label = `MATERIAL ${parseInt(index) + 1}:`
             elements.push(
                 <tr key={"mixturematerial" + index}>
-                    <td>
+                    <td colSpan="2">
                         {label}
                         <IngredientPicker defaultValue={matData.id}
                                           id={"mixturematerial" + index}
@@ -370,7 +370,7 @@ class DatabaseBody extends React.Component {
         }
         elements.push(
             <tr key="mixturematerialbutton">
-                <td colSpan="3">
+                <td colSpan="4">
                     <button type="button" 
                             onClick={() => this._addMaterialToMixture()}>
                         Add Material To Mixture
@@ -722,7 +722,7 @@ class DatabaseBody extends React.Component {
                                        defaultValue={PN.database.currentMixture.id}
                                        onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value))}/>
                             </td>
-                            <td>
+                            <td colSpan="2">
                                 NAME: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.name}
@@ -736,7 +736,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 SCENT: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.scent}
@@ -744,7 +744,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 USAGE: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.usage}
@@ -778,10 +778,33 @@ class DatabaseBody extends React.Component {
                                            onChange={(event) => this._onChangeMixture("max_in_concentrate", PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 6))}/>
                                 </div>
                             </td>
+                            <td>
+                                <div>
+                                    LONGEVITY (HOURS): 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           min="0"
+                                           defaultValue={PN.database.currentMixture.longevity}
+                                           onChange={(event) => this._onChangeMixture("longevity", event.target.value)}/>
+                                </div>
+                                
+                            </td>
+                            <td>
+                                <div>
+                                    IMPACT: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           min="0"
+                                           defaultValue={PN.database.currentMixture.impact}
+                                           onChange={(event) => this._onChangeMixture("impact", event.target.value)}/>
+                                </div>
+                            </td>
                         </tr>
                         {this._renderMixtureRows()}
                         <tr>
-                            <td key={this.state.mixtureButtonKey} className="tablebottom">
+                            <td colSpan="2" key={this.state.mixtureButtonKey} className="tablebottom">
                                 <button type="button" 
                                         disabled={this._disableMixtureButton()}
                                         onClick={() => this._createOrUpdateMixture()}>
