@@ -253,8 +253,8 @@ PN.validateMixture = function(mixture) {
     if (mixture.name == null) {
         return {error: "Mixture is missing a name: " + mixture.id};
     }
-    if (mixture.materials.length < 2) {
-        return {error: "Mixture contains less than 2 materials: " + mixture.id};
+    if (mixture.materials.length < 1) {
+        return {error: "Mixture contains no materials: " + mixture.id};
     }
     let totalPercent = 0.0;
     for (let material of mixture.materials) {
@@ -380,7 +380,7 @@ PN.getMaterialsFromMixture = function(mixture) {
 PN.parseFloat = function(value) {
     value = parseFloat(value || "0");
     if (value === NaN || value === Infinity) {
-        value = 0.0;
+        return 0.0;
     }
     return Math.max(value, 0.0);
 }

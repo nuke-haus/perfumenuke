@@ -751,6 +751,34 @@ class DatabaseBody extends React.Component {
                                        onChange={(event) => this._onChangeMixture("usage", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <div>
+                                    AVG % USED IN CONCENTRATE: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           max="100"
+                                           defaultValue={PN.sanitizeFloat(PN.parseFloat(PN.database.currentMixture.avg_in_concentrate) * 100.0, 3)}
+                                           onChange={(event) => this._onChangeMixture("avg_in_concentrate", PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 6))}/>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    MAX % ADVISED IN CONCENTRATE: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           max="100"
+                                           defaultValue={PN.sanitizeFloat(PN.parseFloat(PN.database.currentMixture.max_in_concentrate) * 100.0, 3)}
+                                           onChange={(event) => this._onChangeMixture("max_in_concentrate", PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 6))}/>
+                                </div>
+                            </td>
+                        </tr>
                         {this._renderMixtureRows()}
                         <tr>
                             <td key={this.state.mixtureButtonKey} className="tablebottom">
