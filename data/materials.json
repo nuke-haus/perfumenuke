@@ -511,6 +511,18 @@
 			"longevity": "8",
 			"avg_in_concentrate": 0.04,
 			"ifra_restricted": false
+		},
+		{
+			"id": "hercolyn_d",
+			"name": "Hercolyn D",
+			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
+			"scent": "Amber, cedar and balsam nuances.",
+			"note": "BASE",
+			"cas": "8050-15-5",
+			"max_in_concentrate": 0.2,
+			"longevity": "400",
+			"impact": "25",
+			"avg_in_concentrate": 0.02
 		}
 	]
 }
