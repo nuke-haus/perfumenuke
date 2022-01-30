@@ -178,10 +178,10 @@ class FormulaBody extends React.Component {
                 <table className="formulatable">
                     <tbody>
                         <tr>
-                            <th>FRAGRANCE CONCENTRATION %</th>
-                            <th>NO SOLVENT FRAGRANCE CONCENTRATION %</th>
+                            <th>CONCENTRATION % INCL. SOLVENTS</th>
+                            <th>CONCENTRATION %</th>
+                            <th>CONCENTRATE INCL. SOLVENTS WEIGHT (GRAMS)</th>
                             <th>CONCENTRATE WEIGHT (GRAMS)</th>
-                            <th>NO SOLVENT CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
                         </tr>
                         {this._renderDetailsRows()}
