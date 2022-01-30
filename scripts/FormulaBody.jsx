@@ -132,10 +132,10 @@ class FormulaBody extends React.Component {
             const maxInProduct = material.max_in_finished_product == null 
                 ? "" 
                 : PN.sanitizeFloat(material.max_in_finished_product * 100.0, 4);
-            const avgInConc = material.avg_in_concentrate == null 
+            const avgInConc = material.avg_in_concentrate == null || material.max_in_concentrate == 0
                 ? "" 
                 : PN.sanitizeFloat(material.avg_in_concentrate * 100.0, 4);
-            const maxInConc = material.max_in_concentrate == null 
+            const maxInConc = material.max_in_concentrate == null || material.max_in_concentrate == 0
                 ? "" 
                 : PN.sanitizeFloat(material.max_in_concentrate * 100.0, 4);
             elements.push(
