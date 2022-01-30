@@ -43,11 +43,7 @@
 			"materials": [
 				{
 					"id": "unknown",
-					"percent": 0.5
-				},
-				{
-					"id": "unknown",
-					"percent": 0.5
+					"percent": 1.0
 				}
 			]
 		},
@@ -85,11 +81,7 @@
 			"materials": [
 				{
 					"id": "unknown",
-					"percent": 0.5
-				},
-				{
-					"id": "unknown",
-					"percent": 0.5
+					"percent": 1.0
 				}
 			]
 		}
