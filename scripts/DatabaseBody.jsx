@@ -29,7 +29,7 @@ class DatabaseBody extends React.Component {
     // --------------------------------------------------------------------------------------
 
     _onChangeMaterial(key, value) {
-        if (key === "ifra_restricted") { // force a rerender
+        if (key === "ifra_restricted") { 
             PN.database.currentMaterial.max_in_finished_product = (value === false)
                 ? null
                 : 0.1;
@@ -37,6 +37,7 @@ class DatabaseBody extends React.Component {
         }
         if (key === "is_natural" && value === false) {
             PN.database.currentMaterial["country"] = null;
+            this.setState({materialKey: PN.guid()});
         }
         if ((key === "avg_in_concentrate" || key === "max_in_concentrate") && value === 0) {
             value = null;
