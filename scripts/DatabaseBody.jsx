@@ -543,22 +543,6 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="3">
-                                SCENT: 
-                                <input className="databaseinput" 
-                                       defaultValue={PN.database.currentMaterial.scent}
-                                       onChange={(event) => this._onChangeMaterial("scent", this._formatName(event.target.value))}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colSpan="3">
-                                USAGE: 
-                                <input className="databaseinput" 
-                                       defaultValue={PN.database.currentMaterial.usage}
-                                       onChange={(event) => this._onChangeMaterial("usage", this._formatName(event.target.value))}/>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>
                                 <div>
                                     IS SOLVENT? 
@@ -589,6 +573,22 @@ class DatabaseBody extends React.Component {
                                        disabled={PN.database.currentMaterial.is_natural !== true}
                                        defaultValue={PN.database.currentMaterial.is_natural ? PN.database.currentMaterial.country : ""}
                                        onChange={(event) => this._onChangeMaterial("country", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="3">
+                                SCENT: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMaterial.scent}
+                                       onChange={(event) => this._onChangeMaterial("scent", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="3">
+                                USAGE: 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMaterial.usage}
+                                       onChange={(event) => this._onChangeMaterial("usage", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>

@@ -84,7 +84,7 @@ PN.recomputeFormula = function() {
             const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
             PN.database.activeFormula.computed.ingredients[material.id].quantity = PN.sanitizeFloat(currentQuantity + ingredient.quantity, 4);
             totalWeight = totalWeight + ingredient.quantity;
-            if (!material.solvent) {
+            if (!material.is_solvent) {
                 totalNonSolventWeight = totalNonSolventWeight + ingredient.quantity;
             }
         } else if (mixture != null) {
@@ -93,7 +93,7 @@ PN.recomputeFormula = function() {
                 const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
                 PN.database.activeFormula.computed.ingredients[material.id].quantity = PN.sanitizeFloat(currentQuantity + (ingredient.quantity * material.percent), 4);
                 const foundMaterial = PN.getMaterial(material.id);
-                if (!foundMaterial.solvent) {
+                if (!foundMaterial.is_solvent) {
                     totalNonSolventWeight = totalNonSolventWeight + (ingredient.quantity * material.percent);
                 }
             }
@@ -102,7 +102,8 @@ PN.recomputeFormula = function() {
     }
     if (totalWeight > 0.0) {
         for (let key in PN.database.activeFormula.computed.ingredients) {
-            if (key === PN.database.activeFormula.dilutant) {
+            const loadedMaterial = PN.getMaterial(key);
+            if ((loadedMaterial != null && loadedMaterial.is_solvent) || key === PN.database.activeFormula.dilutant) {
                 PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat(((PN.database.activeFormula.computed.ingredients[key].quantity - PN.database.activeFormula.dilutant_quantity) / totalWeight) * 100.0, 4);
             } else {
                 PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / totalWeight) * 100.0, 4);
@@ -220,7 +221,7 @@ PN.resetErrors = function() {
 PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
         material.ifra_restricted = (String(material.ifra_restricted).toLowerCase().trim() === "true");
-        material.solvent = (String(material.solvent).toLowerCase().trim() === "true");
+        material.is_solvent = (String(material.is_solvent).toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
         if (material.avg_in_concentrate) {
             material.avg_in_concentrate = parseFloat(material.avg_in_concentrate);
