@@ -205,6 +205,7 @@ class FormulaBody extends React.Component {
                         {this._renderManifestRows()}
                     </tbody>
                 </table>
+                <div className="padding"/>
             </div>
         );
     }

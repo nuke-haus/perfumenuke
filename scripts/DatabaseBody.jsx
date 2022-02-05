@@ -870,6 +870,7 @@ class DatabaseBody extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+                <div className="padding"/>
             </div>
         );
     }

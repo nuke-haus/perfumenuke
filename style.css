@@ -243,6 +243,11 @@ table, td, th {
     width: 300px;
 }
 
+.padding {
+    width: 10px;
+    height: 40px;
+}
+
 .error {
     color: #960000;
 }
