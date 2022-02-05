@@ -101,9 +101,8 @@ PN.recomputeFormula = function() {
         }
     }
     if (totalWeight > 0.0) {
-        for (let key in PN.database.activeFormula.computed.ingredients) {
-            const loadedMaterial = PN.getMaterial(key);
-            if ((loadedMaterial != null && loadedMaterial.is_solvent) || key === PN.database.activeFormula.dilutant) {
+        for (let key in PN.database.activeFormula.computed.ingredients) { // computed ingredients are all materials
+            if (key === PN.database.activeFormula.dilutant) {
                 PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat(((PN.database.activeFormula.computed.ingredients[key].quantity - PN.database.activeFormula.dilutant_quantity) / totalWeight) * 100.0, 4);
             } else {
                 PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / totalWeight) * 100.0, 4);
