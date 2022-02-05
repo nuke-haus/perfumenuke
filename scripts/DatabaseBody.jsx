@@ -560,20 +560,28 @@ class DatabaseBody extends React.Component {
                         </tr>
                         <tr>
                             <td>
-                                IS SOLVENT? 
-                                <select defaultValue={String(PN.database.currentMaterial.is_solvent)}
-                                            onChange={(event) => this._onChangeMaterial("is_solvent", event.target.value === "true")}>
-                                    <option value="false">FALSE</option>
-                                    <option value="true">TRUE</option>
-                                </select>
+                                <div>
+                                    IS SOLVENT? 
+                                </div>
+                                <div>
+                                    <select defaultValue={String(PN.database.currentMaterial.is_solvent)}
+                                                onChange={(event) => this._onChangeMaterial("is_solvent", event.target.value === "true")}>
+                                        <option value="false">FALSE</option>
+                                        <option value="true">TRUE</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
-                                IS NATURAL?
-                                <select defaultValue={String(PN.database.currentMaterial.is_natural)}
-                                            onChange={(event) => this._onChangeMaterial("is_natural", event.target.value === "true")}>
-                                    <option value="false">FALSE</option>
-                                    <option value="true">TRUE</option>
-                                </select>
+                                <div>
+                                    IS NATURAL?
+                                </div>
+                                <div>
+                                    <select defaultValue={String(PN.database.currentMaterial.is_natural)}
+                                                onChange={(event) => this._onChangeMaterial("is_natural", event.target.value === "true")}>
+                                        <option value="false">FALSE</option>
+                                        <option value="true">TRUE</option>
+                                    </select>
+                                </div>
                             </td>
                             <td>
                                 COUNTRY OF ORIGIN: 

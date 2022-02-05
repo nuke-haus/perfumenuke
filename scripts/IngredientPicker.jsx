@@ -34,7 +34,7 @@ class IngredientPicker extends React.Component {
             if ((this.props.allowMaterials && !material.is_solvent) || (this.props.allowSolvents && material.is_solvent)) {
                 let name = material.name;
                 if (material.is_natural && material.country != null) {
-                    name = `${ingredient.name} from ${material.country}`;
+                    name = `${material.name} from ${material.country}`;
                 }
                 count = count + 1;
                 this._nameMap[name] = material.id;
