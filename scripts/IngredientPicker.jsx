@@ -10,16 +10,20 @@ class IngredientPicker extends React.Component {
         if (mix != null && material != null) {
             console.error("Found a mixture and material with matching IDs: " + this.props.defaultValue);
         }
+        console.log(material, mix, this.props.defaultValue)
         if (mix != null) {
             if (mix.diluted_material != null) {
+                console.log(mix.name + PN.getDilutionPercentString(mix))
                 return mix.name + PN.getDilutionPercentString(mix);
             } else {
+                console.log(mix.name)
                 return mix.name;
             }
         } else if (material != null) {
             if (material.is_natural && material.country != null) {
                 return `${material.name} from ${material.country}`;
             }
+            console.log(material.name)
             return material.name;
         }
         return null;
