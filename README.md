@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/nuke-haus/perfumenuke/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/nuke-haus/perfumenuke/actions/workflows/pages/pages-build-deployment)
+
 # PERFUMENUKE
 An open-source perfume formulation tool and material database. 
 
