@@ -203,9 +203,15 @@ PN.validateMaterial = function(material) {
             material: material
         };
     }
-    if (material.usage == null) {
+    if (material.usage == null && material.is_natural !== true) {
         return {
             warning: "Material is missing usage notes: " + material.id,
+            material: material
+        };
+    }
+    if (material.is_natural === true && material.country == null) {
+        return {
+            warning: "Material is flagged as natural but missing its country of origin: " + material.id,
             material: material
         };
     }
@@ -221,6 +227,7 @@ PN.validateLoadedMaterials = function(materials) {
     for (let material of materials) {
         material.ifra_restricted = (String(material.ifra_restricted).toLowerCase().trim() === "true");
         material.is_solvent = (String(material.is_solvent).toLowerCase().trim() === "true");
+        material.is_natural = (String(material.is_natural).toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
         if (material.avg_in_concentrate) {
             material.avg_in_concentrate = parseFloat(material.avg_in_concentrate);
