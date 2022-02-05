@@ -30,14 +30,14 @@ class IngredientPicker extends React.Component {
         const elements = [];
         let count = 0;
         for (let id of PN.getAllSortedMaterialIDs()) {
-            const ingredient = PN.getMaterial(id);
-            if ((this.props.allowMaterials && !ingredient.is_solvent) || (this.props.allowSolvents && ingredient.is_solvent)) {
-                let name = ingredient.name;
+            const material = PN.getMaterial(id);
+            if ((this.props.allowMaterials && !material.is_solvent) || (this.props.allowSolvents && material.is_solvent)) {
+                let name = material.name;
                 if (material.is_natural && material.country != null) {
                     name = `${ingredient.name} from ${material.country}`;
                 }
                 count = count + 1;
-                this._nameMap[name] = ingredient.id;
+                this._nameMap[name] = material.id;
                 elements.push(<option key={"material" + count} value={name}/>);
             }
         }
