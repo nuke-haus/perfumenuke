@@ -35,6 +35,15 @@ class DatabaseBody extends React.Component {
                 : 0.1;
             this.setState({materialKey: PN.guid()});
         }
+        if (key === "is_natural" && value === false) {
+            PN.database.currentMaterial["country"] = null;
+        }
+        if ((key === "avg_in_concentrate" || key === "max_in_concentrate") && value === 0) {
+            value = null;
+        }
+        if (key === "note" && value === " ") {
+            value = null;
+        }
         PN.database.currentMaterial[key] = value;
         this.setState({materialButtonKey: PN.guid()});
     }
@@ -547,6 +556,31 @@ class DatabaseBody extends React.Component {
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMaterial.usage}
                                        onChange={(event) => this._onChangeMaterial("usage", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                IS SOLVENT? 
+                                <select defaultValue={String(PN.database.currentMaterial.is_solvent)}
+                                            onChange={(event) => this._onChangeMaterial("is_solvent", event.target.value === "true")}>
+                                    <option value="false">FALSE</option>
+                                    <option value="true">TRUE</option>
+                                </select>
+                            </td>
+                            <td>
+                                IS NATURAL?
+                                <select defaultValue={String(PN.database.currentMaterial.is_natural)}
+                                            onChange={(event) => this._onChangeMaterial("is_natural", event.target.value === "true")}>
+                                    <option value="false">FALSE</option>
+                                    <option value="true">TRUE</option>
+                                </select>
+                            </td>
+                            <td>
+                                COUNTRY OF ORIGIN: 
+                                <input className="databaseinput" 
+                                       disabled={PN.database.currentMaterial.is_natural !== true}
+                                       defaultValue={PN.database.currentMaterial.is_natural ? PN.database.currentMaterial.country : ""}
+                                       onChange={(event) => this._onChangeMaterial("country", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>

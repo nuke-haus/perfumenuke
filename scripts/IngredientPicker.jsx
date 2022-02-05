@@ -7,14 +7,20 @@ class IngredientPicker extends React.Component {
     _getDefaultValue() { // convert an ID to a display name
         const material = PN.getMaterial(this.props.defaultValue);
         const mix = PN.getMixture(this.props.defaultValue);
-        if (material != null) {
-            return material.name;
-        } else if (mix != null) {
+        if (mix != null && material != null) {
+            console.error("Found a mixture and material with matching IDs: " + this.props.defaultValue);
+        }
+        if (mix != null) {
             if (mix.diluted_material != null) {
                 return mix.name + PN.getDilutionPercentString(mix);
             } else {
                 return mix.name;
             }
+        } else if (material != null) {
+            if (material.is_natural && material.country != null) {
+                return `${material.name} from ${material.country}`;
+            }
+            return material.name;
         }
         return null;
     }
@@ -25,10 +31,14 @@ class IngredientPicker extends React.Component {
         let count = 0;
         for (let id of PN.getAllSortedMaterialIDs()) {
             const ingredient = PN.getMaterial(id);
-            if ((this.props.allowMaterials && !ingredient.solvent) || (this.props.allowSolvents && ingredient.solvent)) {
+            if ((this.props.allowMaterials && !ingredient.is_solvent) || (this.props.allowSolvents && ingredient.is_solvent)) {
+                let name = ingredient.name;
+                if (material.is_natural && material.country != null) {
+                    name = `${ingredient.name} from ${material.country}`;
+                }
                 count = count + 1;
-                this._nameMap[ingredient.name] = ingredient.id;
-                elements.push(<option key={"material" + count} value={ingredient.name}/>);
+                this._nameMap[name] = ingredient.id;
+                elements.push(<option key={"material" + count} value={name}/>);
             }
         }
         if (this.props.allowMixtures) {

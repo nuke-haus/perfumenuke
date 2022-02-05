@@ -181,7 +181,7 @@ PN.validateMaterial = function(material) {
     if (material.name == null) {
         return {error: "Material is missing a name: " + material.id};
     }
-    if (material.solvent === true) { // Solvents are validated differently
+    if (material.is_solvent === true) { // Solvents are validated differently
         if (material.usage == null) {
             return {
                 warning: "Material is missing usage notes:" + material.id,
@@ -353,7 +353,7 @@ PN.getMixtureDilutant = function(mixture) {
     }
     for (let material of mixture.materials) {
         const foundMaterial = PN.getMaterial(material.id);
-        if (foundMaterial && foundMaterial.solvent) {
+        if (foundMaterial != null && foundMaterial.is_solvent) {
             return material;
         }
     }

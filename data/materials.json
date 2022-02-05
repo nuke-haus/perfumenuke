@@ -8,12 +8,12 @@
 			"usage": "Some proprietary mixtures don't list all of their materials (ie. Heliotropex N). In these cases, this material represents the unknown components with no IFRA restrictions.",
 			"ifra_restricted": false,
 			"cas": "N/A",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "perfumers_alcohol",
 			"name": "Perfumer's Alcohol",
-			"solvent": true,
+			"is_solvent": true,
 			"usage": "Perfumer's Alcohol (SDA 40B). Commonly used as a fixative for perfume materials.",
 			"costs": [
 				{
@@ -26,7 +26,7 @@
 		{
 			"id": "dpg",
 			"name": "Dipropylene Glycol",
-			"solvent": true,
+			"is_solvent": true,
 			"usage": "Dipropylene Glycol (DPG) is practically odorless and used typically for diluting perfume materials.",
 			"costs": [],
 			"ifra_restricted": false
@@ -34,10 +34,20 @@
 		{
 			"id": "ipm",
 			"name": "Isopropyl Myristate",
-			"solvent": true,
+			"is_solvent": true,
 			"usage": "Isopropyl Myristate is practically odorless and used typically for diluting perfume materials.",
 			"costs": [],
 			"ifra_restricted": false
+		},
+		{
+			"id": "benzyl_benzoate",
+			"name": "Benzyl Benzoate",
+			"is_solvent": true,
+			"usage": "A useful solvent for nitro-musks, certain EOs and other very low-polarity ingredients that can be difficult to dissolve.",
+			"costs": [],
+			"ifra_restricted": false,
+			"cas": "120-51-4",
+			"scent": "Faintly balsamic."
 		},
 		{
 			"id": "triplal",
@@ -60,7 +70,7 @@
 					"cost": "1ml @ 0.3 USD"
 				}
 			],
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "zenolide",
@@ -81,7 +91,7 @@
 					"cost": "1ml @ 0.18 USD"
 				}
 			],
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "cinnamic_alcohol",
@@ -96,7 +106,7 @@
 			"cas": "104-54-1",
 			"max_in_finished_product": 0.012,
 			"ifra_restricted": true,
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "methyl_isoeugenol",
@@ -111,7 +121,7 @@
 			"cas": "93-16-3",
 			"max_in_finished_product": 0.00016,
 			"ifra_restricted": true,
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "heliotropin",
@@ -123,7 +133,7 @@
 			"impact": "160",
 			"cas": "120-57-0",
 			"ifra_restricted": false,
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "anisaldehyde",
@@ -136,7 +146,7 @@
 			"cas": "123-11-5",
 			"max_in_finished_product": 0.0021,
 			"ifra_restricted": true,
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "veratric_aldehyde",
@@ -150,7 +160,7 @@
 			"max_in_concentrate": 0.15,
 			"cas": "120-14-9",
 			"ifra_restricted": false,
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "acetate_c6",
@@ -167,7 +177,7 @@
 			"cas": "142-92-7",
 			"note": "TOP",
 			"usage": "Good blender and modifier for Labdanum. Good for sweet fruity accords. Also known as Hexyl Acetate.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "acetate_c9",
@@ -183,7 +193,7 @@
 			"cas": "143-13-5",
 			"note": "TOP",
 			"usage": "Adds freshness and diffusion. Also known as Nonyl Acetate.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "acetate_c12",
@@ -199,7 +209,7 @@
 			"cas": "112-66-3",
 			"note": "HEART",
 			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "damascone_alpha",
@@ -215,7 +225,7 @@
 			"note": "HEART",
 			"cas": "24720-09-0",
 			"usage": "Rose, fruit and plum booster.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "damascone_beta",
@@ -231,7 +241,7 @@
 			"note": "HEART",
 			"cas": "23726-91-2",
 			"usage": "A very powerful fruity floral booster.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "damascone_delta",
@@ -247,7 +257,7 @@
 			"note": "HEART",
 			"cas": "57378-68-4",
 			"usage": "Very diffusive plum and rose builder.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "damascone_gamma",
@@ -263,7 +273,7 @@
 			"note": "HEART",
 			"cas": "35087-49-1",
 			"usage": "Very diffusive plum and rose builder.",
-			"solvent": false
+			"is_solvent": false
 		},
 		{
 			"id": "terpinene_alpha",
@@ -511,6 +521,36 @@
 			"longevity": "8",
 			"avg_in_concentrate": 0.04,
 			"ifra_restricted": false
+		},
+		{
+			"id": "poivrol",
+			"name": "Poivrol",
+			"usage": "Very diffusive. Imparts fresh spicy top note accents, and helps implement the spicy character in agarwood.",
+			"costs": [],
+			"ifra_restricted": false,
+			"note": "TOP",
+			"cas": "68966-86-9",
+			"scent": "Aromatic, pepper, laurel leaf, wood.",
+			"longevity": "10",
+			"max_in_concentrate": 0.1,
+			"avg_in_concentrate": 0.005,
+			"company": "Symrise"
+		},
+		{
+			"id": "isobutyl_quinoline",
+			"name": "Isobutyl Quinoline",
+			"usage": "Resembles certain facets of oakmoss and vetivert and blends very well with them.",
+			"costs": [],
+			"ifra_restricted": true,
+			"note": "BASE",
+			"cas": "1333-58-0",
+			"scent": "Mossy, vetivert, ambery, woody, tobacco-like and leathery. Intense and very high impact odor.",
+			"impact": "450",
+			"longevity": "50",
+			"dilute": "10% or less",
+			"max_in_concentrate": 0.012,
+			"avg_in_concentrate": 0.001,
+			"max_in_finished_product": 0.1
 		},
 		{
 			"id": "hercolyn_d",
