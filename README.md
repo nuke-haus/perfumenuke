@@ -7,6 +7,8 @@ An open-source perfume formulation tool and material database.
 
 Open the tool in your web browser: https://nuke-haus.github.io/perfumenuke/
 
+Here's a quickstart guide video (slightly outdated): https://youtu.be/qmItmpbxNyI
+
 On the formula page you can load formulas from the database and modify them or create new ones. The information display below the formula editor will automatically update to reflect any changes made in the editor.
 
 On the database page you can import and export material, mixture and formula data. Use the material and mixture editors to load existing data and modify it, or create new materials and mixtures. 
