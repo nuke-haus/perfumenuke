@@ -12,10 +12,13 @@ class IngredientPicker extends React.Component {
             if (dilutionSolvent != null) {
                 return mix.name + PN.getDilutionPercentString(dilutionSolvent);
             } else {
+                if (mix.is_natural && !PN.isBlankString(mix.country)) {
+                    return `${mix.name} from ${mix.country}`;
+                }
                 return mix.name;
             }
         } else if (material != null) {
-            if (material.is_natural && material.country != null) {
+            if (material.is_natural && !PN.isBlankString(material.country)) {
                 return `${material.name} from ${material.country}`;
             }
             return material.name;
