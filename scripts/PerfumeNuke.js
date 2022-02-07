@@ -384,6 +384,10 @@ PN.getMaterialsFromMixture = function(mixture) {
     return result;
 }
 
+PN.isBlankString = function(string) {
+    return string != null && string.trim() != "";
+}
+
 PN.parseFloat = function(value) {
     value = parseFloat(value || "0");
     if (value === NaN || value === Infinity) {

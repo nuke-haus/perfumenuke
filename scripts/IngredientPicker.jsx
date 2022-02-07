@@ -31,7 +31,7 @@ class IngredientPicker extends React.Component {
             const material = PN.getMaterial(id);
             if ((this.props.allowMaterials && !material.is_solvent) || (this.props.allowSolvents && material.is_solvent)) {
                 let name = material.name;
-                if (material.is_natural && material.country != null) {
+                if (material.is_natural && !PN.isBlankString(material.country)) {
                     name = `${material.name} from ${material.country}`;
                 }
                 count = count + 1;
@@ -49,8 +49,12 @@ class IngredientPicker extends React.Component {
                     this._nameMap[name] = mix.id;
                     elements.push(<option key={"dilution" + count} value={name}/>);
                 } else {
-                    this._nameMap[mix.name] = mix.id;
-                    elements.push(<option key={"mixture" + count} value={mix.name}/>);
+                    let name = mix.name;
+                    if (mix.is_natural && !PN.isBlankString(mix.country)) {
+                        name = `${mix.name} from ${mix.country}`;
+                    }
+                    this._nameMap[name] = mix.id;
+                    elements.push(<option key={"mixture" + count} value={name}/>);
                 }   
             }
         }

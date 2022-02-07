@@ -765,17 +765,38 @@ class DatabaseBody extends React.Component {
                                        defaultValue={PN.database.currentMixture.id}
                                        onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value))}/>
                             </td>
-                            <td colSpan="2">
+                            <td colSpan="3">
                                 NAME: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.name}
                                        onChange={(event) => this._onChangeMixture("name", this._formatName(event.target.value))}/>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 COMPANY: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.company}
                                        onChange={(event) => this._onChangeMixture("company", this._formatName(event.target.value))}/>
+                            </td>
+                            <td>
+                                <div>
+                                    IS NATURAL?
+                                </div>
+                                <div>
+                                    <select defaultValue={String(PN.database.currentMixture.is_natural)}
+                                                onChange={(event) => this._onChangeMixture("is_natural", event.target.value === "true")}>
+                                        <option value="false">FALSE</option>
+                                        <option value="true">TRUE</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td colSpan="2">
+                                COUNTRY OF ORIGIN: 
+                                <input className="databaseinput" 
+                                       disabled={PN.database.currentMixture.is_natural !== true}
+                                       defaultValue={PN.database.currentMixture.is_natural ? PN.database.currentMixture.country : ""}
+                                       onChange={(event) => this._onChangeMixture("country", this._formatName(event.target.value))}/>
                             </td>
                         </tr>
                         <tr>
