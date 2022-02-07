@@ -166,6 +166,14 @@ class DatabaseBody extends React.Component {
     // --------------------------------------------------------------------------------------
 
     _onChangeMixture(key, value) {
+        if (key === "is_natural" && value === false) {
+            PN.database.currentMixture.country = null;
+            this.setState({mixtureKey: PN.guid()});
+        }
+        if ((key === "avg_in_concentrate" || key === "max_in_concentrate") && value === 0) {
+            value = null;
+        }
+
         PN.database.currentMixture[key] = value;
         this.setState({mixtureButtonKey: PN.guid()});
     }

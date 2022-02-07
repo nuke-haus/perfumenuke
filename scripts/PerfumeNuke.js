@@ -209,7 +209,7 @@ PN.validateMaterial = function(material) {
             material: material
         };
     }
-    if (material.is_natural === true && material.country == null) {
+    if (material.is_natural === true && PN.isBlankString(material.country)) {
         return {
             warning: "Material is flagged as natural but missing its country of origin: " + material.id,
             material: material
@@ -262,6 +262,12 @@ PN.validateMixture = function(mixture) {
     }
     if (mixture.materials.length < 1) {
         return {error: "Mixture contains no materials: " + mixture.id};
+    }
+    if (mixture.is_natural === true && PN.isBlankString(mixture.country)) {
+        return {
+            warning: "Mixture is flagged as natural but missing its country of origin: " + mixture.id,
+            mixture: mixture
+        };
     }
     let totalPercent = 0.0;
     for (let material of mixture.materials) {
@@ -385,7 +391,7 @@ PN.getMaterialsFromMixture = function(mixture) {
 }
 
 PN.isBlankString = function(string) {
-    return string != null && string.trim() != "";
+    return string == null || string.trim() === "";
 }
 
 PN.parseFloat = function(value) {
