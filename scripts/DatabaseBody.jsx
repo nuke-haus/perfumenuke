@@ -176,7 +176,7 @@ class DatabaseBody extends React.Component {
     }
 
     _tryCreateMixtureDilution() {
-        const currentMaterial = PN.getMixture(PN.database.currentMixture.id || "");
+        const currentMixture = PN.getMixture(PN.database.currentMixture.id || "");
         const currentDilutant = PN.getMaterial(this._selectedMixtureDilutantID || "");
         if (currentMixture == null) {
             alert("Unable to create a dilution for a mixture that does not exist in the database.");
@@ -190,7 +190,7 @@ class DatabaseBody extends React.Component {
             alert("Unable to create a dilution with an invalid percentage.");
             return;
         }
-        const mixtureId = `${currentMaterial.id}_${this._dilutionAmount}_${currentDilutant.id}`;
+        const mixtureId = `${currentMixture.id}_${this._dilutionAmount}_${currentDilutant.id}`;
         const existingMixture = PN.getMixture(mixtureId);
         if (existingMixture != null) {
             alert("A dilution already exists for this mixture.");
@@ -198,14 +198,14 @@ class DatabaseBody extends React.Component {
         }
         const mixture = {
             id: mixtureId,
-            name: currentMaterial.name,
-            scent: currentMaterial.scent,
+            name: currentMixture.name,
+            scent: currentMixture.scent,
             is_natural: false,
-            country: currentMaterial.country,
-            usage: `${this._dilutionAmount}% dilution of ${currentMaterial.name} in ${currentDilutant.name}`,
+            country: currentMixture.country,
+            usage: `${this._dilutionAmount}% dilution of ${currentMixture.name} in ${currentDilutant.name}`,
             materials: [
                 {
-                    id: currentMaterial.id,
+                    id: currentMixture.id,
                     percent: PN.sanitizeFloat(this._mixtureDilutionAmount * 0.01, 4)
                 },
                 {
