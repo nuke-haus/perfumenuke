@@ -10,7 +10,9 @@ class DatabaseBody extends React.Component {
     _selectedMaterialID = "";
     _selectedMixtureID = "";
     _selectedDilutantID = "";
+    _selectedMixtureDilutantID = "";
     _dilutionAmount = 10;
+    _mixtureDilutionAmount = 10;
 
     _formatName(value) {
         const str = String(value);
@@ -164,6 +166,58 @@ class DatabaseBody extends React.Component {
 
     // MIXTURE LOGIC
     // --------------------------------------------------------------------------------------
+
+    _changeMixtureDilutantMaterial(id) {
+        this._selectedMixtureDilutantID = id;
+    }
+
+    _onChangeDilution(percent) {
+        this._mixtureDilutionAmount = percent;
+    }
+
+    _tryCreateMixtureDilution() {
+        const currentMaterial = PN.getMixture(PN.database.currentMixture.id || "");
+        const currentDilutant = PN.getMaterial(this._selectedMixtureDilutantID || "");
+        if (currentMixture == null) {
+            alert("Unable to create a dilution for a mixture that does not exist in the database.");
+            return;
+        }
+        if (currentDilutant == null) {
+            alert("Unable to create a dilution with a dilutant that does not exist in the database.");
+            return;
+        }
+        if (this._mixtureDilutionAmount <= 0.0 || this._mixtureDilutionAmount >= 100.0) {
+            alert("Unable to create a dilution with an invalid percentage.");
+            return;
+        }
+        const mixtureId = `${currentMaterial.id}_${this._dilutionAmount}_${currentDilutant.id}`;
+        const existingMixture = PN.getMixture(mixtureId);
+        if (existingMixture != null) {
+            alert("A dilution already exists for this mixture.");
+            return;
+        }
+        const mixture = {
+            id: mixtureId,
+            name: currentMaterial.name,
+            scent: currentMaterial.scent,
+            is_natural: false,
+            country: currentMaterial.country,
+            usage: `${this._dilutionAmount}% dilution of ${currentMaterial.name} in ${currentDilutant.name}`,
+            materials: [
+                {
+                    id: currentMaterial.id,
+                    percent: PN.sanitizeFloat(this._mixtureDilutionAmount * 0.01, 4)
+                },
+                {
+                    id: currentDilutant.id,
+                    percent: PN.sanitizeFloat((100.0 - this._mixtureDilutionAmount) * 0.01, 4)
+                },
+            ]
+        }
+        PN.setMixture(mixture);
+        this.setState({mixtureKey: PN.guid()});
+        alert("Created dilution successfully.");
+    }
 
     _onChangeMixture(key, value) {
         if (key === "is_natural" && value === false) {
@@ -353,7 +407,7 @@ class DatabaseBody extends React.Component {
         const elements = [];
         for (let index in PN.database.currentMixture.materials || []) {
             const matData = PN.database.currentMixture.materials[index];
-            const label = `MATERIAL ${parseInt(index) + 1}:`
+            const label = `INGREDIENT ${parseInt(index) + 1}:`
             elements.push(
                 <tr key={"mixturematerial" + index}>
                     <td colSpan="2">
@@ -361,7 +415,7 @@ class DatabaseBody extends React.Component {
                         <IngredientPicker defaultValue={matData.id}
                                           id={"mixturematerial" + index}
                                           allowSolvents={true}
-                                          allowMixtures={false}
+                                          allowMixtures={true}
                                           onChange={(id) => this._changeMixtureMaterial(index, "id", id)}/>
                     </td>
                     <td>
@@ -391,7 +445,7 @@ class DatabaseBody extends React.Component {
                 <td colSpan="4">
                     <button type="button" 
                             onClick={() => this._addMaterialToMixture()}>
-                        Add Material To Mixture
+                        Add Ingredient To Mixture
                     </button>
                 </td>
             </tr>
@@ -875,6 +929,36 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         {this._renderMixtureRows()}
+                        <tr>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._tryCreateMixtureDilution()}>
+                                    Create Dilution Mixture For Current Mixture
+                                </button>
+                            </td>
+                            <td colSpan="2">
+                                SELECT DILUTANT:
+                                <IngredientPicker defaultValue=''
+                                                id={"loadsolvent"}
+                                                allowSolvents={true}
+                                                allowMaterials={false}
+                                                allowMixtures={false}
+                                                onChange={(id) => this._changeMixtureDilutantMaterial(id)}/>
+                             </td>
+                             <td>
+                                <div>
+                                    DILUTION %: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           step="0.001" 
+                                           min="0"
+                                           max="100"
+                                           defaultValue={this._dilutionAmount}
+                                           onChange={(event) => this._onChangeMixtureDilution(PN.sanitizeFloat(PN.parseFloat(event.target.value), 4))}/>
+                                </div>
+                            </td>
+                        </tr>
                         <tr>
                             <td colSpan="2" key={this.state.mixtureButtonKey} className="tablebottom">
                                 <button type="button" 
