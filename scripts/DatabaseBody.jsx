@@ -339,6 +339,10 @@ class DatabaseBody extends React.Component {
         } else {
             alert(`Imported ${data.materials.length} materials.`);
         }
+        this.setState({
+            materialKey: PN.guid(), 
+            mixtureKey: PN.guid()
+        });
     }
 
     _onImportMixtureFile(file) {
@@ -357,6 +361,10 @@ class DatabaseBody extends React.Component {
         } else {
             alert(`Imported ${data.mixtures.length} mixtures.`);
         }
+        this.setState({
+            materialKey: PN.guid(), 
+            mixtureKey: PN.guid()
+        });
     }
 
     _onImportAllFile(file) {
@@ -377,6 +385,10 @@ class DatabaseBody extends React.Component {
         } else {
             alert(`Imported ${data.materials.length} materials, ${data.mixtures.length} mixtures, and ${data.formulas.length} formulas.`);
         }
+        this.setState({
+            materialKey: PN.guid(), 
+            mixtureKey: PN.guid()
+        });
     }
 
     _exportMaterials() {
