@@ -297,10 +297,10 @@ PN.validateMixture = function(mixture) {
             return {error: "Mixture has invalid material percentage value: " + mixture.id};
         }
         totalPercent = totalPercent + material.percent;
-        if (material.id == null || PN.getMaterial(material.id) == null) {
-            return {error: "Mixture has invalid material ID in its material list: " + mixture.id};
+        if (material.id == null || PN.getMaterial(material.id) == null || PN.getMixture(material.id) == null) {
+            return {error: "Mixture has invalid ID in its material list: " + mixture.id};
         }
-        if (material.percent < 0.0 || material.percent > 1.0) {
+        if (material.percent <= 0.0 || material.percent > 1.0) {
             return {error: "Mixture has invalid material percentage value: " + mixture.id};
         }
     }
