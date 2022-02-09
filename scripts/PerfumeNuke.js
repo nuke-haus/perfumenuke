@@ -284,12 +284,6 @@ PN.validateMixture = function(mixture) {
     if (mixture.materials.length < 1) {
         return {error: "Mixture contains no materials: " + mixture.id};
     }
-    if (mixture.is_natural === true && PN.isBlankString(mixture.country)) {
-        return {
-            warning: "Mixture is flagged as natural but missing its country of origin: " + mixture.id,
-            mixture: mixture
-        };
-    }
     let totalPercent = 0.0;
     for (let material of mixture.materials) {
         material.percent = PN.parseFloat(material.percent);
@@ -307,6 +301,12 @@ PN.validateMixture = function(mixture) {
     totalPercent = PN.sanitizeFloat(totalPercent, 4);
     if (totalPercent !== 1.0) {
         return {error: `Mixture material percentages should add up to 1.0 but total is ${totalPercent}: ` + mixture.id};
+    }
+    if (mixture.is_natural === true && PN.isBlankString(mixture.country)) {
+        return {
+            warning: "Mixture is flagged as natural but missing its country of origin: " + mixture.id,
+            mixture: mixture
+        };
     }
     return {mixture: mixture};
 }
