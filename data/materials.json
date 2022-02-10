@@ -405,7 +405,10 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.01,
 			"impact": "175",
-			"ifra_restricted": false
+			"ifra_restricted": true,
+			"is_solvent": false,
+			"is_natural": false,
+			"max_in_finished_product": 0.025
 		},
 		{
 			"id": "benzoic_acid",
