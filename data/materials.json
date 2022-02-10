@@ -660,6 +660,36 @@
 			"ifra_restricted": true
 		},
 		{
+			"id": "coumarin",
+			"name": "Coumarin",
+			"cas": "91-64-5",
+			"scent": "Sweet, herbaceous, warm, tonka, somewhat spicy, tobacco, hay-like when diluted.",
+			"usage": "Hay note, tobacco builder, tonka builder.",
+			"impact": "120",
+			"longevity": "85",
+			"note": "BASE",
+			"dilute": "10% or less",
+			"max_in_finished_product": 0.015,
+			"ifra_restricted": true,
+			"avg_in_concentrate": 0.008,
+			"max_in_concentrate": 0.067
+		},
+		{
+			"id": "isoeugenol",
+			"name": "Isoeugenol",
+			"cas": "97-54-1",
+			"scent": "Sweet, spicy, clove, woody, carnation.",
+			"usage": "Carnation builder, Rose builder, used in oriental and fougere compositions.",
+			"impact": "85",
+			"longevity": "60",
+			"note": "BASE",
+			"dilute": "10% or less",
+			"max_in_finished_product": 0.0011,
+			"ifra_restricted": true,
+			"avg_in_concentrate": 0.012,
+			"max_in_concentrate": 0.094
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
