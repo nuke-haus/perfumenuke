@@ -22,6 +22,9 @@ class InfoButton extends React.Component {
 
     _renderModal() {
         if (this.state.showModal) {
+            const country = (this.props.material.country != null)
+                ? this._renderDiv("COUNTRY OF ORIGIN: " + this.props.material.country)
+                : null;
             const company = (this.props.material.company != null)
                 ? this._renderDiv("COMPANY: " + this.props.material.company)
                 : null;
@@ -49,6 +52,7 @@ class InfoButton extends React.Component {
 
             return (
                 <div className="modal">
+                    {country}
                     {company}
                     {scent}
                     {usage}
