@@ -709,6 +709,34 @@
 			"company": "IFF"
 		},
 		{
+			"id": "azarbre",
+			"name": "Azarbre",
+			"company": "Givaudan",
+			"scent": "Gourmand, Honey, Woody, Orris. Azarbre has a warm honey note with aspects of dried flowers.",
+			"usage": "Enhances ionones at 2-3% of concentrate. When used at higher dosages up to 10%, it blends the woody and floral components of a fragrance together.",
+			"note": "BASE",
+			"longevity": "24",
+			"impact": "120",
+			"max_in_concentrate": 0.1,
+			"avg_in_concentrate": 0.01,
+			"max_in_finished_product": 0.1,
+			"ifra_restricted": true,
+			"cas": "68845-36-3"
+		},
+		{
+			"id": "isobutavan",
+			"name": "Isobutavan",
+			"scent": "Sweet, and creamy vanillic character reminiscent of white chocolate, cream soda and with a soft apricot feeling.",
+			"usage": "Less powdery than vanillin and has a more creamy, thickening effect.",
+			"note": "BASE",
+			"longevity": "24",
+			"impact": "100",
+			"max_in_concentrate": 0.02,
+			"avg_in_concentrate": 0.002,
+			"ifra_restricted": false,
+			"cas": "20665-85-4"
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
