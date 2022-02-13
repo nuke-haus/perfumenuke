@@ -693,6 +693,22 @@
 			"max_in_concentrate": 0.094
 		},
 		{
+			"id": "tobacarol",
+			"name": "Tobacarol",
+			"usage": "Tobacco builder, amber builder.",
+			"scent": "Dry woody amber-spice combination with a cigar box nuance.",
+			"ifra_restricted": false,
+			"note": "BASE",
+			"cas": "1209-61-6",
+			"impact": "80",
+			"longevity": "52",
+			"max_in_concentrate": 0.05,
+			"avg_in_concentrate": 0.01,
+			"is_solvent": false,
+			"is_natural": false,
+			"company": "IFF"
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
