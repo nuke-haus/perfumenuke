@@ -737,6 +737,19 @@
 			"cas": "20665-85-4"
 		},
 		{
+			"id": "dimethyl_benzyl_carbinyl_butyrate",
+			"name": "Dimethyl Benzyl Carbinyl Butyrate",
+			"scent": "Sweet fruity plum.",
+			"usage": "Apple, rose and violet builder.",
+			"note": "TOP",
+			"longevity": "1",
+			"impact": "224",
+			"cas": "10094-34-5",
+			"ifra_restricted": false,
+			"max_in_concentrate": 0.05,
+			"avg_in_concentrate": 0.014
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
