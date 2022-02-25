@@ -750,6 +750,32 @@
 			"avg_in_concentrate": 0.014
 		},
 		{
+			"id": "ethylene_brassylate",
+			"name": "Ethylene Brassylate",
+			"cas": "105-95-3",
+			"scent": "Musky, powdery, sweet, floral, ambrette-like with woody, spicy and vanilla nuances.",
+			"usage": "An exceptionally tenacious musk and a good fixative. It plays well with other musks and is best used in combination. Reinforces florals and sweetness.",
+			"impact": "40",
+			"longevity": "280",
+			"note": "BASE",
+			"avg_in_concentrate": 0.02,
+			"max_in_concentrate": 0.12,
+			"ifra_restricted": false
+		},
+		{
+			"id": "galaxolide",
+			"name": "Galaxolide",
+			"cas": "1222-05-5",
+			"scent": "Musky, floral, woody, clean.",
+			"usage": "Also called Musk G. A clean, powerful and versatile iso-chroman musk with great persistence and a superb fragrance quality approaching the tone of macrocyclic musks.",
+			"impact": "60",
+			"longevity": "200",
+			"note": "BASE",
+			"avg_in_concentrate": 0.1,
+			"max_in_concentrate": 0.5,
+			"ifra_restricted": false
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
