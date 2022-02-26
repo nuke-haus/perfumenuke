@@ -62,6 +62,7 @@ class DatabaseBody extends React.Component {
         }
         if (validationData.material) {
             PN.setMaterial(validationData.material);
+            PN.persistInLocalStore();
             this.setState({materialButtonKey: PN.guid()});
         }
     }
@@ -243,6 +244,7 @@ class DatabaseBody extends React.Component {
         }
         if (validationData.mixture) {
             PN.setMixture(validationData.mixture);
+            PN.persistInLocalStore()
             this.setState({mixtureButtonKey: PN.guid()});
         }
     }

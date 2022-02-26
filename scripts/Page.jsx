@@ -18,7 +18,7 @@ class Page extends React.Component {
     }
 
     _onLoadMaterials(data) {
-        PN.validateLoadedMaterials(data.materials);
+        PN.validateLoadedMaterials(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).materials : data.materials); //Optional chaining and nullish coercion would be better here
 
         fetch('data/mixtures.json')
             .then(response => response.json())
@@ -26,7 +26,7 @@ class Page extends React.Component {
     }
 
     _onLoadMixtures(data) {
-        PN.validateLoadedMixtures(data.mixtures);
+        PN.validateLoadedMixtures(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).mixtures : data.mixtures); //Optional chaining and nullish coercion would be better here
 
         fetch('data/formulas.json')
             .then(response => response.json())
@@ -34,7 +34,7 @@ class Page extends React.Component {
     }
 
     _onLoadFormulas(data) {
-        PN.validateLoadedFormulas(data.formulas);
+        PN.validateLoadedFormulas(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).formulas : data.formulas); //Optional chaining and nullish coercion would be better here
         this.forceUpdate();
     }
 
