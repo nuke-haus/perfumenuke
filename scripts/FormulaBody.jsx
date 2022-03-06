@@ -98,6 +98,7 @@ class FormulaBody extends React.Component {
         }
         if (validationData.formula) {
             PN.setFormula(validationData.formula);
+            PN.persistInLocalStore();
             this.setState({formulaButtonKey: PN.guid()});
         }
     }
