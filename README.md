@@ -17,6 +17,7 @@ On the database page you can import and export material, mixture and formula dat
 - Complex substances (like most essential oils and certain aromachemicals) would typically be entered as a **mixture** as they contain several different components. 
 - Dilutions should be entered in the database as a **mixture** as well since they are comprised of a dilutant and an aromachemical. 
 - Accord blends should also be entered as **mixtures** in the database.
+- Mixtures can also contain other mixtures. For example, if you have a mixture of 2 chemicals you can create a 10% dilution of this mixture. Nesting of mixtures only works once, so you cannot create something like a dilution of a dilution of a mixture.
 
 Be sure to save your work and export it when you're finished using the tool, as it will not save your work between sessions. 
 
