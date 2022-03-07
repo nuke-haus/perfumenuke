@@ -13,7 +13,6 @@ class DatabaseBody extends React.Component {
     _selectedMixtureDilutantID = "";
     _dilutionAmount = 10;
     _mixtureDilutionAmount = 10;
-    _nukeEmoji = String.fromCodePoint([0x2622, 0xFE0F]);
 
     _formatName(value) {
         const str = String(value);
@@ -522,7 +521,6 @@ class DatabaseBody extends React.Component {
         const mixButtonLabel = mixExistsInDatabase
             ? "Save Current Mixture"
             : "Create New Mixture";
-        const deleteCacheLabel = `${this._nukeEmoji} Delete All Locally Cached Data ${this._nukeEmoji}`;
         return (
             <div>
                 <a ref={(ref) => this._downloadLink = ref}/>
@@ -603,7 +601,7 @@ class DatabaseBody extends React.Component {
                             <td colSpan="4">
                                 <button type="button" 
                                         onClick={() => this._deleteCachedData()}>
-                                    {deleteCacheLabel}
+                                    ☢️ Delete All Locally Cached Data ☢️
                                 </button>
                             </td>
                         </tr>
