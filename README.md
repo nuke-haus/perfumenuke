@@ -19,7 +19,7 @@ On the database page you can import and export material, mixture and formula dat
 - Accord blends should also be entered as **mixtures** in the database.
 - Mixtures can also contain other mixtures. For example, if you have a mixture of 2 chemicals you can create a 10% dilution of this mixture. Nesting of mixtures only works once, so you cannot create something like a dilution of a dilution of a mixture.
 
-Your work is saved between sessions, be sure to click the save button to save your changes though.
+Your work is saved between sessions, be sure to click the save button to save your current changes before leaving the page though.
 
 # WISHLIST
 
