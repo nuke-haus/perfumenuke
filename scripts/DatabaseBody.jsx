@@ -13,6 +13,7 @@ class DatabaseBody extends React.Component {
     _selectedMixtureDilutantID = "";
     _dilutionAmount = 10;
     _mixtureDilutionAmount = 10;
+    _nukeEmoji = String.fromCodePoint(0xFE0F);
 
     _formatName(value) {
         const str = String(value);
@@ -297,7 +298,7 @@ class DatabaseBody extends React.Component {
         this.setState({mixtureKey: PN.guid()});
     }
 
-    // IMPORT EXPORT LOGIC
+    // IMPORT / EXPORT / DATA MANAGEMENT LOGIC
     // --------------------------------------------------------------------------------------
 
     _onImportFormulaFile(file) {
@@ -414,6 +415,11 @@ class DatabaseBody extends React.Component {
         this._downloadLink.click();
     }
 
+    _deleteCachedData() {
+        PN.deleteLocalStore();
+        alert("Locally stored data has been wiped. You can refresh the page to reload the default data.");
+    }
+
     // RENDER
     // --------------------------------------------------------------------------------------
 
@@ -516,11 +522,12 @@ class DatabaseBody extends React.Component {
         const mixButtonLabel = mixExistsInDatabase
             ? "Save Current Mixture"
             : "Create New Mixture";
+        const deleteCacheLabel = `${this._nukeEmoji} Delete All Locally Cached Data ${this._nukeEmoji}`;
         return (
             <div>
                 <a ref={(ref) => this._downloadLink = ref}/>
                 <div className="tabletext">
-                    IMPORT AND EXPORT DATA
+                    MANAGE DATA
                 </div>
                 <table className="formulatable">
                     <tbody>
@@ -589,6 +596,14 @@ class DatabaseBody extends React.Component {
                                 <button type="button" 
                                         onClick={() => this._exportFormulas()}>
                                     Export All Formulas
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="4">
+                                <button type="button" 
+                                        onClick={() => this._deleteCachedData()}>
+                                    {deleteCacheLabel}
                                 </button>
                             </td>
                         </tr>

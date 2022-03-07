@@ -11,14 +11,23 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
 
-        // Load data in order since there's dependencies (materials -> mixtures -> formulas)
-        fetch('data/materials.json')
-            .then(response => response.json())
-            .then(data => this._onLoadMaterials(data));
+        const locallyStoredData = localStorage.getItem('perfume_nuke_data');
+        if (locallyStoredData == null) {
+            // Load default data in order since there's dependencies (materials -> mixtures -> formulas)
+            fetch('data/materials.json')
+                .then(response => response.json())
+                .then(data => this._onLoadMaterials(data));
+        } else {
+            // Locally stored persistent data exists, so parse that and validate it instead
+            const parsedData = JSON.parse(locallyStoredData);
+            PN.validateLoadedMaterials(parsedData.materials);
+            PN.validateLoadedMixtures(parsedData.mixtures); 
+            PN.validateLoadedFormulas(parsedData.formulas);
+        }
     }
 
     _onLoadMaterials(data) {
-        PN.validateLoadedMaterials(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).materials : data.materials); //Optional chaining and nullish coercion would be better here
+        PN.validateLoadedMaterials(data.materials); 
 
         fetch('data/mixtures.json')
             .then(response => response.json())
@@ -26,7 +35,7 @@ class Page extends React.Component {
     }
 
     _onLoadMixtures(data) {
-        PN.validateLoadedMixtures(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).mixtures : data.mixtures); //Optional chaining and nullish coercion would be better here
+        PN.validateLoadedMixtures(data.mixtures); 
 
         fetch('data/formulas.json')
             .then(response => response.json())
@@ -34,7 +43,7 @@ class Page extends React.Component {
     }
 
     _onLoadFormulas(data) {
-        PN.validateLoadedFormulas(JSON.parse(localStorage.getItem('perfume_nuke_data')) ? JSON.parse(localStorage.getItem('perfume_nuke_data')).formulas : data.formulas); //Optional chaining and nullish coercion would be better here
+        PN.validateLoadedFormulas(data.formulas);
         this.forceUpdate();
     }
 

@@ -44,6 +44,10 @@ PN.getAllDataForExport = function() {
     return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
 }
 
+PN.deleteLocalStore = function() {
+    localStorage.removeItem("perfume_nuke_data");
+}
+
 PN.persistInLocalStore = function() {
     localStorage.setItem("perfume_nuke_data", PN.getAllDataForExport());
 }
