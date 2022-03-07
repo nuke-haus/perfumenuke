@@ -13,7 +13,7 @@ class DatabaseBody extends React.Component {
     _selectedMixtureDilutantID = "";
     _dilutionAmount = 10;
     _mixtureDilutionAmount = 10;
-    _nukeEmoji = String.fromCodePoint(0xFE0F);
+    _nukeEmoji = String.fromCodePoint([0x2622, 0xFE0F]);
 
     _formatName(value) {
         const str = String(value);
