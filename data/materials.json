@@ -24,6 +24,16 @@
 			"ifra_restricted": false
 		},
 		{
+			"id": "propylene_glycol",
+			"name": "Propylene Glycol",
+			"scent": "Slightly estery, almost odourless.",
+			"usage": "Used as a solvent in some cases.",
+			"cas": "57-55-6",
+			"ifra_restricted": false,
+			"is_solvent": true,
+			"is_natural": false
+		},
+		{
 			"id": "dpg",
 			"name": "Dipropylene Glycol",
 			"is_solvent": true,
