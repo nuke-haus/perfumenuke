@@ -285,7 +285,6 @@ class FormulaBody extends React.Component {
                                 DESCRIPTION: 
                                 <textarea onChange={(event) => this._onChangeFormula("description", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.description}
-                                          className="resizableText"
                                           rows="6">
                                 </textarea>
                             </td>
@@ -295,7 +294,6 @@ class FormulaBody extends React.Component {
                                 OTHER NOTES: 
                                 <textarea onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.notes}
-                                          className="resizableText"
                                           rows="6">
                                 </textarea>
                             </td>

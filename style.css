@@ -82,7 +82,7 @@ textarea {
     font-family: 'Work Sans', sans-serif;
     margin: 4px;
     width: calc(100% - 24px);
-    resize: none;
+    resize: vertical;
 }
 
 input {
@@ -154,11 +154,6 @@ table, td, th {
 .tabletext {
     text-align: center;
     font-size: 24px;
-}
-
-.resizabletext {
-    resize: vertical;
-    overflow: auto;
 }
 
 .ingredientpicker {
