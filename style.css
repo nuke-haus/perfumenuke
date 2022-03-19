@@ -156,6 +156,11 @@ table, td, th {
     font-size: 24px;
 }
 
+.resizabletext {
+    resize: vertical;
+    overflow: auto;
+}
+
 .ingredientpicker {
     display: table-cell; 
     width: calc(100% - 24px);
