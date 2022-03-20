@@ -991,6 +991,36 @@
 			"is_natural": false
 		},
 		{
+			"id": "isoraldeine_95",
+			"name": "Isoraldeine 95",
+			"company": "Givaudan",
+			"scent": "Orris, violet, floral, buttery, powdery, woody.",
+			"usage": "Often used in flowery, woody, spicy and amber accords. It brings volume and diffusion to compounds. Also called Methyl Ionone Gamma 95.",
+			"note": "HEART",
+			"cas": "1335-46-2",
+			"max_in_concentrate": 0.15,
+			"longevity": "180",
+			"max_in_finished_product": 0.3,
+			"ifra_restricted": true,
+			"impact": "100",
+			"avg_in_concentrate": 0.03
+		},
+		{
+			"id": "allyl_cyclohexyl_propionate",
+			"name": "Allyl Cyclohexyl Propionate",
+			"scent": "A fruity, waxy, green, sweet, aromatic apple and pineapple scent.",
+			"usage": "Imparts texture and ripe fruity impressions. Very strong when undiluted.",
+			"note": "HEART",
+			"cas": "2705-87-5",
+			"max_in_concentrate": 0.05,
+			"longevity": "200",
+			"max_in_finished_product": 0.3,
+			"ifra_restricted": true,
+			"impact": "130",
+			"avg_in_concentrate": 0.005,
+			"dilute": "10% or less."
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
