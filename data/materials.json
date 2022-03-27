@@ -894,6 +894,21 @@
 			"impact": "150"
 		},
 		{
+			"id": "benzyl_acetate",
+			"name": "Benzyl Acetate",
+			"scent": "Sweet, floral, fruity, jasmine, fresh odor.",
+			"max_in_concentrate": 0.25,
+			"avg_in_concentrate": 0.03,
+			"longevity": "15",
+			"impact": "120",
+			"ifra_restricted": false,
+			"cas": "140-11-4",
+			"note": "TOP",
+			"usage": "Jasmine and gardenia builder.",
+			"is_solvent": false,
+			"is_natural": false
+		},
+		{
 			"id": "decalactone_delta",
 			"name": "Decalactone Delta",
 			"scent": "Sweet, creamy, lactonic, fatly, coconut, milky.",
