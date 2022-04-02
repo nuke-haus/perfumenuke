@@ -35,6 +35,52 @@
 			]
 		},
 		{
+			"id": "coumarex_db",
+			"name": "Coumarex DB",
+			"company": "IFF",
+			"scent": "Sweet, balsam, coumarin, fruity, tobacco, hay, woody, nutty, tonka.",
+			"usage": "Hay note, tobacco builder, tonka builder. A perfect match with almond and vanilla notes and useful in gourmand accords.",
+			"avg_in_concentrate": 0.02,
+			"max_in_concentrate": 0.1,
+			"longevity": "200",
+			"impact": "100",
+			"materials": [
+				{
+					"id": "unknown",
+					"percent": 1
+				}
+			]
+		},
+		{
+			"id": "orris_givco",
+			"name": "Orris Givco",
+			"company": "Givaudan",
+			"scent": "Floral, orris butter and violet scent.",
+			"usage": "Extremely diffusive orris and violet builder.",
+			"avg_in_concentrate": 0.01,
+			"max_in_concentrate": 0.06,
+			"longevity": "100",
+			"impact": "100",
+			"materials": [
+				{
+					"id": "unknown",
+					"percent": 0.99979
+				},
+				{
+					"id": "geraniol",
+					"percent": 0.00014
+				},
+				{
+					"id": "citronellol",
+					"percent": 0.00003
+				},
+				{
+					"id": "dynascone",
+					"percent": 0.00004
+				}
+			]
+		},
+		{
 			"id": "ylang_oliffac",
 			"name": "Ylang Oliffac",
 			"company": "IFF",
