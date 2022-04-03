@@ -1164,6 +1164,33 @@
 			"dilute": "10% or less."
 		},
 		{
+			"id": "linalool",
+			"name": "Linalool",
+			"scent": "Citrus, orange, lemon, floral, waxy, aldehydic and woody scent.",
+			"usage": "A good general builder. Appears in all kinds of compositions from floral to citrus.",
+			"note": "TOP",
+			"max_in_concentrate": 0.12,
+			"longevity": "10",
+			"impact": "100",
+			"avg_in_concentrate": 0.06,
+			"cas": "78-70-6",
+			"ifra_restricted": false
+		},
+		{
+			"id": "ethyl_maltol",
+			"name": "Ethyl Maltol",
+			"scent": "Sweet, caramel, jammy, cotton candy, warm scent.",
+			"usage": "Gourmand builder. Creates realistic fruit accords with other ester-y materials.",
+			"note": "BASE",
+			"max_in_concentrate": 0.002,
+			"longevity": "200",
+			"impact": "2500",
+			"avg_in_concentrate": 0.0001,
+			"cas": "4940-11-8",
+			"ifra_restricted": false,
+			"dilute": "1%"
+		},
+		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
 			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
