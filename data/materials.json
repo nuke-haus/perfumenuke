@@ -1201,6 +1201,55 @@
 			"longevity": "400",
 			"impact": "25",
 			"avg_in_concentrate": 0.02
+		},
+		{
+			"id": "vetacetex",
+			"name": "Vetacetex",
+			"scent": "Vetiver, woody, earthy, fruity, sweet, dry, fresh scent.",
+			"usage": "Vetiver builder.",
+			"ifra_restricted": false,
+			"note": "BASE",
+			"longevity": "300",
+			"impact": "80",
+			"avg_in_concentrate": 0.023,
+			"max_in_concentrate": 0.2,
+			"cas": "68917-34-0",
+			"is_natural": false,
+			"is_solvent": false
+		},
+		{
+			"id": "sylvamber",
+			"name": "Sylvamber",
+			"company": "DRT",
+			"scent": "Velvety, woody, amber, dry, cedar scent.",
+			"usage": "Tenacious and diffusive, similar to Iso E Super.",
+			"note": "BASE",
+			"cas": "54464-57-2",
+			"max_in_finished_product": 0.2,
+			"ifra_restricted": true,
+			"longevity": "400",
+			"impact": "100",
+			"avg_in_concentrate": 0.02,
+			"max_in_concentrate": 0.2,
+			"is_solvent": false,
+			"is_natural": false
+		},
+		{
+			"id": "cetalox",
+			"company": "Firmenich",
+			"name": "Cetalox",
+			"scent": "A synthetic ambergris scent that is sweet, dry, musky, and ambery.",
+			"max_in_concentrate": 0.05,
+			"usage": "Enhanced richness, warmth and depth can be achieved at lower dosages. At higher levels, Cetalox provides exceptional substantivity and performance.",
+			"cas": "3738-00-9",
+			"longevity": "400",
+			"avg_in_concentrate": 0.003,
+			"ifra_restricted": false,
+			"impact": "400",
+			"note": "BASE",
+			"is_solvent": false,
+			"is_natural": false,
+			"dilute": "10% or less."
 		}
 	]
 }
