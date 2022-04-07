@@ -172,7 +172,7 @@ class DatabaseBody extends React.Component {
         this._selectedMixtureDilutantID = id;
     }
 
-    _onChangeDilution(percent) {
+    _onChangeMixtureDilution(percent) {
         this._mixtureDilutionAmount = percent;
     }
 
@@ -191,7 +191,7 @@ class DatabaseBody extends React.Component {
             alert("Unable to create a dilution with an invalid percentage.");
             return;
         }
-        const mixtureId = `${currentMixture.id}_${this._dilutionAmount}_${currentDilutant.id}`;
+        const mixtureId = `${currentMixture.id}_${this._mixtureDilutionAmount}_${currentDilutant.id}`;
         const existingMixture = PN.getMixture(mixtureId);
         if (existingMixture != null) {
             alert("A dilution already exists for this mixture.");
@@ -203,7 +203,7 @@ class DatabaseBody extends React.Component {
             scent: currentMixture.scent,
             is_natural: false,
             country: currentMixture.country,
-            usage: `${this._dilutionAmount}% dilution of ${currentMixture.name} in ${currentDilutant.name}`,
+            usage: `${this._mixtureDilutionAmount}% dilution of ${currentMixture.name} in ${currentDilutant.name}`,
             materials: [
                 {
                     id: currentMixture.id,
