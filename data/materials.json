@@ -1250,6 +1250,22 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less."
+		},
+		{
+			"id": "fructone",
+			"name": "Fructone",
+			"scent": "Apple, strawberry, pineapple, fruity, exotic, tropical, woody with mild sweet pine aspect.",
+			"max_in_concentrate": 0.3,
+			"usage": "Fructone is useful in fruity compositions and gives a fermented connotation at high dosages. Useful in some rose, aromatic, and green accords.",
+			"cas": "6413-10-1",
+			"longevity": "12",
+			"avg_in_concentrate": 0.05,
+			"ifra_restricted": false,
+			"impact": "100",
+			"note": "TOP",
+			"is_solvent": false,
+			"is_natural": false,
+			"company": "IFF"
 		}
 	]
 }
