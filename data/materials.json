@@ -15,12 +15,6 @@
 			"name": "Perfumer's Alcohol",
 			"is_solvent": true,
 			"usage": "Perfumer's Alcohol (SDA 40B). Commonly used as a fixative for perfume materials.",
-			"costs": [
-				{
-					"name": "Sunrise Botanics",
-					"cost": "1ml @ 0.02 CAD"
-				}
-			],
 			"ifra_restricted": false
 		},
 		{
@@ -38,7 +32,6 @@
 			"name": "Dipropylene Glycol",
 			"is_solvent": true,
 			"usage": "Dipropylene Glycol (DPG) is practically odorless and used typically for diluting perfume materials.",
-			"costs": [],
 			"ifra_restricted": false
 		},
 		{
@@ -46,14 +39,12 @@
 			"name": "Isopropyl Myristate",
 			"is_solvent": true,
 			"usage": "Isopropyl Myristate is practically odorless and used typically for diluting perfume materials.",
-			"costs": [],
 			"ifra_restricted": false
 		},
 		{
 			"id": "tec",
 			"name": "Triethyl Citrate",
 			"usage": "A versatile solvent for oily products, crystals, powders and resins.",
-			"costs": [],
 			"ifra_restricted": false,
 			"cas": "77-93-0",
 			"scent": "Almost odourless with slight hints of mild fruity wine and plum notes.",
@@ -67,7 +58,6 @@
 			"name": "Benzyl Benzoate",
 			"is_solvent": true,
 			"usage": "A useful solvent for nitro-musks, certain EOs and other very low-polarity ingredients that can be difficult to dissolve.",
-			"costs": [],
 			"ifra_restricted": false,
 			"cas": "120-51-4",
 			"scent": "Faintly balsamic."
@@ -87,12 +77,6 @@
 			"max_in_finished_product": 0.025,
 			"ifra_restricted": true,
 			"cas": "68039-49-6",
-			"costs": [
-				{
-					"name": "PA",
-					"cost": "1ml @ 0.3 USD"
-				}
-			],
 			"is_solvent": false
 		},
 		{
@@ -223,12 +207,6 @@
 			"max_in_concentrate": 0.4,
 			"ifra_restricted": false,
 			"cas": "54982-83-1",
-			"costs": [
-				{
-					"name": "PA",
-					"cost": "1ml @ 0.18 USD"
-				}
-			],
 			"is_solvent": false
 		},
 		{
