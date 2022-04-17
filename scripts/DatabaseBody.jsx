@@ -316,6 +316,7 @@ class DatabaseBody extends React.Component {
         } else {
             alert(`Imported ${data.formulas.length} formulas.`);
         }
+        PN.persistInLocalStore();
     }
 
     _exportFormulas() {
@@ -345,6 +346,7 @@ class DatabaseBody extends React.Component {
             materialKey: PN.guid(), 
             mixtureKey: PN.guid()
         });
+        PN.persistInLocalStore();
     }
 
     _onImportMixtureFile(file) {
@@ -367,6 +369,7 @@ class DatabaseBody extends React.Component {
             materialKey: PN.guid(), 
             mixtureKey: PN.guid()
         });
+        PN.persistInLocalStore();
     }
 
     _onImportAllFile(file) {
@@ -391,6 +394,7 @@ class DatabaseBody extends React.Component {
             materialKey: PN.guid(), 
             mixtureKey: PN.guid()
         });
+        PN.persistInLocalStore();
     }
 
     _exportMaterials() {
