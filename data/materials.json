@@ -14,7 +14,7 @@
 			"id": "perfumers_alcohol",
 			"name": "Perfumer's Alcohol",
 			"is_solvent": true,
-			"usage": "Perfumer's Alcohol (SDA 40B). Commonly used as a fixative for perfume materials.",
+			"usage": "Perfumer's Alcohol (SDA 40B, 190 proof). Commonly used as a fixative for perfume materials.",
 			"ifra_restricted": false
 		},
 		{
@@ -580,8 +580,8 @@
 		{
 			"id": "ethyl_heptoate",
 			"name": "Ethyl Heptoate",
-			"scent": "Diffusive fruity pineapple, wine/brandy/cognac, apple peel and berry odor.",
-			"usage": "Booze builder. ",
+			"scent": "Fruity pineapple, rum, wine, brandy, cognac, apple peel and berry odor.",
+			"usage": "Also called Oenanthic Ether. Booze builder. Fruit builder. Diffusive and strong, but not long lasting.",
 			"note": "TOP",
 			"cas": "106-30-9",
 			"max_in_concentrate": 0.1,
@@ -1017,14 +1017,18 @@
 		{
 			"id": "decalactone_delta",
 			"name": "Decalactone Delta",
-			"scent": "Sweet, creamy, lactonic, fatly, coconut, milky.",
-			"usage": "Milk note builder, coconut builder.",
+			"scent": "Sweet, creamy, lactonic, fatty, coconutty, milky.",
+			"usage": "Milk note builder, coconut builder. Powerful.",
 			"note": "HEART",
 			"max_in_concentrate": 0.05,
 			"cas": "705-86-2",
 			"avg_in_concentrate": 0.005,
 			"longevity": "300",
-			"impact": "100"
+			"impact": "150",
+			"dilute": "10% or less",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false
 		},
 		{
 			"id": "octalactone_gamma",
@@ -1244,6 +1248,19 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"company": "IFF"
+		},
+		{
+			"id": "methyl_cyclo_pentenolone",
+			"name": "Methyl Cyclo Pentenolone",
+			"note": "HEART",
+			"scent": "Caramel, maple syrup, sweet, burnt, coffee, woody, nutty, bready scent.",
+			"cas": "765-70-8",
+			"max_in_concentrate": 0.03,
+			"dilute": "10% or less.",
+			"longevity": "16",
+			"impact": "150",
+			"usage": "Also called maple lactone. Coffee builder. Caramel builder. Gourmand builder. Powerful when undiluted.",
+			"avg_in_concentrate": 0.005
 		}
 	]
 }
