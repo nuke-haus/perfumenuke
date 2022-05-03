@@ -1329,6 +1329,23 @@
 			"is_natural": false
 		},
 		{
+			"id": "nectaryl",
+			"name": "Nectaryl",
+			"company": "Givaudan",
+			"scent": "Fruity, peach, apricot, lactonic scent.",
+			"usage": "Peach and apricot builder. Floral support.",
+			"note": "BASE",
+			"max_in_concentrate": 0.05,
+			"cas": "95962-14-4",
+			"avg_in_concentrate": 0.005,
+			"longevity": "380",
+			"impact": "100",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"dilute": "10%"
+		},
+		{
 			"id": "methyl_cyclo_pentenolone",
 			"name": "Methyl Cyclo Pentenolone",
 			"note": "HEART",
