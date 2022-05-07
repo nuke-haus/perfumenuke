@@ -116,6 +116,15 @@ class FormulaBody extends React.Component {
         }
     }
 
+    _getOrderedManifestKeys() {
+        const keys = Object.keys(PN.database.activeFormula.computed.ingredients);
+        return keys.sort((a, b) => {
+            const aValue = PN.database.activeFormula.computed.ingredients[a].ppt;
+            const bValue = PN.database.activeFormula.computed.ingredients[b].ppt;
+            return aValue - bValue;
+        });
+    }
+
     _renderPercentInProduct(id, material) {
         const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0);
         if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
@@ -128,7 +137,7 @@ class FormulaBody extends React.Component {
 
     _renderManifestRows() {
         const elements = [];
-        for (let id in PN.database.activeFormula.computed.ingredients) {
+        for (let id of this._getOrderedManifestKeys()) {
             const material = PN.getMaterial(id);
             const maxInProduct = material.max_in_finished_product == null 
                 ? "" 
