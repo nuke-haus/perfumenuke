@@ -121,7 +121,7 @@ class FormulaBody extends React.Component {
         return keys.sort((a, b) => {
             const aValue = PN.database.activeFormula.computed.ingredients[a].ppt;
             const bValue = PN.database.activeFormula.computed.ingredients[b].ppt;
-            return aValue - bValue;
+            return bValue - aValue;
         });
     }
 
