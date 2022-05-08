@@ -224,6 +224,11 @@ table, td, th {
     z-index: 50; 
 }
 
+.sortbutton {
+    padding-left: 8px;
+    cursor: pointer;
+}
+
 .modalbutton {
     padding-right: 8px;
     cursor: pointer;

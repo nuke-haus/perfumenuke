@@ -3,8 +3,16 @@ class FormulaBody extends React.Component {
     state = {
         formulaKey: "table",
         detailsKey: "details",
-        formulaButtonKey: "button"
+        formulaButtonKey: "button",
+        sortBy: "PPT",
+        sortDir: 1
     };
+
+    _SORT_BY_ID = "ID";
+    _SORT_BY_WEIGHT = "WEIGHT"; // technically we'll use PERCENT_CONC to sort by weight/percent/percent_total/ppt since it's all the same result
+    _SORT_BY_PERCENT_CONC = "PERCENT_CONC";
+    _SORT_BY_PERCENT_TOTAL = "PERCENT_TOTAL";
+    _SORT_BY_PPT = "PPT";
 
     _selectedFormulaID = "";
 
@@ -60,6 +68,13 @@ class FormulaBody extends React.Component {
         ingredient.quantity = Math.max(parseFloat(value), 0.0);
         PN.recomputeFormula();
         this.setState({detailsKey: PN.guid()});
+    }
+
+    _onClickSort(sortType, curDir) {
+        const newDir = (this.state.sortBy === sortType)
+            ? curDir * -1
+            : 1;
+        this.setState({sortBy: sortType, sortDir: newDir});
     }
 
     _getTooltip(id) {
@@ -118,11 +133,24 @@ class FormulaBody extends React.Component {
 
     _getOrderedManifestKeys() {
         const keys = Object.keys(PN.database.activeFormula.computed.ingredients);
-        return keys.sort((a, b) => {
-            const aValue = PN.database.activeFormula.computed.ingredients[a].ppt;
-            const bValue = PN.database.activeFormula.computed.ingredients[b].ppt;
-            return bValue - aValue;
-        });
+        switch (this.state.sortBy) {
+            case (this._SORT_BY_ID) :
+                return keys.sort((a, b) => {
+                    const aMaterial = PN.getMaterial(a) || {};
+                    const bMaterial = PN.getMaterial(b) || {};
+                    return (aMaterial.name || "").compareTo(bMaterial.name || "") * this.state.sortDir;
+                });
+            case (this._SORT_BY_PERCENT_CONC):
+            case (this._SORT_BY_PERCENT_TOTAL):
+            case (this._SORT_BY_PPT):
+            case (this._SORT_BY_WEIGHT):
+            default:
+                return keys.sort((a, b) => {
+                    const aValue = PN.database.activeFormula.computed.ingredients[a].percent;
+                    const bValue = PN.database.activeFormula.computed.ingredients[b].percent;
+                    return (bValue - aValue) * this.state.sortDir;
+                });
+        }
     }
 
     _renderPercentInProduct(id, material) {
@@ -164,7 +192,7 @@ class FormulaBody extends React.Component {
         return elements;
     }
 
-    _renderDetailsRows() {
+    _renderDetailsRow() {
         return (
             <tr>
                 <td>{PN.database.activeFormula.computed.concentration}</td>
@@ -173,6 +201,25 @@ class FormulaBody extends React.Component {
                 <td>{PN.database.activeFormula.computed.concentrationNonSolventWeight}</td>
                 <td>{PN.database.activeFormula.computed.totalWeight}</td>
             </tr>  
+        );
+    }
+
+    _renderSortButton(text, sortType) {
+        var sortEmoji = "\u{1F7E6}";
+        if (this.state.sortBy === sortType) {
+            if (this.state.sortDir === 1) {
+                sortEmoji = "\u{1F53C}";
+            } else {
+                sortEmoji = "\u{1F53D}";
+            }
+        } 
+        return (
+            <React.Fragment>
+                {text}
+                <span className="sortbutton" onClick={() => this._onClickSort(sortType, this.state.sortDir)}>
+                    {sortEmoji}
+                </span>
+            </React.Fragment>
         );
     }
 
@@ -194,7 +241,7 @@ class FormulaBody extends React.Component {
                             <th>CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
                         </tr>
-                        {this._renderDetailsRows()}
+                        {this._renderDetailsRow()}
                     </tbody>
                 </table>
                 <div className="tabletext">
@@ -203,13 +250,13 @@ class FormulaBody extends React.Component {
                 <table className="formulatable">
                     <tbody>
                         <tr>
-                            <th>MATERIAL</th>
-                            <th>WEIGHT (GRAMS)</th>
-                            <th>PARTS PER THOUSAND IN CONCENTRATE</th>
-                            <th>% IN CONCENTRATE</th>
+                            <th>{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
+                            <th>{this._renderSortButton("WEIGHT (GRAMS)", this._SORT_BY_WEIGHT)}</th>
+                            <th>{this._renderSortButton("PARTS PER THOUSAND IN CONCENTRATE", this._SORT_BY_PPT)}</th>
+                            <th>{this._renderSortButton("% IN CONCENTRATE", this._SORT_BY_PERCENT_CONC)}</th>
                             <th>AVG % USED IN CONCENTRATE</th>
                             <th>MAX % ADVISED IN CONCENTRATE</th>
-                            <th>% IN FINISHED PRODUCT</th>
+                            <th>{this._renderSortButton("% IN FINISHED PRODUCT", this._SORT_BY_PERCENT_TOTAL)}</th>
                             <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
                         </tr>
                         {this._renderManifestRows()}
