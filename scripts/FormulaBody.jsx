@@ -138,7 +138,7 @@ class FormulaBody extends React.Component {
                 return keys.sort((a, b) => {
                     const aMaterial = PN.getMaterial(a) || {};
                     const bMaterial = PN.getMaterial(b) || {};
-                    return (aMaterial.name || "").compareTo(bMaterial.name || "") * this.state.sortDir;
+                    return (aMaterial.name || "").localeCompare(bMaterial.name || "") * this.state.sortDir;
                 });
             case (this._SORT_BY_PERCENT_CONC):
             case (this._SORT_BY_PERCENT_TOTAL):
@@ -208,9 +208,9 @@ class FormulaBody extends React.Component {
         var sortEmoji = "\u{1F7E6}";
         if (this.state.sortBy === sortType) {
             if (this.state.sortDir === 1) {
-                sortEmoji = "\u{1F53C}";
-            } else {
                 sortEmoji = "\u{1F53D}";
+            } else {
+                sortEmoji = "\u{1F53C}";
             }
         } 
         return (
