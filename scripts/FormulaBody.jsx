@@ -157,7 +157,7 @@ class FormulaBody extends React.Component {
         const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0);
         if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
             return (
-                <span className="error">{floatValue}</span>
+                <span className="error">{`${floatValue} \u{1F6A9}`}</span>
             );
         } 
         return floatValue;
