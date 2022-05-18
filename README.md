@@ -1,9 +1,9 @@
 [![pages-build-deployment](https://github.com/nuke-haus/perfumenuke/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/nuke-haus/perfumenuke/actions/workflows/pages/pages-build-deployment)
 
-# PERFUMENUKE
+# PerfumeNuke
 An open-source perfume formulation tool and material database. 
 
-# HOW TO USE
+# How To Use
 
 Open the tool in your web browser: https://nuke-haus.github.io/perfumenuke/
 
@@ -21,7 +21,7 @@ On the database page you can import and export material, mixture and formula dat
 
 Your work is saved between sessions, be sure to click the save button to save your current changes before leaving the page though.
 
-# WISHLIST
+# Wishlist
 
 These are features and other things i'd like to eventually have in this tool.
 
