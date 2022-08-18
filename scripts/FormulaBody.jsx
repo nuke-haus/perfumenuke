@@ -9,7 +9,7 @@ class FormulaBody extends React.Component {
     };
 
     _SORT_BY_ID = "ID";
-    _SORT_BY_WEIGHT = "WEIGHT"; // technically we'll use PERCENT_CONC to sort by weight/percent/percent_total/ppt since it's all the same result
+    _SORT_BY_WEIGHT = "WEIGHT"; 
     _SORT_BY_PERCENT_CONC = "PERCENT_CONC";
     _SORT_BY_PERCENT_TOTAL = "PERCENT_TOTAL";
     _SORT_BY_PPT = "PPT";
@@ -195,9 +195,7 @@ class FormulaBody extends React.Component {
     _renderDetailsRow() {
         return (
             <tr>
-                <td>{PN.database.activeFormula.computed.concentration}</td>
                 <td>{PN.database.activeFormula.computed.concentrationNonSolvent}</td>
-                <td>{PN.database.activeFormula.computed.concentrationWeight}</td>
                 <td>{PN.database.activeFormula.computed.concentrationNonSolventWeight}</td>
                 <td>{PN.database.activeFormula.computed.totalWeight}</td>
             </tr>  
@@ -232,12 +230,10 @@ class FormulaBody extends React.Component {
                 <div className="tabletext">
                     FORMULA DETAILS
                 </div>
-                <table className="formulatable">
+                <table className="formulatablesmall">
                     <tbody>
                         <tr>
-                            <th>CONCENTRATION % INCL. SOLVENTS</th>
                             <th>CONCENTRATION %</th>
-                            <th>CONCENTRATE INCL. SOLVENTS WEIGHT (GRAMS)</th>
                             <th>CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
                         </tr>

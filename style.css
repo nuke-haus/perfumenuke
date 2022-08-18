@@ -151,6 +151,12 @@ table, td, th {
     margin-bottom: 30px;
 }
 
+.formulatablesmall {
+    width: max(60%, 1100px);
+    margin: auto;
+    margin-bottom: 30px;
+}
+
 .tabletext {
     text-align: center;
     font-size: 24px;
