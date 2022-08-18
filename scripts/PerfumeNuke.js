@@ -7,7 +7,7 @@ PN.database.mixtures = {};
 PN.database.materials = {};
 PN.database.formulas = {};
 
-PN.database.currentMaterial = { ifra_restricted = false };
+PN.database.currentMaterial = { ifra_restricted: false };
 PN.database.currentMixture = {};
 
 PN.database.activeFormula = {};
