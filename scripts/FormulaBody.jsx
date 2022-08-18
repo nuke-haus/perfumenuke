@@ -140,10 +140,15 @@ class FormulaBody extends React.Component {
                     const bMaterial = PN.getMaterial(b) || {};
                     return (aMaterial.name || "").localeCompare(bMaterial.name || "") * this.state.sortDir;
                 });
-            case (this._SORT_BY_PERCENT_CONC):
             case (this._SORT_BY_PERCENT_TOTAL):
-            case (this._SORT_BY_PPT):
             case (this._SORT_BY_WEIGHT):
+                return keys.sort((a, b) => {
+                    const aValue = PN.database.activeFormula.computed.ingredients[a].quantity;
+                    const bValue = PN.database.activeFormula.computed.ingredients[b].quantity;
+                    return (bValue - aValue) * this.state.sortDir;
+                });
+            case (this._SORT_BY_PERCENT_CONC):
+            case (this._SORT_BY_PPT):
             default:
                 return keys.sort((a, b) => {
                     const aValue = PN.database.activeFormula.computed.ingredients[a].percent;
