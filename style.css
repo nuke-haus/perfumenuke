@@ -145,8 +145,8 @@ table, td, th {
     margin-bottom: 30px;
 }
 
-.ingredienttablerow table tr:nth-child(odd) td {
-    background-color: #719985;
+.ingredienttable .ingredienttablerow tr:nth-child(odd) td {
+    background-color: #89b9a1;
 }
 
 .formulatable {
@@ -155,8 +155,8 @@ table, td, th {
     margin-bottom: 30px;
 }
 
-.formulatable table tr:nth-child(odd) td {
-    background-color: #719985;
+.formulatable tr:nth-child(odd) td {
+    background-color: #89b9a1;
 }
 
 .formulatablesmall {
