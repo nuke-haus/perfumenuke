@@ -280,7 +280,7 @@ class FormulaBody extends React.Component {
             const name = `INGREDIENT ${count}:`;
             count = count + 1;
             elements.push(
-                <tr key={"ingredient" + index + this.state.tableKey}>
+                <tr className="ingredienttablerow" key={"ingredient" + index + this.state.tableKey}>
                     <td>
                         {name}
                         <IngredientPicker defaultValue={ingredient.id}

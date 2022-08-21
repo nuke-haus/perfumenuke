@@ -145,10 +145,18 @@ table, td, th {
     margin-bottom: 30px;
 }
 
+.ingredienttablerow table tr:nth-child(odd) td {
+    background-color: #719985;
+}
+
 .formulatable {
     width: 90%;
     margin: auto;
     margin-bottom: 30px;
+}
+
+.formulatable table tr:nth-child(odd) td {
+    background-color: #719985;
 }
 
 .formulatablesmall {
