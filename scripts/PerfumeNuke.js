@@ -428,7 +428,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags) {
             if (result.filter(curMix => curMix.id === mix.id).length > 0) {
                 continue;
             }
-            const tags = material.tags || [];
+            const tags = mix.tags || [];
             if (tags.includes(tag)){
                 result.push(mix);
             }

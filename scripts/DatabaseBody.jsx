@@ -829,7 +829,7 @@ class DatabaseBody extends React.Component {
                                     Add New Tag To Material
                                 </button>
                             </td>
-                            <td colspan="2">
+                            <td colSpan="2">
                                 {materialTags}
                             </td>
                         </tr>
