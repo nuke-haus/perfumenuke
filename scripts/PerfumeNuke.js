@@ -260,6 +260,7 @@ PN.validateLoadedMaterials = function(materials) {
         material.is_solvent = (String(material.is_solvent).toLowerCase().trim() === "true");
         material.is_natural = (String(material.is_natural).toLowerCase().trim() === "true");
         material.note = PN.parseNote(material.note);
+        material.tags = material.tags || [];
         if (material.avg_in_concentrate) {
             material.avg_in_concentrate = parseFloat(material.avg_in_concentrate);
         }
@@ -328,6 +329,7 @@ PN.sanitizeFloat = function(value, sigFigs) {
 PN.validateLoadedMixtures = function(mixtures) {
     for (let mixture of mixtures) {
         mixture.materials = mixture.materials || [];
+        mixture.tags = mixture.tags || [];
 
         const validationData = PN.validateMixture(mixture);
 
@@ -389,6 +391,51 @@ PN.getAllSortedMixtureIDs = function() {
 
 PN.getAllSortedFormulaIDs = function() {
     return Object.keys(PN.database.formulas).sort();
+}
+
+PN.getAllUniqueTags = function() {
+    const tags = [];
+    for (let material of Object.values(PN.database.materials)) {
+        for (let tag of material.tags || []) {
+            if (!tags.includes(tag)) {
+                tags.push(tag);
+            }
+        }
+    }
+    for (let mixture of Object.values(PN.database.mixtures)) {
+        for (let tag of mixture.tags || []) {
+            if (!tags.includes(tag)) {
+                tags.push(tag);
+            }
+        }
+    }
+    return tags;
+}
+
+PN.getMaterialsAndMixturesWithTags = function(tags) {
+    const result = [];
+    for (let tag of tags) {
+        for (let material of Object.values(PN.database.materials)) {
+            if (result.contains(material)) {
+                continue;
+            }
+            const tags = material.tags || [];
+            if (tags.includes(tag)){
+                result.push(material);
+            }
+        }
+        for (let mix of Object.values(PN.database.mixtures)) {
+            if (result.contains(mix)) {
+                continue;
+            }
+            const tags = material.tags || [];
+            if (tags.includes(tag)){
+                result.push(mix);
+            }
+        }
+    }
+    
+    return result;
 }
 
 PN.getMixtureDilutant = function(mixture) {

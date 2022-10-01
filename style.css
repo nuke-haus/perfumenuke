@@ -194,6 +194,26 @@ table, td, th {
     cursor: pointer;
 }
 
+.tag {
+    background-color: #81ce84;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    color: #000000;
+    padding: 2px 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px;
+}
+
+.selectedTag {
+    background-color: #4CAF50;
+}
+
+.clickableTag {
+    cursor: pointer;
+}
+
 .selectednav {
     text-decoration: none;
     padding: 4px 10px;

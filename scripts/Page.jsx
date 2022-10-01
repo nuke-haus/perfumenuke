@@ -2,7 +2,8 @@ class Page extends React.Component {
 
     NAV_FORMULA = "FORMULA";
     NAV_DATABASE = "DATABASE";
-    NAV_ERRORS = "ERRORS"
+    NAV_ERRORS = "ERRORS";
+    NAV_ANALYSIS = "ANALYSIS";
 
     state = {
         currentNav: "FORMULA"
@@ -121,6 +122,9 @@ class Page extends React.Component {
                     <div className="topbutton" onClick={() => this._onNavClick(this.NAV_DATABASE)}>
                         <span className={this._getClassName(this.NAV_DATABASE)}>{this.NAV_DATABASE}</span>
                     </div>
+                    <div className="topbutton" onClick={() => this._onNavClick(this.NAV_ANALYSIS)}>
+                        <span className={this._getClassName(this.NAV_ANALYSIS)}>{this.NAV_ANALYSIS}</span>
+                    </div>
                     {errorsTab}
                 </div>
                 <div className="bar">
@@ -131,26 +135,25 @@ class Page extends React.Component {
         );
 
         if (this.state.currentNav == this.NAV_FORMULA) { 
-
             return (<div>
                 {header}
                 <FormulaBody/>
             </div>);
-
         } else if (this.state.currentNav == this.NAV_DATABASE) { 
-
             return (<div>
                 {header}
                 <DatabaseBody/>
             </div>);
-
+        } else if (this.state.currentNav == this.NAV_ANALYSIS) {
+            return (<div>
+                {header}
+                <AnalysisBody/>
+            </div>);
         } else if (this.state.currentNav == this.NAV_ERRORS) { 
-
             return (<div>
                 {header}
                 {table}
             </div>);
-
         } 
 
         return null;

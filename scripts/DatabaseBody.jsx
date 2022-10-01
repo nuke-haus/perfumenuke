@@ -4,7 +4,8 @@ class DatabaseBody extends React.Component {
         materialKey: "mat",
         materialButtonKey: "matButton",
         mixtureKey: "mix",
-        mixtureButtonKey: "mixButton"
+        mixtureButtonKey: "mixButton",
+        currentTag: ""
     };
 
     _selectedMaterialID = "";
@@ -120,6 +121,7 @@ class DatabaseBody extends React.Component {
             id: mixtureId,
             name: currentMaterial.name,
             scent: currentMaterial.scent,
+            tags: currentMaterial.tags,
             usage: `${this._dilutionAmount}% dilution of ${currentMaterial.name} in ${currentDilutant.name}`,
             materials: [
                 {
@@ -135,6 +137,20 @@ class DatabaseBody extends React.Component {
         PN.setMixture(mixture);
         this.setState({mixtureKey: PN.guid()});
         alert("Created dilution successfully.");
+    }
+
+    _tryCreateTag() {
+        const tags = PN.database.currentMaterial.tags || [];
+        if (!tags.includes(this.state.currentTag)) {
+            tags.push(this.state.currentTag);
+            PN.database.currentMaterial.tags = tags;
+            this.setState({currentTag: ""});
+        }
+    }
+
+    _deleteTag(tag) {
+        PN.database.currentMaterial.tags = PN.database.currentMaterial.tags.filter(curTag => curTag !== tag);
+        this.forceUpdate();
     }
 
     _loadMaterial() {
@@ -477,6 +493,7 @@ class DatabaseBody extends React.Component {
     }
 
     _renderMaterialCostRows() {
+        return null; // commenting out since this functionality isn't really important currently
         const elements = [];
         for (let index in PN.database.currentMaterial.costs || []) {
             const costData = PN.database.currentMaterial.costs[index];
@@ -525,6 +542,15 @@ class DatabaseBody extends React.Component {
         const mixButtonLabel = mixExistsInDatabase
             ? "Save Current Mixture"
             : "Create New Mixture";
+        const materialTags = [];
+        for (let tag of PN.database.currentMaterial.tags || []) {
+            materialTags.push(
+                <div className="tag" >
+                    <span>{tag} </span>
+                    <span onClick={() => this._deleteTag(tag)}>❌</span>
+                </div>
+            );
+        }
         return (
             <div>
                 <a ref={(ref) => this._downloadLink = ref}/>
@@ -790,6 +816,23 @@ class DatabaseBody extends React.Component {
                                            defaultValue={PN.sanitizeFloat(PN.parseFloat(PN.database.currentMaterial.max_in_finished_product) * 100.0, 3)}
                                            onChange={(event) => this._onChangeMaterial("max_in_finished_product", PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 6))}/>
                                 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="button" 
+                                        onClick={() => this._tryCreateTag()}>
+                                    Add New Tag To Material
+                                </button>
+                            </td>
+                            <td>
+                                NEW TAG: 
+                                <input className="databaseinput" 
+                                       defaultValue={this.state.currentTag}
+                                       onChange={(event) => this.setState({currentTag: event.target.value})}/>
+                            </td>
+                            <td>
+                                {materialTags}
                             </td>
                         </tr>
                         {this._renderMaterialCostRows()}
