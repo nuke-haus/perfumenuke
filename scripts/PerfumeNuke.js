@@ -416,7 +416,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags) {
     const result = [];
     for (let tag of tags) {
         for (let material of Object.values(PN.database.materials)) {
-            if (result.contains(material)) {
+            if (result.filter(curMat => curMat.id === material.id).length > 0) {
                 continue;
             }
             const tags = material.tags || [];
@@ -425,7 +425,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags) {
             }
         }
         for (let mix of Object.values(PN.database.mixtures)) {
-            if (result.contains(mix)) {
+            if (result.filter(curMix => curMix.id === mix.id).length > 0) {
                 continue;
             }
             const tags = material.tags || [];

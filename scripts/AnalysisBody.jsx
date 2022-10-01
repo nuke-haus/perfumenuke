@@ -29,7 +29,11 @@ class AnalysisBody extends React.Component {
                 ? "tag clickableTag selectedTag"
                 : "tag clickableTag";
             tagElements.push(
-                <div className={className} onClick={() => this._onClickTag(tag)}>{tag}</div>
+                <div className={className} 
+                     onClick={() => this._onClickTag(tag)} 
+                     key={"clickTag" + tag}>
+                         {tag}
+                </div>
             );
         }
 
@@ -37,7 +41,7 @@ class AnalysisBody extends React.Component {
         const materials = PN.getMaterialsAndMixturesWithTags(this.state.selectedTags);
         for (let material of materials) {
             tableElements.push(
-                <tr>
+                <tr key={"tableElement" + material.id}>
                     <td>{material.name || "NO NAME"}</td>
                     <td>{material.note || "TOP"}</td>
                     <td>{material.longevity || 1}</td>

@@ -142,14 +142,14 @@ class DatabaseBody extends React.Component {
     _tryCreateTag() {
         const tags = PN.database.currentMaterial.tags || [];
         if (!tags.includes(this.state.currentTag)) {
-            tags.push(this.state.currentTag);
+            tags.push(this.state.currentTag.toUpperCase().trim());
             PN.database.currentMaterial.tags = tags;
-            this.setState({currentTag: ""});
+            this.forceUpdate();
         }
     }
 
     _deleteTag(tag) {
-        PN.database.currentMaterial.tags = PN.database.currentMaterial.tags.filter(curTag => curTag !== tag);
+        PN.database.currentMaterial.tags = PN.database.currentMaterial.tags.filter(curTag => curTag.toUpperCase() !== tag.toUpperCase());
         this.forceUpdate();
     }
 
@@ -545,9 +545,9 @@ class DatabaseBody extends React.Component {
         const materialTags = [];
         for (let tag of PN.database.currentMaterial.tags || []) {
             materialTags.push(
-                <div className="tag" >
+                <div className="tag" key={"materialTag" + tag}>
                     <span>{tag} </span>
-                    <span onClick={() => this._deleteTag(tag)}>❌</span>
+                    <span className="clickableTag" onClick={() => this._deleteTag(tag)}>❌</span>
                 </div>
             );
         }
@@ -820,18 +820,16 @@ class DatabaseBody extends React.Component {
                         </tr>
                         <tr>
                             <td>
+                                NEW TAG: 
+                                <input className="databaseinput" 
+                                       defaultValue={this.state.currentTag}
+                                       onChange={(event) => this.setState({currentTag: event.target.value})}/>
                                 <button type="button" 
                                         onClick={() => this._tryCreateTag()}>
                                     Add New Tag To Material
                                 </button>
                             </td>
-                            <td>
-                                NEW TAG: 
-                                <input className="databaseinput" 
-                                       defaultValue={this.state.currentTag}
-                                       onChange={(event) => this.setState({currentTag: event.target.value})}/>
-                            </td>
-                            <td>
+                            <td colspan="2">
                                 {materialTags}
                             </td>
                         </tr>
