@@ -545,9 +545,9 @@ class DatabaseBody extends React.Component {
         const materialTags = [];
         for (let tag of PN.database.currentMaterial.tags || []) {
             materialTags.push(
-                <div className="tag" key={"materialTag" + tag}>
+                <div className="tag tagedit" key={"materialTag" + tag}>
                     <span>{tag} </span>
-                    <span className="clickableTag" onClick={() => this._deleteTag(tag)}>❌</span>
+                    <span className="clickabletag" onClick={() => this._deleteTag(tag)}>❌</span>
                 </div>
             );
         }

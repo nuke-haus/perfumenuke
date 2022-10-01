@@ -26,12 +26,12 @@ class AnalysisBody extends React.Component {
         for (let tag of this.state.allTags) {
             const isSelected = this.state.selectedTags.includes(tag);
             const className = isSelected
-                ? "tag clickableTag selectedTag"
-                : "tag clickableTag";
+                ? "tag clickabletag selectedtag"
+                : "tag clickabletag";
             tagElements.push(
                 <div className={className} 
                      onClick={() => this._onClickTag(tag)} 
-                     key={"clickTag" + tag}>
+                     key={"filterTag" + tag}>
                          {tag}
                 </div>
             );
