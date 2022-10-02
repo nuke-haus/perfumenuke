@@ -32,6 +32,11 @@
 					"id": "veratric_aldehyde",
 					"percent": 0.25
 				}
+			],
+			"tags": [
+				"HELIOTROPE",
+				"SPICY",
+				"ALMOND"
 			]
 		},
 		{
@@ -49,6 +54,12 @@
 					"id": "unknown",
 					"percent": 1
 				}
+			],
+			"tags": [
+				"COUMARIN",
+				"TONKA",
+				"TOBACCO",
+				"ALMOND"
 			]
 		},
 		{
@@ -78,6 +89,10 @@
 					"id": "dynascone",
 					"percent": 0.00004
 				}
+			],
+			"tags": [
+				"IRIS",
+				"DIFFUSIVE"
 			]
 		},
 		{
@@ -89,8 +104,16 @@
 			"materials": [
 				{
 					"id": "unknown",
-					"percent": 1.0
+					"percent": 1
 				}
+			],
+			"impact": "150",
+			"longevity": "200",
+			"avg_in_concentrate": 0.001,
+			"max_in_concentrate": 0.1,
+			"tags": [
+				"YLANGYLANG",
+				"FLORAL"
 			]
 		},
 		{
@@ -116,6 +139,56 @@
 					"id": "vanillin",
 					"percent": 0.04
 				}
+			],
+			"tags": [
+				"BENZOIN"
+			]
+		},
+		{
+			"id": "gelsol_f",
+			"name": "Gelsol F",
+			"company": "IFF",
+			"scent": "Fresh, jasmine, aldehydic, sweet, hyacinth, intensely rich, heavy, narcotic, fruity, tea, warm, velvety.",
+			"usage": "Jasmine builder.",
+			"longevity": "50",
+			"materials": [
+				{
+					"id": "eugenol",
+					"percent": 0.1
+				},
+				{
+					"id": "benzyl_benzoate",
+					"percent": 0.1
+				},
+				{
+					"id": "unknown",
+					"percent": 0.8
+				}
+			],
+			"impact": "100",
+			"max_in_concentrate": 0.02,
+			"avg_in_concentrate": 0.002,
+			"tags": [
+				"JASMINE",
+				"FRESH",
+				"TEA",
+				"ALDEHYDE"
+			]
+		},
+		{
+			"id": "vetacetex",
+			"name": "Vetacetex",
+			"company": "IFF",
+			"scent": "Vetiver, woody, dry, rooty odor.",
+			"usage": "Vetiver builder.",
+			"materials": [
+				{
+					"id": "unknown",
+					"percent": 1
+				}
+			],
+			"tags": [
+				"VETIVER"
 			]
 		}
 	]

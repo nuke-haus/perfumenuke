@@ -77,7 +77,10 @@
 			"max_in_finished_product": 0.025,
 			"ifra_restricted": true,
 			"cas": "68039-49-6",
-			"is_solvent": false
+			"is_solvent": false,
+			"tags": [
+				"GREEN"
+			]
 		},
 		{
 			"id": "ethyl_safranate",
@@ -92,7 +95,13 @@
 			"max_in_concentrate": 0.22,
 			"avg_in_concentrate": 0.033,
 			"ifra_restricted": false,
-			"is_solvent": false
+			"is_solvent": false,
+			"tags": [
+				"ROSE",
+				"FRUITY",
+				"APPLE",
+				"SPICY"
+			]
 		},
 		{
 			"id": "safranal",
@@ -109,7 +118,12 @@
 			"ifra_restricted": true,
 			"is_solvent": false,
 			"max_in_finished_product": 0.00012,
-			"dilute": "1%"
+			"dilute": "1%",
+			"tags": [
+				"TOBACCO",
+				"SAFFRON",
+				"HERBAL"
+			]
 		},
 		{
 			"id": "safraleine",
@@ -125,7 +139,13 @@
 			"avg_in_concentrate": 0.002,
 			"ifra_restricted": false,
 			"is_solvent": false,
-			"dilute": "10% or less."
+			"dilute": "10% or less.",
+			"tags": [
+				"SAFFRON",
+				"LEATHER",
+				"HERBAL",
+				"TOBACCO"
+			]
 		},
 		{
 			"id": "ionone_alpha",
@@ -141,7 +161,11 @@
 			"avg_in_concentrate": 0.01,
 			"ifra_restricted": false,
 			"company": "IFF",
-			"is_solvent": false
+			"is_solvent": false,
+			"tags": [
+				"ORRIS",
+				"VIOLET"
+			]
 		},
 		{
 			"id": "citronellol",
@@ -157,7 +181,14 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"impact": "100",
-			"max_in_finished_product": 0.12
+			"max_in_finished_product": 0.12,
+			"tags": [
+				"FRESH",
+				"ROSE",
+				"CITRUS",
+				"PINE",
+				"GERANIUM"
+			]
 		},
 		{
 			"id": "dynascone",
@@ -175,7 +206,14 @@
 			"is_natural": false,
 			"impact": "200",
 			"max_in_finished_product": 0.011,
-			"dilute": "10% or less."
+			"dilute": "10% or less.",
+			"tags": [
+				"GREEN",
+				"GALBANUM",
+				"FRUITY",
+				"PINEAPPLE",
+				"HYACINTH"
+			]
 		},
 		{
 			"id": "geraniol",
@@ -192,7 +230,14 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"impact": "100",
-			"max_in_finished_product": 0.047
+			"max_in_finished_product": 0.047,
+			"tags": [
+				"ROSE",
+				"GERANIUM",
+				"FRUITY",
+				"CITRUS",
+				"WAXY"
+			]
 		},
 		{
 			"id": "zenolide",
@@ -201,13 +246,19 @@
 			"scent": "Soft, delicate white musk with a red fruit aspect.",
 			"usage": "Great for creating a clean, soft white musk note. Not extremely noticeable.",
 			"note": "BASE",
-			"longevity": "48",
-			"impact": "100",
-			"avg_in_concentrate": 0.2,
+			"longevity": "320",
+			"impact": "80",
+			"avg_in_concentrate": 0.1,
 			"max_in_concentrate": 0.4,
 			"ifra_restricted": false,
 			"cas": "54982-83-1",
-			"is_solvent": false
+			"costs": [],
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"MUSK",
+				"BERRY"
+			]
 		},
 		{
 			"id": "cinnamic_alcohol",
@@ -222,7 +273,13 @@
 			"cas": "104-54-1",
 			"max_in_finished_product": 0.012,
 			"ifra_restricted": true,
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"BALSAMIC",
+				"CINNAMON",
+				"POWDERY"
+			]
 		},
 		{
 			"id": "methyl_isoeugenol",
@@ -237,7 +294,12 @@
 			"cas": "93-16-3",
 			"max_in_finished_product": 0.00016,
 			"ifra_restricted": true,
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"SPICY",
+				"CLOVE"
+			]
 		},
 		{
 			"id": "heliotropin",
@@ -249,7 +311,14 @@
 			"impact": "160",
 			"cas": "120-57-0",
 			"ifra_restricted": false,
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"HELIOTROPE",
+				"POWDERY",
+				"CHERRY",
+				"BALSAMIC"
+			]
 		},
 		{
 			"id": "anisaldehyde",
@@ -262,12 +331,19 @@
 			"cas": "123-11-5",
 			"max_in_finished_product": 0.0021,
 			"ifra_restricted": true,
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ANISE",
+				"LILAC",
+				"HAWTHORN",
+				"HELIOTROPE"
+			]
 		},
 		{
 			"id": "veratric_aldehyde",
 			"name": "Veratric Aldehyde",
-			"scent": "Sweet, vanilla, creamy, heliotropee, woody, coumarin.",
+			"scent": "Sweet, vanilla, creamy, heliotrope, woody, coumarin.",
 			"usage": "More warmth and depth than Vanillin, and excellent effect in spicy and woody-musky accords.",
 			"note": "HEART",
 			"longevity": "28",
@@ -276,7 +352,14 @@
 			"max_in_concentrate": 0.15,
 			"cas": "120-14-9",
 			"ifra_restricted": false,
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VANILLA",
+				"WOOD",
+				"HELIOTROPE",
+				"COUMARIN"
+			]
 		},
 		{
 			"id": "acetate_c6",
@@ -293,7 +376,14 @@
 			"cas": "142-92-7",
 			"note": "TOP",
 			"usage": "Good blender and modifier for Labdanum. Good for sweet fruity accords. Also known as Hexyl Acetate.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"GREEN",
+				"FRUITY",
+				"PEAR",
+				"APPLE"
+			]
 		},
 		{
 			"id": "acetate_c9",
@@ -309,7 +399,13 @@
 			"cas": "143-13-5",
 			"note": "TOP",
 			"usage": "Adds freshness and diffusion. Also known as Nonyl Acetate.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"TROPICAL",
+				"FRUITY",
+				"WAXY"
+			]
 		},
 		{
 			"id": "acetate_c12",
@@ -325,7 +421,14 @@
 			"cas": "112-66-3",
 			"note": "HEART",
 			"usage": "Also known as Lauryl Acetate or Dodecyl Acetate.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CITRUS",
+				"FRESH",
+				"FRUITY",
+				"WAXY"
+			]
 		},
 		{
 			"id": "damascone_alpha",
@@ -341,7 +444,14 @@
 			"note": "HEART",
 			"cas": "24720-09-0",
 			"usage": "Rose, fruit and plum booster.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"APPLE",
+				"PLUM",
+				"GREEN",
+				"ROSE"
+			]
 		},
 		{
 			"id": "damascone_beta",
@@ -357,7 +467,15 @@
 			"note": "HEART",
 			"cas": "23726-91-2",
 			"usage": "A very powerful fruity floral booster.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ROSE",
+				"TOBACCO",
+				"HONEY",
+				"PLUM",
+				"CASSIS"
+			]
 		},
 		{
 			"id": "damascone_delta",
@@ -373,7 +491,15 @@
 			"note": "HEART",
 			"cas": "57378-68-4",
 			"usage": "Very diffusive plum and rose builder.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CASSIS",
+				"TOBACCO",
+				"APPLE",
+				"PLUM",
+				"ROSE"
+			]
 		},
 		{
 			"id": "damascone_gamma",
@@ -389,7 +515,15 @@
 			"note": "HEART",
 			"cas": "35087-49-1",
 			"usage": "Very diffusive plum and rose builder.",
-			"is_solvent": false
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ROSE",
+				"APPLE",
+				"PLUM",
+				"GREEN",
+				"TOBACCO"
+			]
 		},
 		{
 			"id": "terpinene_alpha",
@@ -400,7 +534,16 @@
 			"cas": "99-86-5",
 			"max_in_concentrate": 0.05,
 			"longevity": "3",
-			"dilute": "10%"
+			"dilute": "10%",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"TERPY",
+				"PINE",
+				"CITRUS",
+				"SPICY"
+			]
 		},
 		{
 			"id": "ethyl_propionate",
@@ -412,7 +555,17 @@
 			"max_in_concentrate": 0.05,
 			"longevity": "4",
 			"dilute": "10% or less",
-			"avg_in_concentrate": 0.02
+			"avg_in_concentrate": 0.02,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "200",
+			"tags": [
+				"FRUITY",
+				"GRAPE",
+				"RUM",
+				"PINEAPPLE"
+			]
 		},
 		{
 			"id": "allyl_caproate",
@@ -425,7 +578,16 @@
 			"longevity": "2",
 			"dilute": "10% or less",
 			"avg_in_concentrate": 0.03,
-			"impact": "250"
+			"impact": "250",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"PINEAPPLE",
+				"RUM",
+				"FRUITY",
+				"WINE"
+			]
 		},
 		{
 			"id": "hexalon",
@@ -439,7 +601,15 @@
 			"dilute": "10% or less",
 			"avg_in_concentrate": 0.01,
 			"impact": "140",
-			"company": "IFF"
+			"company": "IFF",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FRUITY",
+				"PINEAPPLE",
+				"ORRIS"
+			]
 		},
 		{
 			"id": "delphol_hc",
@@ -452,34 +622,61 @@
 			"longevity": "48",
 			"dilute": "10% or less",
 			"avg_in_concentrate": 0.01,
-			"company": "Firmenich"
+			"company": "Firmenich",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "80",
+			"tags": [
+				"GREEN",
+				"JASMINE",
+				"MAGNOLIA",
+				"TEA",
+				"FRUITY"
+			]
 		},
 		{
 			"id": "citral_dimethyl_acetal",
 			"name": "Citral Dimethyl Acetal",
-			"scent": "Citrus, verbena note. Has a much milder but more natural lemon odor than Citral.",
-			"usage": "Citrus builder.",
-			"note": "HEART",
+			"scent": "Fresh, citrusy lemon and verbena scent.",
+			"usage": "Lemon, verbena and citrus builder.",
+			"note": "TOP",
 			"cas": "7549-37-3",
 			"max_in_concentrate": 0.15,
-			"longevity": "48",
-			"avg_in_concentrate": 0.05,
-			"company": "IFF"
+			"longevity": "7",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.02,
+			"company": "IFF",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "100",
+			"tags": [
+				"CITRUS",
+				"VERBENA",
+				"LEMON"
+			]
 		},
 		{
 			"id": "methyl_cinnamic_aldehyde",
 			"name": "Methyl Cinnamic Aldehyde",
 			"scent": "Floral, soft, sweet, spicy, cinnamon.",
-			"usage": "Also called Cyprinal. Cinnamon builder.",
+			"usage": "Also called Cyprinal or Cinnamaldehyde. Cinnamon builder.",
 			"note": "HEART",
 			"cas": "101-39-3",
-			"max_in_concentrate": 0,
+			"max_in_concentrate": 0.06,
 			"longevity": "240",
 			"dilute": "1%",
-			"avg_in_concentrate": 0,
+			"avg_in_concentrate": 0.008,
 			"company": "IFF",
 			"max_in_finished_product": 0.015,
-			"ifra_restricted": true
+			"ifra_restricted": true,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CINNAMON",
+				"SPICY"
+			]
 		},
 		{
 			"id": "cinnamyl_acetate",
@@ -493,7 +690,14 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.02,
 			"impact": "120",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CINNAMON",
+				"BALSAMIC",
+				"FLORAL"
+			]
 		},
 		{
 			"id": "benzyl_cinnamate",
@@ -507,7 +711,13 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.04,
 			"impact": "25",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"BALSAMIC",
+				"CINNAMON"
+			]
 		},
 		{
 			"id": "eugenol",
@@ -524,18 +734,28 @@
 			"ifra_restricted": true,
 			"is_solvent": false,
 			"is_natural": false,
-			"max_in_finished_product": 0.025
+			"max_in_finished_product": 0.025,
+			"tags": [
+				"CLOVE",
+				"SPICY"
+			]
 		},
 		{
 			"id": "benzoic_acid",
 			"name": "Benzoic Acid",
 			"scent": "Faint balsamic odor.",
-			"usage": "Benzoin builder.",
+			"usage": "Benzoin builder. ",
 			"note": "BASE",
 			"cas": "65-85-0",
-			"max_in_concentrate": 0,
-			"avg_in_concentrate": 0,
-			"ifra_restricted": false
+			"max_in_concentrate": 0.006,
+			"avg_in_concentrate": 0.002,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"BENZOIN",
+				"BALSAMIC"
+			]
 		},
 		{
 			"id": "ethanol",
@@ -546,7 +766,10 @@
 			"cas": "64-17-5",
 			"max_in_concentrate": 0,
 			"avg_in_concentrate": 0,
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": true,
+			"is_natural": false,
+			"tags": []
 		},
 		{
 			"id": "ethyl_vanillin",
@@ -562,7 +785,11 @@
 			"ifra_restricted": false,
 			"is_solvent": false,
 			"is_natural": false,
-			"dilute": "10% or less"
+			"dilute": "10% or less",
+			"tags": [
+				"CARAMEL",
+				"VANILLA"
+			]
 		},
 		{
 			"id": "vanillin",
@@ -571,11 +798,16 @@
 			"usage": "Vanilla builder.",
 			"note": "BASE",
 			"cas": "121-33-5",
-			"max_in_concentrate": 0,
+			"max_in_concentrate": 0.08,
 			"longevity": "400",
-			"avg_in_concentrate": 0,
+			"avg_in_concentrate": 0.015,
 			"impact": "60",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VANILLA"
+			]
 		},
 		{
 			"id": "ethyl_heptoate",
@@ -589,7 +821,16 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.02,
 			"impact": "150",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"RUM",
+				"WINE",
+				"PINEAPPLE",
+				"BRANDY",
+				"BERRY"
+			]
 		},
 		{
 			"id": "butyl_propionate",
@@ -603,7 +844,14 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.01,
 			"impact": "150",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"BANANA",
+				"CHERRY",
+				"RUM"
+			]
 		},
 		{
 			"id": "cedryl_acetate",
@@ -617,7 +865,13 @@
 			"dilute": "10%",
 			"avg_in_concentrate": 0.02,
 			"impact": "60",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VETIVER",
+				"CEDAR"
+			]
 		},
 		{
 			"id": "vertenex",
@@ -627,10 +881,19 @@
 			"note": "BASE",
 			"cas": "32210-23-4",
 			"max_in_concentrate": 0.08,
-			"longevity": "8",
+			"longevity": "22",
 			"dilute": "10%",
 			"avg_in_concentrate": 0.01,
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "100",
+			"company": "IFF",
+			"tags": [
+				"ORRIS",
+				"WOOD",
+				"BALSAMIC"
+			]
 		},
 		{
 			"id": "ambercore",
@@ -640,9 +903,16 @@
 			"note": "BASE",
 			"cas": "139504-68-0",
 			"max_in_concentrate": 0.4,
-			"longevity": "8",
+			"longevity": "168",
 			"avg_in_concentrate": 0.04,
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "200",
+			"company": "Kao",
+			"tags": [
+				"AMBER"
+			]
 		},
 		{
 			"id": "poivrol",
@@ -656,7 +926,13 @@
 			"longevity": "10",
 			"max_in_concentrate": 0.1,
 			"avg_in_concentrate": 0.005,
-			"company": "Symrise"
+			"company": "Symrise",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"PEPPER",
+				"SPICY"
+			]
 		},
 		{
 			"id": "isobutyl_quinoline",
@@ -669,10 +945,19 @@
 			"scent": "Mossy, vetivert, ambery, woody, tobacco-like and leathery. Intense and very high impact odor.",
 			"impact": "450",
 			"longevity": "50",
-			"dilute": "10% or less",
+			"dilute": "1% or less",
 			"max_in_concentrate": 0.012,
 			"avg_in_concentrate": 0.001,
-			"max_in_finished_product": 0.1
+			"max_in_finished_product": 0.1,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VETIVER",
+				"TOBACCO",
+				"LEATHER",
+				"EARTHY",
+				"OAKMOSS"
+			]
 		},
 		{
 			"id": "kohinool",
@@ -684,7 +969,16 @@
 			"usage": "Amber builder. Also called Amber Carbinol.",
 			"note": "BASE",
 			"longevity": "44",
-			"avg_in_concentrate": 0.05
+			"avg_in_concentrate": 0.05,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "100",
+			"tags": [
+				"AMBER",
+				"TOBACCO",
+				"RAISIN"
+			]
 		},
 		{
 			"id": "datilat",
@@ -693,10 +987,20 @@
 			"cas": "68039-69-0",
 			"max_in_concentrate": 0.05,
 			"company": "Symrise",
-			"usage": "Adds a natural fruity twist to floral notes. Raisin, prunt, date, and fig builder. Brandy builder.",
+			"usage": "Adds a natural fruity twist to floral notes. Raisin, prune, date, and fig builder. Brandy builder.",
 			"note": "HEART",
 			"longevity": "41",
-			"avg_in_concentrate": 0.01
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "100",
+			"tags": [
+				"DATE",
+				"FIG",
+				"RAISIN",
+				"BRANDY"
+			]
 		},
 		{
 			"id": "symroxane",
@@ -712,7 +1016,11 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"company": "Symrise"
+			"company": "Symrise",
+			"tags": [
+				"TOBACCO",
+				"VETIVER"
+			]
 		},
 		{
 			"id": "methyl_anthranilate",
@@ -729,7 +1037,13 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"max_in_finished_product": 0.1
+			"max_in_finished_product": 0.1,
+			"tags": [
+				"FRUITY",
+				"FLORAL",
+				"GRAPE",
+				"ORANGEBLOSSOM"
+			]
 		},
 		{
 			"id": "methyl_diantilis",
@@ -746,7 +1060,12 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"company": "Givaudan"
+			"company": "Givaudan",
+			"tags": [
+				"CARNATION",
+				"VANILLA",
+				"POWDERY"
+			]
 		},
 		{
 			"id": "ethyl_caprate",
@@ -761,7 +1080,15 @@
 			"avg_in_concentrate": 0.01,
 			"ifra_restricted": false,
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"impact": "100",
+			"tags": [
+				"APPLE",
+				"GRAPE",
+				"BRANDY",
+				"FRUITY",
+				"WAXY"
+			]
 		},
 		{
 			"id": "benzaldehyde",
@@ -776,7 +1103,15 @@
 			"avg_in_concentrate": 0.002,
 			"max_in_concentrate": 0.016,
 			"max_in_finished_product": 0.0025,
-			"ifra_restricted": true
+			"ifra_restricted": true,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CHERRY",
+				"ALMOND",
+				"HELIOTROPE",
+				"VIOLET"
+			]
 		},
 		{
 			"id": "coumarin",
@@ -791,7 +1126,15 @@
 			"max_in_finished_product": 0.015,
 			"ifra_restricted": true,
 			"avg_in_concentrate": 0.008,
-			"max_in_concentrate": 0.067
+			"max_in_concentrate": 0.067,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"TONKA",
+				"COUMARIN",
+				"TOBACCO",
+				"HAY"
+			]
 		},
 		{
 			"id": "isoeugenol",
@@ -806,23 +1149,37 @@
 			"max_in_finished_product": 0.0011,
 			"ifra_restricted": true,
 			"avg_in_concentrate": 0.012,
-			"max_in_concentrate": 0.094
+			"max_in_concentrate": 0.094,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CLOVE",
+				"SPICY",
+				"CARNATION",
+				"ROSE"
+			]
 		},
 		{
 			"id": "tobacarol",
 			"name": "Tobacarol",
 			"usage": "Tobacco builder, amber builder.",
-			"scent": "Dry woody amber-spice combination with a cigar box nuance.",
+			"costs": [],
 			"ifra_restricted": false,
 			"note": "BASE",
 			"cas": "1209-61-6",
+			"scent": "Dry woody amber-spice combination with a cigar box nuance.",
 			"impact": "80",
 			"longevity": "52",
 			"max_in_concentrate": 0.05,
 			"avg_in_concentrate": 0.01,
 			"is_solvent": false,
 			"is_natural": false,
-			"company": "IFF"
+			"company": "IFF",
+			"tags": [
+				"TOBACCO",
+				"AMBER",
+				"WOOD"
+			]
 		},
 		{
 			"id": "azarbre",
@@ -837,7 +1194,15 @@
 			"avg_in_concentrate": 0.01,
 			"max_in_finished_product": 0.1,
 			"ifra_restricted": true,
-			"cas": "68845-36-3"
+			"cas": "68845-36-3",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ORRIS",
+				"WOOD",
+				"HONEY",
+				"IRIS"
+			]
 		},
 		{
 			"id": "isobutavan",
@@ -850,20 +1215,34 @@
 			"max_in_concentrate": 0.02,
 			"avg_in_concentrate": 0.002,
 			"ifra_restricted": false,
-			"cas": "20665-85-4"
+			"cas": "20665-85-4",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VANILLA",
+				"APRICOT"
+			]
 		},
 		{
 			"id": "dimethyl_benzyl_carbinyl_butyrate",
 			"name": "Dimethyl Benzyl Carbinyl Butyrate",
 			"scent": "Sweet fruity plum.",
-			"usage": "Apple, rose and violet builder.",
+			"usage": "Apple, plum, rose and violet builder.",
 			"note": "TOP",
 			"longevity": "1",
 			"impact": "224",
 			"cas": "10094-34-5",
 			"ifra_restricted": false,
 			"max_in_concentrate": 0.05,
-			"avg_in_concentrate": 0.014
+			"avg_in_concentrate": 0.014,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"APPLE",
+				"PLUM",
+				"ROSE",
+				"VIOLET"
+			]
 		},
 		{
 			"id": "ethylene_brassylate",
@@ -876,7 +1255,16 @@
 			"note": "BASE",
 			"avg_in_concentrate": 0.02,
 			"max_in_concentrate": 0.12,
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"MUSK",
+				"POWDERY",
+				"SPICY",
+				"VANILLA",
+				"AMBRETTE"
+			]
 		},
 		{
 			"id": "galaxolide",
@@ -889,7 +1277,12 @@
 			"note": "BASE",
 			"avg_in_concentrate": 0.1,
 			"max_in_concentrate": 0.5,
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"MUSK"
+			]
 		},
 		{
 			"id": "violiff",
@@ -903,7 +1296,15 @@
 			"avg_in_concentrate": 0.002,
 			"ifra_restricted": false,
 			"impact": "120",
-			"note": "HEART"
+			"note": "HEART",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"VIOLET",
+				"GREEN",
+				"BANANA",
+				"MARIGOLD"
+			]
 		},
 		{
 			"id": "iso_amyl_acetate",
@@ -916,7 +1317,13 @@
 			"avg_in_concentrate": 0.005,
 			"ifra_restricted": false,
 			"impact": "800",
-			"note": "TOP"
+			"note": "TOP",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"BANANA",
+				"FRUITY"
+			]
 		},
 		{
 			"id": "melonal",
@@ -930,7 +1337,16 @@
 			"avg_in_concentrate": 0.001,
 			"ifra_restricted": false,
 			"impact": "700",
-			"note": "TOP"
+			"note": "TOP",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FRESH",
+				"MELON",
+				"GREEN",
+				"CUCUMBER",
+				"MARINE"
+			]
 		},
 		{
 			"id": "lilial",
@@ -943,7 +1359,15 @@
 			"avg_in_concentrate": 0.01,
 			"ifra_restricted": false,
 			"impact": "80",
-			"note": "HEART"
+			"note": "HEART",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"LILY",
+				"GREEN",
+				"FRESH",
+				"LILAC"
+			]
 		},
 		{
 			"id": "hedione",
@@ -957,7 +1381,15 @@
 			"avg_in_concentrate": 0.1,
 			"ifra_restricted": false,
 			"impact": "65",
-			"note": "HEART"
+			"note": "HEART",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"JASMINE",
+				"CITRUS",
+				"FLORAL",
+				"DIFFUSIVE"
+			]
 		},
 		{
 			"id": "veloutone",
@@ -971,7 +1403,16 @@
 			"avg_in_concentrate": 0.001,
 			"ifra_restricted": false,
 			"impact": "100",
-			"note": "HEART"
+			"note": "HEART",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"JASMINE",
+				"LACTONIC",
+				"FRUITY",
+				"PEACH",
+				"APRICOT"
+			]
 		},
 		{
 			"id": "jasmatone",
@@ -984,7 +1425,16 @@
 			"cas": "13074-65-2",
 			"avg_in_concentrate": 0.01,
 			"longevity": "72",
-			"impact": "80"
+			"impact": "80",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FLORAL",
+				"FRUITY",
+				"PEACH",
+				"JASMINE"
+			]
 		},
 		{
 			"id": "indolene_50",
@@ -997,7 +1447,15 @@
 			"cas": "68908-82-7",
 			"avg_in_concentrate": 0.008,
 			"longevity": "340",
-			"impact": "150"
+			"impact": "150",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"INDOLE",
+				"ANIMALIC",
+				"JASMINE"
+			]
 		},
 		{
 			"id": "benzyl_acetate",
@@ -1010,25 +1468,35 @@
 			"ifra_restricted": false,
 			"cas": "140-11-4",
 			"note": "TOP",
-			"usage": "Jasmine and gardenia builder.",
+			"usage": "Almost essential in jasmine and gardenia accords.",
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"FLORAL",
+				"JASMINE",
+				"FRESH",
+				"FRUITY",
+				"GARDENIA"
+			]
 		},
 		{
 			"id": "decalactone_delta",
 			"name": "Decalactone Delta",
 			"scent": "Sweet, creamy, lactonic, fatty, coconutty, milky.",
-			"usage": "Milk note builder, coconut builder. Powerful.",
+			"usage": "Milk note builder, coconut builder.",
 			"note": "HEART",
 			"max_in_concentrate": 0.05,
 			"cas": "705-86-2",
 			"avg_in_concentrate": 0.005,
 			"longevity": "300",
 			"impact": "150",
-			"dilute": "10% or less",
 			"ifra_restricted": false,
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"LACTONIC",
+				"COCONUT"
+			]
 		},
 		{
 			"id": "octalactone_gamma",
@@ -1040,7 +1508,14 @@
 			"cas": "104-50-7",
 			"avg_in_concentrate": 0.002,
 			"longevity": "145",
-			"impact": "500"
+			"impact": "500",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"LACTONIC",
+				"COCONUT"
+			]
 		},
 		{
 			"id": "dihydrocoumarin",
@@ -1050,10 +1525,20 @@
 			"note": "BASE",
 			"max_in_concentrate": 0.08,
 			"cas": "119-84-6",
-			"avg_in_concentrate": 0.01,
+			"avg_in_concentrate": 0.005,
 			"longevity": "38",
 			"impact": "100",
-			"ifra_restricted": false
+			"ifra_restricted": true,
+			"is_solvent": false,
+			"is_natural": false,
+			"max_in_finished_product": 0.0043,
+			"tags": [
+				"LACTONIC",
+				"COCONUT",
+				"VANILLA",
+				"TONKA",
+				"ROSE"
+			]
 		},
 		{
 			"id": "clarycet",
@@ -1067,7 +1552,17 @@
 			"avg_in_concentrate": 0.01,
 			"longevity": "25",
 			"impact": "100",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"HERBAL",
+				"FLORAL",
+				"ROSE",
+				"CHAMOMILE",
+				"PLUM",
+				"SAGE"
+			]
 		},
 		{
 			"id": "guaiacol",
@@ -1082,7 +1577,15 @@
 			"impact": "150",
 			"ifra_restricted": false,
 			"is_natural": false,
-			"dilute": "1% or less"
+			"dilute": "1% or less",
+			"is_solvent": false,
+			"tags": [
+				"PHENOLIC",
+				"SPICY",
+				"SMOKE",
+				"VANILLA",
+				"LEATHER"
+			]
 		},
 		{
 			"id": "ambrettolide",
@@ -1098,7 +1601,12 @@
 			"impact": "30",
 			"ifra_restricted": false,
 			"is_natural": false,
-			"dilute": "1% or less"
+			"dilute": "1% or less",
+			"is_solvent": false,
+			"tags": [
+				"AMBRETTE",
+				"MUSK"
+			]
 		},
 		{
 			"id": "edenolide",
@@ -1113,7 +1621,13 @@
 			"longevity": "50",
 			"impact": "100",
 			"ifra_restricted": false,
-			"is_natural": false
+			"is_natural": false,
+			"is_solvent": false,
+			"tags": [
+				"MUSK",
+				"FRUITY",
+				"APPLE"
+			]
 		},
 		{
 			"id": "isoraldeine_95",
@@ -1128,7 +1642,15 @@
 			"max_in_finished_product": 0.3,
 			"ifra_restricted": true,
 			"impact": "100",
-			"avg_in_concentrate": 0.03
+			"avg_in_concentrate": 0.03,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ORRIS",
+				"VIOLET",
+				"POWDERY",
+				"FLORAL"
+			]
 		},
 		{
 			"id": "allyl_cyclohexyl_propionate",
@@ -1143,7 +1665,16 @@
 			"ifra_restricted": true,
 			"impact": "130",
 			"avg_in_concentrate": 0.005,
-			"dilute": "10% or less."
+			"dilute": "10% or less.",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FRUITY",
+				"GREEN",
+				"WAXY",
+				"APPLE",
+				"PINEAPPLE"
+			]
 		},
 		{
 			"id": "linalool",
@@ -1156,7 +1687,17 @@
 			"impact": "100",
 			"avg_in_concentrate": 0.06,
 			"cas": "78-70-6",
-			"ifra_restricted": false
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CITRUS",
+				"ORANGE",
+				"LEMON",
+				"FLORAL",
+				"WAXY",
+				"ALDEHYDE"
+			]
 		},
 		{
 			"id": "ethyl_maltol",
@@ -1170,19 +1711,32 @@
 			"avg_in_concentrate": 0.0001,
 			"cas": "4940-11-8",
 			"ifra_restricted": false,
-			"dilute": "1%"
+			"dilute": "1%",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CARAMEL",
+				"JAMMY"
+			]
 		},
 		{
 			"id": "hercolyn_d",
 			"name": "Hercolyn D",
-			"usage": "A fixative and carrier. Very low odor strength. Amber builder.",
+			"usage": "Very low odor strength. Amber builder. Has extremely useful fixative effects.",
 			"scent": "Amber, cedar and balsam nuances.",
 			"note": "BASE",
 			"cas": "8050-15-5",
 			"max_in_concentrate": 0.2,
 			"longevity": "400",
 			"impact": "25",
-			"avg_in_concentrate": 0.02
+			"avg_in_concentrate": 0.02,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FIXATIVE",
+				"AMBER"
+			]
 		},
 		{
 			"id": "vetacetex",
@@ -1197,7 +1751,12 @@
 			"max_in_concentrate": 0.2,
 			"cas": "68917-34-0",
 			"is_natural": false,
-			"is_solvent": false
+			"is_solvent": false,
+			"tags": [
+				"FRESH",
+				"VETIVER",
+				"WOOD"
+			]
 		},
 		{
 			"id": "sylvamber",
@@ -1214,7 +1773,12 @@
 			"avg_in_concentrate": 0.02,
 			"max_in_concentrate": 0.2,
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"AMBER",
+				"CEDAR",
+				"WOOD"
+			]
 		},
 		{
 			"id": "cetalox",
@@ -1222,7 +1786,7 @@
 			"name": "Cetalox",
 			"scent": "A synthetic ambergris scent that is sweet, dry, musky, and ambery.",
 			"max_in_concentrate": 0.05,
-			"usage": "Enhanced richness, warmth and depth can be achieved at lower dosages. At higher levels, Cetalox provides exceptional substantivity and performance.",
+			"usage": "Enhanced richness, warmth and depth can be achieved at lower dosages while, at higher levels, Cetalox provides exceptional substantivity and performance.",
 			"cas": "3738-00-9",
 			"longevity": "400",
 			"avg_in_concentrate": 0.003,
@@ -1231,7 +1795,12 @@
 			"note": "BASE",
 			"is_solvent": false,
 			"is_natural": false,
-			"dilute": "10% or less."
+			"dilute": "10% or less.",
+			"tags": [
+				"MUSK",
+				"AMBERGRIS",
+				"AMBER"
+			]
 		},
 		{
 			"id": "fructone",
@@ -1247,7 +1816,14 @@
 			"note": "TOP",
 			"is_solvent": false,
 			"is_natural": false,
-			"company": "IFF"
+			"company": "IFF",
+			"tags": [
+				"APPLE",
+				"STRAWBERRY",
+				"FRUITY",
+				"PINEAPPLE",
+				"TROPICAL"
+			]
 		},
 		{
 			"id": "aprifloren",
@@ -1264,7 +1840,13 @@
 			"ifra_restricted": false,
 			"is_solvent": false,
 			"is_natural": false,
-			"company": "Symrise"
+			"company": "Symrise",
+			"tags": [
+				"PEACH",
+				"GREEN",
+				"LACTONIC",
+				"FLORAL"
+			]
 		},
 		{
 			"id": "magnolan",
@@ -1279,7 +1861,14 @@
 			"ifra_restricted": false,
 			"cas": "27606-09-3",
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"GRAPEFRUIT",
+				"PEONY",
+				"GERANIUM",
+				"GARDENIA",
+				"ROSE"
+			]
 		},
 		{
 			"id": "anisyl_acetone",
@@ -1293,9 +1882,16 @@
 			"ifra_restricted": false,
 			"cas": "104-20-1",
 			"note": "BASE",
-			"usage": "Raspberry, cherry,  heliotrope and rose builder. Long lasting.",
+			"usage": "Raspberry, cherry, heliotrope and rose builder. Long lasting.",
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"RASPBERRY",
+				"CHERRY",
+				"HELIOTROPE",
+				"ROSE",
+				"CASSIS"
+			]
 		},
 		{
 			"id": "cyclabute",
@@ -1311,7 +1907,16 @@
 			"cas": "67634-20-2",
 			"ifra_restricted": false,
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"COCOA",
+				"PINEAPPLE",
+				"MANGO",
+				"HERBAL",
+				"BALSAMIC",
+				"AMBER",
+				"FRUITY"
+			]
 		},
 		{
 			"name": "Bicyclononalactone",
@@ -1326,14 +1931,23 @@
 			"impact": "100",
 			"company": "IFF",
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"POWDERY",
+				"TONKA",
+				"ALMOND",
+				"VANILLA",
+				"COCONUT",
+				"HAY",
+				"COUMARIN"
+			]
 		},
 		{
 			"id": "nectaryl",
 			"name": "Nectaryl",
 			"company": "Givaudan",
 			"scent": "Fruity, peach, apricot, lactonic scent.",
-			"usage": "Peach and apricot builder. Floral support.",
+			"usage": "Peach and apricot builder. Supports milk accords.",
 			"note": "BASE",
 			"max_in_concentrate": 0.05,
 			"cas": "95962-14-4",
@@ -1343,7 +1957,13 @@
 			"ifra_restricted": false,
 			"is_solvent": false,
 			"is_natural": false,
-			"dilute": "10%"
+			"dilute": "10%",
+			"tags": [
+				"PEACH",
+				"LACTONIC",
+				"FRUITY",
+				"APRICOT"
+			]
 		},
 		{
 			"id": "methyl_benzoate",
@@ -1359,7 +1979,12 @@
 			"ifra_restricted": false,
 			"is_solvent": false,
 			"is_natural": false,
-			"dilute": "10% or less"
+			"dilute": "10% or less",
+			"tags": [
+				"TUBEROSE",
+				"CASSIS",
+				"WINTERGREEN"
+			]
 		},
 		{
 			"id": "jessemal",
@@ -1376,7 +2001,12 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"company": "IFF"
+			"company": "IFF",
+			"tags": [
+				"JASMINE",
+				"FLORAL",
+				"SPICY"
+			]
 		},
 		{
 			"id": "anisyl_alcohol",
@@ -1393,7 +2023,17 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"max_in_finished_product": 0.0021
+			"max_in_finished_product": 0.0021,
+			"tags": [
+				"HAWTHORN",
+				"LILAC",
+				"JASMINE",
+				"MIMOSA",
+				"HELIOTROPE",
+				"POWDERY",
+				"VANILLA",
+				"BALSAMIC"
+			]
 		},
 		{
 			"id": "sandalore",
@@ -1410,7 +2050,10 @@
 			"is_solvent": false,
 			"is_natural": false,
 			"dilute": "10% or less",
-			"company": "Givaudan"
+			"company": "Givaudan",
+			"tags": [
+				"SANDALWOOD"
+			]
 		},
 		{
 			"id": "sandela",
@@ -1426,7 +2069,10 @@
 			"ifra_restricted": false,
 			"is_solvent": false,
 			"is_natural": false,
-			"company": "Givaudan"
+			"company": "Givaudan",
+			"tags": [
+				"SANDALWOOD"
+			]
 		},
 		{
 			"id": "decalactone_gamma",
@@ -1441,20 +2087,492 @@
 			"impact": "180",
 			"ifra_restricted": false,
 			"is_solvent": false,
-			"is_natural": false
+			"is_natural": false,
+			"tags": [
+				"COCONUT",
+				"APRICOT",
+				"PEACH",
+				"LACTONIC"
+			]
 		},
 		{
 			"id": "methyl_cyclo_pentenolone",
 			"name": "Methyl Cyclo Pentenolone",
 			"note": "HEART",
-			"scent": "Caramel, maple syrup, sweet, burnt, coffee, woody, nutty, bready scent.",
+			"scent": "Caramelic, maple syrup, sweet, burnt, coffee, woody, nutty, bready scent.",
 			"cas": "765-70-8",
 			"max_in_concentrate": 0.03,
 			"dilute": "10% or less.",
 			"longevity": "16",
 			"impact": "150",
 			"usage": "Also called maple lactone. Coffee builder. Caramel builder. Gourmand builder. Powerful when undiluted.",
-			"avg_in_concentrate": 0.005
+			"avg_in_concentrate": 0.005,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CARAMEL",
+				"COFFEE",
+				"NUTTY"
+			]
+		},
+		{
+			"id": "iso_e_super",
+			"name": "Iso E Super",
+			"scent": "Velvety, smooth, ambery, woody, dry, ambergris, old-wood, lemony.",
+			"usage": "Extremely diffusive. Used to impart fullness and subtle strength to fragrances, especially floral compositions.",
+			"note": "BASE",
+			"cas": "54464-57-2",
+			"max_in_concentrate": 0.2,
+			"longevity": "48",
+			"dilute": "10%",
+			"avg_in_concentrate": 0.025,
+			"impact": "280",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"company": "IFF",
+			"tags": [
+				"AMBER",
+				"CITRUS",
+				"AMBERGRIS",
+				"DIFFUSIVE"
+			]
+		},
+		{
+			"id": "ebanol",
+			"name": "Ebanol",
+			"company": "Givaudan",
+			"scent": "Woody, sandalwood, musky, strong. Slightly nutty.",
+			"usage": "Powerful and intense, bringing volume and elegance to woody accords and a diffusive sandalwood effect to compositions.",
+			"max_in_finished_product": 0.1,
+			"ifra_restricted": true,
+			"note": "BASE",
+			"longevity": "500",
+			"impact": "125",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.013,
+			"max_in_concentrate": 0.05,
+			"cas": "67801-20-1",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"SANDALWOOD"
+			]
+		},
+		{
+			"id": "kephalis",
+			"name": "Kephalis",
+			"is_natural": false,
+			"scent": "Woody, ambery, tobacco, rich, herbal, warm.",
+			"usage": "Blends well with floral notes as well as ISO E Super, amber notes, wood, and tobacco.",
+			"note": "BASE",
+			"cas": "36306-87-3",
+			"longevity": "100",
+			"impact": "80",
+			"max_in_concentrate": 0.08,
+			"avg_in_concentrate": 0.03,
+			"ifra_restricted": false,
+			"company": "Givaudan",
+			"is_solvent": false,
+			"tags": [
+				"AMBER",
+				"TOBACCO",
+				"HERBAL"
+			]
+		},
+		{
+			"id": "dihydro_ionone_beta",
+			"name": "Dihydro Ionone Beta",
+			"is_natural": false,
+			"scent": "Woody, floral, orris, ambery, fruity.",
+			"usage": "Brings a rich sophisticated volume to perfumes in combination with floral and amber elements.",
+			"note": "HEART",
+			"cas": "17283-81-7",
+			"longevity": "80",
+			"impact": "220",
+			"max_in_concentrate": 0.036,
+			"avg_in_concentrate": 0.005,
+			"ifra_restricted": false,
+			"company": "Givaudan",
+			"is_solvent": false,
+			"tags": [
+				"ORRIS",
+				"AMBER",
+				"FRUITY"
+			]
+		},
+		{
+			"id": "raspberry_ketone",
+			"name": "Raspberry Ketone",
+			"cas": "5471-51-2",
+			"scent": "Sweet, fruity, raspberry, jam-like, warm, woody scent.",
+			"usage": "Powerful and very deep and jammy, this material can be easily pushed in the direction of other fruits when used in combination with other materials. Can add fruity nuance to floral compositions.",
+			"note": "HEART",
+			"avg_in_concentrate": 0.014,
+			"max_in_concentrate": 0.03,
+			"longevity": "350",
+			"impact": "70",
+			"max_in_finished_product": 0.01,
+			"ifra_restricted": true,
+			"dilute": "10%",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FRUITY",
+				"RASPBERRY",
+				"JAMMY"
+			]
+		},
+		{
+			"id": "auralva",
+			"name": "Auralva",
+			"company": "IFF",
+			"scent": "Neroli, white floral scent with orange and grape facets.",
+			"avg_in_concentrate": 0.001,
+			"max_in_concentrate": 0.05,
+			"longevity": "400",
+			"impact": "100",
+			"dilute": "10%",
+			"usage": "Neroli and tuberose builder. Useful in citrus, amber, chypre and oriental compositions as well. Blends well with macrocyclic musks.",
+			"note": "HEART",
+			"cas": "89-43-0",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"NEROLI",
+				"TUBEROSE",
+				"CITRUS",
+				"ORANGE",
+				"GRAPE"
+			]
+		},
+		{
+			"id": "orange_flower_ether",
+			"name": "Orange Flower Ether",
+			"company": "IFF",
+			"scent": "Neroli, white floral scent with orange, bergamot and grapefruit facets.",
+			"avg_in_concentrate": 0.001,
+			"max_in_concentrate": 0.05,
+			"longevity": "3",
+			"impact": "100",
+			"dilute": "10%",
+			"usage": "Neroli builder. Useful in citrus compositions as well.",
+			"note": "TOP",
+			"cas": "14576-08-0",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"NEROLI",
+				"CITRUS"
+			]
+		},
+		{
+			"id": "stemone",
+			"name": "Stemone",
+			"scent": "Green-leafy, galbanum, fig, fresh, natural scent.",
+			"usage": "Imparts a natural and fresh nuance to fragrance notes such as lily-of-the-valley, narcissus, mandarin, fig leaves, fig, grapefruit, black currant and tomato. Very strong.",
+			"note": "HEART",
+			"max_in_concentrate": 0.008,
+			"longevity": "8",
+			"impact": "1000",
+			"avg_in_concentrate": 0.001,
+			"cas": "22457-23-4",
+			"ifra_restricted": false,
+			"dilute": "1%",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"GREEN",
+				"FIG"
+			]
+		},
+		{
+			"id": "cyclamen_aldehyde",
+			"name": "Cyclamen Aldehyde",
+			"scent": "Floral, cyclamen, fresh, linden blossom, green, cucumber, melon, rhubarb scent.",
+			"usage": "Powerful and versatile green note. Extensively used in perfumery for floral effects and fresh green floral top notes.",
+			"note": "HEART",
+			"max_in_concentrate": 0.089,
+			"longevity": "40",
+			"impact": "75",
+			"avg_in_concentrate": 0.011,
+			"cas": "103-95-7",
+			"ifra_restricted": true,
+			"dilute": "1%",
+			"is_solvent": false,
+			"is_natural": false,
+			"max_in_finished_product": 0.0095,
+			"tags": [
+				"FLORAL",
+				"FRESH",
+				"GREEN",
+				"CUCUMBER",
+				"MELON",
+				"RHUBARB"
+			]
+		},
+		{
+			"id": "phenyl_ethyl_alcohol",
+			"name": "Phenyl Ethyl Alcohol",
+			"scent": "Rose, honey, green, muguet, sweet, bready, caramel, melon scent.",
+			"usage": "Rose and muguet builder. Good general all-around floral builder. ",
+			"note": "HEART",
+			"cas": "60-12-8",
+			"max_in_concentrate": 0.33,
+			"longevity": "24",
+			"avg_in_concentrate": 0.05,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "60",
+			"tags": [
+				"ROSE",
+				"GREEN",
+				"HONEY",
+				"MELON"
+			]
+		},
+		{
+			"id": "fructalate",
+			"name": "Fructalate",
+			"scent": "A bright fruity, raspberry, apple scent with good tenacity and volume.",
+			"usage": "In small doses you can use it to enhance diffusion of almost any fragrance. Larger proportions will create a fruitiness that is dry rather than sweet and can be pushed in the direction of almost any fruit.",
+			"note": "HEART",
+			"cas": "72903-27-6",
+			"max_in_concentrate": 0.1,
+			"longevity": "48",
+			"avg_in_concentrate": 0.02,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "100",
+			"company": "Firmenich",
+			"tags": [
+				"FRUITY",
+				"RASPBERRY",
+				"APPLE"
+			]
+		},
+		{
+			"id": "exaltolide_total",
+			"name": "Exaltolide Total",
+			"company": "Firmenich",
+			"scent": "Musky, animalic, powdery, creamy, slightly fruity, elegant scent.",
+			"usage": "Adds depth and roundness to a wide variety of creations but it also has a synergistic effect on the bouquet of a fragrance.",
+			"note": "BASE",
+			"max_in_finished_product": 0.024,
+			"ifra_restricted": true,
+			"avg_in_concentrate": 0.001,
+			"max_in_concentrate": 0.05,
+			"cas": "106-02-5",
+			"dilute": "10% or less.",
+			"longevity": "400",
+			"impact": "150",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"MUSK",
+				"POWDERY",
+				"ANIMALIC"
+			]
+		},
+		{
+			"id": "bacdanol",
+			"name": "Bacdanol",
+			"scent": "Woody, sandalwood, sweet, balsamic, piney, waxy scent.",
+			"usage": "Powerful and diffusive sandalwood builder.",
+			"ifra_restricted": false,
+			"note": "BASE",
+			"longevity": "300",
+			"impact": "80",
+			"dilute": "10% or less",
+			"avg_in_concentrate": 0.013,
+			"max_in_concentrate": 0.1,
+			"cas": "28219-61-6",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"SANDALWOOD"
+			]
+		},
+		{
+			"id": "nectarate",
+			"name": "Nectarate",
+			"company": "IFF",
+			"scent": "Fruity, peach, woody scent.",
+			"usage": "Pleasant, fruity, peach note with a slight woody undertone. Useful in a wide variety of fragrances, giving a substantive fruity note even through washing cycles.",
+			"note": "HEART",
+			"max_in_concentrate": 0.1,
+			"cas": "113889-23-9",
+			"avg_in_concentrate": 0.01,
+			"longevity": "140",
+			"impact": "100",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"dilute": "10%",
+			"tags": [
+				"PEACH",
+				"FRUITY"
+			]
+		},
+		{
+			"id": "fraistone",
+			"name": "Fraistone",
+			"company": "IFF",
+			"scent": "A tart, fresh, anisic, fruity note reminiscent of apple, plum and strawberry.",
+			"usage": "Strawberry, apple and plum builder.",
+			"note": "HEART",
+			"longevity": "12",
+			"impact": "100",
+			"cas": "6290-17-1",
+			"max_in_concentrate": 0.3,
+			"avg_in_concentrate": 0.05,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"ANISE",
+				"FRUITY",
+				"APPLE",
+				"PLUM",
+				"STRAWBERRY"
+			]
+		},
+		{
+			"id": "citronellyl_acetate",
+			"name": "Citronellyl Acetate",
+			"scent": "Fresh, rosy, leafy, fruity odor reminiscent of geranium oil.",
+			"usage": "Rose and geranium builder.",
+			"note": "HEART",
+			"cas": "150-84-5",
+			"max_in_concentrate": 0.08,
+			"longevity": "15",
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "110",
+			"tags": [
+				"ROSE",
+				"FRUITY",
+				"GERANIUM"
+			]
+		},
+		{
+			"id": "cashmeran",
+			"name": "Cashmeran",
+			"scent": "Diffusive, powdery, velvety, spicy, aromatic, apple, red fruity, piney, woody, earthy, musk-like odor with floral aspects.",
+			"cas": "33704-61-9",
+			"max_in_concentrate": 0.02,
+			"company": "IFF",
+			"usage": "Very diffusive and strong floral reinforcement. Combines especially well with Allyl Amyl Glycolate, Delta Damascone, tea accords, myrrh, and green notes. Useful in creating spicy florals, amber notes, musk notes and wood accords.",
+			"note": "BASE",
+			"longevity": "200",
+			"avg_in_concentrate": 0.007,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"impact": "80",
+			"dilute": "10% or less.",
+			"tags": [
+				"APPLE",
+				"SPICY",
+				"POWDERY",
+				"MUSK",
+				"VELVET"
+			]
+		},
+		{
+			"id": "acetophenone",
+			"name": "Acetophenone",
+			"scent": "Acetophenone has a sweet-warm cherry, hawthorn, powdery-floral, harsh, neroli and mimosa odor.",
+			"usage": "Almond, mimosa, hawthorn, neroli, and cherry builder. Also called phenyl methyl ketone.",
+			"note": "TOP",
+			"impact": "200",
+			"longevity": "8",
+			"dilute": "1%",
+			"cas": "98-86-2",
+			"avg_in_concentrate": 0.005,
+			"max_in_concentrate": 0.02,
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"CHERRY",
+				"POWDERY",
+				"HAWTHORN",
+				"MIMOSA",
+				"NEROLI"
+			]
+		},
+		{
+			"ifra_restricted": false,
+			"id": "benzyl_propionate",
+			"name": "Benzyl Propionate",
+			"company": "Symrise",
+			"scent": "Fruity, jasmine, grape, pear, banana, pineapple, jammy scent.",
+			"impact": "120",
+			"longevity": "20",
+			"note": "TOP",
+			"usage": "Fruit builder, jasmine builder.",
+			"avg_in_concentrate": 0.008,
+			"max_in_concentrate": 0.067,
+			"cas": "122-63-4",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"JASMINE",
+				"GRAPE",
+				"PEAR",
+				"BANANA",
+				"FRUITY",
+				"PINEAPPLE"
+			]
+		},
+		{
+			"id": "benzyl_salicylate",
+			"name": "Benzyl Salicylate",
+			"scent": "Very faint, sweet, floral jasmine note.",
+			"max_in_concentrate": 0.32,
+			"avg_in_concentrate": 0.04,
+			"longevity": "210",
+			"impact": "30",
+			"ifra_restricted": false,
+			"cas": "118-58-1",
+			"note": "BASE",
+			"usage": "Good fixative for jasmine, ylang-ylang, frangipani and other floral accords.",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FLORAL",
+				"JASMINE"
+			]
+		},
+		{
+			"ifra_restricted": false,
+			"id": "ambroxan",
+			"name": "Ambroxan",
+			"longevity": "740",
+			"impact": "400",
+			"avg_in_concentrate": 0.003,
+			"max_in_concentrate": 0.02,
+			"scent": "Dry, woody, clean, crisp, root-like scent.",
+			"usage": "Used to amplify heart notes. Has useful fixative properties.",
+			"note": "BASE",
+			"company": "Kao",
+			"cas": "3738-00-9",
+			"dilute": "10% or less",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"MASCULINE",
+				"FRESH",
+				"MUSK"
+			]
 		}
 	]
 }
