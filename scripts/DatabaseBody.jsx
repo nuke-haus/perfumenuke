@@ -1030,7 +1030,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="2">
+                            <td>
                                 <div className="tagcell">
                                     NEW TAG: 
                                     <input className="databaseinput" 
@@ -1044,7 +1044,7 @@ class DatabaseBody extends React.Component {
                                     </button>
                                 </div>
                             </td>
-                            <td>
+                            <td colSpan="3">
                                 {mixtureTags}
                             </td>
                         </tr>

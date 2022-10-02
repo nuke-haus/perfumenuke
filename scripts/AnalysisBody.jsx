@@ -2,7 +2,8 @@ class AnalysisBody extends React.Component {
 
     state = {
         selectedTags: [],
-        allTags: []
+        allTags: [],
+        filterAll: true
     };
 
     constructor(props) {
@@ -41,7 +42,7 @@ class AnalysisBody extends React.Component {
         }
 
         const tableElements = [];
-        const materials = PN.getMaterialsAndMixturesWithTags(this.state.selectedTags);
+        const materials = PN.getMaterialsAndMixturesWithTags(this.state.selectedTags, this.state.filterAll);
         for (let material of materials) {
             tableElements.push(
                 <tr key={"tableElement" + material.id}>
@@ -57,10 +58,24 @@ class AnalysisBody extends React.Component {
         return (
             <div>
                 <div className="tabletext">
-                    INGREDIENT TAGS
+                    INGREDIENT FILTER SETTINGS
                 </div>
                 <table className="ingredienttable">
                     <tbody>
+                        <tr>
+                            <td>
+                                <div>
+                                    INGREDIENT FILTER MODE
+                                </div>
+                                <div>
+                                    <select defaultValue={String(PN.database.currentMixture.is_natural)}
+                                            onChange={(event) => this.setState({filterAll: event.target.value === "all"})}>
+                                        <option value="all">INGREDIENT CONTAINS ALL SELECTED TAGS</option>
+                                        <option value="any">INGREDIENT CONTAINS ANY OF THE SELECTED TAGS</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
                         <tr>
                             <td>
                                 {tagElements}
@@ -69,7 +84,7 @@ class AnalysisBody extends React.Component {
                     </tbody>
                 </table>
                 <div className="tabletext">
-                    INGREDIENTS CONTAINING SELECTED TAGS
+                    FILTERED INGREDIENTS
                 </div>
                 <table className="formulatable">
                     <tbody>

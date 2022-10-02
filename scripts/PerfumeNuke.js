@@ -413,26 +413,46 @@ PN.getAllUniqueTags = function() {
     return tags;
 }
 
-PN.getMaterialsAndMixturesWithTags = function(tags) {
+PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
     const result = [];
-    for (let tag of tags) {
-        for (let material of Object.values(PN.database.materials)) {
-            if (result.filter(curMat => curMat.id === material.id).length > 0) {
-                continue;
-            }
-            const tags = material.tags || [];
-            if (tags.includes(tag)){
-                result.push(material);
+    for (let material of Object.values(PN.database.materials)) {
+        if (result.filter(curMat => curMat.id === material.id).length > 0) {
+            continue;
+        }
+        const materialTags = material.tags || [];
+        let count = 0;
+        for (let tag of tags) {
+            if (materialTags.includes(tag)){
+                if (isAbsolute) {
+                    count++;
+                } else {
+                    result.push(material);
+                    break;
+                }
             }
         }
-        for (let mix of Object.values(PN.database.mixtures)) {
-            if (result.filter(curMix => curMix.id === mix.id).length > 0) {
-                continue;
+        if (isAbsolute && count === materialTags.length) {
+            result.push(material);
+        }
+    }
+    for (let mix of Object.values(PN.database.mixtures)) {
+        if (result.filter(curMix => curMix.id === mix.id).length > 0) {
+            continue;
+        }
+        const mixTags = mix.tags || [];
+        let count = 0;
+        for (let tag of tags) {
+            if (mixTags.includes(tag)){
+                if (isAbsolute) {
+                    count++;
+                } else {
+                    result.push(mix);
+                    break;
+                }
             }
-            const tags = mix.tags || [];
-            if (tags.includes(tag)){
-                result.push(mix);
-            }
+        }
+        if (isAbsolute && count === mixTags.length) {
+            result.push(mix);
         }
     }
     
