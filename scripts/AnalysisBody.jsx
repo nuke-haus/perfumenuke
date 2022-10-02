@@ -28,11 +28,14 @@ class AnalysisBody extends React.Component {
             const className = isSelected
                 ? "tag clickabletag selectedtag"
                 : "tag clickabletag";
+            const text = isSelected
+                ? "🟢 " + tag
+                : "⚫ " + tag;
             tagElements.push(
                 <div className={className} 
                      onClick={() => this._onClickTag(tag)} 
                      key={"filterTag" + tag}>
-                         {tag}
+                         {text}
                 </div>
             );
         }

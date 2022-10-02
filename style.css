@@ -195,7 +195,7 @@ table, td, th {
 }
 
 .tag {
-    background-color: #81ce84;
+    background-color: #4CAF50;
     border: 2px solid #000000;
     border-radius: 4px; 
     color: #000000;
@@ -212,7 +212,7 @@ table, td, th {
 }
 
 .selectedtag {
-    background-color: #4CAF50;
+    background-color: #81ce84;
 }
 
 .clickabletag {
