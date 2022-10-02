@@ -409,6 +409,7 @@ PN.getAllUniqueTags = function() {
             }
         }
     }
+    tags.sort();
     return tags;
 }
 

@@ -5,7 +5,8 @@ class DatabaseBody extends React.Component {
         materialButtonKey: "matButton",
         mixtureKey: "mix",
         mixtureButtonKey: "mixButton",
-        currentTag: ""
+        currentTag: "",
+        currentMixtureTag: ""
     };
 
     _selectedMaterialID = "";
@@ -139,7 +140,7 @@ class DatabaseBody extends React.Component {
         alert("Created dilution successfully.");
     }
 
-    _tryCreateTag() {
+    _tryCreateMaterialTag() {
         const tags = PN.database.currentMaterial.tags || [];
         if (!tags.includes(this.state.currentTag)) {
             tags.push(this.state.currentTag.toUpperCase().trim());
@@ -148,7 +149,7 @@ class DatabaseBody extends React.Component {
         }
     }
 
-    _deleteTag(tag) {
+    _deleteMaterialTag(tag) {
         PN.database.currentMaterial.tags = PN.database.currentMaterial.tags.filter(curTag => curTag.toUpperCase() !== tag.toUpperCase());
         this.forceUpdate();
     }
@@ -235,6 +236,21 @@ class DatabaseBody extends React.Component {
         this.setState({mixtureKey: PN.guid()});
         alert("Created dilution successfully.");
     }
+
+    _tryCreateMixtureTag() {
+        const tags = PN.database.currentMixture.tags || [];
+        if (!tags.includes(this.state.currentMixtureTag)) {
+            tags.push(this.state.currentMixtureTag.toUpperCase().trim());
+            PN.database.currentMixture.tags = tags;
+            this.forceUpdate();
+        }
+    }
+
+    _deleteMixtureTag(tag) {
+        PN.database.currentMixture.tags = PN.database.currentMixture.tags.filter(curTag => curTag.toUpperCase() !== tag.toUpperCase());
+        this.forceUpdate();
+    }
+
 
     _onChangeMixture(key, value) {
         if (key === "is_natural" && value === false) {
@@ -547,7 +563,16 @@ class DatabaseBody extends React.Component {
             materialTags.push(
                 <div className="tag tagedit" key={"materialTag" + tag}>
                     <span>{tag} </span>
-                    <span className="clickabletag" onClick={() => this._deleteTag(tag)}>❌</span>
+                    <span className="clickabletag" onClick={() => this._deleteMaterialTag(tag)}>❌</span>
+                </div>
+            );
+        }
+        const mixtureTags = [];
+        for (let tag of PN.database.currentMixture.tags || []) {
+            mixtureTags.push(
+                <div className="tag tagedit" key={"mixtureTag" + tag}>
+                    <span>{tag} </span>
+                    <span className="clickabletag" onClick={() => this._deleteMixtureTag(tag)}>❌</span>
                 </div>
             );
         }
@@ -828,7 +853,7 @@ class DatabaseBody extends React.Component {
                                 </div>
                                 <div className="tagbuttoncell">
                                     <button type="button" 
-                                            onClick={() => this._tryCreateTag()}>
+                                            onClick={() => this._tryCreateMaterialTag()}>
                                         Add New Tag To Material
                                     </button>
                                 </div>
@@ -1002,6 +1027,25 @@ class DatabaseBody extends React.Component {
                                            defaultValue={PN.database.currentMixture.impact}
                                            onChange={(event) => this._onChangeMixture("impact", event.target.value)}/>
                                 </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">
+                                <div className="tagcell">
+                                    NEW TAG: 
+                                    <input className="databaseinput" 
+                                        defaultValue={this.state.currentMixtureTag}
+                                        onChange={(event) => this.setState({currentMixtureTag: event.target.value})}/>
+                                </div>
+                                <div className="tagbuttoncell">
+                                    <button type="button" 
+                                            onClick={() => this._tryCreateMixtureTag()}>
+                                        Add New Tag To Mixture
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                {mixtureTags}
                             </td>
                         </tr>
                         {this._renderMixtureRows()}

@@ -200,7 +200,8 @@ table, td, th {
 
 .tagbuttoncell {
     float: left;
-    padding-top: 8px;
+    padding-top: 20px;
+}
 
 .tag {
     background-color: #4CAF50;
