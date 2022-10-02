@@ -820,14 +820,18 @@ class DatabaseBody extends React.Component {
                         </tr>
                         <tr>
                             <td>
-                                NEW TAG: 
-                                <input className="databaseinput" 
-                                       defaultValue={this.state.currentTag}
-                                       onChange={(event) => this.setState({currentTag: event.target.value})}/>
-                                <button type="button" 
-                                        onClick={() => this._tryCreateTag()}>
-                                    Add New Tag To Material
-                                </button>
+                                <div className="tagcell">
+                                    NEW TAG: 
+                                    <input className="databaseinput" 
+                                        defaultValue={this.state.currentTag}
+                                        onChange={(event) => this.setState({currentTag: event.target.value})}/>
+                                </div>
+                                <div className="tagcell">
+                                    <button type="button" 
+                                            onClick={() => this._tryCreateTag()}>
+                                        Add New Tag To Material
+                                    </button>
+                                </div>
                             </td>
                             <td colSpan="2">
                                 {materialTags}
