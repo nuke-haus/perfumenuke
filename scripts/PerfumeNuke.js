@@ -415,6 +415,9 @@ PN.getAllUniqueTags = function() {
 
 PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
     const result = [];
+    if (tags.length === 0) {
+        return result;
+    }
     for (let material of Object.values(PN.database.materials)) {
         if (result.filter(curMat => curMat.id === material.id).length > 0) {
             continue;
@@ -431,7 +434,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
                 }
             }
         }
-        if (isAbsolute && count === materialTags.length) {
+        if (isAbsolute && count === tags.length) {
             result.push(material);
         }
     }
@@ -451,7 +454,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
                 }
             }
         }
-        if (isAbsolute && count === mixTags.length) {
+        if (isAbsolute && count === tags.length) {
             result.push(mix);
         }
     }

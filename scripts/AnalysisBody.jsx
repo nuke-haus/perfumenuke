@@ -65,10 +65,10 @@ class AnalysisBody extends React.Component {
                         <tr>
                             <td>
                                 <div>
-                                    INGREDIENT FILTER MODE
+                                    FILTER MODE:
                                 </div>
                                 <div>
-                                    <select defaultValue={String(PN.database.currentMixture.is_natural)}
+                                    <select className="tagfilter" defaultValue={String(PN.database.currentMixture.is_natural)}
                                             onChange={(event) => this.setState({filterAll: event.target.value === "all"})}>
                                         <option value="all">INGREDIENT CONTAINS ALL SELECTED TAGS</option>
                                         <option value="any">INGREDIENT CONTAINS ANY OF THE SELECTED TAGS</option>

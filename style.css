@@ -198,6 +198,10 @@ table, td, th {
     float: left;
 }
 
+.tagfilter {
+    width: 500px;
+}
+
 .tagbuttoncell {
     float: left;
     padding-top: 20px;
