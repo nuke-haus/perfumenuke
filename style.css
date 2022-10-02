@@ -195,8 +195,12 @@ table, td, th {
 }
 
 .tagcell {
-    float: left
+    float: left;
 }
+
+.tagbuttoncell {
+    float: left;
+    padding-top: 8px;
 
 .tag {
     background-color: #4CAF50;

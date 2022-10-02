@@ -826,7 +826,7 @@ class DatabaseBody extends React.Component {
                                         defaultValue={this.state.currentTag}
                                         onChange={(event) => this.setState({currentTag: event.target.value})}/>
                                 </div>
-                                <div className="tagcell">
+                                <div className="tagbuttoncell">
                                     <button type="button" 
                                             onClick={() => this._tryCreateTag()}>
                                         Add New Tag To Material
