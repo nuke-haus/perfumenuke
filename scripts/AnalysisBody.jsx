@@ -77,7 +77,7 @@ class AnalysisBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td className="tagcontainer">
                                 {tagElements}
                             </td>
                         </tr>

@@ -202,6 +202,11 @@ table, td, th {
     width: 500px;
 }
 
+.tagcontainer {
+    display: flex;
+    justify-content: space-around;
+}
+
 .tagbuttoncell {
     float: left;
     padding-top: 20px;
