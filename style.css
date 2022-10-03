@@ -204,7 +204,9 @@ table, td, th {
 
 .tagcontainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    border: 1px solid #000000;
 }
 
 .tagbuttoncell {
