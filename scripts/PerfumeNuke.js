@@ -417,6 +417,16 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
     if (tags.length === 0) {
         return [];
     }
+    function dynamicSort(property) {
+        return function (a,b) {
+            const result = (a[property] < b[property]) 
+                ? -1 
+                : (a[property] > b[property]) 
+                    ? 1 
+                    : 0;
+            return result;
+        }
+    }
     let materials = [];
     for (let material of Object.values(PN.database.materials)) {
         if (materials.filter(curMat => curMat.id === material.id).length > 0) {
@@ -438,7 +448,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
             materials.push(material);
         }
     }
-    materials.sort();
+    materials.sort(dynamicSort('id'));
 
     let mixtures = [];
     for (let mix of Object.values(PN.database.mixtures)) {
@@ -461,8 +471,8 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
             mixtures.push(mix);
         }
     }
-    mixtures.sort();
-    
+    mixtures.sort(dynamicSort('id'));
+
     return materials.concat(mixtures);
 }
 
