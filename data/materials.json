@@ -2573,6 +2573,243 @@
 				"FRESH",
 				"MUSK"
 			]
+		},
+		{
+			"ifra_restricted": false,
+			"id": "allyl_amyl_glycoate",
+			"cas": "67634-00-8",
+			"scent": "Fruity, green, herbal, fresh, galbanum and pineapple. ",
+			"usage": "Pineapple builder. Adds a modern sparkle to fragrances.",
+			"impact": "170",
+			"longevity": "10",
+			"note": "HEART",
+			"avg_in_concentrate": 0.006,
+			"max_in_concentrate": 0.04,
+			"name": "Allyl Amyl Glycoate",
+			"tags": [
+				"FRUITY",
+				"GREEN",
+				"HERBAL",
+				"PINEAPPLE",
+				"FRESH",
+				"GALBANUM"
+			],
+			"is_solvent": false,
+			"is_natural": false
+		},
+		{
+			"id": "amyl_cinnamic_aldehyde",
+			"name": "Amyl Cinnamic Aldehyde",
+			"scent": "Floral, spicy, herbal, white floral scent.",
+			"usage": "White floral builder. Tenacious.",
+			"note": "BASE",
+			"cas": "122-40-7",
+			"max_in_concentrate": 0.3,
+			"longevity": "250",
+			"avg_in_concentrate": 0.05,
+			"impact": "100",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FLORAL",
+				"WHITE FLORAL",
+				"JASMINE"
+			]
+		},
+		{
+			"id": "amyl_salicylate",
+			"name": "Amyl Salicylate",
+			"scent": "A floral and sweet, herbaceous and balsamic scent, with a green undertone. ",
+			"max_in_concentrate": 0.08,
+			"usage": "Floral builder.",
+			"cas": "2050-08-0",
+			"longevity": "36",
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false,
+			"impact": "110",
+			"note": "HEART",
+			"company": "Givaudan",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FLORAL",
+				"GREEN",
+				"HERBAL",
+				"BALSAMIC"
+			]
+		},
+		{
+			"id": "apo_patchone_coeur",
+			"name": "Apo Patchone Coeur",
+			"scent": "Leathery and diffusive with a hint of lilac, rose, herbs, wood and geranium. Excellent stability.",
+			"max_in_concentrate": 0.1,
+			"usage": "Leather builder with a feminine touch. Also called leather cyclohexanol.",
+			"cas": "4621-04-9",
+			"longevity": "12",
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false,
+			"impact": "100",
+			"note": "HEART",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"DIFFUSIVE",
+				"LEATHER",
+				"FEMININE",
+				"FLORAL"
+			],
+			"company": "IFF"
+		},
+		{
+			"id": "diethyl_malonate",
+			"name": "Diethyl Malonate",
+			"scent": "Sweet, estery, fruity, green apple scent.",
+			"usage": "Powerful and versatile green note. Extensively used in perfumery for floral effects and fresh green floral top notes.",
+			"note": "TOP",
+			"max_in_concentrate": 0.062,
+			"longevity": "2",
+			"impact": "80",
+			"avg_in_concentrate": 0.008,
+			"cas": "105-53-3",
+			"ifra_restricted": false,
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"APPLE",
+				"FRUITY"
+			]
+		},
+		{
+			"id": "ethyl_acetate",
+			"name": "Ethyl Acetate",
+			"scent": "Pleasant, ethereal, fruity, grape, brandy-like odor. Somewhat nauseating in high concentration.",
+			"usage": "Used to make top notes more alcoholic or to give lift to top notes.",
+			"note": "TOP",
+			"max_in_concentrate": 0.18,
+			"longevity": "4",
+			"impact": "120",
+			"avg_in_concentrate": 0.027,
+			"cas": "141-78-6",
+			"ifra_restricted": false,
+			"dilute": "10% or less",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"FRUITY",
+				"BRANDY",
+				"GRAPE"
+			]
+		},
+		{
+			"id": "grape_butyrate",
+			"name": "Grape Butyrate",
+			"scent": "Fruity, estery, green, grape, pineapple, apple skin scent.",
+			"usage": "Very diffusive grape scent. Also called ethyl 3-hydroxybutyrate.",
+			"note": "TOP",
+			"max_in_concentrate": 0.022,
+			"longevity": "4",
+			"impact": "100",
+			"avg_in_concentrate": 0.003,
+			"cas": "5405-41-4",
+			"ifra_restricted": false,
+			"dilute": "10% or less",
+			"is_solvent": false,
+			"is_natural": false,
+			"tags": [
+				"GRAPE",
+				"DIFFUSIVE",
+				"FRUITY"
+			]
+		},
+		{
+			"id": "ionone_beta",
+			"name": "Ionone Beta",
+			"is_natural": false,
+			"scent": "Floral, orris, violet, fruity, raspberry, woody scent.",
+			"usage": "Orris and violet builder.",
+			"note": "HEART",
+			"cas": "79-77-6",
+			"longevity": "100",
+			"impact": "120",
+			"max_in_concentrate": 0.067,
+			"avg_in_concentrate": 0.008,
+			"ifra_restricted": false,
+			"company": "IFF",
+			"is_solvent": false,
+			"tags": [
+				"ORRIS",
+				"VIOLET",
+				"RASPBERRY"
+			]
+		},
+		{
+			"id": "lavender_aldehyde_fcc",
+			"name": "Lavender Aldehyde FCC",
+			"is_natural": false,
+			"scent": "Very powerful, natural, diffusive, herbaceous with a hint of cocoa, blueberry, bergamot, clary sage, and lavender overtones. ",
+			"usage": "Sage and lavender builder. Diffusive.",
+			"note": "HEART",
+			"cas": "35158-25-9",
+			"longevity": "8",
+			"impact": "150",
+			"max_in_concentrate": 0.05,
+			"avg_in_concentrate": 0.01,
+			"ifra_restricted": false,
+			"company": "Bedoukian",
+			"is_solvent": false,
+			"tags": [
+				"LAVENDER",
+				"SAGE",
+				"DIFFUSIVE",
+				"HERBAL"
+			],
+			"dilute": "10%"
+		},
+		{
+			"id": "lime_oxide",
+			"name": "Lime Oxide",
+			"is_natural": false,
+			"scent": "Citrus, lime, green, aromatic, fresh scent.",
+			"usage": "Lime oxide adds freshness and intensity to perfumes.",
+			"note": "TOP",
+			"cas": "73018-51-6",
+			"longevity": "4",
+			"impact": "300",
+			"max_in_concentrate": 0.05,
+			"avg_in_concentrate": 0.003,
+			"ifra_restricted": false,
+			"company": "Givaudan",
+			"is_solvent": false,
+			"tags": [
+				"FRESH",
+				"CITRUS",
+				"GREEN",
+				"LIME"
+			],
+			"dilute": "10%"
+		},
+		{
+			"id": "methylbutyraldehyde",
+			"name": "Methylbutyraldehyde",
+			"is_natural": false,
+			"scent": "Musty, chocolate, nutty and furfural with malt and fermented nuances.",
+			"usage": "Cocoa builder. Chocolate builder. Coffee builder. Very strong.",
+			"note": "TOP",
+			"cas": "96-17-3",
+			"longevity": "2",
+			"impact": "300",
+			"max_in_concentrate": 0.02,
+			"avg_in_concentrate": 0.001,
+			"ifra_restricted": false,
+			"company": "Givaudan",
+			"is_solvent": false,
+			"tags": [
+				"COCOA",
+				"CHOCOLATE",
+				"COFFEE"
+			],
+			"dilute": "1% or less"
 		}
 	]
 }
