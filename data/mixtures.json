@@ -174,22 +174,6 @@
 				"TEA",
 				"ALDEHYDE"
 			]
-		},
-		{
-			"id": "vetacetex",
-			"name": "Vetacetex",
-			"company": "IFF",
-			"scent": "Vetiver, woody, dry, rooty odor.",
-			"usage": "Vetiver builder.",
-			"materials": [
-				{
-					"id": "unknown",
-					"percent": 1
-				}
-			],
-			"tags": [
-				"VETIVER"
-			]
 		}
 	]
 }
