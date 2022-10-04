@@ -414,12 +414,12 @@ PN.getAllUniqueTags = function() {
 }
 
 PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
-    const result = [];
     if (tags.length === 0) {
-        return result;
+        return [];
     }
+    let materials = [];
     for (let material of Object.values(PN.database.materials)) {
-        if (result.filter(curMat => curMat.id === material.id).length > 0) {
+        if (materials.filter(curMat => curMat.id === material.id).length > 0) {
             continue;
         }
         const materialTags = material.tags || [];
@@ -429,17 +429,20 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
                 if (isAbsolute) {
                     count++;
                 } else {
-                    result.push(material);
+                    materials.push(material);
                     break;
                 }
             }
         }
         if (isAbsolute && count === tags.length) {
-            result.push(material);
+            materials.push(material);
         }
     }
+    materials.sort();
+
+    let mixtures = [];
     for (let mix of Object.values(PN.database.mixtures)) {
-        if (result.filter(curMix => curMix.id === mix.id).length > 0) {
+        if (mixtures.filter(curMix => curMix.id === mix.id).length > 0) {
             continue;
         }
         const mixTags = mix.tags || [];
@@ -449,17 +452,18 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
                 if (isAbsolute) {
                     count++;
                 } else {
-                    result.push(mix);
+                    mixtures.push(mix);
                     break;
                 }
             }
         }
         if (isAbsolute && count === tags.length) {
-            result.push(mix);
+            mixtures.push(mix);
         }
     }
+    mixtures.sort();
     
-    return result;
+    return materials.concat(mixtures);
 }
 
 PN.getMixtureDilutant = function(mixture) {
