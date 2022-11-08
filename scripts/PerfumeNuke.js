@@ -497,7 +497,7 @@ PN.getDilutionPercentString = function(solvent) {
 
 PN.isMixtureDilution = function(mixture) {
     const materials = PN.getMaterialsFromMixture(mixture);
-    const nonSolventCount = 0;
+    let nonSolventCount = 0;
     for (let material of materials) {
         if (material.is_solvent) {
             continue;
