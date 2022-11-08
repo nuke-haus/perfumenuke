@@ -448,7 +448,6 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
             materials.push(material);
         }
     }
-    materials.sort(dynamicSort('id'));
 
     const mixtures = [];
     for (let mix of Object.values(PN.database.mixtures)) {
@@ -471,9 +470,8 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
             mixtures.push(mix);
         }
     }
-    mixtures.sort(dynamicSort('id'));
 
-    return materials.concat(mixtures);
+    return materials.concat(mixtures).sort(dynamicSort('id'));
 }
 
 PN.getMixtureDilutant = function(mixture) {
