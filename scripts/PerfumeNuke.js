@@ -471,7 +471,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
         }
     }
 
-    return materials.concat(mixtures).sort(dynamicSort('id'));
+    return materials.concat(mixtures).sort(dynamicSort('name'));
 }
 
 PN.getMixtureDilutant = function(mixture) {
