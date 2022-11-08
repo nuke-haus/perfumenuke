@@ -427,7 +427,7 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
             return result;
         }
     }
-    let materials = [];
+    const materials = [];
     for (let material of Object.values(PN.database.materials)) {
         if (materials.filter(curMat => curMat.id === material.id).length > 0) {
             continue;
@@ -450,9 +450,9 @@ PN.getMaterialsAndMixturesWithTags = function(tags, isAbsolute) {
     }
     materials.sort(dynamicSort('id'));
 
-    let mixtures = [];
+    const mixtures = [];
     for (let mix of Object.values(PN.database.mixtures)) {
-        if (mixtures.filter(curMix => curMix.id === mix.id).length > 0) {
+        if (PN.isMixtureDilution(mix) || mixtures.filter(curMix => curMix.id === mix.id).length > 0) {
             continue;
         }
         const mixTags = mix.tags || [];
@@ -493,6 +493,21 @@ PN.getDilutionPercentString = function(solvent) {
     const material = PN.getMaterial(solvent.id);
     const percent = ((1.0 - solvent.percent) * 100.0).toFixed(1);
     return ` (${percent}% in ${material.name})`;
+}
+
+PN.isMixtureDilution = function(mixture) {
+    const materials = PN.getMaterialsFromMixture(mixture);
+    const nonSolventCount = 0;
+    for (let material of materials) {
+        if (material.is_solvent) {
+            continue;
+        }
+        nonSolventCount++;
+        if (nonSolventCount > 1) {
+            return false;
+        }
+    }
+    return true;
 }
 
 PN.getMaterialsFromMixture = function(mixture) {
