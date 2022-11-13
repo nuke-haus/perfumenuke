@@ -123,6 +123,7 @@ class DatabaseBody extends React.Component {
             name: currentMaterial.name,
             scent: currentMaterial.scent,
             tags: currentMaterial.tags,
+            is_dilution: true,
             usage: `${this._dilutionAmount}% dilution of ${currentMaterial.name} in ${currentDilutant.name}`,
             materials: [
                 {
@@ -219,6 +220,7 @@ class DatabaseBody extends React.Component {
             name: currentMixture.name,
             scent: currentMixture.scent,
             is_natural: false,
+            is_dilution: true,
             country: currentMixture.country,
             usage: `${this._mixtureDilutionAmount}% dilution of ${currentMixture.name} in ${currentDilutant.name}`,
             materials: [
