@@ -4,26 +4,19 @@ class TickBox extends React.Component {
         super(props);
     }
 
-    _onClick(ticked) {
-        this.props.onClick(ticked);
-    }
-
     render() {
-        return this.props.ticked === true
-            ? (
-                <div>
-                    {this.props.label}
-                    <div className="tickboxselected"
-                        onClick={() => this._onClick(false)}/>
-                </div>
-            )
-            : (
-                <div>
-                    {this.props.label}
-                    <div className="tickboxdeselected"
-                        onClick={() => this._onClick(true)}/>
-                </div>
-            );
+        const className = this.props.ticked === true
+            ? "tag clickabletag selectedtag"
+            : "tag clickabletag";
+        const text = isSelected
+            ? "🟢 " + this.props.label
+            : "⚫ " + this.props.label;
+        return (
+            <div className={className} 
+                 onClick={() => this.props.onClick(!this.props.ticked)}>
+                    {text}
+            </div>
+        );
     }
 }
 
