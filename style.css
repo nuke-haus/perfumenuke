@@ -72,6 +72,32 @@ button[disabled] {
     cursor: default;
 }
 
+.tickboxselected {
+    background-color: #4CAF50;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    box-shadow: inset 2px 2px 1px #81ce84, inset -2px -2px 1px #357e37;
+    color: #000000;
+    padding: 2px 6px;
+    margin: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.tickboxdeselected {
+    background-color: #849b84;
+    border: 2px solid #000000;
+    border-radius: 4px; 
+    box-shadow: inset 2px 2px 1px #a2bda2, inset -2px -2px 1px #5a695a;
+    color: #000000;
+    padding: 2px 6px;
+    margin: 4px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 textarea {
     background-color: #add3ad;
     border: 2px solid #000000;
