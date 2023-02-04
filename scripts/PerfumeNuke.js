@@ -15,7 +15,8 @@ PN.database.activeFormula.ingredients = [];
 PN.database.activeFormula.dilutant = "perfumers_alcohol";
 PN.database.activeFormula.dilutant_quantity = 1.0;
 PN.database.activeFormula.computed = {};
-PN.database.activeFormula.computed.ingredients = {};
+PN.database.activeFormula.computed.breakdown = {};
+PN.database.activeFormula.computed.manifest = {};
 
 PN.note = {};
 PN.note.top = "TOP";
@@ -78,24 +79,55 @@ PN.getMixturesForExport = function() {
     return JSON.stringify(exportData, PN._jsonOutputLogic, "\t");
 }
 
+// Recompute the values displayed in the manifest and breakdown sections of the formula page
 PN.recomputeFormula = function() {
     PN.database.activeFormula.computed = {};
-    PN.database.activeFormula.computed.ingredients = {};
-    PN.database.activeFormula.computed.ingredients[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
+    PN.database.activeFormula.computed.breakdown = {};
+    PN.database.activeFormula.computed.manifest = {};
+    PN.database.activeFormula.computed.breakdown[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
+    PN.database.activeFormula.computed.manifest[PN.database.activeFormula.dilutant] = {quantity: PN.database.activeFormula.dilutant_quantity};
     let totalWeight = 0.0;
     let totalNonSolventWeight = 0.0;
     for (let ingredient of PN.database.activeFormula.ingredients) { // ingredient can be material or mixture
         const material = PN.getMaterial(ingredient.id);
         const mixture = PN.getMixture(ingredient.id);
         if (material != null) { // simple case: it's a material
-            PN.database.activeFormula.computed.ingredients[material.id] = PN.database.activeFormula.computed.ingredients[material.id] || {};
-            const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
-            PN.database.activeFormula.computed.ingredients[material.id].quantity = currentQuantity + ingredient.quantity;
+            // MANIFEST LOGIC
+            PN.database.activeFormula.computed.manifest[material.id] = PN.database.activeFormula.computed.manifest[material.id] || {};
+            const currentManifestQuantity = PN.database.activeFormula.computed.manifest[material.id].quantity || 0.0;
+            PN.database.activeFormula.computed.manifest[material.id].quantity = currentManifestQuantity + ingredient.quantity;
+            // BREAKDOWN LOGIC
+            PN.database.activeFormula.computed.breakdown[material.id] = PN.database.activeFormula.computed.breakdown[material.id] || {};
+            const currentQuantity = PN.database.activeFormula.computed.breakdown[material.id].quantity || 0.0;
+            PN.database.activeFormula.computed.breakdown[material.id].quantity = currentQuantity + ingredient.quantity;
+            // GENERAL LOGIC
             totalWeight = totalWeight + ingredient.quantity;
             if (!material.is_solvent) {
                 totalNonSolventWeight = totalNonSolventWeight + ingredient.quantity;
             }
-        } else if (mixture != null) { // complicated case: it's a mixture so explode it into ingredients
+        } else if (mixture != null) { // complicated case: it's a mixture so explode it into ingredients for the breakdown
+            // MANIFEST LOGIC
+            if (mixture.is_dilution) { // break down the dilution into materials
+                for (let material of mixture.materials) {
+                    const innerMixture = PN.getMixture(material.id);
+                    if (innerMixture != null) { // most complex case: it's a mixture containing nested mixtures
+                        for (let innerMaterial of innerMixture.materials) {
+                            PN.database.activeFormula.computed.manifest[innerMaterial.id] = PN.database.activeFormula.computed.manifest[innerMaterial.id] || {};
+                            const currentQuantity = PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity || 0.0;
+                            PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity = currentQuantity + (ingredient.quantity * material.percent * innerMaterial.percent);
+                        }
+                    } else { // material exploded from the mixture
+                        PN.database.activeFormula.computed.manifest[material.id] = PN.database.activeFormula.computed.manifest[material.id] || {};
+                        const currentQuantity = PN.database.activeFormula.computed.manifest[material.id].quantity || 0.0;
+                        PN.database.activeFormula.computed.manifest[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
+                    }
+                }
+            } else { // if it's a non-dilution mixture then treat it as a material for the manifest
+                PN.database.activeFormula.computed.manifest[mixture.id] = PN.database.activeFormula.computed.manifest[mixture.id] || {};
+                const currentManifestQuantity = PN.database.activeFormula.computed.manifest[mixture.id].quantity || 0.0;
+                PN.database.activeFormula.computed.manifest[material.id].quantity = currentManifestQuantity + ingredient.quantity;
+            }
+            // BREAKDOWN LOGIC
             for (let material of mixture.materials) {
                 const innerMixture = PN.getMixture(material.id);
                 if (innerMixture != null) { // most complex case: it's a mixture containing nested mixtures
@@ -105,44 +137,70 @@ PN.recomputeFormula = function() {
                             alert("A mixture contains too many layers of nested mixtures. This is not supported. Please adjust this mixture in the database: " + ingredient.id);
                             return;
                         }
-                        PN.database.activeFormula.computed.ingredients[innerMaterial.id] = PN.database.activeFormula.computed.ingredients[innerMaterial.id] || {};
-                        const currentQuantity = PN.database.activeFormula.computed.ingredients[innerMaterial.id].quantity || 0.0;
-                        PN.database.activeFormula.computed.ingredients[innerMaterial.id].quantity = currentQuantity + (ingredient.quantity * material.percent * innerMaterial.percent);
+                        PN.database.activeFormula.computed.breakdown[innerMaterial.id] = PN.database.activeFormula.computed.breakdown[innerMaterial.id] || {};
+                        const currentQuantity = PN.database.activeFormula.computed.breakdown[innerMaterial.id].quantity || 0.0;
+                        PN.database.activeFormula.computed.breakdown[innerMaterial.id].quantity = currentQuantity + (ingredient.quantity * material.percent * innerMaterial.percent);
                         const foundMaterial = PN.getMaterial(innerMaterial.id);
                         if (!foundMaterial.is_solvent) {
                             totalNonSolventWeight = totalNonSolventWeight + (ingredient.quantity * material.percent * innerMaterial.percent);
                         }
                     }
                 } else { // material exploded from the mixture
-                    PN.database.activeFormula.computed.ingredients[material.id] = PN.database.activeFormula.computed.ingredients[material.id] || {};
-                    const currentQuantity = PN.database.activeFormula.computed.ingredients[material.id].quantity || 0.0;
-                    PN.database.activeFormula.computed.ingredients[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
+                    PN.database.activeFormula.computed.breakdown[material.id] = PN.database.activeFormula.computed.breakdown[material.id] || {};
+                    const currentQuantity = PN.database.activeFormula.computed.breakdown[material.id].quantity || 0.0;
+                    PN.database.activeFormula.computed.breakdown[material.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
                     const foundMaterial = PN.getMaterial(material.id);
                     if (!foundMaterial.is_solvent) {
                         totalNonSolventWeight = totalNonSolventWeight + (ingredient.quantity * material.percent);
                     }
                 }
             }
+            // GENERAL LOGIC
             totalWeight = totalWeight + ingredient.quantity;
         }
     }
-    for (let key in PN.database.activeFormula.computed.ingredients) {
-        PN.database.activeFormula.computed.ingredients[key].quantity = PN.sanitizeFloat(PN.database.activeFormula.computed.ingredients[key].quantity, 4);
+    // sanitize floats
+    for (let key in PN.database.activeFormula.computed.breakdown) {
+        PN.database.activeFormula.computed.breakdown[key].quantity = PN.sanitizeFloat(PN.database.activeFormula.computed.breakdown[key].quantity, 4);
+    }
+    for (let key in PN.database.activeFormula.computed.manifest) {
+        PN.database.activeFormula.computed.manifest[key].quantity = PN.sanitizeFloat(PN.database.activeFormula.computed.manifest[key].quantity, 4);
     }
     if (totalWeight > 0.0) {
-        for (let key in PN.database.activeFormula.computed.ingredients) { // computed ingredients are all materials
+        for (let key in PN.database.activeFormula.computed.breakdown) { // computed breakdown ingredients are all materials
             const material = PN.getMaterial(key);
             if (material.is_solvent) {
-                PN.database.activeFormula.computed.ingredients[key].percent = 0;
-                PN.database.activeFormula.computed.ingredients[key].ppt = 0;
+                PN.database.activeFormula.computed.breakdown[key].percent = 0;
+                PN.database.activeFormula.computed.breakdown[key].ppt = 0;
             } else {
-                PN.database.activeFormula.computed.ingredients[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / totalNonSolventWeight) * 100.0, 4);
-                PN.database.activeFormula.computed.ingredients[key].ppt = PN.sanitizeFloat(PN.database.activeFormula.computed.ingredients[key].percent * 10.0, 0);
+                PN.database.activeFormula.computed.breakdown[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.breakdown[key].quantity / totalNonSolventWeight) * 100.0, 4);
+                PN.database.activeFormula.computed.breakdown[key].ppt = PN.sanitizeFloat(PN.database.activeFormula.computed.breakdown[key].percent * 10.0, 0);
             }
         }
-        for (let key in PN.database.activeFormula.computed.ingredients) {
-            PN.database.activeFormula.computed.ingredients[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.ingredients[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
+        for (let key in PN.database.activeFormula.computed.manifest) { // computed manifest ingredients are materials and mixtures
+            const material = PN.getMaterial(key);
+            const mixture = PN.getMixture(key);
+            if (material != null) {
+                if (material.is_solvent) {
+                    PN.database.activeFormula.computed.manifest[key].percent = 0;
+                    PN.database.activeFormula.computed.manifest[key].ppt = 0;
+                } else {
+                    PN.database.activeFormula.computed.manifest[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.manifest[key].quantity / totalNonSolventWeight) * 100.0, 4);
+                    PN.database.activeFormula.computed.manifest[key].ppt = PN.sanitizeFloat(PN.database.activeFormula.computed.manifest[key].percent * 10.0, 0);
+                }
+            } else {
+                PN.database.activeFormula.computed.manifest[key].percent = PN.sanitizeFloat((PN.database.activeFormula.computed.manifest[key].quantity / totalNonSolventWeight) * 100.0, 4);
+                PN.database.activeFormula.computed.manifest[key].ppt = PN.sanitizeFloat(PN.database.activeFormula.computed.manifest[key].percent * 10.0, 0);
+            }
         }
+        // sanitize floats
+        for (let key in PN.database.activeFormula.computed.breakdown) {
+            PN.database.activeFormula.computed.breakdown[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.breakdown[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
+        }
+        for (let key in PN.database.activeFormula.computed.manifest) {
+            PN.database.activeFormula.computed.manifest[key].percentInProduct = PN.sanitizeFloat((PN.database.activeFormula.computed.manifest[key].quantity / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
+        }
+        // compute the general info
         let concentration = PN.sanitizeFloat((totalWeight / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
         let concentrationNonSolvent = PN.sanitizeFloat((totalNonSolventWeight / (totalWeight + PN.database.activeFormula.dilutant_quantity)) * 100.0, 4);
         if (concentration === Infinity || concentration === NaN) {
@@ -158,7 +216,6 @@ PN.recomputeFormula = function() {
         PN.database.activeFormula.computed.concentrationNonSolvent = concentrationNonSolvent;
     }
 }
-
 
 PN.validateFormula = function(formula) { 
     if (formula.id == null) {

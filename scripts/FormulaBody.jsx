@@ -131,8 +131,18 @@ class FormulaBody extends React.Component {
         }
     }
 
-    _getOrderedManifestKeys() {
-        const keys = Object.keys(PN.database.activeFormula.computed.ingredients);
+    _renderPercentInProduct(id, material, source) {
+        const floatValue = (source[id].percentInProduct || 0);
+        if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
+            return (
+                <span className="error">{`${floatValue} \u{1F6A9}`}</span>
+            );
+        } 
+        return floatValue;
+    }
+
+    _getOrderedManifestKeys(source) {
+        const keys = Object.keys(source);
         switch (this.state.sortBy) {
             case (this._SORT_BY_ID) :
                 return keys.sort((a, b) => {
@@ -143,56 +153,75 @@ class FormulaBody extends React.Component {
             case (this._SORT_BY_PERCENT_TOTAL):
             case (this._SORT_BY_WEIGHT):
                 return keys.sort((a, b) => {
-                    const aValue = PN.database.activeFormula.computed.ingredients[a].quantity;
-                    const bValue = PN.database.activeFormula.computed.ingredients[b].quantity;
+                    const aValue = source[a].quantity;
+                    const bValue = source[b].quantity;
                     return (bValue - aValue) * this.state.sortDir;
                 });
             case (this._SORT_BY_PERCENT_CONC):
             case (this._SORT_BY_PPT):
             default:
                 return keys.sort((a, b) => {
-                    const aValue = PN.database.activeFormula.computed.ingredients[a].percent;
-                    const bValue = PN.database.activeFormula.computed.ingredients[b].percent;
+                    const aValue = source[a].percent;
+                    const bValue = source[b].percent;
                     return (bValue - aValue) * this.state.sortDir;
                 });
         }
     }
 
-    _renderPercentInProduct(id, material) {
-        const floatValue = (PN.database.activeFormula.computed.ingredients[id].percentInProduct || 0);
-        if (material.max_in_finished_product && floatValue > (material.max_in_finished_product * 100.0)) {
-            return (
-                <span className="error">{`${floatValue} \u{1F6A9}`}</span>
-            );
-        } 
-        return floatValue;
-    }
-
-    _renderManifestRows() {
+    _renderManifestRows(isBreakdown) {
         const elements = [];
-        for (let id of this._getOrderedManifestKeys()) {
+        var source = PN.database.activeFormula.computed.breakdown;
+        if (!isBreakdown) {
+            source = PN.database.activeFormula.computed.manifest;
+        }
+        for (let id of this._getOrderedManifestKeys(source)) {
             const material = PN.getMaterial(id);
-            const maxInProduct = material.max_in_finished_product == null 
-                ? "" 
-                : PN.sanitizeFloat(material.max_in_finished_product * 100.0, 4);
-            const avgInConc = material.avg_in_concentrate == null || material.max_in_concentrate == 0
-                ? "" 
-                : PN.sanitizeFloat(material.avg_in_concentrate * 100.0, 4);
-            const maxInConc = material.max_in_concentrate == null || material.max_in_concentrate == 0
-                ? "" 
-                : PN.sanitizeFloat(material.max_in_concentrate * 100.0, 4);
-            elements.push(
-                <tr key={'manifest' + id}>
-                    <td><InfoButton material={material}/></td>
-                    <td>{(PN.database.activeFormula.computed.ingredients[id].quantity || 0)}</td>
-                    <td>{(PN.database.activeFormula.computed.ingredients[id].ppt || 0)}</td>
-                    <td>{(PN.database.activeFormula.computed.ingredients[id].percent || 0)}</td>
-                    <td>{avgInConc}</td>
-                    <td>{maxInConc}</td>
-                    <td>{this._renderPercentInProduct(id, material)}</td>
-                    <td>{maxInProduct}</td>
-                </tr>
-            );
+            const mixture = PN.getMixture(id);
+            if (material != null) {
+                const maxInProduct = material.max_in_finished_product == null 
+                    ? "" 
+                    : PN.sanitizeFloat(material.max_in_finished_product * 100.0, 4);
+                const avgInConc = material.avg_in_concentrate == null || material.max_in_concentrate == 0
+                    ? "" 
+                    : PN.sanitizeFloat(material.avg_in_concentrate * 100.0, 4);
+                const maxInConc = material.max_in_concentrate == null || material.max_in_concentrate == 0
+                    ? "" 
+                    : PN.sanitizeFloat(material.max_in_concentrate * 100.0, 4);
+                elements.push(
+                    <tr key={'manifest_material' + id}>
+                        <td><InfoButton material={material}/></td>
+                        <td>{(source[id].quantity || 0)}</td>
+                        <td>{(source[id].ppt || 0)}</td>
+                        <td>{(source[id].percent || 0)}</td>
+                        <td>{avgInConc}</td>
+                        <td>{maxInConc}</td>
+                        <td>{this._renderPercentInProduct(id, material, source)}</td>
+                        <td>{maxInProduct}</td>
+                    </tr>
+                );
+            } else {
+                const maxInProduct = mixture.max_in_finished_product == null 
+                    ? "" 
+                    : PN.sanitizeFloat(mixture.max_in_finished_product * 100.0, 4);
+                const avgInConc = mixture.avg_in_concentrate == null || mixture.max_in_concentrate == 0
+                    ? "" 
+                    : PN.sanitizeFloat(mixture.avg_in_concentrate * 100.0, 4);
+                const maxInConc = mixture.max_in_concentrate == null || mixture.max_in_concentrate == 0
+                    ? "" 
+                    : PN.sanitizeFloat(mixture.max_in_concentrate * 100.0, 4);
+                elements.push(
+                    <tr key={'manifest_mixture' + id}>
+                        <td><InfoButton material={mixture}/></td>
+                        <td>{(source[id].quantity || 0)}</td>
+                        <td>{(source[id].ppt || 0)}</td>
+                        <td>{(source[id].percent || 0)}</td>
+                        <td>{avgInConc}</td>
+                        <td>{maxInConc}</td>
+                        <td>{this._renderPercentInProduct(id, mixture, source)}</td>
+                        <td>{maxInProduct}</td>
+                    </tr>
+                );
+            } 
         }
         return elements;
     }
@@ -246,7 +275,7 @@ class FormulaBody extends React.Component {
                     </tbody>
                 </table>
                 <div className="tabletext">
-                    MATERIAL MANIFEST
+                    FORMULA MANIFEST
                 </div>
                 <table className="formulatable">
                     <tbody>
@@ -260,7 +289,26 @@ class FormulaBody extends React.Component {
                             <th>{this._renderSortButton("% IN FINISHED PRODUCT", this._SORT_BY_PERCENT_TOTAL)}</th>
                             <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
                         </tr>
-                        {this._renderManifestRows()}
+                        {this._renderManifestRows(false)}
+                    </tbody>
+                </table>
+                <div className="padding"/>
+                <div className="tabletext">
+                    DETAILED FORMULA BREAKDOWN
+                </div>
+                <table className="formulatable">
+                    <tbody>
+                        <tr>
+                            <th>{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
+                            <th>{this._renderSortButton("WEIGHT (GRAMS)", this._SORT_BY_WEIGHT)}</th>
+                            <th>{this._renderSortButton("PARTS PER THOUSAND IN CONCENTRATE", this._SORT_BY_PPT)}</th>
+                            <th>{this._renderSortButton("% IN CONCENTRATE", this._SORT_BY_PERCENT_CONC)}</th>
+                            <th>AVG % USED IN CONCENTRATE</th>
+                            <th>MAX % ADVISED IN CONCENTRATE</th>
+                            <th>{this._renderSortButton("% IN FINISHED PRODUCT", this._SORT_BY_PERCENT_TOTAL)}</th>
+                            <th>MAX % IN FINISHED PRODUCT (IFRA)</th>
+                        </tr>
+                        {this._renderManifestRows(true)}
                     </tbody>
                 </table>
                 <div className="padding"/>
