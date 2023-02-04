@@ -414,7 +414,7 @@ class FormulaBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colSpan="2">
                                 DILUTANT:
                                 <IngredientPicker defaultValue={PN.database.activeFormula.dilutant}
                                                     id={"dilutant"}
@@ -423,7 +423,7 @@ class FormulaBody extends React.Component {
                                                     allowMaterials={false}
                                                     onChange={(id) => this._onChangeFormula("dilution", id, true)}/>
                             </td>
-                            <td>
+                            <td colSpan="2">
                                 <div>
                                     WEIGHT (GRAMS):
                                 </div>
