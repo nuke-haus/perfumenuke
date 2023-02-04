@@ -367,7 +367,7 @@ class FormulaBody extends React.Component {
                         onClick={(event) => this._onChangeFormula("archived", event.target.value)} 
                         id="archive" 
                         checked/>
-                    <label for="archive">ARCHIVE</label>
+                    <label htmlFor="archive">ARCHIVE</label>
                 </div>
             )
             : (
@@ -375,7 +375,7 @@ class FormulaBody extends React.Component {
                     <input type="checkbox" 
                         onClick={(event) => this._onChangeFormula("archived", event.target.value)} 
                         id="archive"/>
-                    <label for="archive">ARCHIVE</label>
+                    <label htmlFor="archive">ARCHIVE</label>
                 </div>
             );
 
