@@ -125,7 +125,7 @@ PN.recomputeFormula = function() {
             } else { // if it's a non-dilution mixture then treat it as a material for the manifest
                 PN.database.activeFormula.computed.manifest[mixture.id] = PN.database.activeFormula.computed.manifest[mixture.id] || {};
                 const currentManifestQuantity = PN.database.activeFormula.computed.manifest[mixture.id].quantity || 0.0;
-                PN.database.activeFormula.computed.manifest[material.id].quantity = currentManifestQuantity + ingredient.quantity;
+                PN.database.activeFormula.computed.manifest[mixture.id].quantity = currentManifestQuantity + ingredient.quantity;
             }
             // BREAKDOWN LOGIC
             for (let material of mixture.materials) {
