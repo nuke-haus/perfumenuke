@@ -5,7 +5,8 @@ class FormulaBody extends React.Component {
         detailsKey: "details",
         formulaButtonKey: "button",
         sortBy: "PPT",
-        sortDir: 1
+        sortDir: 1,
+        showArchivedFormulas: "false"
     };
 
     _SORT_BY_ID = "ID";
@@ -332,7 +333,7 @@ class FormulaBody extends React.Component {
             count = count + 1;
             elements.push(
                 <tr key={"ingredient" + index + this.state.tableKey}>
-                    <td>
+                    <td colSpan="2">
                         {name}
                         <IngredientPicker defaultValue={ingredient.id}
                                           id={"ingredient" + index}
@@ -359,6 +360,43 @@ class FormulaBody extends React.Component {
                 </tr>
             );
         }
+        const archiveCheckBox = PN.database.activeFormula.id.archived === true
+            ? (
+                <div>
+                    <input type="checkbox" 
+                        onClick={(event) => this._onChangeFormula("archived", event.target.value)} 
+                        id="archive" 
+                        checked/>
+                    <label for="archive">ARCHIVE</label>
+                </div>
+            )
+            : (
+                <div>
+                    <input type="checkbox" 
+                        onClick={(event) => this._onChangeFormula("archived", event.target.value)} 
+                        id="archive"/>
+                    <label for="archive">ARCHIVE</label>
+                </div>
+            );
+
+        const showArchivedCheckBox = this.state.showArchivedFormulas === true
+            ? (
+                <div>
+                    <input type="checkbox" 
+                        onClick={(event) => this.setState({showArchivedFormulas: event.target.value})} 
+                        id="archive" 
+                        checked/>
+                    <label for="archive">SHOW ARCHIVED FORMULAS</label>
+                </div>
+            )
+            : (
+                <div>
+                    <input type="checkbox" 
+                        onClick={(event) => this.setState({showArchivedFormulas: event.target.value})} 
+                        id="archive"/>
+                    <label for="archive">SHOW ARCHIVED FORMULAS</label>
+                </div>
+            );
 
         return (
             <div>
@@ -387,9 +425,12 @@ class FormulaBody extends React.Component {
                                        defaultValue={PN.database.activeFormula.date}
                                        onChange={(event) => this._onChangeFormula("date", this._formatName(event.target.value))}/>
                             </td>
+                            <td>
+                                {archiveCheckBox}
+                            </td>
                         </tr>
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 DESCRIPTION: 
                                 <textarea onChange={(event) => this._onChangeFormula("description", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.description}
@@ -398,7 +439,7 @@ class FormulaBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 OTHER NOTES: 
                                 <textarea onChange={(event) => this._onChangeFormula("notes", this._formatName(event.target.value))}
                                           defaultValue={PN.database.activeFormula.notes}
@@ -431,7 +472,7 @@ class FormulaBody extends React.Component {
                         </tr>
                         {elements}
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 <button type="button" 
                                         onClick={() => this._addIngredient()}>
                                     Add New Ingredient
@@ -445,7 +486,7 @@ class FormulaBody extends React.Component {
                                     Apply Scale Value To Entire Formula
                                 </button>
                             </td>
-                            <td colSpan="2">
+                            <td colSpan="3">
                                 <div>
                                     SCALE:
                                 </div>
@@ -478,7 +519,11 @@ class FormulaBody extends React.Component {
                                                   allowMaterials={false}
                                                   allowMixtures={false}
                                                   allowFormulas={true}
+                                                  allowArchivedFormulas={this.state.showArchivedFormulas}
                                                   onChange={(id) => this._changeSelectedFormula(id)}/>
+                            </td>
+                            <td className="tablebottom">
+                                {showArchivedCheckBox}
                             </td>
                         </tr>
                     </tbody>
