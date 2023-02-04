@@ -360,7 +360,7 @@ class FormulaBody extends React.Component {
                 </tr>
             );
         }
-        const archiveCheckBox = PN.database.activeFormula.id.archived === true
+        const archiveCheckBox = PN.database.activeFormula.archived === true
             ? (
                 <div>
                     <input type="checkbox" 
