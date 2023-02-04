@@ -146,8 +146,8 @@ class FormulaBody extends React.Component {
         switch (this.state.sortBy) {
             case (this._SORT_BY_ID) :
                 return keys.sort((a, b) => {
-                    const aMaterial = PN.getMaterial(a) || {};
-                    const bMaterial = PN.getMaterial(b) || {};
+                    var aMaterial = (PN.getMaterial(a) || PN.getMixture(a)) || {};
+                    var bMaterial = (PN.getMaterial(b) || PN.getMixture(b)) || {};
                     return (aMaterial.name || "").localeCompare(bMaterial.name || "") * this.state.sortDir;
                 });
             case (this._SORT_BY_PERCENT_TOTAL):
