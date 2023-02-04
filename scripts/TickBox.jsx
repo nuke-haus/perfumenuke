@@ -8,7 +8,7 @@ class TickBox extends React.Component {
         const className = this.props.ticked === true
             ? "tag clickabletag selectedtag"
             : "tag clickabletag";
-        const text = isSelected
+        const text = this.props.ticked === true
             ? "🟢 " + this.props.label
             : "⚫ " + this.props.label;
         return (
