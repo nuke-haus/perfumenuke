@@ -174,7 +174,9 @@ class FormulaBody extends React.Component {
         if (!isBreakdown) {
             source = PN.database.activeFormula.computed.manifest;
         }
+        var count = 0;
         for (let id of this._getOrderedManifestKeys(source)) {
+            count++;
             const material = PN.getMaterial(id);
             const mixture = PN.getMixture(id);
             if (material != null) {
@@ -189,6 +191,7 @@ class FormulaBody extends React.Component {
                     : PN.sanitizeFloat(material.max_in_concentrate * 100.0, 4);
                 elements.push(
                     <tr key={'manifest_material' + id}>
+                        <td>{count}</td>
                         <td><InfoButton material={material}/></td>
                         <td>{(source[id].quantity || 0)}</td>
                         <td>{(source[id].ppt || 0)}</td>
@@ -211,6 +214,7 @@ class FormulaBody extends React.Component {
                     : PN.sanitizeFloat(mixture.max_in_concentrate * 100.0, 4);
                 elements.push(
                     <tr key={'manifest_mixture' + id}>
+                        <td>{count}</td>
                         <td><InfoButton material={mixture}/></td>
                         <td>{(source[id].quantity || 0)}</td>
                         <td>{(source[id].ppt || 0)}</td>
@@ -280,7 +284,7 @@ class FormulaBody extends React.Component {
                 <table className="formulatable">
                     <tbody>
                         <tr>
-                            <th>{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
+                            <th colSpan="2">{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
                             <th>{this._renderSortButton("WEIGHT (GRAMS)", this._SORT_BY_WEIGHT)}</th>
                             <th>{this._renderSortButton("PARTS PER THOUSAND IN CONCENTRATE", this._SORT_BY_PPT)}</th>
                             <th>{this._renderSortButton("% IN CONCENTRATE", this._SORT_BY_PERCENT_CONC)}</th>
@@ -292,14 +296,13 @@ class FormulaBody extends React.Component {
                         {this._renderManifestRows(false)}
                     </tbody>
                 </table>
-                <div className="padding"/>
                 <div className="tabletext">
                     DETAILED FORMULA BREAKDOWN
                 </div>
                 <table className="formulatable">
                     <tbody>
                         <tr>
-                            <th>{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
+                            <th colSpan="2">{this._renderSortButton("MATERIAL", this._SORT_BY_ID)}</th>
                             <th>{this._renderSortButton("WEIGHT (GRAMS)", this._SORT_BY_WEIGHT)}</th>
                             <th>{this._renderSortButton("PARTS PER THOUSAND IN CONCENTRATE", this._SORT_BY_PPT)}</th>
                             <th>{this._renderSortButton("% IN CONCENTRATE", this._SORT_BY_PERCENT_CONC)}</th>
