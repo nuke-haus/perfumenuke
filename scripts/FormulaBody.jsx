@@ -4,6 +4,7 @@ class FormulaBody extends React.Component {
         formulaKey: "table",
         detailsKey: "details",
         formulaButtonKey: "button",
+        formulaRenderKey: "formula",
         sortBy: "PPT",
         sortDir: 1,
         showArchivedFormulas: false
@@ -477,19 +478,21 @@ class FormulaBody extends React.Component {
                                 </button>
                             </td>
                             <td colSpan="2" className="tablebottom">
-                                SELECT FORMULA TO LOAD:
-                                <IngredientPicker defaultValue={this._selectedFormulaID}
-                                                  id={"loadformula"}
-                                                  allowSolvents={false}
-                                                  allowMaterials={false}
-                                                  allowMixtures={false}
-                                                  allowFormulas={true}
-                                                  allowArchivedFormulas={this.state.showArchivedFormulas}
-                                                  onChange={(id) => this._changeSelectedFormula(id)}/>
+                                <div key={this.state.formulaRenderKey}>
+                                    SELECT FORMULA TO LOAD:
+                                    <IngredientPicker defaultValue={this._selectedFormulaID}
+                                                    id={"loadformula"}
+                                                    allowSolvents={false}
+                                                    allowMaterials={false}
+                                                    allowMixtures={false}
+                                                    allowFormulas={true}
+                                                    allowArchivedFormulas={this.state.showArchivedFormulas}
+                                                    onChange={(id) => this._changeSelectedFormula(id)}/>
+                                </div>
                             </td>
                             <td className="tablebottom">
                                 <TickBox ticked={this.state.showArchivedFormulas}
-                                         onClick={(value) => this.setState({showArchivedFormulas: value})}
+                                         onClick={(value) => this.setState({showArchivedFormulas: value, formulaRenderKey: "formula" + String(value)})}
                                          label="SHOW ARCHIVED FORMULAS"/>
                             </td>
                         </tr>
