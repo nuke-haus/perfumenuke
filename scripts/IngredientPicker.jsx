@@ -64,7 +64,7 @@ class IngredientPicker extends React.Component {
         if (this.props.allowFormulas) {
             for (let id of PN.getAllSortedFormulaIDs()) {
                 const formula = PN.getFormula(id);
-                if (formula != null && formula.archived === true && !this.props.showArchivedFormulas) {
+                if (formula != null && formula.archived === true && !this.props.allowArchivedFormulas) {
                     continue;
                 }
                 count = count + 1;
@@ -100,7 +100,7 @@ class IngredientPicker extends React.Component {
 }
 
 IngredientPicker.defaultProps = {
-    showArchivedFormulas: false,
+    allowArchivedFormulas: false,
     allowFormulas: false,
     allowSolvents: false,
     allowMixtures: true,
