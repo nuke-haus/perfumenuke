@@ -392,7 +392,7 @@ class FormulaBody extends React.Component {
                             <td>
                                 <TickBox ticked={PN.database.activeFormula.archived}
                                          onClick={(value) => this._onChangeFormula("archived", value)}
-                                         label="ARCHIVE"/>
+                                         label="ARCHIVED"/>
                             </td>
                         </tr>
                         <tr>
