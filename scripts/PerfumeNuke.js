@@ -111,10 +111,21 @@ PN.recomputeFormula = function() {
                 for (let material of mixture.materials) {
                     const innerMixture = PN.getMixture(material.id);
                     if (innerMixture != null) { // most complex case: it's a mixture containing nested mixtures
-                        for (let innerMaterial of innerMixture.materials) {
-                            PN.database.activeFormula.computed.manifest[innerMaterial.id] = PN.database.activeFormula.computed.manifest[innerMaterial.id] || {};
-                            const currentQuantity = PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity || 0.0;
-                            PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity = currentQuantity + (ingredient.quantity * material.percent * innerMaterial.percent);
+                        if (innerMixture.is_dilution) {
+                            for (let innerMaterial of innerMixture.materials) {
+                                const illegalMixture = PN.getMixture(innerMaterial.id);
+                                if (illegalMixture != null) {
+                                    alert("A mixture contains too many layers of nested mixtures. This is not supported. Please adjust this mixture in the database: " + ingredient.id);
+                                    return;
+                                }
+                                PN.database.activeFormula.computed.manifest[innerMaterial.id] = PN.database.activeFormula.computed.manifest[innerMaterial.id] || {};
+                                const currentQuantity = PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity || 0.0;
+                                PN.database.activeFormula.computed.manifest[innerMaterial.id].quantity = currentQuantity + (ingredient.quantity * material.percent * innerMaterial.percent);
+                            }
+                        } else { // if it's a diluted mixture, then treat it as a material for the manifest
+                            PN.database.activeFormula.computed.manifest[innerMixture.id] = PN.database.activeFormula.computed.manifest[innerMixture.id] || {};
+                            const currentQuantity = PN.database.activeFormula.computed.manifest[innerMixture.id].quantity || 0.0;
+                            PN.database.activeFormula.computed.manifest[innerMixture.id].quantity = currentQuantity + (ingredient.quantity * material.percent);
                         }
                     } else { // material exploded from the mixture
                         PN.database.activeFormula.computed.manifest[material.id] = PN.database.activeFormula.computed.manifest[material.id] || {};
