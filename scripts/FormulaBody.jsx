@@ -56,8 +56,9 @@ class FormulaBody extends React.Component {
         PN.database.activeFormula[key] = value;
         if (recompute) {
             PN.recomputeFormula();
-            this.setState({formulaButtonKey: PN.guid(), detailsKey: PN.guid()});
+            this.setState({detailsKey: PN.guid()});
         }
+        this.setState({formulaButtonKey: PN.guid()});
     }
 
     _changeIngredient(id, ingredient) {
