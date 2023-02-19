@@ -7,7 +7,8 @@ class FormulaBody extends React.Component {
         formulaRenderKey: "formula",
         sortBy: "PPT",
         sortDir: 1,
-        showArchivedFormulas: false
+        showArchivedFormulas: false,
+        isDirty: false,
     };
 
     _SORT_BY_ID = "ID";
@@ -52,13 +53,18 @@ class FormulaBody extends React.Component {
         this.setState({tableKey: PN.guid()});
     }
 
-    _onChangeFormula(key, value, recompute) {
+    _onChangeFormula(key, value, recompute, updateButton) {
         PN.database.activeFormula[key] = value;
         if (recompute) {
             PN.recomputeFormula();
             this.setState({detailsKey: PN.guid()});
+        } else {
+            if (updateButton) {
+                this.setState({formulaButtonKey: PN.guid()});
+            } else if (!this.state.isDirty) {
+                this.setState({isDirty: true, formulaButtonKey: PN.guid()});
+            }
         }
-        this.setState({formulaButtonKey: PN.guid()});
     }
 
     _changeIngredient(id, ingredient) {
@@ -102,6 +108,9 @@ class FormulaBody extends React.Component {
         if (!this._hasValidFormulaID()) {
             return true;
         }
+        if (this.state.isDirty) {
+            return false;
+        }
         return !this._currentFormulaIsDirty();
     }
 
@@ -117,7 +126,7 @@ class FormulaBody extends React.Component {
         if (validationData.formula) {
             PN.setFormula(validationData.formula);
             PN.persistInLocalStore();
-            this.setState({formulaButtonKey: PN.guid()});
+            this.setState({formulaButtonKey: PN.guid(), isDirty: false});
         }
     }
 
@@ -130,7 +139,7 @@ class FormulaBody extends React.Component {
         if (data != null) {
             PN.database.activeFormula = PN.deepCopy(data);
             PN.recomputeFormula();
-            this.setState({formulaKey: PN.guid(), detailsKey: PN.guid(), formulaButtonKey: PN.guid()});
+            this.setState({formulaKey: PN.guid(), detailsKey: PN.guid(), formulaButtonKey: PN.guid(), isDirty: false});
         }
     }
 
@@ -375,7 +384,7 @@ class FormulaBody extends React.Component {
                                 ID: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.activeFormula.id}
-                                       onChange={(event) => this._onChangeFormula("id", this._formatLower(event.target.value))}/>
+                                       onChange={(event) => this._onChangeFormula("id", this._formatLower(event.target.value), false, true)}/>
                             </td>
                             <td>
                                 NAME: 
