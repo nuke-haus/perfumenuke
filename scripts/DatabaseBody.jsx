@@ -924,7 +924,7 @@ class DatabaseBody extends React.Component {
                 <table className="ingredienttable" key={this.state.mixtureKey}>
                     <tbody>
                         <tr>
-                            <td>
+                            <td colSpan="2">
                                 ID: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.id}
@@ -938,7 +938,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colSpan="2">
                                 COMPANY: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.company}
@@ -965,7 +965,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="4">
+                            <td colSpan="5">
                                 SCENT: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.scent}
@@ -973,7 +973,7 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
-                            <td colSpan="4">
+                            <td colSpan="5">
                                 USAGE: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.usage}
@@ -981,6 +981,43 @@ class DatabaseBody extends React.Component {
                             </td>
                         </tr>
                         <tr>
+                            <td>
+                                <div>
+                                    NOTE: 
+                                </div>
+                                <div>
+                                    <select value={PN.database.currentMixture.note || " "} 
+                                            onChange={(event) => this._onChangeMixture("note", event.target.value)}>
+                                        <option value=" ">NONE</option>
+                                        <option value="TOP">TOP</option>
+                                        <option value="HEART">HEART</option>
+                                        <option value="BASE">BASE</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    LONGEVITY (HOURS): 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           min="0"
+                                           defaultValue={PN.database.currentMixture.longevity}
+                                           onChange={(event) => this._onChangeMixture("longevity", event.target.value)}/>
+                                </div>
+                                
+                            </td>
+                            <td>
+                                <div>
+                                    IMPACT: 
+                                </div>
+                                <div>
+                                    <input type="number" 
+                                           min="0"
+                                           defaultValue={PN.database.currentMixture.impact}
+                                           onChange={(event) => this._onChangeMixture("impact", event.target.value)}/>
+                                </div>
+                            </td>
                             <td>
                                 <div>
                                     AVG % USED IN CONCENTRATE: 
@@ -1007,32 +1044,9 @@ class DatabaseBody extends React.Component {
                                            onChange={(event) => this._onChangeMixture("max_in_concentrate", PN.sanitizeFloat(PN.parseFloat(event.target.value) * 0.01, 6))}/>
                                 </div>
                             </td>
-                            <td>
-                                <div>
-                                    LONGEVITY (HOURS): 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           min="0"
-                                           defaultValue={PN.database.currentMixture.longevity}
-                                           onChange={(event) => this._onChangeMixture("longevity", event.target.value)}/>
-                                </div>
-                                
-                            </td>
-                            <td>
-                                <div>
-                                    IMPACT: 
-                                </div>
-                                <div>
-                                    <input type="number" 
-                                           min="0"
-                                           defaultValue={PN.database.currentMixture.impact}
-                                           onChange={(event) => this._onChangeMixture("impact", event.target.value)}/>
-                                </div>
-                            </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colSpan="2">
                                 <div className="tagcell">
                                     NEW TAG: 
                                     <input className="databaseinput" 
@@ -1052,7 +1066,7 @@ class DatabaseBody extends React.Component {
                         </tr>
                         {this._renderMixtureRows()}
                         <tr>
-                            <td>
+                            <td colSpan="2">
                                 <button type="button" 
                                         onClick={() => this._tryCreateMixtureDilution()}>
                                     Create Dilution Mixture For Current Mixture
@@ -1093,7 +1107,7 @@ class DatabaseBody extends React.Component {
                                     Load Selected Mixture
                                 </button>
                             </td>
-                            <td colSpan="2" className="tablebottom">
+                            <td colSpan="3" className="tablebottom">
                                 SELECT MIXTURE TO LOAD:
                                 <IngredientPicker defaultValue={this._selectedMixtureID}
                                                   id={"loadmixture"}
