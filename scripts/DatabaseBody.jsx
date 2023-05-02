@@ -930,19 +930,25 @@ class DatabaseBody extends React.Component {
                                        defaultValue={PN.database.currentMixture.id}
                                        onChange={(event) => this._onChangeMixture("id", this._formatLower(event.target.value))}/>
                             </td>
-                            <td colSpan="3">
+                            <td colSpan="2">
                                 NAME: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.name}
                                        onChange={(event) => this._onChangeMixture("name", this._formatName(event.target.value))}/>
                             </td>
-                        </tr>
-                        <tr>
-                            <td colSpan="2">
-                                COMPANY: 
+                            <td>
+                                COMPANY NAME: 
                                 <input className="databaseinput" 
                                        defaultValue={PN.database.currentMixture.company}
                                        onChange={(event) => this._onChangeMixture("company", this._formatName(event.target.value))}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2">
+                                CAS NUMBER (OPTIONAL): 
+                                <input className="databaseinput" 
+                                       defaultValue={PN.database.currentMixture.cas}
+                                       onChange={(event) => this._onChangeMixture("cas", this._formatUpper(event.target.value))}/>
                             </td>
                             <td>
                                 <div>
