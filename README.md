@@ -13,10 +13,10 @@ On the formula page you can load formulas from the database and modify them or c
 
 On the database page you can import and export material, mixture and formula data. Use the material and mixture editors to load existing data and modify it, or create new materials and mixtures. 
 
-- Aromachemicals that have a CAS number typically fall under the **material** category. 
+- Individual aromachemicals typically fall under the **material** category. 
 - Complex substances (like essential oils, premade accords and other materials comprised of more than one type of molecule) would typically be entered as a **mixture** in the tool.
 - Dilutions should be entered in the database as a **mixture** as well since they are mixtures comprised of a dilutant and an aromachemical. 
-- Your own accord blends should also be entered as **mixtures** in the database.
+- Your own accord blends should also be entered as a **mixture** in the database.
 - Mixtures can also contain other mixtures. For example, if you have a blend of 2+ chemicals you can create a 10% dilution of this mixture. Nesting of mixtures only works once, so you cannot create something like a dilution of a dilution of a mixture.
 
 Your work is saved between sessions, be sure to click the save button to save your current changes before leaving the page though.
