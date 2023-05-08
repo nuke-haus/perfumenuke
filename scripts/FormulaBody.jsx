@@ -245,6 +245,9 @@ class FormulaBody extends React.Component {
     _renderDetailsRow() {
         return (
             <tr>
+                <td>{PN.database.activeFormula.computed.proportions["TOP"]}</td>
+                <td>{PN.database.activeFormula.computed.proportions["HEART"]}</td>
+                <td>{PN.database.activeFormula.computed.proportions["BASE"]}</td>
                 <td>{PN.database.activeFormula.computed.concentrationNonSolvent}</td>
                 <td>{PN.database.activeFormula.computed.concentrationNonSolventWeight}</td>
                 <td>{PN.database.activeFormula.computed.totalWeight}</td>
@@ -283,6 +286,9 @@ class FormulaBody extends React.Component {
                 <table className="formulatablesmall">
                     <tbody>
                         <tr>
+                            <th>TOP NOTE %</th>
+                            <th>HEART NOTE %</th>
+                            <th>BASE NOTE %</th>
                             <th>CONCENTRATION %</th>
                             <th>CONCENTRATE WEIGHT (GRAMS)</th>
                             <th>FINISHED PRODUCT WEIGHT (GRAMS)</th>
