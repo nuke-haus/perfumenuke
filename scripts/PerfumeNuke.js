@@ -386,7 +386,7 @@ PN.validateMixture = function(mixture) {
     if (mixture.name == null) {
         return {error: "Mixture is missing a name: " + mixture.id};
     }
-    if (mixture.materials.length < 1) {
+    if (mixture.materials == null || mixture.materials.length < 1) {
         return {error: "Mixture contains no materials: " + mixture.id};
     }
     let totalPercent = 0.0;

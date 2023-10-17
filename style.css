@@ -178,7 +178,7 @@ table, td, th {
 .navbar {
     height: 50px;
     font-size: 32px;
-  	text-shadow: 3px 3px 1px #4e6258;
+  	/*text-shadow: 3px 3px 1px #4e6258;*/
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -242,21 +242,21 @@ table, td, th {
 .selectednav {
     text-decoration: none;
     padding: 4px 10px;
-    box-shadow: 3px 3px 1px #4e6258, inset 3px 3px 1px #4e6258;
+    /*box-shadow: 3px 3px 1px #4e6258, inset 3px 3px 1px #4e6258;*/
     border: 3px solid #000000;
 }
 
 .bar {
 	background-color: #000000;
 	height: 16px;
-	width: 100%;
+    width: 100%;
+    margin-bottom: 32px;
 }
 
 .barshadow {
 	background-color: #4e6258;
-	height: 5px;
+	height: 0px;
     width: 100%;
-    margin-bottom: 32px;
 }
 
 .modal {
